@@ -1,12 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule,routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SidebarComponent } from './ComponentesGlobal/sidebar/sidebar.component';
+import { LoginComponent } from './ComponentesVista/Seguridad/login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SidebarComponent,
+    routingComponents,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
