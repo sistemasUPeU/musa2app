@@ -4,12 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule,routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './ComponentesGlobal/sidebar/sidebar.component';
+import { UsuarioComponent } from './ComponentesVista/Seguridad/usuario/usuario.component';
+import { RolComponent } from './ComponentesVista/Seguridad/rol/rol.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
-    routingComponents
+    routingComponents,
+    UsuarioComponent,
+    RolComponent
   ],
   imports: [
     BrowserModule,
