@@ -52,3 +52,9 @@
 #caja2{
     margin-top: -40px;
 }
+#user{
+    margin-top: -38px;
+    width: 250px; 
+    margin-left: 185px;
+    border: solid gray 1px;
+}

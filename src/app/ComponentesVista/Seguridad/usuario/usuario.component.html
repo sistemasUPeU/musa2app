@@ -2,10 +2,10 @@
     <br>
 <h1>USUARIOS</h1> 
 <!-- Boton registrar user -->
-<div id="register">
+<button id="register" data-toggle="modal" data-target="#RegisterUsuario">
     <i class="fas fa-user-plus" ></i>
-    <p style="margin-top: -15px;  margin-left: -20px;">Registrar Usuario</p>
-</div>
+    <p style="margin-top: -15px;  margin-left: -20px;" >Registrar Usuario</p>
+</button>
 <br>
 <br>
 <!-- div parte superior -->
@@ -65,7 +65,7 @@
                 <td>Jefe de Seguridad</td>
                 <td>Activo</td>
                 <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarUsuario"></i></td>
               </tr>
               <tr>
                 <th scope="row">2</th>
@@ -75,7 +75,7 @@
                 <td>Secretaria</td>
                 <td>Activo</td>
                 <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarUsuario"></i></td>
               </tr>
               <tr>
                 <th scope="row">3</th>
@@ -85,7 +85,7 @@
                 <td></td>
                 <td></td>
                 <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarUsuario"></i></td>
               </tr>
               <tr>
                 <th scope="row">4</th>
@@ -95,7 +95,7 @@
                 <td></td>
                 <td></td>
                 <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarUsuario"></i></td>
               </tr>
               <tr>
                 <th scope="row">5</th>
@@ -105,7 +105,7 @@
                 <td>Vendedor</td>
                 <td>Activo</td>
                 <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarUsuario"></i></td>
               </tr>
             </tbody>
           </table>
@@ -113,3 +113,88 @@
 </div>
           
 </div>
+
+<!-- Modal Registrar Usuario -->
+<div class="modal fade" id="RegisterUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">REGISTRAR USUARIO</h5>
+              <hr>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label for="">Seleccione un Nombre: </label>
+              <select class="custom-select" id="inputGroupSelect01" id="caja_rol">
+                    <option selected>Seleccione Opción</option>
+                    <option value="1">Alejandro</option>
+                    <option value="2">Guillermo</option>
+                    <option value="3">Pedro</option>
+             </select>
+             <br>
+             <br>
+             <label for="">Ingrese un Usuario: </label>
+              <input id="user" type="text" class="form-control" placeholder=" Usuario" >
+              <br>
+              <label for="">Ingrese Contraseña: </label>
+               <input id="user" type="password" class="form-control" placeholder=" Contraseña" >
+               <br>
+               <label for="">Seleccione un Rol: </label>
+              <select class="custom-select" id="inputGroupSelect01" id="caja_rol" style="margin-left: 58px;">
+                    <option selected>Seleccione Opción</option>
+                    <option value="1">Jefe de Operaciones</option>
+                    <option value="2">Jefe de Mantenimiento</option>
+                    <option value="3">Secretario</option>
+             </select>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- Modal Modificar Usuario -->
+<div class="modal fade" id="ModificarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">MODIFICAR USUARIO</h5>
+              <hr>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label for="">Seleccione un Nombre: </label>
+              <select class="custom-select" id="inputGroupSelect01" id="caja_rol">
+                    <option selected>Seleccione Opción</option>
+                    <option value="1">Alejandro</option>
+                    <option value="2">Guillermo</option>
+                    <option value="3">Pedro</option>
+             </select>
+             <br>
+             <br>
+             <label for="">Ingrese un Usuario: </label>
+              <input id="user" type="text" class="form-control" placeholder=" Usuario" >
+              <br>
+              <label for="">Ingrese Contraseña: </label>
+               <input id="user" type="password" class="form-control" placeholder=" Contraseña" >
+               <br>
+               <label for="">Seleccione un Rol: </label>
+              <select class="custom-select" id="inputGroupSelect01" id="caja_rol" style="margin-left: 58px;">
+                    <option selected>Seleccione Opción</option>
+                    <option value="1">Jefe de Operaciones</option>
+                    <option value="2">Jefe de Mantenimiento</option>
+                    <option value="3">Secretario</option>
+             </select>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
