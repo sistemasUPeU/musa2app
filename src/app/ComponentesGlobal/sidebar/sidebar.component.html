@@ -145,10 +145,10 @@
               <div class="sidebar-submenu">
                 <ul>
                   <li>
-                    <a>Usuarios</a>
+                    <a [routerLink]="['usuario']">Usuarios</a>
                   </li>
                   <li>
-                    <a>Rol</a>
+                    <a [routerLink]="['rol']">Rol</a>
                   </li>
                   <li>
                     <a>Opciones</a>
@@ -218,7 +218,7 @@
         <a>
           <i class="fa fa-cog"></i>
         </a>
-        <a>
+        <a  [routerLink]="['/login']">
           <i class="fa fa-power-off"></i>
         </a>
       </div>

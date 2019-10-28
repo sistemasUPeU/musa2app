@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { PlantillaComponent } from './ComponentesVista/plantilla/plantilla.component';
 import { LoginComponent } from './ComponentesVista/Seguridad/login/login.component';
 import { HomeComponent } from './ComponentesVista/home/home.component';
+import { UsuarioComponent } from './ComponentesVista/Seguridad/usuario/usuario.component';
 
 const routesHome: Routes = [
-  {path:'', redirectTo:'plantilla',pathMatch:'full'},
+  {path:'', redirectTo:'',pathMatch:'full'},
   {path:'plantilla', component:PlantillaComponent},
+  {path:'usuario', component:UsuarioComponent},
   {path:'logon', component:LoginComponent}
 ];
 
@@ -24,6 +26,7 @@ export class AppRoutingModule { }
 
 export const routingComponents = [
   PlantillaComponent,
+  UsuarioComponent,
   LoginComponent,
   HomeComponent
 ];
