@@ -2,10 +2,10 @@
         <br>
     <h1>ROL</h1> 
     <!-- Boton registrar rol -->
-    <div id="register">
+    <button id="register" data-toggle="modal" data-target="#RegisterRol">
         <i class="fas fa-user-plus" ></i>
         <p style="margin-top: -15px; margin-left: -20px;">Registrar Rol</p>
-    </div>
+    </button>
     <br>
     <br>
     <!-- div parte inferior -->
@@ -52,35 +52,35 @@
                     <td>Jefe de Operaciones</td>
                     <td>Activo</td>
                     <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
                   </tr>
                   <tr>
                     <th scope="row">2</th>
                     <td>Secretaria</td>
                     <td>Activo</td>
                     <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
                   </tr>
                   <tr>
                     <th scope="row">3</th>
                     <td>Limpieza</td>
                     <td>Desactivo</td>
                     <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
                   </tr>
                   <tr>
                     <th scope="row">4</th>
                     <td>Mesera</td>
                     <td>Desactivo</td>
                     <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
                   </tr>
                   <tr>
                     <th scope="row">5</th>
                     <td>Despachador</td>
                     <td>Activo</td>
                     <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
                   </tr>
                 </tbody>
               </table>
@@ -88,3 +88,55 @@
     </div>
               
     </div>
+
+
+    
+<!-- Modal Registrar Rol -->
+<div class="modal fade" id="RegisterRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">REGISTRAR ROL</h5>
+              <hr>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label for="">Ingrese Rol: </label>
+              <input type="text" class="form-control" placeholder="Nombre Rol" >
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- Modal Modificar Rol -->
+<div class="modal fade" id="ModificarRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">MODIFICAR ROL</h5>
+              <hr>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label for="">Ingrese Rol: </label>
+              <input type="text" class="form-control" placeholder="Nombre Rol" >
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+              
+              
+    
