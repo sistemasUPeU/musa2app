@@ -4,11 +4,13 @@ import { PlantillaComponent } from './ComponentesVista/plantilla/plantilla.compo
 import { LoginComponent } from './ComponentesVista/Seguridad/login/login.component';
 import { HomeComponent } from './ComponentesVista/home/home.component';
 import { UsuarioComponent } from './ComponentesVista/Seguridad/usuario/usuario.component';
+import { RolComponent } from './ComponentesVista/Seguridad/rol/rol.component';
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
   {path:'plantilla', component:PlantillaComponent},
   {path:'usuario', component:UsuarioComponent},
+  {path:'rol', component:RolComponent},
   {path:'logon', component:LoginComponent}
 ];
 

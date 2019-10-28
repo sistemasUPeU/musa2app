@@ -1,1 +1,115 @@
-<h1>HOLA MUNDO BB</h1>
+<div id="caja1">
+    <br>
+<h1>USUARIOS</h1> 
+<!-- Boton registrar user -->
+<div id="register">
+    <i class="fas fa-user-plus" ></i>
+    <p style="margin-top: -15px;  margin-left: -20px;">Registrar Usuario</p>
+</div>
+<br>
+<br>
+<!-- div parte superior -->
+<div id="caja2">
+    <!-- Buscador -->
+    <p id="p">Buscar por: </p>
+    <div class="input-group" id="caja_search">
+        <span class="input-group-prepend">
+        </span>
+        <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre y Apellido" id="buscar1" />
+        <span class="input-group-append">
+            <div class="input-group-text bg-transparent " id="buscar2">
+            <i class="fa fa-search"></i>
+            </div>
+        </span>
+    </div> 
+    <!-- Buscador Rol -->
+    <div id="rol">
+        <select class="custom-select" id="inputGroupSelect01" id="caja_rol">
+                <option selected>Seleccione Rol</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+        </select>
+    </div>
+    <!-- Buscador Estado -->
+    <div id="estado">
+        <select class="custom-select" id="inputGroupSelect01" id="caja_estado">
+                <option selected>Seleccione Estado</option>
+                <option value="1">Activo</option>
+                <option value="2">Desactivo</option>
+        </select>
+    </div>
+    <!-- Boton Limpiar -->
+    <button type="button" class="btn btn-success" id="limpiar">Limpíar</button>
+
+    <br><br>
+    <!-- Tabla -->
+    <table class="table" style="text-align: center;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" style="width: 250px;">Nombres y Apellidos</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Contraseña</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Estado</th>
+                <th scope="col" colspan="2">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Jose Torres Valdivia</td>
+                <td>Joseto159</td>
+                <td>123456</td>
+                <td>Jefe de Seguridad</td>
+                <td>Activo</td>
+                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
+                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Claudia Ramos</td>
+                <td>clauramo</td>
+                <td>clau123</td>
+                <td>Secretaria</td>
+                <td>Activo</td>
+                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
+                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Luis Miranda</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
+                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Fernando Castillo</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
+                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Rodrigo Diaz</td>
+                <td>radiaz389</td>
+                <td>r123</td>
+                <td>Vendedor</td>
+                <td>Activo</td>
+                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
+                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;"></i></td>
+              </tr>
+            </tbody>
+          </table>
+
+</div>
+          
+</div>
