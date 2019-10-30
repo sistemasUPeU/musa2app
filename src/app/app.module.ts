@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './ComponentesGlobal/sidebar/sidebar.component';
 import { UsuarioComponent } from './ComponentesVista/Seguridad/usuario/usuario.component';
 import { RolComponent } from './ComponentesVista/Seguridad/rol/rol.component';
+import { RegistrarpersonaComponent } from './ComponentesVista/Configuracion/registrarpersona/registrarpersona.component';
+import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/registrarubigeo/registrarubigeo.component';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +16,10 @@ import { RolComponent } from './ComponentesVista/Seguridad/rol/rol.component';
     SidebarComponent,
     routingComponents,
     UsuarioComponent,
-    RolComponent
+    RolComponent,
+    RegistrarpersonaComponent,
+    RegistrarubigeoComponent
+
   ],
   imports: [
     BrowserModule,

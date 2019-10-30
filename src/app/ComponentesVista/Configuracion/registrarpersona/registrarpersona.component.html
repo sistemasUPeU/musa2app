@@ -1,0 +1,106 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" style="right: 2000px;width: 10px;  ">Agregar Persona</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    <form>
+  <div class="form-CENTER">
+    <div class="form-group col-md-5">
+      <label for="inputEmail4"> <nav>nombre Persona</nav></label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="ingresar nombre">
+    </div>
+    <div class="form-group col-md-5">
+      <label for="inputPassword4">Apellido</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+
+</form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Guardar</button>
+          <button type="button" class="btn btn-primary">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Ingrese DNI:" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="border-left: 100px;">Buscar</button>
+    </div>
+  </div>
+<h1>registra persona</h1>
+<hr>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Agregar
+  </button>
+<hr>
+<form>
+    <div class="container" id="ancho">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>NOMBRE</th>
+              <th>APELLIDO</th>
+              <th>TIPODOC</th>
+              <th>NRO DOC</th>
+              <th>SEXO</th>
+              <th>FECHANAC</th>
+              <th>DIRECCION</th>
+              <th>ESTADO</th>
+              <th>TELEFONO</th>
+              <th>USERCREATE</th>
+              <th>DATECREATE</th>
+              <th>USERMODIFY</th>
+              <th>DATEMODIFY</th>
+              <th>IDUBIGEO</th>
+              <th colspan="2">OPCION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cat of categorias">
+              <td>{{cat.idcategoria}}</td>
+              <td>{{cat.nom_cat}}</td>
+              <td><button class="btn btn-warning">Editar</button></td>
+              <td><button class="btn btn-danger">Eliminar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+

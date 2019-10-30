@@ -5,13 +5,18 @@ import { LoginComponent } from './ComponentesVista/Seguridad/login/login.compone
 import { HomeComponent } from './ComponentesVista/home/home.component';
 import { UsuarioComponent } from './ComponentesVista/Seguridad/usuario/usuario.component';
 import { RolComponent } from './ComponentesVista/Seguridad/rol/rol.component';
+import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/registrarubigeo/registrarubigeo.component';
+import { RegistrarpersonaComponent } from './ComponentesVista/Configuracion/registrarpersona/registrarpersona.component';
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
   {path:'plantilla', component:PlantillaComponent},
   {path:'usuario', component:UsuarioComponent},
   {path:'rol', component:RolComponent},
-  {path:'logon', component:LoginComponent}
+  {path:'logon', component:LoginComponent},
+  {path:'registrarpersona', component:RegistrarpersonaComponent},
+  {path:'registrarubigeo', component:RegistrarubigeoComponent}
+  
 ];
 
 const routes: Routes = [

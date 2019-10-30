@@ -1,0 +1,197 @@
+<div id="caja1">
+    <br>
+<h1>UBIGEO</h1> 
+<br>
+<br>
+<!-- div parte inferior -->
+<div id="caja2">
+    <!-- div parte superior -->
+    <div id="caja3">
+        <!-- Buscador -->
+        <p id="p">Buscar por: </p>
+        <div class="input-group" id="caja_search">
+            <span class="input-group-prepend">
+            </span>
+            <input class="form-control bg-transparent" type="search" placeholder=" Ingrese codubigeo" id="buscar1" />
+            <span class="input-group-append">
+                <div class="input-group-text bg-transparent " id="buscar2">
+                <i class="fa fa-search"></i>
+                </div>
+            </span>
+        </div> 
+          <!-- Boton estado -->
+          <div id="estado">
+                <select class="custom-select" id="inputGroupSelect01" id="caja_estado">
+                        <option selected>Seleccione Estado</option>
+                        <option value="1">Activo</option>
+                        <option value="2">Desactivo</option>
+                </select>
+            </div>
+        <hr>
+        <!-- Boton Agregar -->
+        <button id="registerRol" type="button" class="btn btn-primary" data-toggle="modal" data-target="#RegisterRol">
+            Agregar
+            </button>
+        <!-- Boton Limpiar -->
+        <button type="button" class="btn btn-success" id="limpiar">Limpíar</button>
+    </div>
+    <br>
+    <!-- Tabla -->
+    <table class="table" style="text-align: center; width: 900px; margin: 0 auto;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" style="width: 250px;">CodUbigeo</th>
+                <th scope="col">CodDepto</th>
+                <th scope="col">Departamento</th>
+                <th scope="col">CodProv</th>
+                <th scope="col">Provincia</th>
+                <th scope="col">CodDist </th>
+                <th scope="col">Distrito</th>
+                <th scope="col">Estado</th>
+                <th scope="col" colspan="1" >Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>16574</td>
+                <td>16574</td>
+                <td>Lima</td>
+                <td>16574</td>
+                <td>Lima</td>
+                <td>16574</td>
+                <td>San borja</td>
+                <td>1</td>
+                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
+                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
+              </tr>
+              <tr>
+                    <th scope="row">2</th>
+                    <td>16574</td>
+                    <td>16574</td>
+                    <td>Lima</td>
+                    <td>16574</td>
+                    <td>Lima</td>
+                    <td>16574</td>
+                    <td>San isidro</td>
+                    <td>2</td>
+                    <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
+                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
+                  </tr> 
+            </tbody>
+          </table>
+</div>    
+</div>
+<!-- Modal Registrar Rol -->
+<div class="modal fade" id="RegisterRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Registrar Ubigeo</h5>
+
+          <hr>
+          
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="form-row">
+                <div class="form-group col-md-5">
+                        <label for="inputZip" style="text-align: center;text-align: right;">CodUbigeo</label>
+                        <input type="text" class="form-control" id="inputUbigeo">
+                      </div> 
+                      <div class="form-group col-md-5">
+                            <label for="inputZip" style="text-align: center;text-align: right;">CodDepto</label>
+                            <input type="text" class="form-control" id="inputDepto">
+                          </div> 
+                          <div class="form-group col-md-5">
+                                <label for="inputZip" style="text-align: center;text-align: right;">Departamento</label>
+                                <input type="text" class="form-control" id="inputDepartamento">
+                              </div> 
+                              <div class="form-group col-md-5">
+                                    <label for="inputZip" style="text-align: center;text-align: right;">CodProv</label>
+                                    <input type="text" class="form-control" id="inputprov">
+                                  </div>
+                                  <div class="form-group col-md-5">
+                                        <label for="inputZip" style="text-align: center;text-align: right;">Provincia</label>
+                                        <input type="text" class="form-control" id="inputZip">
+                                      </div>
+                                      <div class="form-group col-md-5">
+                                            <label for="inputZip" style="text-align: center;text-align: right;">CodDist</label>
+                                            <input type="text" class="form-control" id="inputZip">
+                                          </div> 
+                                          <div class="form-group col-md-5">
+                                                <label for="inputZip" style="text-align: center;text-align: right;">Distrito</label>
+                                                <input type="text" class="form-control" id="inputZip">
+                                              </div>  
+                                              <div class="form-group col-md-5">
+                                                    <label for="inputZip" style="text-align: center;text-align: right;">Estado</label>
+                                                    <input type="text" class="form-control" id="inputZip">
+                                                  </div>   
+                                </div>
+        <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Registrar Ubigeo</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Modal Modificar Rol -->
+<div class="modal fade" id="ModificarRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">MODIFICAR UBIGEO</h5>
+          <hr>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="form-row">
+                    <div class="form-group col-md-5">
+                            <label for="inputZip" style="text-align: center;text-align: right;">CodUbigeo</label>
+                            <input type="text" class="form-control" id="inputUbigeo">
+                          </div> 
+                          <div class="form-group col-md-5">
+                                <label for="inputZip" style="text-align: center;text-align: right;">CodDepto</label>
+                                <input type="text" class="form-control" id="inputDepto">
+                              </div> 
+                              <div class="form-group col-md-5">
+                                    <label for="inputZip" style="text-align: center;text-align: right;">Departamento</label>
+                                    <input type="text" class="form-control" id="inputDepartamento">
+                                  </div> 
+                                  <div class="form-group col-md-5">
+                                        <label for="inputZip" style="text-align: center;text-align: right;">CodProv</label>
+                                        <input type="text" class="form-control" id="inputprov">
+                                      </div>
+                                      <div class="form-group col-md-5">
+                                            <label for="inputZip" style="text-align: center;text-align: right;">Provincia</label>
+                                            <input type="text" class="form-control" id="inputZip">
+                                          </div>
+                                          <div class="form-group col-md-5">
+                                                <label for="inputZip" style="text-align: center;text-align: right;">CodDist</label>
+                                                <input type="text" class="form-control" id="inputZip">
+                                              </div> 
+                                              <div class="form-group col-md-5">
+                                                    <label for="inputZip" style="text-align: center;text-align: right;">Distrito</label>
+                                                    <input type="text" class="form-control" id="inputZip">
+                                                  </div>  
+                                                  <div class="form-group col-md-5">
+                                                        <label for="inputZip" style="text-align: center;text-align: right;">Estado</label>
+                                                        <input type="text" class="form-control" id="inputZip">
+                                                      </div>   
+                                    </div>
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+   
+            </div>
+          </div>
+        </div>
+      </div>
+
+          
+          
