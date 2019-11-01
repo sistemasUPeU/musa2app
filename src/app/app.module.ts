@@ -7,8 +7,9 @@ import { SidebarComponent } from './ComponentesGlobal/sidebar/sidebar.component'
 import { UsuarioComponent } from './ComponentesVista/Seguridad/usuario/usuario.component';
 import { RolComponent } from './ComponentesVista/Seguridad/rol/rol.component';
 import { RegistrarpersonaComponent } from './ComponentesVista/Configuracion/registrarpersona/registrarpersona.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/registrarubigeo/registrarubigeo.component';
-
 
 @NgModule({
   declarations: [
@@ -19,11 +20,13 @@ import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/regis
     RolComponent,
     RegistrarpersonaComponent,
     RegistrarubigeoComponent
-
+  
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

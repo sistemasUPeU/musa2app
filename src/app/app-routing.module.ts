@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PlantillaComponent } from './ComponentesVista/plantilla/plantilla.component';
@@ -5,8 +6,9 @@ import { LoginComponent } from './ComponentesVista/Seguridad/login/login.compone
 import { HomeComponent } from './ComponentesVista/home/home.component';
 import { UsuarioComponent } from './ComponentesVista/Seguridad/usuario/usuario.component';
 import { RolComponent } from './ComponentesVista/Seguridad/rol/rol.component';
-import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/registrarubigeo/registrarubigeo.component';
 import { RegistrarpersonaComponent } from './ComponentesVista/Configuracion/registrarpersona/registrarpersona.component';
+import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/registrarubigeo/registrarubigeo.component';
+
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
