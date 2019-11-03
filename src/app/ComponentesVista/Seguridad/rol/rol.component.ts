@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Roles } from 'src/app/Modelo/Roles';
+import { ServiceService } from 'src/app/service/service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rol',
@@ -6,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rol.component.css']
 })
 export class RolComponent implements OnInit {
-
-  constructor() { }
-
+  rol: Roles;
+  listaroles:Roles[] = [];
+  constructor(private service:ServiceService, private router:Router) { }
   ngOnInit() {
+    this.getAllRoles();
   }
-
+  getAllRoles() {
+    this.service.getAllRoles().subscribe(
+      (data) => {
+        this.listaroles = data['p_cur_rol'];
+        console.log(this.listaroles)
+      }
+    );
+  }
 }

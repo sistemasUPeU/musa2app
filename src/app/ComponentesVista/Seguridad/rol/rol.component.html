@@ -28,8 +28,6 @@
             <div id="estado">
                 <select class="custom-select" id="inputGroupSelect01" id="caja_estado">
                         <option selected>Seleccione Estado</option>
-                        <option value="1">Activo</option>
-                        <option value="2">Desactivo</option>
                 </select>
             </div>
             <!-- Boton Limpiar -->
@@ -47,38 +45,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Jefe de Operaciones</td>
-                    <td>Activo</td>
-                    <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Secretaria</td>
-                    <td>Activo</td>
-                    <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Limpieza</td>
-                    <td>Desactivo</td>
-                    <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Mesera</td>
-                    <td>Desactivo</td>
-                    <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Despachador</td>
-                    <td>Activo</td>
+                  <tr *ngFor="let rol of listaroles; let i = index">
+                    <td scope="row">{{ i + 1}}</td>
+                    <td>{{rol.NOMBRE}}</td>
+                    <td>{{rol.ESTADO}}</td>
                     <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
                     <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
                   </tr>
