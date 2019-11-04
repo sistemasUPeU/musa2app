@@ -1,11 +1,7 @@
-export interface Vinculacion {
-  vinc: Vinc[];
-}
-
-export interface Vinc {
-  nombre: string;
-  apellido: string;
-  fechainicio: Date;
-  fechafin: Date;
-  estado: number;
+export class Vinculos {
+  NOMBRE: string;
+  APELLIDO: string;
+  FECHAINICIO: Date;
+  FECHAFIN: Date;
+  ESTADO: number;
 }
