@@ -14,7 +14,7 @@ export class MantenimientoService {
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
   getAcciones(){
-    return this.http.get<MantAcciones>(`${ environment.apiUrl }/acciones/3`);
+    return this.http.get<MantAcciones>(`${ environment.apiUrl }/acciones/4`);
   }
 
 }
