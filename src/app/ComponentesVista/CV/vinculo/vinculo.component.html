@@ -1,0 +1,60 @@
+<div id="caja1">
+  <br>
+<h1>VINCULO</h1>
+<!-- Boton registrar rol -->
+<button id="register" data-toggle="modal" data-target="#RegisterRol">
+  <i class="fas fa-user-plus" ></i>
+  <p style="margin-top: -15px; margin-left: -20px;">Registrar Vinculo</p>
+</button>
+<br>
+<br>
+<!-- div parte inferior -->
+<div id="caja2">
+  <!-- div parte superior -->
+  <div id="caja3">
+      <!-- Buscador -->
+      <p id="p">Buscar por: </p>
+      <div class="input-group" id="caja_search">
+          <span class="input-group-prepend">
+          </span>
+          <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre de Rol" id="buscar1" />
+          <span class="input-group-append">
+              <div class="input-group-text bg-transparent " id="buscar2">
+              <i class="fa fa-search"></i>
+              </div>
+          </span>
+      </div>
+      <!-- Buscador Estado -->
+      <div id="estado">
+          <select class="custom-select" id="inputGroupSelect01" id="caja_estado">
+                  <option selected>Seleccione Estado</option>
+          </select>
+      </div>
+      <!-- Boton Limpiar -->
+      <button type="button" class="btn btn-success" id="limpiar">Limpíar</button>
+  </div>
+  <br>
+  <!-- Tabla -->
+  <table class="table" style="text-align: center; width: 900px; margin: 0 auto;">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" style="width: 250px;">Nombres</th>
+              <th scope="col">Fecha Inicio</th>
+              <th scope="col">Fecha Fin</th>
+              <th scope="col">Estado</th>
+              <th scope="col" colspan="2" >Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rol of listaroles; let i = index">
+              <td scope="row">{{ i + 1}}</td>
+              <td>{{rol.NOMBRE}}</td>
+              <td>{{rol.ESTADO}}</td>
+              <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
+              <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
+            </tr>
+          </tbody>
+        </table>
+
+</div>

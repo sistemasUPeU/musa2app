@@ -8,11 +8,14 @@ import { Roles } from '../Modelo/Roles';
   providedIn: 'root'
 })
 export class ServiceService {
+  getVinculo(tipovinculo: number) {
+
+  }
 
   constructor(private http: HttpClient) { }
 
 
-  getAllRoles(): Observable<Roles[]>{
+  getAllRoles(): Observable<Roles[]> {
     return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/`);
   }
   getAllUbigeo(): Observable<Ubigeo[]> {
