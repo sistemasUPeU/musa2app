@@ -9,7 +9,7 @@ import { ServiceService } from 'src/app/service/service.service';
 export class RegistrarubigeoComponent implements OnInit {
   ubigeo: Ubigeo;
   ubigeosLista: Ubigeo[] = [];
-  constructor(private  serviceService:ServiceService) { }
+  constructor(private  serviceService: ServiceService) { }
 
   ngOnInit() {
     this.getAllUbigeo();
@@ -18,13 +18,13 @@ export class RegistrarubigeoComponent implements OnInit {
   getAllUbigeo() {
     this.serviceService.getAllUbigeo().subscribe(
       (data) => {
-        this.ubigeosLista = data['P_CURSOR'];
-        console.log(this.ubigeosLista)
+        this.ubigeosLista = data[' P_CURSOR'];
+        console.log(this.ubigeosLista);
       }
     );
   }
 
   postUbigeo() {
-    //this.serviceService.postUbigeo(this.ubigeo).subscribe();
+    // this.serviceService.postUbigeo(this.ubigeo).subscribe(); //
   }
 }

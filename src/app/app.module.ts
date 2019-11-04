@@ -21,7 +21,7 @@ import { ServiceService } from './service/service.service';
     RolComponent,
     RegistrarpersonaComponent,
     RegistrarubigeoComponent
-  
+
   ],
   imports: [
     BrowserModule,
