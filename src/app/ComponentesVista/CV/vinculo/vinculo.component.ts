@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from 'src/app/Service/service.service';
-import { Observable } from 'rxjs';
-import { Vinc, Vinculacion } from 'src/app/Modelo/Vinculos';
-import { map } from 'rxjs/operators';
+import { Vinculos } from 'src/app/Modelo/Vinculos';
 
 @Component({
   selector: 'app-vinculo',
@@ -11,13 +9,18 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./vinculo.component.css']
 })
 export class VinculoComponent implements OnInit {
-  tipovinculo: number;
+  vinculo:Vinculos;
+  listavinculos:Vinculos[] = [];
   constructor(private service: ServiceService, private router: Router) { }
-  vinculos$: Observable<Array<Vinc>>;
   tipo: number;
   ngOnInit() {
-    //this.vinculos$ = this.service.getVinculo(this.tipo).pipe(map((apiVinculo: Vinculacion) => apiVinculo.vinc));
-
+    this.tipo=1
+    this.service.getVinculo(this.tipo).subscribe(
+      (data) => {
+        this.listavinculos = data['P_CUR_VINCULOS']
+        console.log(this.listavinculos);
+      }
+      );
   }
 
 }

@@ -47,12 +47,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let rol of listaroles; let i = index">
+            <tr *ngFor="let vin of listavinculos; let i = index">
               <td scope="row">{{ i + 1}}</td>
-              <td>{{rol.NOMBRE}}</td>
-              <td>{{rol.ESTADO}}</td>
-              <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-              <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
+              <td>{{vin.NOMBRE}}{{vin.APELLIDO}}</td>
+              <td>{{vin.FECHAINICIO}}</td>
+              <td >{{vin.FECHAFIN}}</td>
+              <td >{{vin.ESTADO}}</td>
+              <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
             </tr>
           </tbody>
         </table>
