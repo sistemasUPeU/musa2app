@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Roles } from 'src/app/Modelo/Roles';
-import { ServiceService } from 'src/app/service/service.service';
+import { ServiceService } from 'src/app/Service/service.service';
 import { Router } from '@angular/router';
 
 @Component({

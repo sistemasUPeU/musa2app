@@ -1,0 +1,21 @@
+<h1 class="py-5">Acciones de mantenimiento</h1>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Padre</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Orden</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of requests">
+        <td>{{request.IDACCIONPADRE}}</td>
+        <td>{{request.NOMBRE}}</td>
+        <td>{{request.TIPO}}</td>
+        <td>{{request.DESCRIPCION}}</td>
+        <td>{{request.ORDEN}}</td>
+      </tr>
+    </tbody>
+  </table>

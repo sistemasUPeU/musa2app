@@ -10,7 +10,7 @@ import { RegistrarpersonaComponent } from './ComponentesVista/Configuracion/regi
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/registrarubigeo/registrarubigeo.component';
-import { ServiceService } from './service/service.service';
+import { ServiceService } from './Service/service.service';
 import { VinculoComponent } from './ComponentesVista/CV/vinculo/vinculo.component';
 
 @NgModule({

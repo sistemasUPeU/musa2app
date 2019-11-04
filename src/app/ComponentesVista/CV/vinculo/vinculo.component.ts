@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ServiceService } from 'src/app/service/service.service';
+import { ServiceService } from 'src/app/Service/service.service';
 import { Observable } from 'rxjs';
 import { Vinc, Vinculacion } from 'src/app/Modelo/Vinculos';
 import { map } from 'rxjs/operators';
@@ -16,8 +16,7 @@ export class VinculoComponent implements OnInit {
   vinculos$: Observable<Array<Vinc>>;
   tipo: number;
   ngOnInit() {
-    this.vinculos$ = this.service.getVinculo(this.tipo)
-    .pipe(map((apiVinculo: Vinculacion) => apiVinculo.vinc));
+    //this.vinculos$ = this.service.getVinculo(this.tipo).pipe(map((apiVinculo: Vinculacion) => apiVinculo.vinc));
 
   }
 

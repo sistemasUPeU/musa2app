@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ServiceService } from 'src/app/service/service.service';
+import { ServiceService } from 'src/app/Service/service.service';
 
 @Component({
   selector: 'app-registrarubigeo',
