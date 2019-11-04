@@ -1,0 +1,195 @@
+<div id="caja1">
+        <br>
+    <h1>ENTRADA DE PRODUCTO</h1> 
+  <br>
+    <br>
+    <!-- div parte inferior -->
+    <div id="caja2">
+        <!-- div parte superior -->
+        <div id="caja3">
+            <!-- Buscador -->
+            <p id="p">Buscar por: </p>
+            <div class="input-group" id="caja_search">
+                <span class="input-group-prepend">
+                </span>
+                <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Producto" id="buscar1" />
+                <span class="input-group-append">
+                    <div class="input-group-text bg-transparent " id="buscar2">
+                    <i class="fa fa-search"></i>
+                    </div>
+                </span>
+            </div> 
+          
+<hr>
+<button  class="btn btn-success"  data-toggle="modal" data-target="#RegisterRol" 
+ style="margin-top: -5px; margin-left: -10px;">Agregar</button>
+           <hr>
+        </div>
+        <br>
+        <!-- Tabla -->
+        <table class="table" style="text-align: center; width: 900px; margin: 0 auto;">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" style="width: 250px;">Productos</th>
+                    <th scope="col">Concepto</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">NroComprobante</th>
+                    <th scope="col">TipoMovimiento</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">NroSerie</th>
+                    <th scope="col" colspan="1" >Opciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Activo</td>
+                    <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
+                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+    </div>        
+    </div>
+<!-- Modal Registrar Rol -->
+<div class="modal fade" id="RegisterRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registrar Entrada de Producto</h5>
+        <hr>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for="inputZip" >Productos</label>
+                <select class="custom-select" style="width: 185px;">
+                         <option value="1">llantas</option>
+                         <option value="2">frenos</option>
+                 </select>
+                    </div> 
+                    <div class="form-group col-md-5">
+                      <label for="inputZip" >Tipo Movimiento</label>
+                      <select class="custom-select" style="width: 185px;">
+                               <option value="1">1</option>
+                               <option value="2">2</option>
+                       </select>
+                        </div> 
+                        <div class="form-group col-md-5">
+                          <label for="inputZip" >Concepto</label>
+                          <select class="custom-select" style="width: 185px;">
+                                   <option value="1">1</option>
+                                   <option value="2">2</option>
+                           </select>
+                            </div> 
+                            <div class="form-group col-md-5">
+                                  <label for="inputZip" style="text-align: center;text-align: right;">Cantidad</label>
+                                  <input type="text" class="form-control" id="cantidad">
+                                </div>
+                                <div class="form-group col-md-5">
+                                  <label  style="text-align: center;text-align: right;">Fecha</label>
+                                  <input type="date" name="bday" max="3000-12-31" 
+                                         min="1000-01-01" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                      <label for="inputZip" >Estado</label>
+                                      <select class="custom-select" style="width: 185px;">
+                                               <option value="1">1</option>
+                                               <option value="2">2</option>
+                                       </select>
+                                        </div> 
+                                        <div class="form-group col-md-5">
+                                              <label for="inputZip" style="text-align: center;text-align: right;">NroComprobante</label>
+                                              <input type="text" class="form-control" id="inputZip">
+                                            </div>  
+                                            <div class="form-group col-md-5">
+                                                  <label for="inputZip" style="text-align: center;text-align: right;">NroSerie</label>
+                                                  <input type="text" class="form-control" id="inputZip">
+                                                </div>   
+                              </div>
+      <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Registrar Ubigeo</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Modificar Rol -->
+<div class="modal fade" id="ModificarRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">MODIFICAR Entrada de Producto</h5>
+              <hr>
+              <hr>
+        
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="form-row">
+                    <div class="form-group col-md-5">
+                      <label for="inputZip" >Productos</label>
+                      <select class="custom-select" style="width: 185px;">
+                               <option value="1">llantas</option>
+                               <option value="2">frenos</option>
+                       </select>
+                          </div> 
+                          <div class="form-group col-md-5">
+                            <label for="inputZip" >Tipo Movimiento</label>
+                            <select class="custom-select" style="width: 185px;">
+                                     <option value="1">1</option>
+                                     <option value="2">2</option>
+                             </select>
+                              </div> 
+                              <div class="form-group col-md-5">
+                                <label for="inputZip" >Concepto</label>
+                                <select class="custom-select" style="width: 185px;">
+                                         <option value="1">1</option>
+                                         <option value="2">2</option>
+                                 </select>
+                                  </div> 
+                                  <div class="form-group col-md-5">
+                                        <label for="inputZip" style="text-align: center;text-align: right;">Cantidad</label>
+                                        <input type="text" class="form-control" id="cantidad">
+                                      </div>
+                                      <div class="form-group col-md-5">
+                                        <label  style="text-align: center;text-align: right;">Fecha</label>
+                                        <input type="date" name="bday" max="3000-12-31" 
+                                               min="1000-01-01" class="form-control">
+                                          </div>
+                                          <div class="form-group col-md-5">
+                                            <label for="inputZip" >Estado</label>
+                                            <select class="custom-select" style="width: 185px;">
+                                                     <option value="1">1</option>
+                                                     <option value="2">2</option>
+                                             </select>
+                                              </div> 
+                                              <div class="form-group col-md-5">
+                                                    <label for="inputZip" style="text-align: center;text-align: right;">NroComprobante</label>
+                                                    <input type="text" class="form-control" id="inputZip">
+                                                  </div>  
+                                                  <div class="form-group col-md-5">
+                                                        <label for="inputZip" style="text-align: center;text-align: right;">NroSerie</label>
+                                                        <input type="text" class="form-control" id="inputZip">
+                                                      </div>   
+                                    </div>
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            
+            </div>
+          </div>
+        </div>
+      </div>

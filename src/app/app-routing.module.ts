@@ -8,6 +8,9 @@ import { UsuarioComponent } from './ComponentesVista/Seguridad/usuario/usuario.c
 import { RolComponent } from './ComponentesVista/Seguridad/rol/rol.component';
 import { RegistrarpersonaComponent } from './ComponentesVista/Configuracion/registrarpersona/registrarpersona.component';
 import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/registrarubigeo/registrarubigeo.component';
+import { EntradadeproductoComponent } from './ComponentesVista/GestionarAlmacen/entradadeproducto/entradadeproducto.component';
+
+
 
 
 const routesHome: Routes = [
@@ -17,7 +20,8 @@ const routesHome: Routes = [
   {path:'rol', component:RolComponent},
   {path:'logon', component:LoginComponent},
   {path:'registrarpersona', component:RegistrarpersonaComponent},
-  {path:'registrarubigeo', component:RegistrarubigeoComponent}
+  {path:'registrarubigeo', component:RegistrarubigeoComponent},
+  {path:'entradadeproducto', component:EntradadeproductoComponent}
   
 ];
 

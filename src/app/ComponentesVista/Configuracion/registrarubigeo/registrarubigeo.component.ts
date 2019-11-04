@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/service/service.service';
+import { Ubigeo } from './ubigeo';
 
 @Component({
   selector: 'app-registrarubigeo',
@@ -7,8 +8,10 @@ import { ServiceService } from 'src/app/service/service.service';
   styleUrls: ['./registrarubigeo.component.css']
 })
 export class RegistrarubigeoComponent implements OnInit {
-  ubigeo: Ubigeo;
   ubigeosLista: Ubigeo[] = [];
+  codigo: number;
+  ubigeo: Ubigeo = new Ubigeo;
+
   constructor(private  serviceService:ServiceService) { }
 
   ngOnInit() {
@@ -19,12 +22,24 @@ export class RegistrarubigeoComponent implements OnInit {
     this.serviceService.getAllUbigeo().subscribe(
       (data) => {
         this.ubigeosLista = data['P_CURSOR'];
-        console.log(this.ubigeosLista)
       }
     );
   }
 
-  postUbigeo() {
-    //this.serviceService.postUbigeo(this.ubigeo).subscribe();
+  searchUbigeo() {
+
+    if (this.codigo != null && this.codigo > 0) {
+      this.serviceService.searchUbigeo(this.codigo).subscribe(
+        (data) => {
+          this.ubigeosLista = data['P_CURSOR'];
+        }
+      );
+    } else {
+      this.getAllUbigeo();
+    }
+  }
+
+  guardar() {
+    this.serviceService.postUbigeo(this.ubigeo).subscribe();
   }
 }

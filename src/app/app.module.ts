@@ -10,6 +10,7 @@ import { RegistrarpersonaComponent } from './ComponentesVista/Configuracion/regi
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/registrarubigeo/registrarubigeo.component';
+import { EntradadeproductoComponent } from './ComponentesVista/GestionarAlmacen/entradadeproducto/entradadeproducto.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/regis
     UsuarioComponent,
     RolComponent,
     RegistrarpersonaComponent,
-    RegistrarubigeoComponent
+    RegistrarubigeoComponent,
+    EntradadeproductoComponent
   
   ],
   imports: [
