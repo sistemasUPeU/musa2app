@@ -1,0 +1,37 @@
+<h1 class="py-5">Acciones de mantenimiento</h1>
+<select class="custom-select float-left" style="margin-bottom: 4%;width: 30%;">
+  <option value="1">option1</option>
+  <option value="2">option2</option>
+  <option value="3">option3</option>
+  <option value="4">option4</option>
+</select>
+<div class="float-left" style="margin-left: 3%; margin-top: 2px;">
+  <div class="chiller_cb">
+    <input id="myCheckbox" type="checkbox">
+    <label for="myCheckbox">Deshabilitados</label>
+    <span></span>
+  </div>
+</div>
+<button class="btn btn-primary float-right" style="margin: 0 2%;">Crear categoria</button>
+<button class="btn btn-primary float-right">Crear accion</button>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Categoria</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Orden</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of requests">
+        <td>{{request.IDACCIONPADRE}}</td>
+        <td>{{request.NOMBRE}}</td>
+        <td>{{request.TIPO}}</td>
+        <td>{{request.DESCRIPCION}}</td>
+        <td>{{request.ORDEN}}</td>
+      </tr>
+    </tbody>
+  </table>
+  

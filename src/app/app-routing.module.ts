@@ -9,9 +9,7 @@ import { RolComponent } from './ComponentesVista/Seguridad/rol/rol.component';
 import { RegistrarpersonaComponent } from './ComponentesVista/Configuracion/registrarpersona/registrarpersona.component';
 import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/registrarubigeo/registrarubigeo.component';
 import { EntradadeproductoComponent } from './ComponentesVista/GestionarAlmacen/entradadeproducto/entradadeproducto.component';
-
-
-
+import { AccionesComponent } from './ComponentesVista/Mantenimiento/acciones/acciones.component';
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
@@ -21,8 +19,8 @@ const routesHome: Routes = [
   {path:'logon', component:LoginComponent},
   {path:'registrarpersona', component:RegistrarpersonaComponent},
   {path:'registrarubigeo', component:RegistrarubigeoComponent},
-  {path:'entradadeproducto', component:EntradadeproductoComponent}
-  
+  {path:'entradadeproducto', component:EntradadeproductoComponent},
+  {path:'acciones', component:AccionesComponent}
 ];
 
 const routes: Routes = [
@@ -41,5 +39,6 @@ export const routingComponents = [
   PlantillaComponent,
   UsuarioComponent,
   LoginComponent,
-  HomeComponent
+  HomeComponent,
+  AccionesComponent
 ];

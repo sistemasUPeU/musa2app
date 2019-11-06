@@ -22,7 +22,6 @@ import { EntradadeproductoComponent } from './ComponentesVista/GestionarAlmacen/
     RegistrarpersonaComponent,
     RegistrarubigeoComponent,
     EntradadeproductoComponent
-  
   ],
   imports: [
     BrowserModule,
