@@ -10,6 +10,7 @@ import { RegistrarpersonaComponent } from './ComponentesVista/Configuracion/regi
 import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/registrarubigeo/registrarubigeo.component';
 import { EntradadeproductoComponent } from './ComponentesVista/GestionarAlmacen/entradadeproducto/entradadeproducto.component';
 import { AccionesComponent } from './ComponentesVista/Mantenimiento/acciones/acciones.component';
+import { VinculoComponent } from './ComponentesVista/CV/vinculo/vinculo.component';
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
@@ -20,7 +21,8 @@ const routesHome: Routes = [
   {path:'registrarpersona', component:RegistrarpersonaComponent},
   {path:'registrarubigeo', component:RegistrarubigeoComponent},
   {path:'entradadeproducto', component:EntradadeproductoComponent},
-  {path:'acciones', component:AccionesComponent}
+  {path:'acciones', component:AccionesComponent},
+  {path:'vinculo', component:VinculoComponent}
 ];
 
 const routes: Routes = [
@@ -40,5 +42,6 @@ export const routingComponents = [
   UsuarioComponent,
   LoginComponent,
   HomeComponent,
-  AccionesComponent
+  AccionesComponent,
+  VinculoComponent
 ];
