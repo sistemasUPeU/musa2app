@@ -11,6 +11,7 @@ import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/regis
 import { EntradadeproductoComponent } from './ComponentesVista/GestionarAlmacen/entradadeproducto/entradadeproducto.component';
 import { AccionesComponent } from './ComponentesVista/Mantenimiento/acciones/acciones.component';
 import { VinculoComponent } from './ComponentesVista/CV/vinculo/vinculo.component';
+import { ConductorComponent } from './ComponentesVista/Conductores/conductor/conductor.component';
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
@@ -22,7 +23,8 @@ const routesHome: Routes = [
   {path:'registrarubigeo', component:RegistrarubigeoComponent},
   {path:'entradadeproducto', component:EntradadeproductoComponent},
   {path:'acciones', component:AccionesComponent},
-  {path:'vinculo', component:VinculoComponent}
+  {path:'vinculo', component:VinculoComponent},
+  {path:'conductor',component:ConductorComponent}
 ];
 
 const routes: Routes = [

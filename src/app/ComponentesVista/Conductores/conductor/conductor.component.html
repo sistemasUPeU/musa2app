@@ -1,0 +1,174 @@
+<div id="caja1">
+    <br>
+<h1>CONDUCTORES</h1> 
+<!-- Boton registrar user -->
+<button id="register" data-toggle="modal" data-target="#RegisterUsuario">
+    <i class="fas fa-user-plus" ></i>
+    <p style="margin-top: -15px;  margin-left: -20px;" >Registrar Conductor</p>
+</button>
+<br>
+<br>
+<!-- div parte superior -->
+<div id="caja2">
+    <!-- Buscador -->
+    <p id="p">Buscar por: </p>
+    <div class="input-group" id="caja_search">
+        <span class="input-group-prepend">
+        </span>
+        <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre y Apellido" id="buscar1" />
+        <span class="input-group-append">
+            <div class="input-group-text bg-transparent " id="buscar2">
+            <i class="fa fa-search"></i>
+            </div>
+        </span>
+    </div> 
+    <!-- Buscador Rol -->
+    <div id="rol">
+        <select class="custom-select" id="inputGroupSelect01" id="caja_rol">
+                <option selected>Seleccione Rol</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+        </select>
+    </div>
+    <!-- Boton Limpiar -->
+    <button type="button" class="btn btn-success" id="limpiar">Limpíar</button>
+
+    <br><br>
+    <!-- Tabla -->
+    <table class="table" style="text-align: center;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" style="width: 250px;">Nombres y Apellidos</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Contraseña</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Estado</th>
+                <th scope="col" colspan="2">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cond of conductores">
+                    <td>{{cond.NROLICENCIA}}</td>
+                    <td>{{cond.ESTADO}}</td>
+                    <td>{{cond.USERCREATE}}</td>
+                    <td>{{cond.DATECREATE}}</td>
+                    <td>{{cond.IDCONDUCTOR}}</td>
+                    <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
+                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarUsuario"></i></td>
+                
+              </tr>
+            
+            </tbody>
+          </table>
+
+</div>
+          
+</div>
+
+<!-- Modal Registrar Usuario -->
+<div class="modal fade" id="RegisterUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">REGISTRAR USUARIO</h5>
+              <hr>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label for="">Seleccione un Nombre: </label>
+              <select class="custom-select" id="inputGroupSelect01" id="caja_rol">
+                    <option selected>Seleccione Opción</option>
+                    <option value="1">Alejandro</option>
+                    <option value="2">Guillermo</option>
+                    <option value="3">Pedro</option>
+             </select>
+             <br>
+             <br>
+             <label for="">Ingrese tipooperador: </label>
+             <input type="text" class="form-control" [(ngModel)]="conductor.tipooperador" >
+              <br>
+              <label for="">Ingrese codigo: </label>
+               <input  type="text" class="form-control" [(ngModel)]="conductor.codigo" >
+               <br>
+               <label for="">Ingrese estado: </label>
+               <input  type="text" class="form-control" [(ngModel)]="conductor.estado" >
+               <br>
+               <label for="">Ingrese idpersona: </label>
+               <input  type="text" class="form-control" [(ngModel)]="conductor.idpersona" >
+               <br>
+               <label for="">Ingrese nrolicencia: </label>
+               <input  type="text" class="form-control" [(ngModel)]="conductor.nrolicecnia" >
+               <br>
+               <label for="">Ingrese cursovial: </label>
+               <input  type="text" class="form-control" [(ngModel)]="conductor.cursovial" >
+               <br>
+               <label for="">Ingrese USERCREATE: </label>
+               <input  type="text" class="form-control" [(ngModel)]="conductor.usercreate" >
+               <br>
+               <label for="">Ingrese linc_fechainicio: </label>
+               <input  type="text" class="form-control" [(ngModel)]="conductor.linc_fechainicio" >
+               <br>
+                <label for="">Ingrese linc_fechafin: </label>
+               <input  type="text" class="form-control" [(ngModel)]="conductor.linc_fechafin" >
+               <br>
+               <label for="">Ingrese clase: </label>
+               <input type="text" class="form-control" [(ngModel)]="conductor.clase" >
+               <br>
+               <label for="">Ingrese Categoria: </label>
+               <input  type="text" class="form-control" [(ngModel)]="conductor.Categoria" >
+               <br>
+           
+            </div>
+            <div class="modal-footer">
+              <button type="button"   class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+              <button type="button" (click)="crearConductor()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- Modal Modificar Usuario -->
+<div class="modal fade" id="ModificarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">MODIFICAR USUARIO</h5>
+              <hr>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label for="">Seleccione un Nombre: </label>
+              <select class="custom-select" id="inputGroupSelect01" id="caja_rol">
+                    <option selected>Seleccione Opción</option>
+                    <option value="1">Alejandro</option>
+                    <option value="2">Guillermo</option>
+                    <option value="3">Pedro</option>
+             </select>
+             <br>
+             <br>
+             <label for="">Ingrese un Usuario: </label>
+              <input id="user" type="text" class="form-control"  >
+              <br>
+              <label for="">Ingrese Contraseña: </label>
+               <input id="user" type="text" class="form-control" >
+               <br>
+               <label for="">Seleccione un Rol: </label>
+              <select class="custom-select" id="inputGroupSelect01" id="caja_rol" style="margin-left: 58px;">
+                    <option selected>Seleccione Opción</option>
+                    <option value="1">Jefe de Operaciones</option>
+                    <option value="2">Jefe de Mantenimiento</option>
+                    <option value="3">Secretario</option>
+             </select>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
