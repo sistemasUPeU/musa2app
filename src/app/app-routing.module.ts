@@ -13,6 +13,10 @@ import { AccionesComponent } from './ComponentesVista/Mantenimiento/acciones/acc
 import { VinculoComponent } from './ComponentesVista/CV/vinculo/vinculo.component';
 import { VinculoopcComponent } from './ComponentesVista/CV/vinculoopc/vinculoopc.component';
 import { ConductorComponent } from './ComponentesVista/Conductores/conductor/conductor.component';
+<<<<<<< HEAD
+import { VinculomodComponent} from './ComponentesVista/CV/vinculomod/vinculomod.component';
+=======
+>>>>>>> cc3a5873a5560e8401b48c8ecb06ca19a210e9e4
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
@@ -23,10 +27,19 @@ const routesHome: Routes = [
   {path:'registrarpersona', component:RegistrarpersonaComponent},
   {path:'registrarubigeo', component:RegistrarubigeoComponent},
   {path:'entradadeproducto', component:EntradadeproductoComponent},
+<<<<<<< HEAD
+  {path:'acciones', component:AccionesComponent},
+  {path:'vinculo', component:VinculoComponent},
+  {path:'vinculoopc', component:VinculoopcComponent},
+  {path:'acciones/:tipo', component:AccionesComponent},
+  {path:'conductor',component:ConductorComponent},
+  {path:'vinculomod', component:VinculomodComponent}
+=======
   {path:'vinculo', component:VinculoComponent},
   {path:'vinculoopc', component:VinculoopcComponent},
   {path:'acciones/:tipo', component:AccionesComponent},
   {path:'conductor',component:ConductorComponent}
+>>>>>>> cc3a5873a5560e8401b48c8ecb06ca19a210e9e4
 ];
 
 const routes: Routes = [

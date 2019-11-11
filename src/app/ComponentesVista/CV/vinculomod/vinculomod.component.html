@@ -1,1 +1,85 @@
-<p>vinculomod works!</p>
+
+<div id="caja1" style="display:block;">
+        <br>
+        <h1> {{titulo}}</h1>
+        <!-- Boton registrar rol -->
+    
+        <br>
+        <br>
+        <!-- div parte inferior -->
+        <div id="caja2">
+            <!-- div parte superior -->
+            <div id="caja3">
+                <br>
+                <br>
+                <!-- Buscador -->
+                <div class="form-group">
+                    <select class="form-control" id="tipo" (click)="Tipo()" [(ngModel)]="vinculo.tipovinculo" name="tipovinculo">
+                        <option>Tipo Vinculo</option>
+                        <option value='1'>Conductores</option>
+                        <option value='2'>Propietarios</option>
+                    </select>
+                </div>
+    
+                <div id="forconductor" style="display:block;">
+                    <form>
+                        <div>
+                            <label for="exampleInputEmail1">Conductor</label>
+                            <select class="form-control" [(ngModel)]="vinculo.idconductor" name="idconductor">
+                                <option>Conductor</option>
+                                <option *ngFor="let con of lisConduc" [value]="con.IDCONDUCTOR">{{con.NOMBRE}}</option>
+                            </select>
+                        </div>
+    
+                    </form>
+                </div>
+                <div id="forpropietario" style="display:none;">
+                    <form>
+                        <div>
+                            <label for="exampleInputPassword1">Propietario</label>
+                            <select class="form-control" [(ngModel)]="vinculo.idpropietario" name="idpropietario">
+                                <option>Propietario</option>
+                                <option *ngFor="let propietario of lisPropie" [value]="propietario.IDPROPIETARIO">
+                                    {{propietario.NOMBRE}}</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Vehiculo</label>
+                            <select class="form-control" [(ngModel)]="vinculo.idvehiculo" name="idvehiculo">
+                                <option>Vehiculo</option>
+                                <option *ngFor="let vehiculo of lisVehic" [value]="vehiculo.IDVEHICULO">{{vehiculo.PLACA}}
+                                </option>
+                            </select>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Descripcion</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        [(ngModel)]="vinculo.descripcion" name="DESCRIPCION">
+                </div>
+                <div class="form-group">
+                        <label for="exampleInputPassword1">Empleado</label>
+                        <input  [(ngModel)]="vinculo.idempleado" type="text" class="form-control" id="exampleInputPassword1" placeholder="empleado" name="idempleado">
+                    </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Fecha Inicio</label>
+                    <input type="date" class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="vinculo.fechainicio" name="fechainicio">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Fecha Fin</label>
+                    <input type="date" class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="vinculo.fechafin" name="fechafin">
+                </div>
+            </div>
+            <br>
+            <div>
+                <div *ngFor="let requi of lisRequisitos">
+                    <h2>{{ requi.NOMBRE }}</h2><br>
+                    <input type="file">
+                </div>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" (click)="modificar(vinculo.idvinculo)">Guardar</button>
