@@ -20,6 +20,7 @@ export class VinculomodComponent implements OnInit {
   constructor(private router: Router, private service: ServiceService, private activatedRoute:ActivatedRoute) { }
   
   ngOnInit() {
+    this.id=Number(localStorage.getItem("idvinculo"));
     this.getConductor();
     this.getPropietario();
     this.getVehiculo();
@@ -28,7 +29,7 @@ export class VinculomodComponent implements OnInit {
     alert(this.tipo)
     this.Tipo2();
     console.log(this.tipo);
-    
+    this.modificar(this.id);
   }
   vinculo:Vinculo = new Vinculo();
   vinculos:Vinculo[];
@@ -131,7 +132,7 @@ export class VinculomodComponent implements OnInit {
     );
    }
    modificar(id: number){
-     alert(id)
+     alert("hola"+id)
     this.service.getVinculoid(id).subscribe(
       (data) => {
         this.vinculo = data['P_CUR_VINCULOS'];
