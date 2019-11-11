@@ -11,11 +11,8 @@ import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/regis
 import { EntradadeproductoComponent } from './ComponentesVista/GestionarAlmacen/entradadeproducto/entradadeproducto.component';
 import { AccionesComponent } from './ComponentesVista/Mantenimiento/acciones/acciones.component';
 import { VinculoComponent } from './ComponentesVista/CV/vinculo/vinculo.component';
-<<<<<<< HEAD
 import { VinculoopcComponent } from './ComponentesVista/CV/vinculoopc/vinculoopc.component';
-=======
 import { ConductorComponent } from './ComponentesVista/Conductores/conductor/conductor.component';
->>>>>>> 23477ce8643b55a1c10d8ffc0953b0bfcef5f67e
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
@@ -26,15 +23,10 @@ const routesHome: Routes = [
   {path:'registrarpersona', component:RegistrarpersonaComponent},
   {path:'registrarubigeo', component:RegistrarubigeoComponent},
   {path:'entradadeproducto', component:EntradadeproductoComponent},
-<<<<<<< HEAD
-  {path:'acciones', component:AccionesComponent},
   {path:'vinculo', component:VinculoComponent},
-  {path:'vinculoopc', component:VinculoopcComponent}
-=======
+  {path:'vinculoopc', component:VinculoopcComponent},
   {path:'acciones/:tipo', component:AccionesComponent},
-  {path:'vinculo', component:VinculoComponent},
   {path:'conductor',component:ConductorComponent}
->>>>>>> 23477ce8643b55a1c10d8ffc0953b0bfcef5f67e
 ];
 
 const routes: Routes = [
