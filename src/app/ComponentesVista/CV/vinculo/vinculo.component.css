@@ -1,0 +1,48 @@
+#p{
+    font-size: 20px;
+}
+#caja_search{
+    margin-left: 20px;
+    width: 300px;
+}
+#buscar1{
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border: solid gray 1px;
+}
+#buscar2{
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border: solid gray 1px;
+}
+#caja1{
+    margin-left: -50px;
+}
+#caja_estado{
+    margin-left: 20px;
+    width: 250px;
+    border: solid gray 1px;
+}
+#estado{
+    margin-top: -38px;
+    margin-left: 340px;
+}
+#limpiar{
+    margin-top: -62px;
+    margin-left: 640px;
+    width: 150px;
+    border-radius: 50px;
+}
+#register{
+    margin-top: -80px;
+    width: 300px;
+    margin-left: 900px; 
+    font-size: 70px;
+    text-align: center;
+}
+#caja2{
+    margin-top: -40px;
+}
+#caja3{
+    margin-left: 180px;
+}

@@ -2,9 +2,9 @@
     <br>
   <h1>VINCULO</h1>
   <!-- Boton registrar rol -->
-  <button id="register" data-toggle="modal" data-target="#RegisterRol">
-    <i class="fas fa-user-plus" ></i>
-    <p style="margin-top: -15px; margin-left: -20px;">Registrar Vinculo</p>
+  <button id="register" value='1' data-toggle="modal" data-target="#RegisterRol" (click)="Modo()" >
+    <i class="fas fa-user-plus"></i>
+    <p style="margin-top: -15px; margin-left: -20px;">Registrar Vinculo {{titulo}}</p>
   </button>
   <br>
   <br>
@@ -17,7 +17,7 @@
         <div class="input-group" id="caja_search">
             <span class="input-group-prepend">
             </span>
-            <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre de Rol" id="buscar1" />
+            <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre" id="buscar1" />
             <span class="input-group-append">
                 <div class="input-group-text bg-transparent " id="buscar2">
                 <i class="fa fa-search"></i>
@@ -28,6 +28,8 @@
         <div id="estado">
             <select class="custom-select" id="inputGroupSelect01" id="caja_estado">
                     <option selected>Seleccione Estado</option>
+                    <option selected>Activo</option>
+                    <option selected>Inactivo</option>
             </select>
         </div>
         <!-- Boton Limpiar -->
@@ -53,7 +55,7 @@
                 <td>{{vin.FECHAINICIO}}</td>
                 <td >{{vin.FECHAFIN}}</td>
                 <td >{{vin.ESTADO}}</td>
-                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
+                <td ><i id="modificar" (click)="valor(vin.TIPOVINCULO,vin.IDVINCULO)" class="fas fa-edit" style="color: blue; margin-left: -60px;" ></i><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
               </tr>
             </tbody>
           </table>

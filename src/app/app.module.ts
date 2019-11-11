@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { StorageServiceModule} from 'ngx-webstorage-service';
 
 import { AppRoutingModule,routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/registrarubigeo/registrarubigeo.component';
 import { EntradadeproductoComponent } from './ComponentesVista/GestionarAlmacen/entradadeproducto/entradadeproducto.component';
+import { VinculoopcComponent } from './ComponentesVista/CV/vinculoopc/vinculoopc.component';
+import { VinculomodComponent } from './ComponentesVista/CV/vinculomod/vinculomod.component';
 
 
 @NgModule({
@@ -22,13 +25,16 @@ import { EntradadeproductoComponent } from './ComponentesVista/GestionarAlmacen/
     RolComponent,
     RegistrarpersonaComponent,
     RegistrarubigeoComponent,
-    EntradadeproductoComponent
+    EntradadeproductoComponent,
+    VinculoopcComponent,
+    VinculomodComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StorageServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
