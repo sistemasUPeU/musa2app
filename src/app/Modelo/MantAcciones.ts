@@ -1,3 +1,9 @@
 export class MantAcciones{
-    p_cursor: [];
+    IDMANTACCIONES:number;
+    IDACCIONPADRE:number;
+    NOMBRE:String;
+    TIPO:number;
+    ESTADO:number;
+    DESCRIPCION:String;
+    ORDEN:number;
 }

@@ -13,8 +13,8 @@ export class MantenimientoService {
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
-  getAcciones(){
-    return this.http.get<MantAcciones>(`${ environment.apiUrl }/acciones/4`);
+  getAcciones(tipo:number){
+    return this.http.get<MantAcciones>(`${ environment.apiUrl }/acciones/`+tipo);
   }
 
 }

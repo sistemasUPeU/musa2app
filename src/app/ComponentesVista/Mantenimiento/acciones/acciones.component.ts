@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MantAcciones } from 'src/app/Modelo/MantAcciones';
 import { MantenimientoService } from 'src/app/service/mantenimiento.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-acciones',
@@ -10,18 +10,28 @@ import { Router } from '@angular/router';
 })
 export class AccionesComponent implements OnInit {
 
-  mantAcciones: MantAcciones[];
-  requests:any;
+  private mantAcciones: MantAcciones = new MantAcciones();
+  requests:MantAcciones[];
+  tipo:number;
 
-  constructor(private accionesService:MantenimientoService, private router:Router) { }
+  constructor(private accionesService:MantenimientoService, private router:Router, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
-    this.accionesService.getAcciones().subscribe(
-      (data: MantAcciones) => {
-        this.requests = data.p_cursor;
-        console.log(this.requests);
-      }
-    );
+    this.cargarAcciones();
+  }
+
+  cargarAcciones(): void{
+    this.activatedRoute.params.subscribe(params => {
+      let tipo = params['tipo']
+      if(tipo){
+        this.accionesService.getAcciones(tipo).subscribe(
+          (data) => {
+            this.requests = data['p_cursor'];
+            console.log(this.requests);
+            console.log(this.tipo = tipo);
+          }
+        )}
+    })
   }
 
 }

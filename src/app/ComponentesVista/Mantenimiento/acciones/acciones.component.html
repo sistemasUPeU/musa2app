@@ -1,19 +1,13 @@
-<h1 class="py-5">Acciones de mantenimiento</h1>
-<select class="custom-select float-left" style="margin-bottom: 4%;width: 30%;">
-  <option value="1">option1</option>
-  <option value="2">option2</option>
-  <option value="3">option3</option>
-  <option value="4">option4</option>
-</select>
-<div class="float-left" style="margin-left: 3%; margin-top: 2px;">
-  <div class="chiller_cb">
-    <input id="myCheckbox" type="checkbox">
-    <label for="myCheckbox">Deshabilitados</label>
-    <span></span>
-  </div>
-</div>
-<button class="btn btn-primary float-right" style="margin: 0 2%;">Crear categoria</button>
-<button class="btn btn-primary float-right">Crear accion</button>
+<h1 class="py-5 float-left" *ngIf="tipo==4 else elseTitle">
+  Categorias
+</h1>
+<ng-template #elseTitle>
+  <h3 class="py-5 float-left">Acciones de mantenimiento preventivas</h3>
+</ng-template>
+<button class="btn btn-primary float-right" style="margin: 6.5% 2%;" *ngIf="tipo==4 else elseBtn">Crear categoria</button>
+<ng-template #elseBtn>
+    <button class="btn btn-primary float-right" style="margin: 5% 2%;">Crear accion preventiva</button>
+</ng-template>
 <table class="table">
     <thead class="thead-dark">
       <tr>

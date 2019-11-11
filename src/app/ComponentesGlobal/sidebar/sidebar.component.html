@@ -124,22 +124,6 @@
             <li class="sidebar-dropdown">
               <a>
                 <i class="fa fa-globe"></i>
-                <span>Mantenimiento</span>
-              </a>
-              <div class="sidebar-submenu">
-                <ul>
-                  <li routerLinkActive="active">
-                    <a routerLink="/home/acciones">Acciones</a>
-                  </li>
-                  <li>
-                    <a>Open street map</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="sidebar-dropdown">
-              <a>
-                <i class="fa fa-globe"></i>
                 <span>Seguridad</span>
               </a>
               <div class="sidebar-submenu">
@@ -172,28 +156,28 @@
                 </ul>
               </div>
             </li>
-
+            
             <li class="header-menu">
-              <span>Extra</span>
+              <span>Mantenimiento</span>
             </li>
-            <li>
+            <li class="sidebar-dropdown">
               <a>
-                <i class="fa fa-book"></i>
-                <span>Documentation</span>
-                <span class="badge badge-pill badge-primary">Beta</span>
+                <i class="fa fa-globe"></i>
+                <span>Acciones</span>
               </a>
-            </li>
-            <li>
-              <a>
-                <i class="fa fa-calendar"></i>
-                <span>Calendar</span>
-              </a>
-            </li>
-            <li>
-              <a>
-                <i class="fa fa-folder"></i>
-                <span>Examples</span>
-              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li routerLinkActive="active">
+                    <a [routerLink]="['/home/acciones',4]">Categoria</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a [routerLink]="['/home/acciones',3]">Acciones preventivas</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a routerLink="/home/acciones">Acciones correctivas</a>
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>

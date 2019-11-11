@@ -22,7 +22,7 @@ const routesHome: Routes = [
   {path:'registrarpersona', component:RegistrarpersonaComponent},
   {path:'registrarubigeo', component:RegistrarubigeoComponent},
   {path:'entradadeproducto', component:EntradadeproductoComponent},
-  {path:'acciones', component:AccionesComponent},
+  {path:'acciones/:tipo', component:AccionesComponent},
   {path:'vinculo', component:VinculoComponent},
   {path:'conductor',component:ConductorComponent}
 ];
