@@ -2,7 +2,6 @@ import { Component, OnInit, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Vinculos } from 'src/app/Modelo/Vinculos';
 import { ServiceService } from 'src/app/service/service.service';
-import { StorageService, LOCAL_STORAGE } from 'ngx-webstorage-service';
 
 @Component({
   selector: 'app-vinculo',
