@@ -27,8 +27,7 @@ export class VinculoComponent implements OnInit {
   }
   valor(tipo2:number,id:number){
     console.log(tipo2);
-    console.log(id);
-    alert("TIPO: "+tipo2)
+    alert("hola"+(id-1));
     if (id==1) {
       localStorage.setItem("idvinculo",id.toString());
     } else {
