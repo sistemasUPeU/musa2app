@@ -4,7 +4,7 @@ import { ServiceService } from 'src/app/service/service.service';
 import { Conductores } from 'src/app/Modelo/Conductores';
 import { Vehiculos } from 'src/app/Modelo/Vehiculos';
 import { Propietarios } from 'src/app/Modelo/Propietarios';
-import { Vinculo, VincuRequi } from 'src/app/Modelo/Vinculos';
+import { Vinculo, VincuRequi, Contador } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
 
 @Component({
@@ -24,7 +24,7 @@ export class VinculoopcComponent implements OnInit {
 
   vinculo: Vinculo[];
   vin:Vinculo = new Vinculo();
-
+  cont:number;
   vincurequi: VincuRequi[]; 
    
   lisRequisitos: Requisitos[]; 
@@ -42,10 +42,19 @@ export class VinculoopcComponent implements OnInit {
     this.getConductor();
     this.getPropietario();
     this.getVehiculo();
-    this.titulo="NUEVO VINCULO";
+    this.titulo="MODIFICAR VINCULO";
     this.tipo = Number(localStorage.getItem("tipo"));
-    console.log(this.tipo)
+    console.log(this.tipo);
+    this.service.getcontvin().subscribe(
+      (data) => {
+        
+        this.cont = data[0].CONTADOR; 
+        console.log(this.cont)
+      }
+      );
   }
+
+  
   
 
   getConductor() {
@@ -96,8 +105,6 @@ export class VinculoopcComponent implements OnInit {
   }
 
   Tipo(){
-    this.tipo = Number(localStorage.getItem("tipo"));
-    if(this.tipo==-1){
     var v_tipo=(<HTMLSelectElement>document.getElementById('tipo')).value;
     if (v_tipo == '1') {
       this.titulo="NUEVO VINCULO CONDUCTOR";
@@ -112,38 +119,12 @@ export class VinculoopcComponent implements OnInit {
     (<HTMLElement>document.getElementById('forconductor')).style.display="none";
     (<HTMLElement>document.getElementById('forpropietario')).style.display="block";  
     }  
-   }else{
-    var v_tipo1=this.tipo;
-    if (v_tipo1 == 1) {
-      this.titulo="MODIFICAR VINCULO CONDUCTOR";
-      this.getRequisito(v_tipo1);
-    (<HTMLElement>document.getElementById('forconductor')).style.display="block";
-    (<HTMLElement>document.getElementById('forpropietario')).style.display="none";
-    localStorage.setItem("tipo",'-1');
-    }
-    if (v_tipo1== 2) {
-      this.modificar();
-      this.titulo="MODIFICAR VINCULO PROPIETARIO";
-      this.getRequisito(v_tipo1);
-    (<HTMLElement>document.getElementById('forconductor')).style.display="none";
-    (<HTMLElement>document.getElementById('forpropietario')).style.display="block";  
-    localStorage.setItem("tipo",'-1');
-    }  
-   }
   }
    crear(){
     this.service.createvinculo(this.vin).subscribe(data => {
       alert("holaa");
       this.router.navigate(['/home/vinculo'])
     })
-   }
-   read(id:number){
-    this.service.getVinculoid(id).subscribe(
-
-    )
-   }
-   modificar(){
-
    }
 }
 

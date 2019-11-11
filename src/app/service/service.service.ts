@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Ubigeo } from '../ComponentesVista/Configuracion/registrarubigeo/ubigeo';
 import { Roles } from '../Modelo/Roles';
-import { Vinculos, Vinculo, VincuRequi } from '../Modelo/Vinculos';
+import { Vinculos, Vinculo, VincuRequi,Contador, Vinupd } from '../Modelo/Vinculos';
 import { Conductores } from '../Modelo/Conductores';
 import { Propietarios } from '../Modelo/Propietarios';
 import { Vehiculos } from '../Modelo/Vehiculos';
@@ -47,8 +47,8 @@ export class ServiceService {
     return this.http.get<Propietarios[]>(`${ environment.apiUrl }/propietarios/lis/`);
   }
 
-  getVinculoid(id:number): Observable<Vehiculos[]> {
-    return this.http.get<Vehiculos[]>(`${ environment.apiUrl }/vinculos/`+id);
+  getVinculoid(id:number): Observable<Vinculos> {
+    return this.http.get<Vinculos>(`${ environment.apiUrl }/vinculos/`+id);
   }
 
   getNombreVeh(): Observable<Vehiculos[]> {
@@ -65,5 +65,17 @@ export class ServiceService {
 
   createvinculo(vinculo: Vinculo){
     return this.http.post<Vinculo>(`${ environment.apiUrl }/vinculos/add`, vinculo);
+  }
+
+  getcontvin(){
+    return this.http.get<Contador[]>(`${ environment.apiUrl }/vinculos/conta`);
+  }
+
+  uptVinculo(vinculo: Vinculo){
+    return this.http.put<Vinculo>(`${ environment.apiUrl }/vinculos/upd` , vinculo);
+  }
+
+  uptEstadovin(vin: Vinculos) {
+    return this.http.put<Vinculos>(`${ environment.apiUrl }/vinculos/stado/` , vin);
   }
 }

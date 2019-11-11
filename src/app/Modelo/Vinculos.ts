@@ -5,7 +5,7 @@ export class Vinculos {
   APELLIDO: string;
   FECHAINICIO: Date;
   FECHAFIN: Date;
-  ESTADO: number;
+  estado: number;
 }
 
 export class Vinculo {
@@ -24,7 +24,9 @@ export class Vinculo {
   idempleado: number;
   idvehiculo: number
 }
-
+export class Contador{
+  CONTADOR:number
+}
 export class VincuRequi {
   IDVINCULO: number;
   IDREQUISITO: number;
@@ -32,4 +34,9 @@ export class VincuRequi {
   FECHAFIN: Date;
   ESTADO: number;
   ENLACEDOC: string;
+}
+
+export class Vinupd {
+  idvinculo: number;
+  estado: number;
 }
