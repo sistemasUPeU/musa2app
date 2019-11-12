@@ -15,6 +15,8 @@ import { VinculoopcComponent } from './ComponentesVista/CV/vinculoopc/vinculoopc
 import { VinculomodComponent } from './ComponentesVista/CV/vinculomod/vinculomod.component';
 import { ConductorComponent } from './ComponentesVista/Conductores/conductor/conductor.component';
 import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propietarios.component'
+import { OpcionesComponent } from './ComponentesVista/Seguridad/opciones/opciones.component';
+import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propie
     VinculoopcComponent,
     VinculomodComponent,
     ConductorComponent,
-    PropietariosComponent
+    PropietariosComponent,
+    OpcionesComponent,
+    TarjetacComponent
   ],
   imports: [
     BrowserModule,
