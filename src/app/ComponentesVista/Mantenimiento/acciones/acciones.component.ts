@@ -35,6 +35,12 @@ export class AccionesComponent implements OnInit {
     })
   }
 
+  eliminar(accion:MantAcciones):void{
+    this.accionesService.eliminarAcciones(accion.idmantacciones).subscribe(response=>{
+      this.requests = this.requests.filter(req=>req!==accion)
+    });
+  }
+
   public crearAccion(): void{
     this.accionesService.createAcciones(this.mantAcciones).subscribe(data => {
       this.router.navigate([`home/acciones/`+this.tipo]);

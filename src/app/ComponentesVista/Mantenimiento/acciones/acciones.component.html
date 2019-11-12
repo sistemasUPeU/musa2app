@@ -20,19 +20,19 @@
     </thead>
     <tbody>
       <tr *ngFor="let request of requests">
-        <td>{{request.nombre}}</td>
-        <td>{{request.tipo}}</td>
-        <td>{{request.descripcion}}</td>
-        <td>{{request.orden}}</td>
-        <td>
+        <td *ngIf="request.estado == 1">{{request.nombre}}</td>
+        <td *ngIf="request.estado == 1">{{request.tipo}}</td>
+        <td *ngIf="request.estado == 1">{{request.descripcion}}</td>
+        <td *ngIf="request.estado == 1">{{request.orden}}</td>
+        <td *ngIf="request.estado == 1">
           <button class="btn btn-warning" type="button" name="editar">Editar</button>
         </td>
-        <td>
-          <button class="btn btn-danger" type="button" name="eliminar">Eliminar</button>
+        <td *ngIf="request.estado == 1">
+          <button class="btn btn-danger" type="button" name="eliminar" (click)="eliminar(request)">Eliminar</button>
         </td>
       </tr>
     </tbody>
-  </table>
+  </table>  
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
