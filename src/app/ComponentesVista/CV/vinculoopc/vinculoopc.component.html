@@ -76,15 +76,23 @@
         
     </div>
 
-    <div id="paso2" style="display:none;">
+    
+    <div id="paso2" style="display:none;" >
+        <br>
+            <h3>REQUISITOS :</h3>
+            <br>
         <div>
             <div *ngFor="let requi of lisRequisitos">
-                <h2>{{ requi.NOMBRE }}</h2><br>
+                <br>
+                <h4>{{ requi.NOMBRE }}</h4><br>
                 <input type="file">
+                <br>
             </div>
         </div>
+        <br>
         <button type="submit" class="btn btn-primary" (click)="crear()">Guardar</button>
     </div>
+    <br>
     <br>
     <button id="back" class="btn btn-primary" (click)="regresar()">atras</button>
     <button id="next" type="submit" class="btn btn-primary" (click)="siguiente()">siguiente</button>
