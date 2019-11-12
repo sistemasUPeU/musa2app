@@ -34,7 +34,6 @@ const routesHome: Routes = [
   {path:'vinculomod', component:VinculomodComponent},
   {path:'vinculo', component:VinculoComponent},
   {path:'vinculoopc', component:VinculoopcComponent},
-  {path:'acciones/:tipo', component:AccionesComponent},
   {path:'conductor',component:ConductorComponent},
   {path:'opciones',component:OpcionesComponent},
   {path:'tarjetac',component:TarjetacComponent}
