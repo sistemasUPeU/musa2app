@@ -12,7 +12,7 @@ export class AccionesComponent implements OnInit {
 
   private mantAcciones: MantAcciones = new MantAcciones();
   requests:MantAcciones[];
-  getid: MantAcciones[];
+  getid: any;
   tipo:number;
   
 
@@ -35,10 +35,10 @@ export class AccionesComponent implements OnInit {
     })
   }
 
-  actualizar():void{
-    this.accionesService.updateAcciones(this.mantAcciones).subscribe(data => {
+  actualizar(accion:MantAcciones):void{
+    this.accionesService.updateAcciones(accion).subscribe(data => {
       this.router.navigate([`home/acciones/`+this.tipo]);
-      console.log(this.mantAcciones);
+      console.log(accion);
       this.cargarAcciones();
     });
   }
@@ -50,6 +50,7 @@ export class AccionesComponent implements OnInit {
   }
 
   public crearAccion(): void{
+    this.mantAcciones.tipo=this.tipo;
     this.accionesService.createAcciones(this.mantAcciones).subscribe(data => {
       this.router.navigate([`home/acciones/`+this.tipo]);
       this.cargarAcciones();
@@ -58,6 +59,15 @@ export class AccionesComponent implements OnInit {
     this.mantAcciones.tipo=null;
     this.mantAcciones.descripcion="";
     this.mantAcciones.orden=null;
+  }
+
+  cargarId(id: number){
+    this.accionesService.getById(id).subscribe(
+      (data) => {
+        this.getid = data['p_cursor'];
+        console.log(this.getid);
+      }
+    );
   }
 
 }
