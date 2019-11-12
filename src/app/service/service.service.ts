@@ -6,7 +6,7 @@ import { Ubigeo } from '../ComponentesVista/Configuracion/registrarubigeo/ubigeo
 import { Roles } from '../Modelo/Roles';
 import { Vinculos, Vinculo, VincuRequi } from '../Modelo/Vinculos';
 import { Conductores } from '../Modelo/Conductores';
-import { Propietarios } from '../Modelo/Propietarios';
+import { Propietarios, Propietario } from '../Modelo/Propietarios';
 import { Vehiculos } from '../Modelo/Vehiculos';
 import { Requisitos } from '../Modelo/Requisitos';
 
@@ -65,5 +65,10 @@ export class ServiceService {
 
   createvinculo(vinculo: Vinculo){
     return this.http.post<Vinculo>(`${ environment.apiUrl }/vinculos/add`, vinculo);
+  }
+
+  //******PROPIETARIOS */
+  getPropietarios(): Observable<Propietario[]> {
+    return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`);
   }
 }

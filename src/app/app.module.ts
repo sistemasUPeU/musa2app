@@ -14,6 +14,7 @@ import { EntradadeproductoComponent } from './ComponentesVista/GestionarAlmacen/
 import { VinculoopcComponent } from './ComponentesVista/CV/vinculoopc/vinculoopc.component';
 import { VinculomodComponent } from './ComponentesVista/CV/vinculomod/vinculomod.component';
 import { ConductorComponent } from './ComponentesVista/Conductores/conductor/conductor.component';
+import { PropietariosComponent } from './ConponentesVista/CV/propietarios/propietarios.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ConductorComponent } from './ComponentesVista/Conductores/conductor/con
     EntradadeproductoComponent,
     VinculoopcComponent,
     VinculomodComponent,
-    ConductorComponent
+    ConductorComponent,
+    PropietariosComponent
   ],
   imports: [
     BrowserModule,
