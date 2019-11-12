@@ -1,9 +1,9 @@
 export class MantAcciones{
-    IDMANTACCIONES:number;
-    IDACCIONPADRE:number;
-    NOMBRE:String;
-    TIPO:number;
-    ESTADO:number;
-    DESCRIPCION:String;
-    ORDEN:number;
+    idmantacciones:number;
+    idaccionpadre:number;
+    nombre:String;
+    tipo:number;
+    estado:number;
+    descripcion:String;
+    orden:number;
 }
