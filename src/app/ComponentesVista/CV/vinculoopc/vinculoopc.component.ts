@@ -24,7 +24,7 @@ export class VinculoopcComponent implements OnInit {
   ////// Objetossss
 
   vin:Vinculo = new Vinculo();
-
+  vinrequi:VincuRequi = new VincuRequi();
   ///// Variables
 
   mostrarpropietario: boolean;
@@ -46,7 +46,6 @@ export class VinculoopcComponent implements OnInit {
     this.getPropietario();
     this.getVehiculo();
     this.titulo="NUEVO VINCULO";
-    this.tipo = Number(localStorage.getItem("tipo"));
     console.log(this.tipo);
     this.service.getcontvin().subscribe(
       (data) => {
@@ -136,10 +135,30 @@ export class VinculoopcComponent implements OnInit {
   /////  Metodo de crear Vinculo
 
    crear(){
+     
+    
+   }
+   siguiente(){
+    var v_tipo=(<HTMLSelectElement>document.getElementById('tipo')).value;
     this.service.createvinculo(this.vin).subscribe(data => {
+      alert("holaa"); 
+      this.vinrequi.idvinculo=this.cont;
+      console.log(this.vinrequi)
+      this.service.CreateVinRequi(+Number(v_tipo),this.vinrequi).subscribe(data =>{
       alert("holaa");
-      this.router.navigate(['/home/vinculo'])
-    })
+    }
+      );
+    });
+    (<HTMLElement>document.getElementById('caja2')).style.display="none";
+    (<HTMLElement>document.getElementById('next')).style.display="none";
+    (<HTMLElement>document.getElementById('paso2')).style.display="block";
+    (<HTMLElement>document.getElementById('back')).style.display="block";
+   }
+   regresar(){
+    (<HTMLElement>document.getElementById('caja2')).style.display="block";
+    (<HTMLElement>document.getElementById('next')).style.display="block";
+    (<HTMLElement>document.getElementById('paso2')).style.display="none";
+    (<HTMLElement>document.getElementById('back')).style.display="none";
    }
 }
 

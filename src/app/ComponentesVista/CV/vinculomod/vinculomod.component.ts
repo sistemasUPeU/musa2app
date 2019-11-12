@@ -147,6 +147,7 @@ export class VinculomodComponent implements OnInit {
      alert("hola")
     this.service.uptVinculo(this.vinculos[0]).subscribe(
       (data) => {
+
         alert(data["p_msgerror"])
       }
     );

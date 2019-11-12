@@ -23,7 +23,7 @@ export class MantenimientoService {
   }
 
   updateAcciones(accion:MantAcciones): Observable<MantAcciones>{
-    return this.http.put<MantAcciones>(`${ environment.apiUrl }/acciones/${accion.idmantacciones}`, accion, {headers: this.httpHeaders});
+    return this.http.put<MantAcciones>(`${ environment.apiUrl }/acciones/edit/${accion.idmantacciones}`, accion, {headers: this.httpHeaders});
   }
 
   eliminarAcciones(id:number){

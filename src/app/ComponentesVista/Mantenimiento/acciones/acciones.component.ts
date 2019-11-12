@@ -12,7 +12,9 @@ export class AccionesComponent implements OnInit {
 
   private mantAcciones: MantAcciones = new MantAcciones();
   requests:MantAcciones[];
+  getid: MantAcciones[];
   tipo:number;
+  
 
   constructor(private accionesService:MantenimientoService, private router:Router, private activatedRoute:ActivatedRoute) { }
 
@@ -27,12 +29,18 @@ export class AccionesComponent implements OnInit {
         this.accionesService.getAcciones(tipo).subscribe(
           (data) => {
             this.requests = data['p_cursor'];
-            console.log(this.requests);
             this.tipo = tipo;
-            console.log(this.tipo = tipo);
           }
         )}
     })
+  }
+
+  actualizar():void{
+    this.accionesService.updateAcciones(this.mantAcciones).subscribe(data => {
+      this.router.navigate([`home/acciones/`+this.tipo]);
+      console.log(this.mantAcciones);
+      this.cargarAcciones();
+    });
   }
 
   eliminar(accion:MantAcciones):void{
@@ -44,7 +52,6 @@ export class AccionesComponent implements OnInit {
   public crearAccion(): void{
     this.accionesService.createAcciones(this.mantAcciones).subscribe(data => {
       this.router.navigate([`home/acciones/`+this.tipo]);
-      console.log(this.mantAcciones);
       this.cargarAcciones();
     });
     this.mantAcciones.nombre="";
