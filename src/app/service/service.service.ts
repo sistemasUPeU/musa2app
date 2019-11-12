@@ -59,8 +59,8 @@ export class ServiceService {
     return this.http.get<Requisitos[]>(`${ environment.apiUrl }/requisitos/lis/`+tipovinculo);
   }
 
-  CreateVinRequi(vincurequi: VincuRequi) {
-    return this.http.post<VincuRequi[]>(`${ environment.apiUrl }/vinrequi/add`, vincurequi);
+  CreateVinRequi(tipo:number,vincurequi: VincuRequi) {
+    return this.http.post<VincuRequi[]>(`${ environment.apiUrl }/vinrequi/add/` + tipo, vincurequi);
   }
 
   createvinculo(vinculo: Vinculo){
@@ -79,8 +79,17 @@ export class ServiceService {
   uptEstadovin(vincu: Vinupd) {
     return this.http.put<Vinupd>(`${ environment.apiUrl }/vinculos/stado/` , vincu);
   }
+
+  DeleteVinculo(id: number){
+    return this.http.delete<Vinculo[]>(`${ environment.apiUrl }/vinculos/`+ id);
+  }
   //******PROPIETARIOS */
   getPropietarios(): Observable<Propietario[]> {
     return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`);
   }
+  deletePropietarios( propietario:Propietario){
+    console.log(propietario)
+     return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`, propietario);
+  }
 }
+

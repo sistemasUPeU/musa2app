@@ -23,5 +23,14 @@ export class CursosComponent implements OnInit {
       console.log(this.cursos)
     }
     );
+    
+  }
+
+  upt(cur: Cursos){alert("Hola")
+    this.service.uptCursos(cur).subscribe(data => {
+      console.log(this.cursos)
+      alert("Eliminado")
+      this.listar()
+    })
   }
 }

@@ -18,6 +18,15 @@
 #caja1{
     margin-left: -50px;
 }
+#caja_rol{
+    margin-left: 20px;
+    width: 250px;
+    border: solid gray 1px;
+}
+#rol{
+    margin-top: -38px;
+    margin-left: 340px;
+}
 #caja_estado{
     margin-left: 20px;
     width: 250px;
@@ -25,11 +34,11 @@
 }
 #estado{
     margin-top: -38px;
-    margin-left: 340px;
+    margin-left: 640px;
 }
 #limpiar{
     margin-top: -62px;
-    margin-left: 640px;
+    margin-left: 940px;
     width: 150px;
     border-radius: 50px;
 }
@@ -43,6 +52,9 @@
 #caja2{
     margin-top: -40px;
 }
-#caja3{
-    margin-left: 180px;
+#user{
+    margin-top: -38px;
+    width: 250px; 
+    margin-left: 185px;
+    border: solid gray 1px;
 }

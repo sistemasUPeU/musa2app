@@ -26,7 +26,7 @@ export class VinculoComponent implements OnInit {
   constructor(private service: ServiceService, private router: Router) { }
   
   ngOnInit() {
-    this.tipo=3
+    this.tipo=3;
     this.listar();
   }
   listar(){
@@ -54,7 +54,7 @@ export class VinculoComponent implements OnInit {
     localStorage.setItem("tipo",'3');
     this.router.navigate(['/home/vinculoopc']);
    }
-
+   
 
    /// Metodo para modificar el estado de vinculo 
 
