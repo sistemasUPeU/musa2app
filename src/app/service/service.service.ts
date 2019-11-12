@@ -79,6 +79,10 @@ export class ServiceService {
   uptEstadovin(vincu: Vinupd) {
     return this.http.put<Vinupd>(`${ environment.apiUrl }/vinculos/stado/` , vincu);
   }
+
+  DeleteVinculo(id: number){
+    return this.http.delete<Vinculo[]>(`${ environment.apiUrl }/vinculos/`+ id);
+  }
   //******PROPIETARIOS */
   getPropietarios(): Observable<Propietario[]> {
     return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`);
