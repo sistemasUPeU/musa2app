@@ -26,7 +26,7 @@ export class VinculoComponent implements OnInit {
   constructor(private service: ServiceService, private router: Router) { }
   
   ngOnInit() {
-    this.tipo=3
+    this.tipo=3;
     this.listar();
   }
   listar(){

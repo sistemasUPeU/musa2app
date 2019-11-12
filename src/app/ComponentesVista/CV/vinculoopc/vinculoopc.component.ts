@@ -165,6 +165,12 @@ export class VinculoopcComponent implements OnInit {
     (<HTMLElement>document.getElementById('paso2')).style.display="none";
     (<HTMLElement>document.getElementById('back')).style.display="none";
    }
+   elimininar(id: number){
+     console.log("delete")
+     this.service.DeleteVinculo(id).subscribe(data => {
+        
+     })
+   }
 }
 
 

@@ -24,6 +24,15 @@
                 </div>
             </span>
         </div>
+        <!-- Selecionar por Tipo -->
+        <div id="rol">
+          <select class="custom-select" id="tipovi" id="caja_rol" [(ngModel)]="tipo" (click)="listar()">
+                  <option selected>Seleccione Tipo</option>
+                  <option value="1">Conductores</option>
+                  <option value="2">Propietarios</option>
+                  <option value="3">General</option>
+          </select>
+      </div>
         <!-- Buscador Estado -->
         <div id="estado">
             <select class="custom-select" id="inputGroupSelect01" id="caja_estado">
