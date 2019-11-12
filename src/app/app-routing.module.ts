@@ -61,5 +61,6 @@ export const routingComponents = [
   HomeComponent,
   AccionesComponent,
   VinculoComponent,
-  TarjetacComponent
+  TarjetacComponent,
+  PropietariosComponent
 ];
