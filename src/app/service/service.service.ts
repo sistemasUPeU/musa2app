@@ -84,3 +84,4 @@ export class ServiceService {
     return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`);
   }
 }
+

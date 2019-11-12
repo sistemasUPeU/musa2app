@@ -78,9 +78,8 @@
                 <td scope="col">{{cur.lugar}}</td>
                 <td scope="col">{{cur.fechainicio}}</td>
                 <td scope="col">{{cur.fechafin}}</td>
-                <td scope="col">{{cur.estado}}</td>
-                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 1px;"></i></td>
-                <td ><i class="fas fa-edit" style="color: blue; margin-left: -30px;" data-toggle="modal" data-target=""></i></td>
+                <td scope="col">{{cur.estado_tipo}}</td>
+                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 1px;" (click)="upt(cur)"></i><i class="fas fa-edit" style="color: blue; margin-left: -30px;" data-toggle="modal" data-target=""></i></td>
               </tr>
             </tbody>
           </table>
