@@ -55,7 +55,7 @@
                 <td>{{vin.FECHAINICIO}}</td>
                 <td >{{vin.FECHAFIN}}</td>
                 <td >{{vin.ESTADO}}</td>
-                <td ><i id="modificar" (click)="valor(vin.TIPOVINCULO,vin.IDVINCULO)" class="fas fa-edit" style="color: blue; margin-left: -60px;" ></i>  <i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"  (click)="modificar2(vin.IDVINCULO, vin.ESTADO)"></i></td>
+                <td ><i id="modificar" (click)="valor(vin.TIPOVINCULO,vin.IDVINCULO)" class="fas fa-edit" style="color: blue; margin-left: -60px;" ></i>  <i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"  (click)="eliminar(vin.IDVINCULO, vin.ESTADO)"></i></td>
               </tr>
             </tbody>
           </table>

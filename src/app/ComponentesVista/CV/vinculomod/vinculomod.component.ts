@@ -4,7 +4,7 @@ import { ServiceService } from 'src/app/service/service.service';
 import { Conductores } from 'src/app/Modelo/Conductores';
 import { Vehiculos } from 'src/app/Modelo/Vehiculos';
 import { Propietarios } from 'src/app/Modelo/Propietarios';
-import { Vinculo, VincuRequi } from 'src/app/Modelo/Vinculos';
+import { Vinculo, VincuRequi, Vinculos } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
 
 @Component({
@@ -26,39 +26,41 @@ export class VinculomodComponent implements OnInit {
     this.getVehiculo();
     this.titulo="MODIFICAR VINCULO";
     this.tipo = Number(localStorage.getItem("tipo"));
-    alert(this.tipo)
-    this.Tipo2();
+    this.Tipo();
     console.log(this.tipo);
-    this.modificar(this.id);
+    this.read(this.id)
   }
-  vinculo:Vinculo = new Vinculo();
+
+  ///// Arraysss
+
   vinculos:Vinculo[];
-
   vincurequi: VincuRequi[]; 
-   
-  lisRequisitos: Requisitos[]; 
-
-  conductor: Conductores;
+  lisRequisitos: Requisitos[];
   lisConduc: Conductores[];
+  lisVehic: Vehiculos[];
+  lisPropie: Propietarios[];
+
+  ////// Objetosssss
+  
+
+  ////// Variablesssssss   
 
   titulo = "";
-
-  vehiculo: Vehiculos;
-  lisVehic: Vehiculos[];
-  
   tipo:number;
 
-  propietario: Propietarios;
-  lisPropie: Propietarios[];
+  ///// Listar conductoressssssssss
+  
   getConductor() {
     
     this.service.getNombreConductor().subscribe(
       (data) => {
-        this.lisConduc = data['P_CONDUCTOR'];
+        this.lisConduc = data['p_conductor'];
         console.log(this.lisConduc)
       }
     );
   }
+  
+  //////Listar Propietariosssssssss
 
   getPropietario() {
     this.service.getNombrePropietario().subscribe(
@@ -69,6 +71,8 @@ export class VinculomodComponent implements OnInit {
     );
   }
 
+  //////// Listar Vehiculossssssss
+
   getVehiculo() {
     this.service.getNombreVeh().subscribe(
       (data) => {
@@ -78,6 +82,8 @@ export class VinculomodComponent implements OnInit {
     );
   } 
 
+  ////////// Listar Requisitosssssss
+
   getRequisito(id: number) {
     this.service.getRequisitos(id).subscribe(
       (data) => {
@@ -86,8 +92,12 @@ export class VinculomodComponent implements OnInit {
       }
     );
   }
+
+  //////////// Autoseleccion de Tipo Vinculo (desde la Vista Vinculo) 
+/*
   Tipo2(){
     var v_tipo1=this.tipo;
+    alert(this.tipo)
     if (v_tipo1 == 1) {
       this.titulo="MODIFICAR VINCULO CONDUCTOR";
       this.getRequisito(v_tipo1);
@@ -103,40 +113,41 @@ export class VinculomodComponent implements OnInit {
     localStorage.setItem("tipo",'-1');
     }
   }
+*/
+  ////// Seleccionar Tipo Vinculo para actualizar (desde la Vista Vinculo Modificar)
+
   Tipo(){
-    
-    
-    
-    var v_tipo=(<HTMLSelectElement>document.getElementById('tipo')).value;
-    if (v_tipo == '1') {
+    /*var v_tipo=(<HTMLSelectElement>document.getElementById('tipo')).value;
+    alert(v_tipo)*/
+    if (this.tipo == 1) {
       this.titulo="MODIFICAR VINCULO CONDUCTOR";
-      this.getRequisito(Number(v_tipo));
-    (<HTMLElement>document.getElementById('forconductor')).style.display="block";
-    (<HTMLElement>document.getElementById('forpropietario')).style.display="none";
+      this.getRequisito(Number(this.tipo));
       
     }
-    if (v_tipo== '2') {
+    if (this.tipo== 2) {
       this.titulo="MODIFICAR VINCULO PROPIETARIO";
-      this.getRequisito(Number(v_tipo));
-    (<HTMLElement>document.getElementById('forconductor')).style.display="none";
-    (<HTMLElement>document.getElementById('forpropietario')).style.display="block";  
+      this.getRequisito(Number(this.tipo));
     }
   }
   
+  ///////// Llena datos a las cajassss 
+
    read(id: number){
     this.service.getVinculoid(id).subscribe(
       (data) => {
-        this.vinculo = data['P_CUR_VINCULOS'];
-        console.log(this.vinculo)
+        this.vinculos = data['P_CUR_VINCULOS'];
+        console.log(this.vinculos)
       }
     );
    }
-   modificar(id: number){
-     alert("hola"+id)
-    this.service.getVinculoid(id).subscribe(
+
+   //////// Modifica los datosssss
+
+   modificar(vinculos: Vinculo){
+     alert("hola")
+    this.service.uptVinculo(this.vinculos[0]).subscribe(
       (data) => {
-        this.vinculo = data['P_CUR_VINCULOS'];
-        console.log(this.vinculo)
+        alert(data["p_msgerror"])
       }
     );
    }

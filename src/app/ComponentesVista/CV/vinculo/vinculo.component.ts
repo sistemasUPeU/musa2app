@@ -9,15 +9,27 @@ import { ServiceService } from 'src/app/service/service.service';
   styleUrls: ['./vinculo.component.css']
 })
 export class VinculoComponent implements OnInit {
-  vinupd: Vinupd;
-  vinculo: Vinculo;
-  listavinculos:Vinculos[] = [];
 
-  vinculos: Vinculos = new Vinculos();
-  constructor(private service: ServiceService, private router: Router) { }
+  /////// Arraysss
+
+  listavinculos:Vinculos[];
+
+
+  /////// Variablesss
+
   tipo: number;
+
+  /////// Objetossssss
+
+  vincu : Vinupd = new Vinupd();
+
+  constructor(private service: ServiceService, private router: Router) { }
+  
   ngOnInit() {
     this.tipo=3
+    this.listar();
+  }
+  listar(){
     this.service.getVinculo(this.tipo).subscribe(
       (data) => {
         this.listavinculos = data['P_CUR_VINCULOS']
@@ -25,29 +37,37 @@ export class VinculoComponent implements OnInit {
       }
       );
   }
+
+  /// Metodo que envia idvinculo, tipo para el modificar
+
   valor(tipo2:number,id:number){
     console.log(tipo2);
-    alert("hola"+(id-1));
-    if (id==1) {
-      localStorage.setItem("idvinculo",id.toString());
-    } else {
-      localStorage.setItem("idvinculo",(id-1).toString());
-    }
-    
+    console.log(id);
+    localStorage.setItem("idvinculo",id.toString());
     localStorage.setItem("tipo",tipo2.toString());
     this.router.navigate(['/home/vinculomod']);
   }
+
+  /// Metodo para redireccionar a ingresar a Nuevo Vinculo
+
   Modo(){   
     localStorage.setItem("tipo",'3');
     this.router.navigate(['/home/vinculoopc']);
    }
 
-   modificar2(listavinculos: Vinculos){
-     this.service.uptEstadovin(listavinculos).subscribe(data => {
-       console.log(this.listavinculos)
+
+   /// Metodo para modificar el estado de vinculo 
+
+   eliminar(idvinculo: number, estadito: number){
+     alert(estadito + " " + idvinculo)
+     this.vincu.estado = estadito;
+     this.vincu.idvinculo= idvinculo;
+     this.service.uptEstadovin(this.vincu).subscribe(data => {
+       console.log(this.vincu)
+       alert(data["P_MSGERROR"])
        alert("lo lograste")
-       this.listavinculos
-       this.router.navigate(['/home/vinculo'])
+       this.listar()
      })
    }
+   
 }
