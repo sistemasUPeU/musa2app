@@ -15,6 +15,7 @@ import { VinculoopcComponent } from './ComponentesVista/CV/vinculoopc/vinculoopc
 import { VinculomodComponent } from './ComponentesVista/CV/vinculomod/vinculomod.component';
 import { ConductorComponent } from './ComponentesVista/Conductores/conductor/conductor.component';
 import { OpcionesComponent } from './ComponentesVista/Seguridad/opciones/opciones.component';
+import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { OpcionesComponent } from './ComponentesVista/Seguridad/opciones/opcione
     VinculoopcComponent,
     VinculomodComponent,
     ConductorComponent,
-    OpcionesComponent
+    OpcionesComponent,
+    TarjetacComponent
   ],
   imports: [
     BrowserModule,
