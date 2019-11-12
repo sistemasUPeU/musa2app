@@ -25,7 +25,7 @@
         <td *ngIf="request.estado == 1">{{request.descripcion}}</td>
         <td *ngIf="request.estado == 1">{{request.orden}}</td>
         <td *ngIf="request.estado == 1">
-          <button class="btn btn-warning" type="button" name="editar">Editar</button>
+          <button class="btn btn-warning" type="button" name="editar" data-toggle="modal" data-target="#exampleModal">Editar</button>
         </td>
         <td *ngIf="request.estado == 1">
           <button class="btn btn-danger" type="button" name="eliminar" (click)="eliminar(request)">Eliminar</button>
@@ -34,9 +34,11 @@
     </tbody>
   </table>  
 
+  
+
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
+      <div class="modal-content" >
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -44,7 +46,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form >
             <input type="text" placeholder="Nombre" class="form-control my-3" name="nombre" [(ngModel)]="mantAcciones.nombre">
             <input type="number" placeholder="Tipo" class="form-control my-3" name="tipo" [(ngModel)]="mantAcciones.tipo">
             <input type="text" placeholder="Descripcion" class="form-control my-3" name="descripcion" [(ngModel)]="mantAcciones.descripcion">
@@ -59,29 +61,4 @@
     </div>
   </div>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="!mantAcciones.TIPO else elseBlock">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <input type="text" placeholder="Nombre" class="form-control my-3" name="nombre" [(ngModel)]="mantAcciones.nombre">
-              <input type="number" placeholder="Tipo" class="form-control my-3" name="tipo" [(ngModel)]="mantAcciones.tipo">
-              <input type="text" placeholder="Descripcion" class="form-control my-3" name="descripcion" [(ngModel)]="mantAcciones.descripcion">
-              <input type="number" placeholder="Orden" class="form-control my-3" name="orden" [(ngModel)]="mantAcciones.orden">
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" (click)="crearAccion()" data-dismiss="modal">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  
   
