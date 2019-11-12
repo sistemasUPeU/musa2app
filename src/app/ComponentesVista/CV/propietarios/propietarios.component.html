@@ -1,0 +1,157 @@
+<h1><small>Propietarios</small></h1>
+<br>
+<div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="form-control input-lg" placeholder="Buscar" />
+                        <span class="input-group-btn">
+                            <button type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button style="margin-left: 80%;margin-top: -80px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPoll">
+            Registrar Propietario</button>
+ <!-- Inicio de modal -->
+ <div class="modal fade right" id="modalPoll" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+ aria-hidden="true" data-backdrop="false">
+ <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+   <div class="modal-content">
+
+     <!-- Header del modal -->
+     <div class="modal-header" style="background: #32363F;">
+       <p class="heading lead">Registro de Buses</p>
+
+       <!-- Boton de cerrar -->
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true" class="white-text">×</span>
+       </button>
+
+     </div>
+     <!-- Final del header -->
+
+     <!-- Body del modal -->
+     <div class="modal-body">
+            <div class="form-group">
+                    <label for="exampleInputEmail1">Nombres</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombres">
+                </div>
+        <div class="form-group">
+                 <label for="exampleInputEmail1">Apellidos</label>
+                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apellidos">
+          </div>   
+          <div class="form-group">
+                <label for="exampleInputEmail1">Telefono</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apellidos">
+         </div> 
+         <div class="form-group">
+                <label for="exampleInputEmail1">Direccion</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Direccion">
+         </div>    
+         <div class="form-group">
+                <label for="exampleInputEmail1">DNI</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="DNI">
+         </div>               
+     </div>
+     <!-- Fin del Body del modal -->
+
+     <!-- Footer del modal -->
+     <div class="modal-footer justify-content-center">
+       <button type="button" class="btn btn-primary waves-effect waves-light">Enviar
+         <i class="fa fa-paper-plane ml-1"></i>
+       </button>
+       <button type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancelar</button>
+     </div>
+   </div>
+ </div>
+</div>
+<!-- Fin del modal -->
+<h3 class="py-4">Lista de Propietarios</h3>
+      <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombres</th>
+              <th scope="col">Apellidos</th>
+              <th scope="col">NroDoc</th>
+              <th scope="col">T_Pro.</th>
+              <th scope="col">Estado</th   >
+              <th scope="col">Opcion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let propietario of propietarios">
+              <th scope="row">{{propietario.IDPROPIETARIO}}</th>
+              <td>{{propietario.NOMBRE}}</td>
+              <td>{{propietario.APELLIDO}}</td>
+              <td>{{propietario.NRODOC}}</td>
+              <td>{{propietario.TIPOPROPIETARIO}}</td>
+              <td>{{propietario.ESTADO}}</td>
+              <td>
+                    <a style="color: #FFB02F;size: 10px;" data-target="#editProp" data-toggle="modal">
+                        <i class="fas fa-pencil-alt"></i></a>
+                    <a style="margin-left: 15px;color: red;"><i class="fas fa-trash"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+ <!-- Inicio de modal -->
+ <div class="modal fade right" id="editProp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+ aria-hidden="true" data-backdrop="false">
+ <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+   <div class="modal-content">
+
+     <!-- Header del modal -->
+     <div class="modal-header" style="background: #32363F;">
+       <p class="heading lead">Edicion de Propietarios</p>
+
+       <!-- Boton de cerrar -->
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true" class="white-text">×</span>
+       </button>
+
+     </div>
+     <!-- Final del header -->
+
+     <!-- Body del modal -->
+     <div class="modal-body">
+            <div class="form-group">
+                    <label for="exampleInputEmail1">Nombres</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombres">
+                </div>
+        <div class="form-group">
+                 <label for="exampleInputEmail1">Apellidos</label>
+                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apellidos">
+          </div>   
+          <div class="form-group">
+                <label for="exampleInputEmail1">Telefono</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apellidos">
+         </div> 
+         <div class="form-group">
+                <label for="exampleInputEmail1">Direccion</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Direccion">
+         </div>    
+         <div class="form-group">
+                <label for="exampleInputEmail1">DNI</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="DNI">
+         </div>               
+     </div>
+     <!-- Fin del Body del modal -->
+
+     <!-- Footer del modal -->
+     <div class="modal-footer justify-content-center">
+       <button type="button" class="btn btn-primary waves-effect waves-light">Enviar
+         <i class="fa fa-paper-plane ml-1"></i>
+       </button>
+       <button type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancelar</button>
+     </div>
+   </div>
+ </div>
+</div>
+<!-- Fin del modal -->

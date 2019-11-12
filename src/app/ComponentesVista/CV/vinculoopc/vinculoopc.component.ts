@@ -15,34 +15,37 @@ import { Requisitos } from 'src/app/Modelo/Requisitos';
 export class VinculoopcComponent implements OnInit {
 
   
-  mostrarpropietario: boolean;
-  mostrarconductor: boolean;
+  
   
   constructor(private router: Router, private service: ServiceService) {
     
    }
 
-  vinculo: Vinculo[];
-  vin:Vinculo = new Vinculo();
-  cont:number;
-  vincurequi: VincuRequi[]; 
-   
-  lisRequisitos: Requisitos[]; 
+  ////// Objetossss
 
-  conductor: Conductores;
-  lisConduc: Conductores[];
+  vin:Vinculo = new Vinculo();
+
+  ///// Variables
+
+  mostrarpropietario: boolean;
+  mostrarconductor: boolean;
+  cont:number;
   titulo = "";
-  vehiculo: Vehiculos;
-  lisVehic: Vehiculos[];
   tipo:number;
-  propietario: Propietarios;
+
+   /// Arraysss
+
+  vincurequi: VincuRequi[];  
+  lisRequisitos: Requisitos[]; 
+  lisConduc: Conductores[];
+  lisVehic: Vehiculos[];
   lisPropie: Propietarios[];
 
   ngOnInit() {
     this.getConductor();
     this.getPropietario();
     this.getVehiculo();
-    this.titulo="MODIFICAR VINCULO";
+    this.titulo="NUEVO VINCULO";
     this.tipo = Number(localStorage.getItem("tipo"));
     console.log(this.tipo);
     this.service.getcontvin().subscribe(
@@ -55,17 +58,6 @@ export class VinculoopcComponent implements OnInit {
   }
 
   
-  
-
-  getConductor() {
-    
-    this.service.getNombreConductor().subscribe(
-      (data) => {
-        this.lisConduc = data['P_CONDUCTOR'];
-        console.log(this.lisConduc)
-      }
-    );
-  }
   activar2() : void{
     this.mostrarpropietario = true;
     this.mostrarconductor = false
@@ -77,6 +69,20 @@ export class VinculoopcComponent implements OnInit {
 
   }
 
+  ///// Listado de Conductores 
+
+  getConductor() {
+    
+    this.service.getNombreConductor().subscribe(
+      (data) => {
+        this.lisConduc = data['p_conductor'];
+        console.log(this.lisConduc)
+      }
+    );
+  }
+
+   ///// Listado de Propietarios 
+
   getPropietario() {
     this.service.getNombrePropietario().subscribe(
       (data) => {
@@ -85,6 +91,8 @@ export class VinculoopcComponent implements OnInit {
       }
     );
   }
+
+   ///// Listado de Vehiculos
 
   getVehiculo() {
     this.service.getNombreVeh().subscribe(
@@ -95,6 +103,8 @@ export class VinculoopcComponent implements OnInit {
     );
   } 
 
+   ///// Listado de Requisito
+
   getRequisito(id: number) {
     this.service.getRequisitos(id).subscribe(
       (data) => {
@@ -103,6 +113,8 @@ export class VinculoopcComponent implements OnInit {
       }
     );
   }
+
+  ////// Metodo para seleccionar tipo de vinculo
 
   Tipo(){
     var v_tipo=(<HTMLSelectElement>document.getElementById('tipo')).value;
@@ -120,6 +132,9 @@ export class VinculoopcComponent implements OnInit {
     (<HTMLElement>document.getElementById('forpropietario')).style.display="block";  
     }  
   }
+
+  /////  Metodo de crear Vinculo
+
    crear(){
     this.service.createvinculo(this.vin).subscribe(data => {
       alert("holaa");
