@@ -72,11 +72,12 @@ export class ServiceService {
   }
 
   uptVinculo(vinculo: Vinculo){
+    console.log(vinculo)
     return this.http.put<Vinculo>(`${ environment.apiUrl }/vinculos/upd` , vinculo);
   }
 
-  uptEstadovin(vin: Vinculos) {
-    return this.http.put<Vinculos>(`${ environment.apiUrl }/vinculos/stado/` , vin);
+  uptEstadovin(vincu: Vinupd) {
+    return this.http.put<Vinupd>(`${ environment.apiUrl }/vinculos/stado/` , vincu);
   }
   //******PROPIETARIOS */
   getPropietarios(): Observable<Propietario[]> {
