@@ -87,16 +87,16 @@
           </thead>
           <tbody>
             <tr *ngFor="let propietario of propietarios">
-              <th scope="row">{{propietario.IDPROPIETARIO}}</th>
-              <td>{{propietario.NOMBRE}}</td>
-              <td>{{propietario.APELLIDO}}</td>
-              <td>{{propietario.NRODOC}}</td>
-              <td>{{propietario.TIPOPROPIETARIO}}</td>
-              <td>{{propietario.ESTADO}}</td>
+              <th scope="row">{{propietario.idpropietario}}</th>
+              <td>{{propietario.nombre}}</td>
+              <td>{{propietario.apellido}}</td>
+              <td>{{propietario.nrodoc}}</td>
+              <td>{{propietario.tipopropietario}}</td>
+              <td>{{propietario.estado_tipo}}</td>
               <td>
-                    <a style="color: #FFB02F;size: 10px;" data-target="#editProp" data-toggle="modal">
+                    <a style="color: #FFB02F;size: 10px;" data-target="" data-toggle="modal">
                         <i class="fas fa-pencil-alt"></i></a>
-                    <a style="margin-left: 15px;color: red;"><i class="fas fa-trash"></i></a>
+                    <a style="margin-left: 15px;color: red;"r (click)=delete(propietario)><i class="fas fa-trash"></i></a>
               </td>
             </tr>
           </tbody>
