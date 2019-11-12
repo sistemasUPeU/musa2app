@@ -45,15 +45,19 @@
               <div class="sidebar-submenu">
                 <ul>
                   <li>
-                    <a>Products
-  
-                    </a>
+                    <a routerLink="/home/propietarios">Propietarios</a>
+                  </li>
+                    <li>
+                    <a routerLink="/home/cursos">Registrar Curso</a>
                   </li>
                   <li>
-                    <a>Orders</a>
+                    <a routerLink="/home/vinculo">Vinculos</a>
                   </li>
                   <li>
-                    <a>Credit cart</a>
+                    <a   routerLink='conductor' >Conductores</a>
+                  </li>
+                  <li>
+                    <a   routerLink='tarjetac' >Tarjetas de Circulacion</a>
                   </li>
                 </ul>
               </div>
@@ -97,7 +101,7 @@
                     <a>Line chart</a>
                   </li>
                   <li>
-                    <a>Bar chart</a>
+                    <a [routerLink]="['entradadeproducto']">Entrada de Producto</a>
                   </li>
                   <li>
                     <a>Histogram</a>
@@ -124,22 +128,6 @@
             <li class="sidebar-dropdown">
               <a>
                 <i class="fa fa-globe"></i>
-                <span>Mantenimiento</span>
-              </a>
-              <div class="sidebar-submenu">
-                <ul>
-                  <li>
-                    <a>Google maps</a>
-                  </li>
-                  <li>
-                    <a>Open street map</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="sidebar-dropdown">
-              <a>
-                <i class="fa fa-globe"></i>
                 <span>Seguridad</span>
               </a>
               <div class="sidebar-submenu">
@@ -151,11 +139,15 @@
                     <a [routerLink]="['rol']">Rol</a>
                   </li>
                   <li>
+<<<<<<< HEAD
                     <li>
                       <a [routerLink]="['userop']">Usuarios - Opciones</a>
                     </li>
                     <li>
                     <a>Opciones</a>
+=======
+                    <a routerLink='opciones'>Opciones</a>
+>>>>>>> b0d00ec0a8c390e96a1fceaa8101c7f7296d8194
                   </li>
                 </ul>
               </div>
@@ -176,28 +168,31 @@
                 </ul>
               </div>
             </li>
-
+            
             <li class="header-menu">
-              <span>Extra</span>
+              <span>Mantenimiento</span>
             </li>
-            <li>
+            <li class="sidebar-dropdown">
               <a>
-                <i class="fa fa-book"></i>
-                <span>Documentation</span>
-                <span class="badge badge-pill badge-primary">Beta</span>
+                <i class="fa fa-globe"></i>
+                <span>Acciones</span>
               </a>
-            </li>
-            <li>
-              <a>
-                <i class="fa fa-calendar"></i>
-                <span>Calendar</span>
-              </a>
-            </li>
-            <li>
-              <a>
-                <i class="fa fa-folder"></i>
-                <span>Examples</span>
-              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li routerLinkActive="active">
+                    <a [routerLink]="['/home/acciones',0]">Acciones preventivas</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a [routerLink]="['/home/acciones',1]">Acciones correctivas</a>
+                  </li>
+                  <li routerLinkActive="active">
+                      <a [routerLink]="['/home/acciones',2]">Acciones diarias</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a [routerLink]="['/home/acciones',3]">Acciones tecnicas</a>
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>

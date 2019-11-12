@@ -1,7 +1,4 @@
-.btn{
-    margin: 0 5%;
-    width: 2 0%;
-}
+
 #p{
     font-size: 20px;
 }
@@ -14,11 +11,7 @@
     border-bottom-left-radius: 40px;
     border: solid gray 1px;
 }
-#buscar2{
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
-    border: solid gray 1px;
-}
+
 #caja1{
     margin-left: -50px;
 }
@@ -37,24 +30,9 @@
     width: 150px;
     border-radius: 50px;
 }
-#register{
-    margin-top: -80px;
-    width: 300px;
-    margin-left: 900px; 
-    font-size: 70px;
-    text-align: center;
+#modal-body{
+    margin-top: -62px;
+    margin-left: 640px;
+    width: 150px;
+    border-radius: 50px;
 }
-#caja2{
-    margin-top: -40px;
-}
-#caja3{
-    margin-left: 180px;
-}
-.btn{
-    margin: center;
-   
-
-   
-
-}
-

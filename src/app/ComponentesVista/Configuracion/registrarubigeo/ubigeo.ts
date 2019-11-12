@@ -1,4 +1,5 @@
-class Ubigeo {
+
+export class Ubigeo {
     IDUBIGEO: number;
     CODUBIGEO: number;
     CODDEPTO: number;
@@ -9,4 +10,3 @@ class Ubigeo {
     DISTRITO: String;
     ESTADO: number;
 }
-

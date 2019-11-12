@@ -1,7 +1,7 @@
 <div id="caja1">
   <br>
-<h1>PERSONA</h1> 
-<br>
+<h1>PERSONA  </h1> 
+<!-- Boton registrar rol -->
 <br>
 <!-- div parte inferior -->
 <div id="caja2">
@@ -12,22 +12,26 @@
       <div class="input-group" id="caja_search">
           <span class="input-group-prepend">
           </span>
-          <input class="form-control bg-transparent" type="search" placeholder=" Ingrese DNI" id="buscar1" />
-          <span class="input-group-append">
+          <input type="number" class="form-control bg-transparent"  placeholder=" Ingrese Nro de documento" id="buscar1" [(ngModel)]="nrodoc" name="nrodoc"/>
+          <span (click)="searchPersona();" class="input-group-append">
               <div class="input-group-text bg-transparent " id="buscar2">
               <i class="fa fa-search"></i>
               </div>
           </span>
       </div> 
-      <hr>
-      <!-- Boton Agregar -->
-      <button id="registerRol" type="button" class="btn btn-primary" data-toggle="modal" data-target="#RegisterRol">
-          Agregar
-          </button>
-      <!-- Boton Limpiar -->
-      <button type="button" class="btn btn-success" id="limpiar">Limpíar</button>
-  </div>
-  <br>
+       <!-- Buscador Estado -->
+       <div id="estado">
+          <select class="custom-select" id="inputGroupSelect01" id="caja_estado">
+                  <option selected>Seleccione Estado</option>
+                  <option value="1">Activo</option>
+                  <option value="2">Desactivo</option>
+          </select>
+      </div>
+   <hr>
+
+      <button (click)= "Guardar()" class="btn btn-success"  data-toggle="modal" data-target="#RegisterRol" 
+      style="margin-top: -5px; margin-left: -10px;">Agregar</button>
+<hr>
   <!-- Tabla -->
   <table class="table" style="text-align: center; width: 900px; margin: 0 auto;">
           <thead class="thead-dark">
@@ -42,20 +46,21 @@
               <th scope="col">direccion</th>
               <th scope="col">estado</th>
               <th scope="col">telefono</th>
-              <th scope="col" colspan="1" >Opcion</th>
+              <th scope="col" colspan="1" >Opciones</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let item of ubigeos">
-                  <td>{{P.nombre}}</td>
-                  <td>{{P.apellido}}</td>
-                  <td>{{P.tipodoc}}</td>
-                  <td>{{P.nrodoc}}</td>
-                  <td>{{P.sexo}}</td>
-                  <td>{{P.fechanac}}</td>
-                  <td>{{P.direccion}}</td>
-                  <td>{{P.estado}}</td>
-                  <td>{{P.telefono}}</td>
+            <tr *ngFor="let person of personasLista; let i = index">
+                  <th scope="row">{{ i + 1}}</th>
+                  <td>{{person.NOMBRE}}</td>
+                  <td>{{person.APELLIDO}}</td>
+                  <td>{{person.TIPODOC}}</td>
+                  <td>{{person.NRODOC}}</td>
+                  <td>{{person.SEXO}}</td>
+                  <td>{{person.FECHANAC}}</td>
+                  <td>{{person.DIRECCION}}</td>
+                  <td>{{person.ESTADO}}</td>
+                  <td>{{person.TELEFONO}}</td>
                   <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
                   <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
                 </tr> 
@@ -68,7 +73,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registrar Ubigeo</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Registrar Persona</h5>
 
         <hr>
         
