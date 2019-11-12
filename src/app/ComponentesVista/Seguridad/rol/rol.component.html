@@ -17,23 +17,28 @@
             <div class="input-group" id="caja_search">
                 <span class="input-group-prepend">
                 </span>
-                <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre de Rol" id="buscar1" />
+                <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre de Rol" id="buscar1"  [(ngModel)]="roles1.nom"/>
                 <span class="input-group-append">
                     <div class="input-group-text bg-transparent " id="buscar2">
-                    <i class="fa fa-search"></i>
+                    <i class="fa fa-search" (click)="getRolesN(roles1)"></i>
                     </div>
                 </span>
             </div> 
             <!-- Buscador Estado -->
             <div id="estado">
-                <select class="custom-select" id="inputGroupSelect01" id="caja_estado">
-                        <option selected>Seleccione Estado</option>
+                <select class="custom-select" id="inputGroupSelect01" id="caja_estado" [(ngModel)]="roles1.estado">
+                        <option  >Seleccione Estado</option>
+                        <option value="1" >Activo</option>
+                        <option value="0">Inactivo</option>                        
                 </select>
             </div>
+            <button id="listar" type="button" class="btn btn-info"  (click)="getRolesE()" ><i class="fas fa-check"></i></button>         
             <!-- Boton Limpiar -->
-            <button type="button" class="btn btn-success" id="limpiar">Limpíar</button>
+            <button type="button" class="btn btn-success" id="limpiar" (click)="Limpiar()">Limpíar</button>
+
         </div>
-        <br>
+
+        </div>
         <!-- Tabla -->
         <table class="table" style="text-align: center; width: 900px; margin: 0 auto;">
                 <thead class="thead-dark">
@@ -46,16 +51,16 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let rol of listaroles; let i = index">
-                    <td scope="row">{{ i + 1}}</td>
-                    <td>{{rol.NOMBRE}}</td>
-                    <td>{{rol.ESTADO}}</td>
-                    <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
+                    <td scope="row">{{rol.idrol}}</td>
+                    <td>{{rol.nombre}}</td>
+                    <td>{{rol.estado}}</td>
+                    <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;" (click)="EliminarRol(rol)"></i></td>
+                    <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol" (click)="loadPersona(rol)"></i></td>
                   </tr>
                 </tbody>
               </table>
     
-    </div>
+    
               
     </div>
 
@@ -74,11 +79,11 @@
             </div>
             <div class="modal-body">
               <label for="">Ingrese Rol: </label>
-              <input type="text" class="form-control" placeholder="Nombre Rol" >
+              <input type="text" class="form-control" placeholder="Nombre Rol" [(ngModel)]="roles1.nombre">
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+              <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="GuardarRol()">Guardar</button>
             </div>
           </div>
         </div>
@@ -87,7 +92,7 @@
 <!-- Modal Modificar Rol -->
 <div class="modal fade" id="ModificarRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
+          <div class="modal-content"  *ngFor="let p_cur_rol of loadPersonaData">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">MODIFICAR ROL</h5>
               <hr>
@@ -97,11 +102,18 @@
             </div>
             <div class="modal-body">
               <label for="">Ingrese Rol: </label>
-              <input type="text" class="form-control" placeholder="Nombre Rol" >
+              <input type="text" class="form-control" placeholder="Nombre Rol" name="NOMBRE" [(ngModel)]="p_cur_rol.nombre">
+              <br>
+              <label for="">Ingrese Estado: </label>
+              <select class="custom-select" id="inputGroupSelect01" id="caja_estado" [(ngModel)]="p_cur_rol.estado">
+                <option selected>Seleccione Estado</option>
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+        </select>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+              <button type="button" class="btn btn-primary"  (click)="Actualizar(p_cur_rol)" data-dismiss="modal">Guardar</button>
             </div>
           </div>
         </div>

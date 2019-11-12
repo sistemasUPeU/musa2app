@@ -11,6 +11,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/registrarubigeo/registrarubigeo.component';
 import { ServiceService } from './service/service.service';
+import { PruebaEditarComponent } from './ComponentesVista/Seguridad/prueba-editar/prueba-editar.component';
+import { AgregarUserComponent } from './ComponentesVista/Seguridad/agregar-user/agregar-user.component';
+import { AgregarRuserComponent } from './ComponentesVista/Seguridad/agregar-ruser/agregar-ruser.component';
+import { RolusComponent } from './ComponentesVista/Seguridad/rolus/rolus.component';
+import { UseropComponent } from './ComponentesVista/Seguridad/userop/userop.component';
+import { AgregarUseropComponent } from './ComponentesVista/Seguridad/agregar-userop/agregar-userop.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,13 @@ import { ServiceService } from './service/service.service';
     UsuarioComponent,
     RolComponent,
     RegistrarpersonaComponent,
-    RegistrarubigeoComponent
+    RegistrarubigeoComponent,
+    PruebaEditarComponent,
+    AgregarUserComponent,
+    AgregarRuserComponent,
+    RolusComponent,
+    UseropComponent,
+    AgregarUseropComponent
   
   ],
   imports: [
