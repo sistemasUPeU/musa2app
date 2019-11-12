@@ -14,9 +14,11 @@ import { VinculoComponent } from './ComponentesVista/CV/vinculo/vinculo.componen
 import { VinculoopcComponent } from './ComponentesVista/CV/vinculoopc/vinculoopc.component';
 import { ConductorComponent } from './ComponentesVista/Conductores/conductor/conductor.component';
 import { VinculomodComponent} from './ComponentesVista/CV/vinculomod/vinculomod.component';
+import { CursosComponent } from './ComponentesVista/Conductores/cursos/cursos.component';
 import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propietarios.component'
 import { OpcionesComponent} from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
+
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
@@ -37,6 +39,7 @@ const routesHome: Routes = [
   {path:'vinculoopc', component:VinculoopcComponent},
   {path:'acciones/:tipo', component:AccionesComponent},
   {path:'conductor',component:ConductorComponent},
+  {path:'cursos',component:CursosComponent},
   {path:'propietarios', component: PropietariosComponent},
   {path:'opciones',component:OpcionesComponent},
   {path:'tarjetac',component:TarjetacComponent}
@@ -61,6 +64,7 @@ export const routingComponents = [
   HomeComponent,
   AccionesComponent,
   VinculoComponent,
+  CursosComponent,
   TarjetacComponent,
   PropietariosComponent
 ];
