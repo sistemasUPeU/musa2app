@@ -13,4 +13,8 @@ export class CursosService {
   getCursos(): Observable<Cursos[]> {
     return this.http.get<Cursos[]>(`${ environment.apiUrl }/cursos/`);
   }
+  uptCursos(cursos: Cursos){
+    console.log(cursos)
+    return this.http.put<Cursos>(`${ environment.apiUrl }/cursos/upt/` , cursos);
+  }
 }

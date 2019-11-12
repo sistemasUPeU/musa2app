@@ -1,4 +1,4 @@
-<div id="caja1" style="display:block;">
+    <div id="paso1" style="display:block;">
     <br>
     <h1> {{titulo}}</h1>
     <!-- Boton registrar rol -->
@@ -73,12 +73,18 @@
             </div>
         </div>
         <br>
+        
+    </div>
+
+    <div id="paso2" style="display:none;">
         <div>
             <div *ngFor="let requi of lisRequisitos">
                 <h2>{{ requi.NOMBRE }}</h2><br>
                 <input type="file">
             </div>
         </div>
+        <button type="submit" class="btn btn-primary" (click)="crear()">Guardar</button>
     </div>
     <br>
-    <button type="submit" class="btn btn-primary" (click)="crear()">Guardar</button>
+    <button id="back" class="btn btn-primary" (click)="regresar()">atras</button>
+    <button id="next" type="submit" class="btn btn-primary" (click)="siguiente()">siguiente</button>

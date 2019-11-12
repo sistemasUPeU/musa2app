@@ -28,12 +28,7 @@ export class Contador{
   CONTADOR:number
 }
 export class VincuRequi {
-  IDVINCULO: number;
-  IDREQUISITO: number;
-  FECHAINICIO: Date;
-  FECHAFIN: Date;
-  ESTADO: number;
-  ENLACEDOC: string;
+  idvinculo: number;
 }
 
 export class Vinupd {

@@ -59,8 +59,8 @@ export class ServiceService {
     return this.http.get<Requisitos[]>(`${ environment.apiUrl }/requisitos/lis/`+tipovinculo);
   }
 
-  CreateVinRequi(vincurequi: VincuRequi) {
-    return this.http.post<VincuRequi[]>(`${ environment.apiUrl }/vinrequi/add`, vincurequi);
+  CreateVinRequi(tipo:number,vincurequi: VincuRequi) {
+    return this.http.post<VincuRequi[]>(`${ environment.apiUrl }/vinrequi/add/` + tipo, vincurequi);
   }
 
   createvinculo(vinculo: Vinculo){
@@ -88,3 +88,4 @@ export class ServiceService {
      return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`, propietario);
   }
 }
+
