@@ -13,6 +13,7 @@ import { AccionesComponent } from './ComponentesVista/Mantenimiento/acciones/acc
 import { VinculoComponent } from './ComponentesVista/CV/vinculo/vinculo.component';
 import { VinculoopcComponent } from './ComponentesVista/CV/vinculoopc/vinculoopc.component';
 import { ConductorComponent } from './ComponentesVista/Conductores/conductor/conductor.component';
+import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propietarios.component'
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
@@ -26,7 +27,8 @@ const routesHome: Routes = [
   {path:'vinculo', component:VinculoComponent},
   {path:'vinculoopc', component:VinculoopcComponent},
   {path:'acciones/:tipo', component:AccionesComponent},
-  {path:'conductor',component:ConductorComponent}
+  {path:'conductor',component:ConductorComponent},
+  {path:'propietarios', component: PropietariosComponent}
 ];
 
 const routes: Routes = [
