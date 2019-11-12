@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.2.9",
     "@angular/platform-browser-dynamic": "~8.2.9",
     "@angular/router": "~8.2.9",
+    "i": "^0.3.6",
     "jquery": "^3.4.1",
     "ngx-webstorage-service": "^4.1.0",
     "rxjs": "~6.4.0",

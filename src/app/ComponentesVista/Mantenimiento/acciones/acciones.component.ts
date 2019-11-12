@@ -28,10 +28,29 @@ export class AccionesComponent implements OnInit {
           (data) => {
             this.requests = data['p_cursor'];
             console.log(this.requests);
+            this.tipo = tipo;
             console.log(this.tipo = tipo);
           }
         )}
     })
+  }
+
+  eliminar(accion:MantAcciones):void{
+    this.accionesService.eliminarAcciones(accion.idmantacciones).subscribe(response=>{
+      this.requests = this.requests.filter(req=>req!==accion)
+    });
+  }
+
+  public crearAccion(): void{
+    this.accionesService.createAcciones(this.mantAcciones).subscribe(data => {
+      this.router.navigate([`home/acciones/`+this.tipo]);
+      console.log(this.mantAcciones);
+      this.cargarAcciones();
+    });
+    this.mantAcciones.nombre="";
+    this.mantAcciones.tipo=null;
+    this.mantAcciones.descripcion="";
+    this.mantAcciones.orden=null;
   }
 
 }

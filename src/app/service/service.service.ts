@@ -6,7 +6,7 @@ import { Ubigeo } from '../ComponentesVista/Configuracion/registrarubigeo/ubigeo
 import { Roles } from '../Modelo/Roles';
 import { Vinculos, Vinculo, VincuRequi,Contador, Vinupd } from '../Modelo/Vinculos';
 import { Conductores } from '../Modelo/Conductores';
-import { Propietarios } from '../Modelo/Propietarios';
+import { Propietarios, Propietario } from '../Modelo/Propietarios';
 import { Vehiculos } from '../Modelo/Vehiculos';
 import { Requisitos } from '../Modelo/Requisitos';
 
@@ -78,5 +78,9 @@ export class ServiceService {
 
   uptEstadovin(vincu: Vinupd) {
     return this.http.put<Vinupd>(`${ environment.apiUrl }/vinculos/stado/` , vincu);
+  }
+  //******PROPIETARIOS */
+  getPropietarios(): Observable<Propietario[]> {
+    return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`);
   }
 }
