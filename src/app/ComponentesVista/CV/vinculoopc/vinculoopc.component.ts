@@ -32,7 +32,7 @@ export class VinculoopcComponent implements OnInit {
   cont:number;
   titulo = "";
   tipo:number;
-
+   contador:number;
    /// Arraysss
 
   vincurequi: VincuRequi[];  
@@ -47,6 +47,7 @@ export class VinculoopcComponent implements OnInit {
     this.getVehiculo();
     this.titulo="NUEVO VINCULO";
     console.log(this.tipo);
+    this.contador=0;
     this.service.getcontvin().subscribe(
       (data) => {
         
@@ -139,6 +140,9 @@ export class VinculoopcComponent implements OnInit {
     
    }
    siguiente(){
+     if(this.contador == 0){
+
+     this.contador++;
     var v_tipo=(<HTMLSelectElement>document.getElementById('tipo')).value;
     this.service.createvinculo(this.vin).subscribe(data => {
       alert("holaa"); 
@@ -149,6 +153,7 @@ export class VinculoopcComponent implements OnInit {
     }
       );
     });
+  }
     (<HTMLElement>document.getElementById('caja2')).style.display="none";
     (<HTMLElement>document.getElementById('next')).style.display="none";
     (<HTMLElement>document.getElementById('paso2')).style.display="block";

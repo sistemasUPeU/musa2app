@@ -3,10 +3,11 @@ export class Propietarios {
     NOMBRE: string;
 }
 export class Propietario{
-    IDPROPIETARIO: number;
-    NOMBRE: String;
-    APELLIDO:String;
-    NRODOC:number;
-    TIPOPROPIETARIO:number;
-    ESTADO:number;     
+    idpropietario: number;
+    nombre: String;
+    apellido:String;
+    nrodoc:number;
+    tipopropietario:number;
+    estado:number;   
+    estado_tipo:String;  
 }

@@ -87,4 +87,9 @@ export class ServiceService {
   getPropietarios(): Observable<Propietario[]> {
     return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`);
   }
+  deletePropietarios( propietario:Propietario){
+    console.log(propietario)
+     return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`, propietario);
+  }
 }
+

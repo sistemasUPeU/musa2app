@@ -5,6 +5,7 @@ export class Cursos{
     lugar:String;
     fechainicio:Date;
     fechafin:Date;
-     estado:String;
+    estado:number;
+     estado_tipo:String;
 
 }
