@@ -18,7 +18,7 @@ export class VinculoComponent implements OnInit {
   /////// Variablesss
 
   tipo: number;
-
+  estado : number;
   /////// Objetossssss
 
   vincu : Vinupd = new Vinupd();
@@ -27,10 +27,11 @@ export class VinculoComponent implements OnInit {
   
   ngOnInit() {
     this.tipo=3;
+    this.estado = 1;
     this.listar();
   }
   listar(){
-    this.service.getVinculo(this.tipo).subscribe(
+    this.service.getVinculo(this.tipo, this.estado).subscribe(
       (data) => {
         this.listavinculos = data['P_CUR_VINCULOS']
         console.log(this.listavinculos);  

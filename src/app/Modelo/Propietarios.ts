@@ -8,6 +8,6 @@ export class Propietario{
     apellido:String;
     nrodoc:number;
     tipopropietario:number;
-    estado:number;   
-    estado_tipo:String;  
+    estado_tipo:number;   
+    idpersona:number;
 }
