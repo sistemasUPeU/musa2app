@@ -22,7 +22,9 @@ export class VinculoopcComponent implements OnInit {
    }
 
   ////// Objetossss
-
+   cargar:boolean;
+   paso1:boolean;
+   loading:boolean;
   vin:Vinculo = new Vinculo();
   vinrequi:VincuRequi = new VincuRequi();
   ///// Variables
@@ -41,6 +43,9 @@ export class VinculoopcComponent implements OnInit {
   lisPropie: Propietarios[];
 
   ngOnInit() {
+    this.loading = false
+    this.paso1 = true
+    this.cargar = false;
     this.getConductor();
     this.getPropietario();
     this.getVehiculo();
@@ -136,21 +141,18 @@ export class VinculoopcComponent implements OnInit {
    crear(){
    }
    siguiente(){
-     
+     this.loading=true
+     this.paso1 = false
     var v_tipo=(<HTMLSelectElement>document.getElementById('tipo')).value;
     this.service.createvinculo(this.vin).subscribe(data => {
-      alert("se registro el vinculo"); 
       this.vinrequi.idvinculo=this.cont;
       console.log(this.vinrequi)
       this.service.CreateVinRequi(+Number(v_tipo),this.vinrequi).subscribe(data =>{
-      alert("se reguistro los requisitos del vinculo");
+        this.loading=false
+        this.cargar=true
     }
       );
     });
-    (<HTMLElement>document.getElementById('caja2')).style.display="none";
-    (<HTMLElement>document.getElementById('next')).style.display="none";
-    (<HTMLElement>document.getElementById('paso2')).style.display="block";
-    (<HTMLElement>document.getElementById('back')).style.display="block";
    }
    regresar(){
     (<HTMLElement>document.getElementById('caja2')).style.display="block";
