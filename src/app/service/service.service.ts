@@ -190,6 +190,5 @@ getUserN(e): Observable<Usuario[]>{
 getRolusE(e): Observable<Usuario[]>{
   return this.http.get<Usuario[]>(this.Url3+ "/rol/"+e);
 }
->>>>>>> 183dee768f29278d5f3f1726fac1d62f5c4e7712
 }
 
