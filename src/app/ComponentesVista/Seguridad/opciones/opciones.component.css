@@ -28,6 +28,11 @@
     width: 250px;
     border: solid gray 1px;
 }
+#caja_rol{
+    margin-left: 20px;
+    width: 250px;
+    border: solid gray 1px;
+}
 #tipo{
     margin-top: -38px;
     margin-left: 340px;

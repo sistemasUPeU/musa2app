@@ -63,14 +63,40 @@
           </button>
         </div>
         <div class="modal-body">
-          <form >
-            <input type="text" placeholder="Nombre" class="form-control my-3" name="nombre" [(ngModel)]="mantAcciones.nombre">
-            <input type="text" placeholder="Descripcion" class="form-control my-3" name="descripcion" [(ngModel)]="mantAcciones.descripcion">
+          <form #accionesForm="ngForm">
+            <div class="form-group my-3">
+              <label for="nombre">Ingrese nombre</label>
+              <input type="text" placeholder="Nombre" class="form-control" name="nombre" [(ngModel)]="mantAcciones.nombre" required #nombre="ngModel">
+              <div class="alert alert-danger my-2" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                <div *ngIf="nombre.errors.required">
+                  Nombre requerido
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="idaccionpadre">Elija categoria</label>
+              <select class="form-control" [(ngModel)]="mantAcciones.idaccionpadre" name="idaccionpadre">
+                  <option value="" disabled>Seleccione su opcion</option>
+                  <option value="0">Categoria de revision diaria</option>
+                  <option *ngFor="let cat of getcat" [value]="cat.idmantacciones">
+                    {{cat.nombre}}
+                  </option>
+              </select>
+            </div>
+            <div class="form-group my-3">
+              <label for="descripcion">Ingrese descripcion</label>
+              <input type="text" placeholder="Descripcion" class="form-control" name="descripcion" [(ngModel)]="mantAcciones.descripcion" required #descripcion="ngModel">
+              <div class="alert alert-danger my-2" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                <div *ngIf="descripcion.errors.required">
+                  Descripcion requerido
+                </div>
+              </div>
+            </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="crearAccion()" data-dismiss="modal">Save changes</button>
+          <button type="button" class="btn btn-primary" (click)="crearAccion()" [disabled]="!accionesForm.form.valid" onclick="$('#exampleModal').modal('hide')">Crear</button>
         </div>
       </div>
     </div>
@@ -90,9 +116,7 @@
           <div class="modal-body">
             <form>
               <input type="text" placeholder="Nombre" class="form-control my-3" name="nombre" [(ngModel)]="get.nombre">
-              <input type="number" placeholder="Tipo" class="form-control my-3" name="tipo" [(ngModel)]="get.tipo">
               <input type="text" placeholder="Descripcion" class="form-control my-3" name="descripcion" [(ngModel)]="get.descripcion">
-              <input type="number" placeholder="Orden" class="form-control my-3" name="orden" [(ngModel)]="get.orden">
             </form>
           </div>
           <div class="modal-footer">
