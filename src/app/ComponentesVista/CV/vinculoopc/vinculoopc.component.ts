@@ -136,10 +136,8 @@ export class VinculoopcComponent implements OnInit {
   /////  Metodo de crear Vinculo
 
    crear(){
-     
-    
    }
-   siguiente(){
+   siguiente(){/*
      if(this.contador == 0){
 
      this.contador++;
@@ -153,7 +151,7 @@ export class VinculoopcComponent implements OnInit {
     }
       );
     });
-  }
+  }*/
     (<HTMLElement>document.getElementById('caja2')).style.display="none";
     (<HTMLElement>document.getElementById('next')).style.display="none";
     (<HTMLElement>document.getElementById('paso2')).style.display="block";

@@ -35,10 +35,10 @@
       </div>
         <!-- Buscador Estado -->
         <div id="estado">
-            <select class="custom-select" id="inputGroupSelect01" id="caja_estado">
+            <select class="custom-select" id="inputGroupSelect01"[(ngModel)]="estado" (click)="listar()" id="caja_estado">
                     <option selected>Seleccione Estado</option>
-                    <option selected>Activo</option>
-                    <option selected>Inactivo</option>
+                    <option selected value="1">Activo</option>
+                    <option selected value="0">Inactivo</option>
             </select>
         </div>
         <!-- Boton Limpiar -->
