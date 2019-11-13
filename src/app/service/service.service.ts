@@ -91,5 +91,9 @@ export class ServiceService {
     console.log(propietario)
      return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`, propietario);
   }
+  
+  crearPropietarios(propietarioc:Propietario){
+     return this.http.post<Propietario>( `${ environment.apiUrl }/propietarios/add`, propietarioc);
+  }
 }
 

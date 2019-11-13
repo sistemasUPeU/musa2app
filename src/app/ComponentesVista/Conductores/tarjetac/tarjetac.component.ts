@@ -32,7 +32,8 @@ export class TarjetacComponent implements OnInit {
   creartarjetac(){
     this.tarjetacService.creartarjeta(this.tarjetac).subscribe(
       (data) =>{ 
-        this.ngOnInit(); }
+        this.ngOnInit();
+       }
 
     );
   }

@@ -39,31 +39,29 @@
      <!-- Body del modal -->
      <div class="modal-body">
             <div class="form-group">
-                    <label for="exampleInputEmail1">Nombres</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombres">
+                    <label for="exampleInputEmail1">Nombre</label>
+                    <select class="form-control" id="idpersona" aria-describedby="emailHelp" placeholder="Estado" [(ngModel)]="propietarioc.idpersona">
+                     <!--<option *ngFor="let persona of personas">{{persona.idpersona}}</option>--> 
+                      <option *ngFor="let persona of personas" [value]="persona.idpersona">{{persona.nombre}}</option>
+                 </select>
                 </div>
-        <div class="form-group">
-                 <label for="exampleInputEmail1">Apellidos</label>
-                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apellidos">
-          </div>   
-          <div class="form-group">
-                <label for="exampleInputEmail1">NroDoc</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apellidos">
-         </div> 
          <div class="form-group">
                 <label for="exampleInputEmail1">T_Pro</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Direccion">
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="T_Prop."
+                [(ngModel)]="propietarioc.tipopropietario">
          </div>    
          <div class="form-group">
-                <label for="exampleInputEmail1">Estado</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="DNI">
+            <label for="exampleInputEmail1">Estado</label>
+                <select class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Estado" [(ngModel)]="propietarioc.estado">
+                     <option value="1">Activo</option>
+                </select>
          </div>               
      </div>
      <!-- Fin del Body del modal -->
 
      <!-- Footer del modal -->
      <div class="modal-footer justify-content-center">
-       <button type="button" class="btn btn-primary waves-effect waves-light">Enviar
+       <button type="button" class="btn btn-primary waves-effect waves-light" (click)="crearPropietarios()">Enviar
          <i class="fa fa-paper-plane ml-1"></i>
        </button>
        <button type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancelar</button>
@@ -86,8 +84,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let propietario of propietarios">
-              <th scope="row">{{propietario.idpropietario}}</th>
+            <tr *ngFor="let propietario of propietarios, let i = index">
+              <th scope="row">{{i+1}}</th>
               <td>{{propietario.nombre}}</td>
               <td>{{propietario.apellido}}</td>
               <td>{{propietario.nrodoc}}</td>
@@ -130,15 +128,15 @@
                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apellidos">
           </div>   
           <div class="form-group">
-                <label for="exampleInputEmail1">Telefono</label>
+                <label for="exampleInputEmail1">NroDoc</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apellidos">
          </div> 
          <div class="form-group">
-                <label for="exampleInputEmail1">Direccion</label>
+                <label for="exampleInputEmail1">T_Prop.</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Direccion">
          </div>    
          <div class="form-group">
-                <label for="exampleInputEmail1">DNI</label>
+                <label for="exampleInputEmail1">Estado</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="DNI">
          </div>               
      </div>
