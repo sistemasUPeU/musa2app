@@ -33,7 +33,7 @@ export class VinculoopcComponent implements OnInit {
   titulo = "";
   tipo:number;
    /// Arraysss
-
+   
   vincurequi: VincuRequi[];  
   lisRequisitos: Requisitos[]; 
   lisConduc: Conductores[];
@@ -169,6 +169,3 @@ export class VinculoopcComponent implements OnInit {
      this.cont+1;
    }
 }
-
-
-
