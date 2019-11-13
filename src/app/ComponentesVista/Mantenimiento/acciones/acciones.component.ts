@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { MantAcciones } from 'src/app/Modelo/MantAcciones';
 import { MantenimientoService } from 'src/app/service/mantenimiento.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-acciones',
@@ -16,7 +16,6 @@ export class AccionesComponent implements OnInit {
   getid: any;
   getcat: any;
   tipo:number;
-  
 
   constructor(private accionesService:MantenimientoService, private router:Router, private activatedRoute:ActivatedRoute) { }
 
@@ -93,6 +92,7 @@ export class AccionesComponent implements OnInit {
     this.mantAcciones.tipo=null;
     this.mantAcciones.descripcion="";
     this.mantAcciones.orden=null;
+    
   }
 
   cargarId(id: number){
