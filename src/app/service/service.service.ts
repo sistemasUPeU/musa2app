@@ -84,7 +84,7 @@ export class ServiceService {
   }
 
   getcontvin(){
-    return this.http.get<Contador[]>(`${ environment.apiUrl }/vinculos/conta`);
+    return this.http.get<Contador[]>(`${ environment.apiUrl }/vinculos/conta/`);
   }
 
   uptVinculo(vinculo: Vinculo){

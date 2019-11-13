@@ -25,7 +25,7 @@
                 <form>
                     <div>
                         <label for="exampleInputEmail1">Conductor</label>
-                        <select class="form-control" [(ngModel)]="vin.idconductor" name="idconductor">
+                        <select class="form-control" [(ngModel)]="vin.idconductor"  name="idconductor">
                             <option>Conductor</option>
                             <option *ngFor="let con of lisConduc" [value]="con.IDCONDUCTOR">{{con.NOMBRE}}</option>
                         </select>
@@ -79,7 +79,7 @@
 
     
     <div id="paso2" style="display:none;" >
-            <li ><a id="back" class="nav-link" (click)="regresar()">atras</a></li>
+            <li ><a id="back"  (click)="regresar()">atras</a></li>
         <br>
             <h3>REQUISITOS :</h3>
             <br>

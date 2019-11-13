@@ -32,7 +32,6 @@ export class VinculoopcComponent implements OnInit {
   cont:number;
   titulo = "";
   tipo:number;
-   contador:number;
    /// Arraysss
 
   vincurequi: VincuRequi[];  
@@ -47,12 +46,11 @@ export class VinculoopcComponent implements OnInit {
     this.getVehiculo();
     this.titulo="NUEVO VINCULO";
     console.log(this.tipo);
-    this.contador=0;
     this.service.getcontvin().subscribe(
       (data) => {
-        
         this.cont = data[0].CONTADOR; 
-        console.log(this.cont)
+        this.cont++
+        alert(this.cont)
       }
       );
   }
@@ -137,21 +135,18 @@ export class VinculoopcComponent implements OnInit {
 
    crear(){
    }
-   siguiente(){/*
-     if(this.contador == 0){
-
-     this.contador++;
+   siguiente(){
+     
     var v_tipo=(<HTMLSelectElement>document.getElementById('tipo')).value;
     this.service.createvinculo(this.vin).subscribe(data => {
-      alert("holaa"); 
+      alert("se registro el vinculo"); 
       this.vinrequi.idvinculo=this.cont;
       console.log(this.vinrequi)
       this.service.CreateVinRequi(+Number(v_tipo),this.vinrequi).subscribe(data =>{
-      alert("holaa");
+      alert("se reguistro los requisitos del vinculo");
     }
       );
     });
-  }*/
     (<HTMLElement>document.getElementById('caja2')).style.display="none";
     (<HTMLElement>document.getElementById('next')).style.display="none";
     (<HTMLElement>document.getElementById('paso2')).style.display="block";
@@ -162,12 +157,16 @@ export class VinculoopcComponent implements OnInit {
     (<HTMLElement>document.getElementById('next')).style.display="block";
     (<HTMLElement>document.getElementById('paso2')).style.display="none";
     (<HTMLElement>document.getElementById('back')).style.display="none";
+    this.elimininar(this.cont);
    }
    elimininar(id: number){
      console.log("delete")
      this.service.DeleteVinculo(id).subscribe(data => {
-        
+        alert("se borro")
      })
+   }
+   sumador(){
+     this.cont+1;
    }
 }
 
