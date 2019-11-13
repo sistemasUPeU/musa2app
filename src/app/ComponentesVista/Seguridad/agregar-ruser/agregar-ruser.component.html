@@ -1,0 +1,57 @@
+<button id="back" style="border: none; background-color: white;"(click)="atras()"><i class="fas fa-arrow-circle-left"></i></button>
+<h2 id="let">AGREGAR ROL A USUARIO</h2>
+<header id="left">
+  <!-- Buscador -->
+  <p style="font-size: 20px;"> Seleccione Usuario: </p>
+  <br>
+  <div style="margin-left: 40px; margin-top: -10px;">
+  <p id="p">Buscar por: </p>
+  <div class="input-group" id="caja_search">
+      <span class="input-group-prepend">
+      </span>
+      <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre y Apellido" id="buscar1"  [(ngModel)]="usuario.login"/>
+      <span class="input-group-append">
+          <div class="input-group-text bg-transparent " id="buscar2">
+          <i class="fa fa-search" (click)="getUserN()"></i>
+          </div>
+      </span>
+  </div> 
+  <button type="button" class="btn btn-success" id="clear"><i class="fas fa-eraser" (click)="limpiar()"></i></button>
+  
+  <br>
+  </div>
+  <table class="table" style="text-align: center;">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" style="width: 250px;">Usuario</th>
+        <th scope="col" colspan="2">Agregar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let use of listaruse">
+        <td scope="row">{{use.idusuario}}</td>
+        <td>{{use.login}}</td>
+        <td ><i class="fas fa-user-plus" style="color: green; margin-left: 20px;" (click)="ObtID(use)"></i></td> </tr>
+    </tbody>
+  </table>
+</header>
+
+<aside id="right" >
+    <br>
+    <h3>Ingrese Datos</h3>
+    <div class="modal-body">
+       <label for="">Seleccione un Usuario: </label>
+        <input id="user" type="text" class="form-control" placeholder=" Usuario" [(ngModel)]="usuario.login">
+        <br>
+         <label for="">Seleccione un Rol: </label>
+        <select class="custom-select" id="inputGroupSelect01" id="caja_rol" [(ngModel)]="rolu.idrol">
+              <option selected>Seleccione Opción</option>
+              <option [value]="ro.idrol" *ngFor="let ro of listaroles">{{ro.nombre}}</option>
+       </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="button">Limpiar</button>
+        <button type="button" class="btn btn-primary" id="button" (click)="SaveRU()">Guardar</button>
+      </div>
+</aside>

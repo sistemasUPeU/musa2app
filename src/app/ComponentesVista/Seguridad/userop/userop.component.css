@@ -30,7 +30,7 @@
     margin-left: 340px;
 }
 #caja_estado{
-    margin-left: -110px;
+    margin-left: -80px;
     width: 250px;
     border: solid gray 1px;
 }
@@ -51,15 +51,8 @@
     font-size: 70px;
     text-align: center;
 }
-#register2{
-    margin-top: -30px;
-    width: 300px;
-    margin-left: -100px; 
-    font-size: 70px;
-    text-align: center;
-}
 #caja2{
-    margin-top: -110px;
+    margin-top: 0px;
 }
 #user{
     margin-top: -38px;

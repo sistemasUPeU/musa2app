@@ -34,4 +34,8 @@ export class MantenimientoService {
     return this.http.get<MantAcciones>(`${ environment.apiUrl }/acciones/edit/`+id);
   }
 
+  getByCat(){
+    return this.http.get<MantAcciones>(`${ environment.apiUrl }/acciones/cat`);
+  }
+
 }

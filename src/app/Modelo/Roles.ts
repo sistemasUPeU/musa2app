@@ -1,5 +1,10 @@
 export class Roles{
-    IDROL: number;
-    NOMBRE: String;
-    ESTADO: number;
+    idrol:number;
+    nombre:String;
+    estado:number;
+    nom:String;
 }
+export class RolesF{
+     nombre:String;
+     estado:String;
+ }
