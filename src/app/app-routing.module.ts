@@ -8,7 +8,6 @@ import { UsuarioComponent } from './ComponentesVista/Seguridad/usuario/usuario.c
 import { RolComponent } from './ComponentesVista/Seguridad/rol/rol.component';
 import { RegistrarpersonaComponent } from './ComponentesVista/Configuracion/registrarpersona/registrarpersona.component';
 import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/registrarubigeo/registrarubigeo.component';
-<<<<<<< HEAD
 import { PruebaEditarComponent } from './ComponentesVista/Seguridad/prueba-editar/prueba-editar.component';
 import { AgregarUserComponent } from './ComponentesVista/Seguridad/agregar-user/agregar-user.component';
 import { AgregarRuserComponent } from './ComponentesVista/Seguridad/agregar-ruser/agregar-ruser.component';
@@ -17,7 +16,6 @@ import { UseropComponent } from './ComponentesVista/Seguridad/userop/userop.comp
 import { AgregarUseropComponent } from './ComponentesVista/Seguridad/agregar-userop/agregar-userop.component';
 
 
-=======
 import { EntradadeproductoComponent } from './ComponentesVista/GestionarAlmacen/entradadeproducto/entradadeproducto.component';
 import { AccionesComponent } from './ComponentesVista/Mantenimiento/acciones/acciones.component';
 import { VinculoComponent } from './ComponentesVista/CV/vinculo/vinculo.component';
@@ -28,7 +26,6 @@ import { CursosComponent } from './ComponentesVista/Conductores/cursos/cursos.co
 import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propietarios.component'
 import { OpcionesComponent} from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
->>>>>>> b0d00ec0a8c390e96a1fceaa8101c7f7296d8194
 
 
 const routesHome: Routes = [
@@ -39,15 +36,13 @@ const routesHome: Routes = [
   {path:'logon', component:LoginComponent},
   {path:'registrarpersona', component:RegistrarpersonaComponent},
   {path:'registrarubigeo', component:RegistrarubigeoComponent},
-<<<<<<< HEAD
   {path:'prueba-editar', component:PruebaEditarComponent},
   {path:'agregar-user', component:AgregarUserComponent},
   {path:'agregar-ruser', component:AgregarRuserComponent},
   {path:'rolus', component:RolusComponent},
   {path: 'userop', component: UseropComponent},
-  {path: 'agregar-userop', component: AgregarUseropComponent}
+  {path: 'agregar-userop', component: AgregarUseropComponent},
   
-=======
   {path:'entradadeproducto', component:EntradadeproductoComponent},
   {path:'acciones', component:AccionesComponent},
   {path:'vinculo', component:VinculoComponent},
@@ -62,7 +57,6 @@ const routesHome: Routes = [
   {path:'propietarios', component: PropietariosComponent},
   {path:'opciones',component:OpcionesComponent},
   {path:'tarjetac',component:TarjetacComponent}
->>>>>>> b0d00ec0a8c390e96a1fceaa8101c7f7296d8194
 ];
 
 const routes: Routes = [

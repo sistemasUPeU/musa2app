@@ -2,19 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-<<<<<<< HEAD
 import { Roles, RolesF } from '../Modelo/Roles';
 import { Usuario } from '../Modelo/Usuario';
 import { Rol_Usuarios } from '../Modelo/Rol_Usuario';
-=======
 import { Ubigeo } from '../ComponentesVista/Configuracion/registrarubigeo/ubigeo';
-import { Roles } from '../Modelo/Roles';
-import { Vinculos, Vinculo, VincuRequi,Contador, Vinupd } from '../Modelo/Vinculos';
+import { Vinculos, VincuRequi, Vinculo, Contador, Vinupd } from '../Modelo/Vinculos';
 import { Conductores } from '../Modelo/Conductores';
 import { Propietarios, Propietario } from '../Modelo/Propietarios';
 import { Vehiculos } from '../Modelo/Vehiculos';
 import { Requisitos } from '../Modelo/Requisitos';
->>>>>>> b0d00ec0a8c390e96a1fceaa8101c7f7296d8194
 
 @Injectable({
   providedIn: 'root'
@@ -22,21 +18,14 @@ import { Requisitos } from '../Modelo/Requisitos';
 export class ServiceService {
 
   constructor(private http: HttpClient) { }
-<<<<<<< HEAD
   Url = 'http://localhost:8081/roles/'
   Url2 = 'http://localhost:8081/usuarios/'
   Url3 = 'http://localhost:8081/ru'
   roles:RolesF;
-=======
-
-  getAllUbigeo(): Observable<Ubigeo[]> {
-    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`);
-  }
 
   searchUbigeo(codigo: number) {
     return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ codigo }`);
   }
->>>>>>> b0d00ec0a8c390e96a1fceaa8101c7f7296d8194
 
   postUbigeo(ubigeo: Ubigeo): Observable<number> {
     return this.http.post<number>(`${ environment.apiUrl }/add`, ubigeo);
@@ -44,7 +33,6 @@ export class ServiceService {
   getAllRoles(): Observable<Roles[]> {
     return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/`);
   }
-<<<<<<< HEAD
   getAllUser(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(`${ environment.apiUrl }/usuarios/user/`);
   }
@@ -59,9 +47,8 @@ export class ServiceService {
   }
   getAllUbigeo(): Observable<Ubigeo[]> {
     return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`);
-=======
 
-
+  }
   ///// Vinculossss -------------- ///
   
   getVinculo(tipovinculo: number, estado:number) : Observable<Vinculos[]> {
@@ -119,7 +106,6 @@ export class ServiceService {
   deletePropietarios( propietario:Propietario){
     console.log(propietario)
      return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`, propietario);
->>>>>>> b0d00ec0a8c390e96a1fceaa8101c7f7296d8194
   }
   deleteRoles(roles:Roles){
     return this.http.delete<Roles>(this.Url+roles.idrol);

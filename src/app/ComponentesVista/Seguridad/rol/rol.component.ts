@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Roles } from 'src/app/Modelo/Roles';
+import { ServiceService } from 'src/app/service/service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rol',
@@ -6,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rol.component.css']
 })
 export class RolComponent implements OnInit {
-<<<<<<< HEAD
   rol: Roles;
   listaroles:Roles[];
   roles1:Roles=new Roles();
@@ -15,7 +17,9 @@ export class RolComponent implements OnInit {
   rolid:Roles[];
   rolf: Roles=new Roles();
   p_cur_rol: Roles =new Roles();
+
   constructor(private service:ServiceService, private router:Router) { }
+
   ngOnInit() {
     this.getAllRoles();
     
@@ -167,14 +171,7 @@ export class RolComponent implements OnInit {
         this.ngOnInit();
       })
     }
-=======
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
->>>>>>> b0d00ec0a8c390e96a1fceaa8101c7f7296d8194
 }
 
 
