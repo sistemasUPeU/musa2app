@@ -13,6 +13,7 @@ export class AccionesComponent implements OnInit {
   private mantAcciones: MantAcciones = new MantAcciones();
   requests:MantAcciones[];
   getid: any;
+  getcat: any;
   tipo:number;
   
 
@@ -20,6 +21,7 @@ export class AccionesComponent implements OnInit {
 
   ngOnInit() {
     this.cargarAcciones();
+    this.cargarCat();
   }
 
   cargarAcciones(): void{
@@ -66,6 +68,15 @@ export class AccionesComponent implements OnInit {
       (data) => {
         this.getid = data['p_cursor'];
         console.log(this.getid);
+      }
+    );
+  }
+
+  cargarCat(){
+    this.accionesService.getByCat().subscribe(
+      (data) => {
+        this.getcat = data['p_cursor'];
+        console.log(this.getcat);
       }
     );
   }

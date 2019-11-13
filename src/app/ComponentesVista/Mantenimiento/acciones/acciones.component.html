@@ -65,6 +65,12 @@
         <div class="modal-body">
           <form >
             <input type="text" placeholder="Nombre" class="form-control my-3" name="nombre" [(ngModel)]="mantAcciones.nombre">
+            <select class="form-control" [(ngModel)]="mantAcciones.idaccionpadre" name="idaccionpadre">
+                <option>Categoria</option>
+                <option *ngFor="let cat of getcat" [value]="cat.idmantacciones">
+                  {{cat.nombre}}
+                </option>
+            </select>
             <input type="text" placeholder="Descripcion" class="form-control my-3" name="descripcion" [(ngModel)]="mantAcciones.descripcion">
           </form>
         </div>
@@ -90,9 +96,7 @@
           <div class="modal-body">
             <form>
               <input type="text" placeholder="Nombre" class="form-control my-3" name="nombre" [(ngModel)]="get.nombre">
-              <input type="number" placeholder="Tipo" class="form-control my-3" name="tipo" [(ngModel)]="get.tipo">
               <input type="text" placeholder="Descripcion" class="form-control my-3" name="descripcion" [(ngModel)]="get.descripcion">
-              <input type="number" placeholder="Orden" class="form-control my-3" name="orden" [(ngModel)]="get.orden">
             </form>
           </div>
           <div class="modal-footer">
