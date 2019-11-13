@@ -2,19 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-<<<<<<< HEAD
-import { Roles, RolesF } from '../Modelo/Roles';
 import { Usuario } from '../Modelo/Usuario';
 import { Rol_Usuarios } from '../Modelo/Rol_Usuario';
-=======
 import { Ubigeo } from '../ComponentesVista/Configuracion/registrarubigeo/ubigeo';
-import { Roles } from '../Modelo/Roles';
 import { Vinculos, Vinculo, VincuRequi,Contador, Vinupd } from '../Modelo/Vinculos';
 import { Conductores } from '../Modelo/Conductores';
 import { Propietarios, Propietario } from '../Modelo/Propietarios';
 import { Vehiculos } from '../Modelo/Vehiculos';
 import { Requisitos } from '../Modelo/Requisitos';
->>>>>>> b0d00ec0a8c390e96a1fceaa8101c7f7296d8194
+import { Roles, RolesF } from '../Modelo/Roles';
+import { Usuarios_Opciones } from '../Modelo/Usuarios_Opciones';
 
 @Injectable({
   providedIn: 'root'
@@ -22,12 +19,11 @@ import { Requisitos } from '../Modelo/Requisitos';
 export class ServiceService {
 
   constructor(private http: HttpClient) { }
-<<<<<<< HEAD
   Url = 'http://localhost:8081/roles/'
   Url2 = 'http://localhost:8081/usuarios/'
   Url3 = 'http://localhost:8081/ru'
+  Url4 = 'http://localhost:8081/usop/'
   roles:RolesF;
-=======
 
   getAllUbigeo(): Observable<Ubigeo[]> {
     return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`);
@@ -36,7 +32,6 @@ export class ServiceService {
   searchUbigeo(codigo: number) {
     return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ codigo }`);
   }
->>>>>>> b0d00ec0a8c390e96a1fceaa8101c7f7296d8194
 
   postUbigeo(ubigeo: Ubigeo): Observable<number> {
     return this.http.post<number>(`${ environment.apiUrl }/add`, ubigeo);
@@ -44,7 +39,6 @@ export class ServiceService {
   getAllRoles(): Observable<Roles[]> {
     return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/`);
   }
-<<<<<<< HEAD
   getAllUser(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(`${ environment.apiUrl }/usuarios/user/`);
   }
@@ -57,10 +51,6 @@ export class ServiceService {
   createRoles(x){
     return this.http.post<Roles[]>(this.Url+'add',x);   
   }
-  getAllUbigeo(): Observable<Ubigeo[]> {
-    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`);
-=======
-
 
   ///// Vinculossss -------------- ///
   
@@ -119,7 +109,6 @@ export class ServiceService {
   deletePropietarios( propietario:Propietario){
     console.log(propietario)
      return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`, propietario);
->>>>>>> b0d00ec0a8c390e96a1fceaa8101c7f7296d8194
   }
   deleteRoles(roles:Roles){
     return this.http.delete<Roles>(this.Url+roles.idrol);
@@ -199,6 +188,43 @@ getUserN(e): Observable<Usuario[]>{
 }
 getRolusE(e): Observable<Usuario[]>{
   return this.http.get<Usuario[]>(this.Url3+ "/rol/"+e);
+}
+
+///////////////////////////////////// USUARIOS - OPCIONES
+
+getUsOp(): Observable<Usuarios_Opciones[]>{
+  return this.http.get<Usuarios_Opciones[]>(this.Url4);
+}
+getUsOpN(e): Observable<Usuarios_Opciones[]>{
+  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "/nombre/"+e);
+}
+getUsOpE(e): Observable<Usuarios_Opciones[]>{
+  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "/estado/"+e);
+}
+getOpc1(): Observable<Usuarios_Opciones[]>{
+  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "/opcion1/");
+}
+getOpc2(e): Observable<Usuarios_Opciones[]>{
+  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "/opc2/"+e);
+}
+getOpc3(e): Observable<Usuarios_Opciones[]>{
+  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "/op3/"+e);
+}
+
+createOpc(userop:Usuarios_Opciones){
+  return this.http.post<Usuarios_Opciones[]>(this.Url4+'add',userop);   
+}
+deleteUsOp(usop: Usuarios_Opciones){
+  return this.http.put<Usuarios_Opciones>(this.Url4+"des/"+usop.idusuario+"/"+usop.idopcion,usop.user_modify);
+} 
+activarUsOp(usop: Usuarios_Opciones){
+  return this.http.put<Usuarios_Opciones>(this.Url4+usop.idusuario+"/"+usop.idopcion,usop.user_modify);
+} 
+deleteUsr(usr: Rol_Usuarios){
+  return this.http.put<Usuario>(this.Url3+"/des/"+usr.idrol+"/"+usr.idusuario, usr.user_modify);
+} 
+activarUsr(usr: Rol_Usuarios){
+  return this.http.put<Rol_Usuarios>(this.Url3 +"/"+usr.idrol+"/"+usr.idusuario, usr.user_modify);
 }
 }
 
