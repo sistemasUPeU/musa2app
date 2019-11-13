@@ -1,0 +1,67 @@
+<div id="caja1">
+    <br>
+<h1>ROL - USUARIOS</h1> 
+<!-- Boton registrar user -->
+<button id="register"  (click)="Agregar()">
+    <i class="fas fa-user-plus" ></i>
+    <p style="margin-top: -15px;  margin-left: -20px;" >Registrar Rol - Usuario</p>
+</button>
+<button id="register2" (click)="Ros()">
+  <i class="far fa-address-book"></i>
+    <p style="margin-top: -15px;  margin-left: 0px;" >Usuarios</p>
+</button>
+<br>
+<br>
+<!-- div parte superior -->
+<div id="caja2">
+    <!-- Buscador -->
+    <p id="p">Buscar por: </p>
+    <div class="input-group" id="caja_search">
+        <span class="input-group-prepend">
+        </span>
+        <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre y Apellido" id="buscar1" [(ngModel)]="usuario.login"/>
+        <span class="input-group-append">
+            <div class="input-group-text bg-transparent " id="buscar2">
+            <i class="fa fa-search" (click)="getRolusN()"></i>
+            </div>
+        </span>
+    </div> 
+    <!-- Buscador Estado -->
+    <div id="estado">
+        <select class="custom-select" id="inputGroupSelect01" id="caja_estado" [(ngModel)]="usuario.estado">
+                <option selected>Seleccione Estado</option>
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+        </select>
+        <button id="listar" type="button" class="btn btn-info"  (click)="getRolusE()" ><i class="fas fa-check"></i></button>    
+    </div>
+    <!-- Boton Limpiar -->
+    <button type="button" class="btn btn-success" id="limpiar"  (click)="limpiar()">Limpíar</button>
+
+    <br><br>
+    <!-- Tabla -->
+    <table class="table" style="text-align: center;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" >Usuarios</th>
+                <th scope="col">Roles</th>
+                <th scope="col">Estado</th>
+                <th scope="col" colspan="2">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let rolus of listarolusu" >
+                <td scope="row">{{rolus.idusuario}}</td>
+                <td>{{rolus.login}}</td>
+                <td>{{rolus.rol}}</td>
+                <td>{{rolus.estado}}</td>
+                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;" (click)="EliminarUsuario(user)"></i></td>
+                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarUsuario" (click)="loadPersona(user)"></i></td>
+              </tr>
+            </tbody>
+          </table>
+
+</div>
+          
+</div>

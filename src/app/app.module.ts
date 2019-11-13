@@ -10,6 +10,15 @@ import { RegistrarpersonaComponent } from './ComponentesVista/Configuracion/regi
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrarubigeoComponent } from './ComponentesVista/Configuracion/registrarubigeo/registrarubigeo.component';
+<<<<<<< HEAD
+import { ServiceService } from './service/service.service';
+import { PruebaEditarComponent } from './ComponentesVista/Seguridad/prueba-editar/prueba-editar.component';
+import { AgregarUserComponent } from './ComponentesVista/Seguridad/agregar-user/agregar-user.component';
+import { AgregarRuserComponent } from './ComponentesVista/Seguridad/agregar-ruser/agregar-ruser.component';
+import { RolusComponent } from './ComponentesVista/Seguridad/rolus/rolus.component';
+import { UseropComponent } from './ComponentesVista/Seguridad/userop/userop.component';
+import { AgregarUseropComponent } from './ComponentesVista/Seguridad/agregar-userop/agregar-userop.component';
+=======
 import { EntradadeproductoComponent } from './ComponentesVista/GestionarAlmacen/entradadeproducto/entradadeproducto.component';
 import { VinculoopcComponent } from './ComponentesVista/CV/vinculoopc/vinculoopc.component';
 import { VinculomodComponent } from './ComponentesVista/CV/vinculomod/vinculomod.component';
@@ -20,6 +29,7 @@ import { OpcionesComponent } from './ComponentesVista/Seguridad/opciones/opcione
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
 
 
+>>>>>>> b0d00ec0a8c390e96a1fceaa8101c7f7296d8194
 
 @NgModule({
   declarations: [
@@ -30,6 +40,15 @@ import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarje
     RolComponent,
     RegistrarpersonaComponent,
     RegistrarubigeoComponent,
+<<<<<<< HEAD
+    PruebaEditarComponent,
+    AgregarUserComponent,
+    AgregarRuserComponent,
+    RolusComponent,
+    UseropComponent,
+    AgregarUseropComponent
+  
+=======
     EntradadeproductoComponent,
     VinculoopcComponent,
     VinculomodComponent,
@@ -38,6 +57,7 @@ import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarje
     PropietariosComponent,
     OpcionesComponent,
     TarjetacComponent
+>>>>>>> b0d00ec0a8c390e96a1fceaa8101c7f7296d8194
   ],
   imports: [
     BrowserModule,
