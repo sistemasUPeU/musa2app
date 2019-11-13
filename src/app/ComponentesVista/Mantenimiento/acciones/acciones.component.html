@@ -66,7 +66,7 @@
           <form >
             <input type="text" placeholder="Nombre" class="form-control my-3" name="nombre" [(ngModel)]="mantAcciones.nombre">
             <select class="form-control" [(ngModel)]="mantAcciones.idaccionpadre" name="idaccionpadre">
-                <option>Categoria</option>
+                <option value="0">Categoria</option>
                 <option *ngFor="let cat of getcat" [value]="cat.idmantacciones">
                   {{cat.nombre}}
                 </option>
