@@ -7,6 +7,7 @@ import { Propietarios } from 'src/app/Modelo/Propietarios';
 import { Vinculo, VincuRequi, VincuRequis } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
 import * as moment from 'moment';
+import { empleado } from 'src/app/Modelo/empleados';
 
 @Component({
   selector: 'app-vinculomod',
@@ -29,6 +30,7 @@ export class VinculomodComponent implements OnInit {
     this.getConductor();
     this.getPropietario();
     this.getVehiculo();
+    this.getempleado()
     this.titulo="MODIFICAR VINCULO";
     this.tipo = Number(localStorage.getItem("tipo"));
     this.Tipo();
@@ -44,7 +46,7 @@ export class VinculomodComponent implements OnInit {
   lisConduc: Conductores[];
   lisVehic: Vehiculos[];
   lisPropie: Propietarios[];
-
+  lisEmple: empleado[];
   ////// Objetosssss
   date_inicio : Date;
 
@@ -74,6 +76,15 @@ export class VinculomodComponent implements OnInit {
         console.log(this.lisPropie)
       }
     );
+  }
+  /////// Listar Empleados
+  getempleado(){
+    this.service.getEmple().subscribe(
+      (data) => {
+        this.lisEmple = data
+        console.log(this.lisEmple)
+      }
+    )
   }
 
   //////// Listar Vehiculossssssss
