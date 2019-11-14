@@ -7,6 +7,7 @@ import { Propietarios } from 'src/app/Modelo/Propietarios';
 import { Vinculo, VincuRequi, Contador } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
 
+
 @Component({
   selector: 'app-vinculoopc',
   templateUrl: './vinculoopc.component.html',
@@ -22,7 +23,9 @@ export class VinculoopcComponent implements OnInit {
    }
 
   ////// Objetossss
-
+   cargar:boolean;
+   paso1:boolean;
+   loading:boolean;
   vin:Vinculo = new Vinculo();
   vinrequi:VincuRequi = new VincuRequi();
   ///// Variables
@@ -32,9 +35,8 @@ export class VinculoopcComponent implements OnInit {
   cont:number;
   titulo = "";
   tipo:number;
-   contador:number;
+  
    /// Arraysss
-
   vincurequi: VincuRequi[];  
   lisRequisitos: Requisitos[]; 
   lisConduc: Conductores[];
@@ -42,17 +44,19 @@ export class VinculoopcComponent implements OnInit {
   lisPropie: Propietarios[];
 
   ngOnInit() {
+    this.loading = false
+    this.paso1 = true
+    this.cargar = false;
     this.getConductor();
     this.getPropietario();
     this.getVehiculo();
     this.titulo="NUEVO VINCULO";
     console.log(this.tipo);
-    this.contador=0;
     this.service.getcontvin().subscribe(
       (data) => {
-        
         this.cont = data[0].CONTADOR; 
-        console.log(this.cont)
+        this.cont++
+        alert(this.cont)
       }
       );
   }
@@ -136,42 +140,33 @@ export class VinculoopcComponent implements OnInit {
   /////  Metodo de crear Vinculo
 
    crear(){
-     
-    
    }
    siguiente(){
-     if(this.contador == 0){
-
-     this.contador++;
+     this.loading=true
+     this.paso1 = false
     var v_tipo=(<HTMLSelectElement>document.getElementById('tipo')).value;
     this.service.createvinculo(this.vin).subscribe(data => {
-      alert("holaa"); 
       this.vinrequi.idvinculo=this.cont;
       console.log(this.vinrequi)
       this.service.CreateVinRequi(+Number(v_tipo),this.vinrequi).subscribe(data =>{
-      alert("holaa");
+        this.loading=false
+        this.cargar=true
     }
       );
     });
-  }
-    (<HTMLElement>document.getElementById('caja2')).style.display="none";
-    (<HTMLElement>document.getElementById('next')).style.display="none";
-    (<HTMLElement>document.getElementById('paso2')).style.display="block";
-    (<HTMLElement>document.getElementById('back')).style.display="block";
    }
    regresar(){
-    (<HTMLElement>document.getElementById('caja2')).style.display="block";
-    (<HTMLElement>document.getElementById('next')).style.display="block";
-    (<HTMLElement>document.getElementById('paso2')).style.display="none";
-    (<HTMLElement>document.getElementById('back')).style.display="none";
+    this.paso1 = true
+    this.loading=false
+    this.elimininar(this.cont);
    }
    elimininar(id: number){
      console.log("delete")
      this.service.DeleteVinculo(id).subscribe(data => {
-        
+        alert("se borro")
      })
    }
+   sumador(){
+     this.cont+1;
+   }
 }
-
-
-

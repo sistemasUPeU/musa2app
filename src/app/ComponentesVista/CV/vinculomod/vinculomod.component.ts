@@ -14,11 +14,16 @@ import * as moment from 'moment';
   styleUrls: ['./vinculomod.component.css']
 })
 export class VinculomodComponent implements OnInit {
-  
+  parts : String[];
   mostrarpropietario: boolean;
   mostrarconductor: boolean;
   id:number;
+<<<<<<< HEAD
   fecha:string;
+=======
+  fechai:String;
+  fechaf:String;
+>>>>>>> 191c64dc4c2954ffb4e23a04fa7bf153f0461b15
 
   constructor(private router: Router, private service: ServiceService, private activatedRoute:ActivatedRoute) { }
   
@@ -140,15 +145,27 @@ export class VinculomodComponent implements OnInit {
     this.service.getVinculoid(id).subscribe(
       (data) => {
         this.vinculos = data['P_CUR_VINCULOS'];
+<<<<<<< HEAD
         console.log(this.vinculos[0].fechainicio);
         fecha = moment(this.vinculos[0].fechainicio,);
         fecha = fecha.format('DD/MM/YYYY');
 
         console.log(fecha)
+=======
+        var x = (String(moment(this.vinculos[0].fechainicio).format()).substr(0,10));
+        
+        this.fechai=x
+        this.fechaf=this.convertir_fecha(String(this.vinculos[0].fechafin));
+        console.log(this.vinculos)
+>>>>>>> 191c64dc4c2954ffb4e23a04fa7bf153f0461b15
       }
     );
    }
-
+   convertir_fecha(string:String){
+     this.parts = string.split("/");
+     var fechaparsiada:String = this.parts[2]+"-"+this.parts[1]+"-"+this.parts[0];
+     return fechaparsiada
+   }
    //////// Modifica los datosssss
 
    modificar(vinculos: Vinculo){

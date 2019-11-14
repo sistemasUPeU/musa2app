@@ -1,0 +1,70 @@
+<button id="back" style="border: none; background-color: white;" (click)="atras()"><i class="fas fa-arrow-circle-left"></i></button>
+<h2 id="let">AGREGAR OPCIÓN - USUARIO</h2>
+<header id="left">
+  <!-- Buscador -->
+  <p style="font-size: 20px;"> Seleccione Usuario: </p>
+  <br>
+  <div style="margin-left: 40px; margin-top: -10px;">
+  <p id="p">Buscar por: </p>
+  <div class="input-group" id="caja_search">
+      <span class="input-group-prepend">
+      </span>
+      <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre y Apellido" id="buscar1"  [(ngModel)]="usuario.login"/>
+      <span class="input-group-append">
+          <div class="input-group-text bg-transparent " id="buscar2">
+          <i class="fa fa-search" (click)="getUserN()"></i>
+          </div>
+      </span>
+  </div> 
+  <button type="button" class="btn btn-success" id="clear"><i class="fas fa-eraser" (click)="limpiar()"></i></button>
+  
+  <br>
+  </div>
+  <table class="table" style="text-align: center;">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" style="width: 250px;">Usuario</th>
+        <th scope="col" colspan="2">Agregar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let use of listaruse">
+        <td scope="row">{{use.idusuario}}</td>
+        <td>{{use.login}}</td>
+        <td ><i class="fas fa-user-plus" style="color: green; margin-left: 20px;" (click)="ObtID(use)"></i></td> </tr>
+    </tbody>
+  </table>
+</header>
+
+<aside id="right" >
+    <br>
+    <h3>Ingrese Datos</h3>
+    <div class="modal-body">
+        <label for="">Seleccione un Usuario: </label>
+        <input  id="name" type="text" class="form-control" placeholder=" Name" >
+        <br>
+       <label for="">Seleccione un Módulo: </label>
+       <select id="caja_op1" type="text" class="form-control"  placeholder=" Opcion1" [(ngModel)]="usuario_opciones.idopcion" (click)="getRolesE()">
+        <option value="0"> Seleccionar Módulo</option>
+        <option [value]="op1.idopcion" *ngFor="let op1 of listarop1" > {{op1.nombre}}</option>
+       </select>
+        <br>
+        <label for="">Seleccione Opción: </label>
+        <select id="caja_op2" type="text" class="form-control" placeholder=" opcion" [(ngModel)]="usuario_opciones.idopcion2" (click)="getRolesE2()">
+          <option value="0"> Seleccionar Opción</option>
+          <option [value]="op2.idopcion" *ngFor="let op2 of listarop2" > {{op2.nombre}}</option>
+        </select>
+         <br>
+         <label for="">Seleccione Sub - Opción: </label>
+         <select id="caja_op3" type="text" class="form-control" placeholder=" Sub - Opción" [(ngModel)]="usuario_opciones.idopcion3">
+          <option value="0"> Seleccionar Sub - Opción</option>
+          <option [value]="op3.idopcion" *ngFor="let op3 of listarop3" > {{op3.nombre}}</option>
+        </select>        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="button">Limpiar</button>
+        <button type="button" class="btn btn-primary" id="button" (click)="here()">Guardar</button>
+      </div>
+</aside>

@@ -139,7 +139,11 @@
                     <a [routerLink]="['rol']">Rol</a>
                   </li>
                   <li>
-                    <a routerLink='opciones'>Opciones</a>
+                    <li>
+                      <a [routerLink]="['userop']">Usuarios - Opciones</a>
+                    </li>
+                    <li>
+                    <a>Opciones</a>
                   </li>
                 </ul>
               </div>
@@ -172,13 +176,16 @@
               <div class="sidebar-submenu">
                 <ul>
                   <li routerLinkActive="active">
-                    <a [routerLink]="['/home/acciones',4]">Categoria</a>
+                    <a [routerLink]="['/home/acciones',0]">Acciones preventivas</a>
                   </li>
                   <li routerLinkActive="active">
-                    <a [routerLink]="['/home/acciones',3]">Acciones preventivas</a>
+                    <a [routerLink]="['/home/acciones',1]">Acciones correctivas</a>
                   </li>
                   <li routerLinkActive="active">
-                    <a routerLink="/home/acciones">Acciones correctivas</a>
+                      <a [routerLink]="['/home/acciones',2]">Acciones diarias</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a [routerLink]="['/home/acciones',3]">Acciones tecnicas</a>
                   </li>
                 </ul>
               </div>

@@ -23,11 +23,19 @@ export class MantenimientoService {
   }
 
   updateAcciones(accion:MantAcciones): Observable<MantAcciones>{
-    return this.http.put<MantAcciones>(`${ environment.apiUrl }/acciones/edit/${accion.idmantacciones}`, accion, {headers: this.httpHeaders});
+    return this.http.put<MantAcciones>(`${ environment.apiUrl }/acciones/${accion.idmantacciones}`, accion, {headers: this.httpHeaders});
   }
 
   eliminarAcciones(id:number){
     return this.http.get<MantAcciones>(`${ environment.apiUrl }/acciones/state/`+id);
+  }
+
+  getById(id:number){
+    return this.http.get<MantAcciones>(`${ environment.apiUrl }/acciones/edit/`+id);
+  }
+
+  getByCat(){
+    return this.http.get<MantAcciones>(`${ environment.apiUrl }/acciones/cat`);
   }
 
 }
