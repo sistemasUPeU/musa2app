@@ -13,6 +13,7 @@ import { Propietarios, Propietario } from '../Modelo/Propietarios';
 import { Vehiculos } from '../Modelo/Vehiculos';
 import { Requisitos } from '../Modelo/Requisitos';
 import { Usuarios_Opciones } from '../Modelo/Usuarios_Opciones';
+import { empleado } from '../Modelo/empleados';
 
 @Injectable({
   providedIn: 'root'
@@ -57,6 +58,12 @@ export class ServiceService {
     return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`);
 
   }
+  ////////////////////EMPLEADOSSS
+  getEmple() : Observable<empleado[]> {
+    return this.http.get<empleado[]>(`${ environment.apiUrl }/empleado/lis`);
+  }
+
+
   ///// Vinculossss -------------- ///
   
   getVinculo(tipovinculo: number, estado:number) : Observable<Vinculos[]> {
