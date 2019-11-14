@@ -20,4 +20,11 @@ export class CursosService {
   createCurso(cursos: Cursos){
     return this.http.post<Cursos>(`${ environment.apiUrl }/cursos/add`, cursos);
   }
+  readcurso(id:number){
+    return this.http.get<Cursos>(`${ environment.apiUrl }/cursos/`+id);
+  }
+  editCurso(cursos: Cursos){
+
+    return this.http.put<Cursos>(`${ environment.apiUrl }/cursos/`+cursos.idcursos , cursos);
+  }
 }
