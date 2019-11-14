@@ -61,8 +61,8 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let opciones of listaropciones; let i = index">
-            <td>{{i+1}}</td>
+        <tr *ngFor="let opciones of opciones1; let i = index">
+          <td scope="row">{{opciones.idopciones}}</td>
             <td>{{opciones.idpadre}}</td>
             <td>{{opciones.nombre}}</td>
             <td>{{opcioens.descripcion}}</td>
