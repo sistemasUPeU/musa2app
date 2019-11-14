@@ -158,6 +158,7 @@ export class VinculoopcComponent implements OnInit {
    regresar(){
     this.paso1 = true
     this.loading=false
+    this.cargar=false
     this.elimininar(this.cont);
    }
    elimininar(id: number){
