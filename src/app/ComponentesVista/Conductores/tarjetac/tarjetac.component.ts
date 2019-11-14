@@ -62,6 +62,7 @@ export class TarjetacComponent implements OnInit {
       console.log(this.tarjs.nrodocumento)
       console.log(data)
       this.tarjetacs=data['p_tarj'];
+      (<HTMLInputElement>document.getElementById("buscar1")).value = "";
       
       
     });
@@ -76,6 +77,7 @@ export class TarjetacComponent implements OnInit {
   }
   Limpiar(){
     this.ngOnInit();
+    (<HTMLSelectElement>document.getElementById("inputGroupSelect01")).value ="";
   }
 }
 

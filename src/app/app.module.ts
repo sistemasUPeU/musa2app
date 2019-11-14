@@ -25,6 +25,7 @@ import { CursosComponent } from './ComponentesVista/Conductores/cursos/cursos.co
 import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propietarios.component';
 import { OpcionesComponent } from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
+import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
 
 
 
@@ -51,7 +52,8 @@ import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarje
     CursosComponent,
     PropietariosComponent,
     OpcionesComponent,
-    TarjetacComponent
+    TarjetacComponent,
+    SoatComponent
   ],
   imports: [
     BrowserModule,
