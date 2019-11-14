@@ -6,6 +6,7 @@ import { Vehiculos } from 'src/app/Modelo/Vehiculos';
 import { Propietarios } from 'src/app/Modelo/Propietarios';
 import { Vinculo, VincuRequi, Contador } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
+import { empleado } from 'src/app/Modelo/empleados';
 
 
 @Component({
@@ -42,7 +43,7 @@ export class VinculoopcComponent implements OnInit {
   lisConduc: Conductores[];
   lisVehic: Vehiculos[];
   lisPropie: Propietarios[];
-
+  lisEmple: empleado[];
   ngOnInit() {
     this.loading = false
     this.paso1 = true
@@ -50,6 +51,7 @@ export class VinculoopcComponent implements OnInit {
     this.getConductor();
     this.getPropietario();
     this.getVehiculo();
+    this.getempleado()
     this.titulo="NUEVO VINCULO";
     console.log(this.tipo);
     this.service.getcontvin().subscribe(
@@ -95,6 +97,16 @@ export class VinculoopcComponent implements OnInit {
       }
     );
   }
+  /////// Listar empleados 
+  getempleado(){
+    this.service.getEmple().subscribe(
+      (data) => {
+        this.lisEmple = data
+        console.log(this.lisEmple)
+      }
+    )
+  }
+
 
    ///// Listado de Vehiculos
 
