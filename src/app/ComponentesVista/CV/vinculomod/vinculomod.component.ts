@@ -6,6 +6,7 @@ import { Vehiculos } from 'src/app/Modelo/Vehiculos';
 import { Propietarios } from 'src/app/Modelo/Propietarios';
 import { Vinculo, VincuRequi, Vinculos } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-vinculomod',
@@ -13,10 +14,13 @@ import { Requisitos } from 'src/app/Modelo/Requisitos';
   styleUrls: ['./vinculomod.component.css']
 })
 export class VinculomodComponent implements OnInit {
-  
+  parts : String[];
   mostrarpropietario: boolean;
   mostrarconductor: boolean;
   id:number;
+  fechai:String;
+  fechaf:String;
+
   constructor(private router: Router, private service: ServiceService, private activatedRoute:ActivatedRoute) { }
   
   ngOnInit() {
@@ -136,11 +140,19 @@ export class VinculomodComponent implements OnInit {
     this.service.getVinculoid(id).subscribe(
       (data) => {
         this.vinculos = data['P_CUR_VINCULOS'];
+        var x = (String(moment(this.vinculos[0].fechainicio).format()).substr(0,10));
+        
+        this.fechai=x
+        this.fechaf=this.convertir_fecha(String(this.vinculos[0].fechafin));
         console.log(this.vinculos)
       }
     );
    }
-
+   convertir_fecha(string:String){
+     this.parts = string.split("/");
+     var fechaparsiada:String = this.parts[2]+"-"+this.parts[1]+"-"+this.parts[0];
+     return fechaparsiada
+   }
    //////// Modifica los datosssss
 
    modificar(vinculos: Vinculo){
