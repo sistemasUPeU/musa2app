@@ -45,16 +45,18 @@
           <th scope="col">Codigo</th>
           <th scope="col">Nrolicencia</th>
           <th scope="col">Estado CV</th>
+          <th scope="col">Nro Documento</th>
           <th scope="col" colspan="2">Opciones</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let condu of conductores">
           <td>{{condu.tipooperador == 1? 'Conductor' : 'Conductor Cobrador'  }}</td>
-          <td>{{condu.estado}}</td>
+          <td>{{condu.estado ==1? 'Activo' : 'Inactivo'}}</td>
           <td>{{condu.codigo}}</td>
           <td>{{condu.nrolicencia}}</td>
-          <td>{{condu.cursovial}}</td>
+          <td>{{condu.cursovial ==1? 'Aprobo' : 'No aprobo'}}</td>
+          <td>{{condu.idpersona}}</td>
           <td><i class="fas fa-trash-alt" (click)="eliminar(condu)" style="color: red; margin-left: 20px;"></i></td>
           <td><i class="fas fa-edit" (click)="actualizar(condu)" style="color: blue; margin-left: -60px;" data-toggle="modal"
               data-target="#ModificarUsuario"></i></td>
@@ -88,7 +90,7 @@
         </div>
         <div class="form-group col-md-5">
           <label for="">Codigo: </label>
-        <input id="user" type="text" class="form-control" [(ngModel)]="conductor.codigo">
+        <input id="user" type="text" placeholder="Ingrese codigo del conductor" class="form-control" [(ngModel)]="conductor.codigo">
         </div>
         <div class="form-group col-md-5">
           <label for="">Seleccione Estado: </label>
@@ -100,11 +102,11 @@
         </div>
         <div class="form-group col-md-5">
           <label for="">Dni de Persona: </label>
-        <input id="user" type="text" class="form-control" [(ngModel)]="conductor.idpersona">
+        <input id="user" type="text" placeholder="Ingrese Nro documento" class="form-control" [(ngModel)]="conductor.idpersona">
         </div>
         <div class="form-group col-md-5">
           <label for="">Nro Licencia: </label>
-          <input id="user" type="text" class="form-control" [(ngModel)]="conductor.nrolicencia">
+          <input id="user" type="text"  placeholder="Ingrese Nro.Licencia" class="form-control" [(ngModel)]="conductor.nrolicencia">
        
         </div>
         <div class="form-group col-md-5">
@@ -116,21 +118,21 @@
      
         </div>
         <div class="form-group col-md-5">
-          <label for="">Ingrese Fecha Inicial de la Licencia: </label>
-        <input id="user" type="text" class="form-control" [(ngModel)]="conductor.linc_fechainicio">
+          <label for="">Ingrese Fecha Inicial de Licencia: </label>
+        <input id="user" placeholder="AAAA-MM-DD" type="text" class="form-control" [(ngModel)]="conductor.linc_fechainicio">
         </div>
 
         <div class="form-group col-md-5">
-          <label for="">Ingrese Fecha Final de la Licencia: </label>
-        <input id="user" type="text" class="form-control" [(ngModel)]="conductor.linc_fechafin">
+          <label for="">Ingrese Fecha Final de Licencia: </label>
+        <input id="user" placeholder="AAAA-MM-DD" type="text" class="form-control" [(ngModel)]="conductor.linc_fechafin">
         </div>
         <div class="form-group col-md-5">
           <label for=""> Clase: </label>
-        <input id="user" type="text" class="form-control" [(ngModel)]="conductor.clase">
+        <input id="user" type="text" placeholder="Ingrese clase" class="form-control" [(ngModel)]="conductor.clase">
         </div>
         <div class="form-group col-md-5">
           <label for="">Categoria: </label>
-          <input id="user" type="text" class="form-control" [(ngModel)]="conductor.categoria">
+          <input id="user" type="text" class="form-control" placeholder="Ingrese Categoria" [(ngModel)]="conductor.categoria">
         </div>
       </div>
       <div class="modal-footer">
