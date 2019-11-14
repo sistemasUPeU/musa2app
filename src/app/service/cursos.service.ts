@@ -17,4 +17,7 @@ export class CursosService {
     console.log(cursos)
     return this.http.put<Cursos>(`${ environment.apiUrl }/cursos/upt/` , cursos);
   }
+  createCurso(cursos: Cursos){
+    return this.http.post<Cursos>(`${ environment.apiUrl }/cursos/add`, cursos);
+  }
 }

@@ -10,6 +10,7 @@ import { Cursos } from 'src/app/Modelo/Cursos';
 })
 export class CursosComponent implements OnInit {
    cursos : Cursos[];
+   curso:Cursos = new Cursos();
   
   constructor(private service:CursosService , private ruter: Router) { }
 
@@ -31,6 +32,13 @@ export class CursosComponent implements OnInit {
       console.log(this.cursos)
       alert("Eliminado")
       this.listar()
+    })
+  }
+  crear(cursos:Cursos){alert("SI CREAAAA")
+    console.log(cursos.nombrecurso);
+    this.service.createCurso(cursos).subscribe(data =>{
+    alert("creado")
+
     })
   }
 }

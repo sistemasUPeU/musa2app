@@ -19,18 +19,20 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-     
-         <br>
-         <br>
-         <label for="">cursos: </label> 
+        <div  style="height:300px;width:250px;border:1px solid black"class="modal-body">
+          <input [(ngModel)]="curso.nombrecurso" placeholder="Nombre"><br><br>
+          <input [(ngModel)]="curso.nombreinstitucion" placeholder="Institucion"><br><br>
+          <input [(ngModel)]="curso.lugar" placeholder="Lugar"><br><br>
+          <input [(ngModel)]="curso.fechainicio" placeholder="Fecha Fnicio" type="date"><br><br>
+          <input [(ngModel)]="curso.fechafin" placeholder="Fecha Fin" type="date">
 
-           <br>
+     
+      
        
         </div>
         <div class="modal-footer">
           <button type="button"   class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-          <button type="button" onclick="alert('Curso Creado')" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+          <button type="button" (click)="crear(curso)" class="btn btn-primary" data-dismiss="modal">Guardar</button>
         </div>
       </div>
     </div>
