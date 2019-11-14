@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CursosService } from 'src/app/service/cursos.service';
 import { Cursos } from 'src/app/Modelo/Cursos';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cursos',
@@ -30,21 +31,33 @@ export class CursosComponent implements OnInit {
     
   }
 
-  upt(cur: Cursos){alert("Hola")
+  upt(cur: Cursos){
     this.service.uptCursos(cur).subscribe(data => {
-      console.log(this.cursos)
-      alert("Eliminado")
+  
       this.listar()
-    })
+      
+    }
+    );
+    Swal.fire(
+      'Eliminado!',
+      'El Curso ha sido Eliminado',
+      'success'
+    )
+    
   }
-  crear(cursos:Cursos){alert("SI CREAAAA")
+  crear(cursos:Cursos){
     console.log(cursos.nombrecurso);
     this.service.createCurso(cursos).subscribe(data =>{
-    alert("creado")
+
       this.listar();
-    })
+    });
+    Swal.fire(
+      'Creado!',
+      'El curso fue creado con exito',
+      'success'
+    )
   }
-  read(id:number){alert("Entra pa editar gaa")
+  read(id:number){
 console.log(id);
 this.id=id;
 this.service.readcurso(+id).subscribe(data =>{
@@ -63,9 +76,14 @@ edit(cursos:Cursos){
   cursos.idcursos=this.id;
   console.log(cursos)
   this.service.editCurso(cursos).subscribe(data => {
-  alert("SI EDITO CTMRE")
+
   this.listar();
-  })
+  });
+       Swal.fire(
+          'Editado!',
+          'El Curso ha sido Editado',
+          'success'
+        )
 
 }
 }
