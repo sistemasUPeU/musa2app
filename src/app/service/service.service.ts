@@ -78,7 +78,10 @@ export class ServiceService {
   getRequisitos(tipovinculo: number): Observable<Requisitos[]> {
     return this.http.get<Requisitos[]>(`${ environment.apiUrl }/requisitos/lis/`+tipovinculo);
   }
-
+  getrequisitos_vinculo(idvinculo: number): Observable<Requisitos[]> {
+    return this.http.get<Requisitos[]>(`${ environment.apiUrl }/vinrequi/`+idvinculo);
+  }
+  
   CreateVinRequi(tipo:number,vincurequi: VincuRequi) {
     return this.http.post<VincuRequi[]>(`${ environment.apiUrl }/vinrequi/add/` + tipo, vincurequi);
   }

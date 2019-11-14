@@ -17,7 +17,7 @@ export class VinculoComponent implements OnInit {
 
 
   /////// Variablesss
-  fechai:String[]
+  fechai:Array<string>
   fechaf:String
   tipo: number;
   estado : number;
@@ -38,18 +38,23 @@ export class VinculoComponent implements OnInit {
     this.service.getVinculo(this.tipo, this.estado).subscribe(
       (data) => {
         this.listavinculos = data['P_CUR_VINCULOS']
-        this.listavinculos.forEach(function(val){
-
-          this.fechai[x] = String(moment(val.FECHAINICIO).format()).substr(0,10)
-          x++
-          console.log(this.fechai)
-          val.FECHAFIN
-        })
+        
         console.log(this.listavinculos);  
       }
       );
+      this.cambiarfecha
+      //alert("hola")
+      //console.log(this.listavinculos);
+      //this.listavinculos.forEach(function(val){
+        /*this.fechai.push(String(val.FECHAINICIO).substr(0,10))
+        console.log(this.fechai)*/
+        //console.log(val.IDVINCULO)
+        //val.FECHAFIN
+      //})
   }
-
+  cambiarfecha(){
+    console.log(this.listavinculos[0].APELLIDO + "hola") 
+  }
   /// Metodo que envia idvinculo, tipo para el modificar
 
   valor(tipo2:number,id:number){

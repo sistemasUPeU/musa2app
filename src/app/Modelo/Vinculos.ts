@@ -30,7 +30,10 @@ export class Contador{
 export class VincuRequi {
   idvinculo: number;
 }
-
+export class VincuRequis {
+  idvinculo: number;
+  idrequisito: number
+}
 export class Vinupd {
   idvinculo: number;
   estado: number;

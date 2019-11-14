@@ -84,7 +84,7 @@
             <div  >
                 <div *ngFor="let requi of lisRequisitos">
                     <h2>{{ requi.NOMBRE }}</h2><br>
-                    <input type="file">
+                    <input type="file" (click)="modifi_requis(requi.IDVINCULO,requi.IDREQUISITO)">
                 </div>
             </div>
         </div>

@@ -4,7 +4,7 @@ import { ServiceService } from 'src/app/service/service.service';
 import { Conductores } from 'src/app/Modelo/Conductores';
 import { Vehiculos } from 'src/app/Modelo/Vehiculos';
 import { Propietarios } from 'src/app/Modelo/Propietarios';
-import { Vinculo, VincuRequi, Vinculos } from 'src/app/Modelo/Vinculos';
+import { Vinculo, VincuRequi, VincuRequis } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
 import * as moment from 'moment';
 
@@ -20,10 +20,11 @@ export class VinculomodComponent implements OnInit {
   id:number;
   fechai:String;
   fechaf:String;
-
+  cont:number
   constructor(private router: Router, private service: ServiceService, private activatedRoute:ActivatedRoute) { }
   
   ngOnInit() {
+    this.cont=0
     this.id=Number(localStorage.getItem("idvinculo"));
     this.getConductor();
     this.getPropietario();
@@ -38,7 +39,7 @@ export class VinculomodComponent implements OnInit {
   ///// Arraysss
 
   vinculos:Vinculo[];
-  vincurequi: VincuRequi[]; 
+  vincurequi: VincuRequis[]; 
   lisRequisitos: Requisitos[];
   lisConduc: Conductores[];
   lisVehic: Vehiculos[];
@@ -88,10 +89,10 @@ export class VinculomodComponent implements OnInit {
 
   ////////// Listar Requisitosssssss
 
-  getRequisito(id: number) {
-    this.service.getRequisitos(id).subscribe(
+  getRequisito(idvinculo: number) {
+    this.service.getrequisitos_vinculo(+idvinculo).subscribe(
       (data) => {
-        this.lisRequisitos = data['P_CUR_REQUISITOS'];
+        this.lisRequisitos = data['P_CUR_VINCULO_REQUISITO'];
         console.log(this.lisRequisitos)
       }
     );
@@ -125,12 +126,12 @@ export class VinculomodComponent implements OnInit {
     alert(v_tipo)*/
     if (this.tipo == 1) {
       this.titulo="MODIFICAR VINCULO CONDUCTOR";
-      this.getRequisito(Number(this.tipo));
+      this.getRequisito(Number(this.id));
       
     }
     if (this.tipo== 2) {
       this.titulo="MODIFICAR VINCULO PROPIETARIO";
-      this.getRequisito(Number(this.tipo));
+      this.getRequisito(Number(this.id));
     }
   }
   
@@ -164,5 +165,10 @@ export class VinculomodComponent implements OnInit {
       }
     );
    }
-   
+   modifi_requis(estado:number,idvinculo:number,idrequisito:number){
+    this.vincurequi[this.cont].idvinculo = idvinculo
+    this.vincurequi[this.cont].idrequisito = idrequisito
+    console.log(this.vincurequi)
+    this.cont++
+   }
 }
