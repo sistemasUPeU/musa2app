@@ -56,8 +56,8 @@
                 <td>{{rolus.login}}</td>
                 <td>{{rolus.rol}}</td>
                 <td>{{rolus.estado}}</td>
-                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;" (click)="EliminarUsuario(user)"></i></td>
-                <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarUsuario" (click)="loadPersona(user)"></i></td>
+                <td ><i class="far fa-check-circle" style="color: green; margin-left: 20px;" (click)="ActivarUsr(rolus)"></i></td>
+                <td ><i class="far fa-times-circle" style="color: red; margin-left: -60px;" (click)="EliminarUsr(rolus)"></i></td>
               </tr>
             </tbody>
           </table>

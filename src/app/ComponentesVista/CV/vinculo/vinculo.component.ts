@@ -2,6 +2,7 @@ import { Component, OnInit, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Vinculos, Vinculo, Vinupd } from 'src/app/Modelo/Vinculos';
 import { ServiceService } from 'src/app/service/service.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-vinculo',
@@ -13,12 +14,17 @@ export class VinculoComponent implements OnInit {
   /////// Arraysss
 
   listavinculos:Vinculos[];
-
+  
 
   /////// Variablesss
-
+  fechai:String[]
+  fechaf:String
   tipo: number;
+<<<<<<< HEAD
+  estado:number;
+=======
   estado : number;
+>>>>>>> 191c64dc4c2954ffb4e23a04fa7bf153f0461b15
   /////// Objetossssss
 
   vincu : Vinupd = new Vinupd();
@@ -26,15 +32,36 @@ export class VinculoComponent implements OnInit {
   constructor(private service: ServiceService, private router: Router) { }
   
   ngOnInit() {
+    
     this.tipo=3;
+<<<<<<< HEAD
+    this.estado=1;
+    this.listar();
+  }
+  listar(){   
+    
+    this.service.getVinculo(this.tipo,this.estado).subscribe(
+      (data) => {
+        this.listavinculos = data['P_CUR_VINCULOS']
+           console.log(this.listavinculos);
+=======
     this.estado = 1;
     this.listar();
   }
   listar(){
+    var x = 0
     this.service.getVinculo(this.tipo, this.estado).subscribe(
       (data) => {
         this.listavinculos = data['P_CUR_VINCULOS']
+        this.listavinculos.forEach(function(val){
+
+          this.fechai[x] = String(moment(val.FECHAINICIO).format()).substr(0,10)
+          x++
+          console.log(this.fechai)
+          val.FECHAFIN
+        })
         console.log(this.listavinculos);  
+>>>>>>> 191c64dc4c2954ffb4e23a04fa7bf153f0461b15
       }
       );
   }
