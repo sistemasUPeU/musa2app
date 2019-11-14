@@ -86,6 +86,7 @@ export const routingComponents = [
   AccionesComponent,
   VinculoComponent,
   CursosComponent,
+  OpcionesComponent,
   TarjetacComponent,
   PropietariosComponent,
   SoatComponent

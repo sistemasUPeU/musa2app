@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../Modelo/Usuario';
 import { Rol_Usuarios } from '../Modelo/Rol_Usuario';
 import { Ubigeo } from '../ComponentesVista/Configuracion/registrarubigeo/ubigeo';
-import { Vinculos, Vinculo, VincuRequi,Contador, Vinupd } from '../Modelo/Vinculos';
+import { Vinculos, Vinculo, VincuRequi,Contador, Vinupd, VincuRequis } from '../Modelo/Vinculos';
 import { Roles, RolesF } from '../Modelo/Roles';
 import { Conductores } from '../Modelo/Conductores';
 import { Propietarios, Propietario } from '../Modelo/Propietarios';
 import { Vehiculos } from '../Modelo/Vehiculos';
 import { Requisitos } from '../Modelo/Requisitos';
 import { Usuarios_Opciones } from '../Modelo/Usuarios_Opciones';
+import { empleado } from '../Modelo/empleados';
 
 @Injectable({
   providedIn: 'root'
@@ -25,14 +27,17 @@ export class ServiceService {
   Url4 = 'http://localhost:8081/usop/'
   roles:RolesF;
 
- 
+  deleteUbige(id: number){
+    return this.http.delete<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ id}`);
+
+  }
 
   searchUbigeo(codigo: number) {
     return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ codigo }`);
   }
 
   postUbigeo(ubigeo: Ubigeo): Observable<number> {
-    return this.http.post<number>(`${ environment.apiUrl }/add`, ubigeo);
+    return this.http.post<number>(`${ environment.apiUrl }/ubigeos/add`, ubigeo);
   }
   getAllRoles(): Observable<Roles[]> {
     return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/`);
@@ -53,6 +58,12 @@ export class ServiceService {
     return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`);
 
   }
+  ////////////////////EMPLEADOSSS
+  getEmple() : Observable<empleado[]> {
+    return this.http.get<empleado[]>(`${ environment.apiUrl }/empleado/lis`);
+  }
+
+
   ///// Vinculossss -------------- ///
   
   getVinculo(tipovinculo: number, estado:number) : Observable<Vinculos[]> {
@@ -81,7 +92,11 @@ export class ServiceService {
   getrequisitos_vinculo(idvinculo: number): Observable<Requisitos[]> {
     return this.http.get<Requisitos[]>(`${ environment.apiUrl }/vinrequi/`+idvinculo);
   }
-  
+  uptrequisitos(idvinculo:number,idrequisito:number){
+    var x = new VincuRequis(idvinculo,idrequisito);
+    console.log(x)
+    return this.http.put<VincuRequis>(`${ environment.apiUrl }/vinrequi/upt/`+ idrequisito, x);
+  }
   CreateVinRequi(tipo:number,vincurequi: VincuRequi) {
     return this.http.post<VincuRequi[]>(`${ environment.apiUrl }/vinrequi/add/` + tipo, vincurequi);
   }

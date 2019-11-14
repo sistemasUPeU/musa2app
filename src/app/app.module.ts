@@ -29,6 +29,8 @@ import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.componen
 import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component'
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
