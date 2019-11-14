@@ -166,10 +166,19 @@ export class VinculomodComponent implements OnInit {
       }
     );
    }
-   modifi_requis(estado:number,idvinculo:number,idrequisito:number){
-    this.vincurequi[this.cont].idvinculo = idvinculo
-    this.vincurequi[this.cont].idrequisito = idrequisito
+   modifi_requis(idvinculo:number,idrequisito:number){
+     console.log(idvinculo + " " + idrequisito)
+     this.service.uptrequisitos(idvinculo,idrequisito).subscribe( (data) =>{
+      alert("se actualizo")
+    })
+     /*let requi:VincuRequis
+     requi.idvinculo=idvinculo
+     requi.idrequisito=idrequisito
+     /*alert("hola")
+     console.log(requi)
+    /*this.vincurequi[0].idvinculo = idvinculo
+    this.vincurequi[0].idrequisito = idrequisito
     console.log(this.vincurequi)
-    this.cont++
+    this.cont++*/
    }
 }
