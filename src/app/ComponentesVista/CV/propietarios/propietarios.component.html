@@ -5,9 +5,9 @@
             <div class="col-md-6">
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
-                        <input type="text" class="form-control input-lg" placeholder="Buscar" />
+                        <input type="text" class="form-control input-lg" placeholder="Nombre" [(ngModel)]="propietario.nombre" />
                         <span class="input-group-btn">
-                            <button type="button">
+                            <button type="button" (click)="buscarnombre()">
                                 <i class="fas fa-search"></i>
                             </button>
                         </span>
@@ -39,31 +39,27 @@
      <!-- Body del modal -->
      <div class="modal-body">
             <div class="form-group">
-                    <label for="exampleInputEmail1">Nombres</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombres">
+                    <label for="exampleInputEmail1">Nombre</label>
+                    <select class="form-control" id="idpersona" aria-describedby="emailHelp" placeholder="Estado" [(ngModel)]="propietario.idpersona">
+                     <!--<option *ngFor="let persona of personas">{{persona.idpersona}}</option>--> 
+                      <option *ngFor="let persona of personas" [value]="persona.idpersona">{{persona.nombre}}</option>
+                 </select>
                 </div>
-        <div class="form-group">
-                 <label for="exampleInputEmail1">Apellidos</label>
-                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apellidos">
-          </div>   
-          <div class="form-group">
-                <label for="exampleInputEmail1">Telefono</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apellidos">
-         </div> 
          <div class="form-group">
-                <label for="exampleInputEmail1">Direccion</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Direccion">
-         </div>    
-         <div class="form-group">
-                <label for="exampleInputEmail1">DNI</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="DNI">
-         </div>               
+                <label for="exampleInputEmail1">T_Pro</label>
+                <select class="form-control" id="idpersona" aria-describedby="emailHelp" placeholder="Estado" 
+                [(ngModel)]="propietario.tipopropietario">
+                  <!--<option *ngFor="let persona of personas">{{persona.idpersona}}</option>--> 
+                   <option value="1">Accionista</option>
+                   <option value="2">Tercero</option>
+              </select>
+         </div>                
      </div>
      <!-- Fin del Body del modal -->
 
      <!-- Footer del modal -->
      <div class="modal-footer justify-content-center">
-       <button type="button" class="btn btn-primary waves-effect waves-light">Enviar
+       <button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal" (click)="crearPropietarios()">Enviar
          <i class="fa fa-paper-plane ml-1"></i>
        </button>
        <button type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancelar</button>
@@ -86,8 +82,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let propietario of propietarios">
-              <th scope="row">{{propietario.idpropietario}}</th>
+            <tr *ngFor="let propietario of propietarios, let i = index">
+              <th scope="row">{{i+1}}</th>
               <td>{{propietario.nombre}}</td>
               <td>{{propietario.apellido}}</td>
               <td>{{propietario.nrodoc}}</td>
@@ -95,7 +91,7 @@
               <td>{{propietario.estado_tipo}}</td>
               <td>
                     <a style="color: #FFB02F;size: 10px;" data-target="#editProp" data-toggle="modal">
-                        <i class="fas fa-pencil-alt"></i></a>
+                        <i class="fas fa-pencil-alt" (click)="getPropietarioId(propietario.idpropietario)"></i></a>
                     <a style="margin-left: 15px;color: red;"r (click)=delete(propietario)><i class="fas fa-trash"></i></a>
               </td>
             </tr>
@@ -120,35 +116,32 @@
      <!-- Final del header -->
 
      <!-- Body del modal -->
-     <div class="modal-body">
-            <div class="form-group">
-                    <label for="exampleInputEmail1">Nombres</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombres">
-                </div>
-        <div class="form-group">
-                 <label for="exampleInputEmail1">Apellidos</label>
-                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apellidos">
-          </div>   
-          <div class="form-group">
-                <label for="exampleInputEmail1">Telefono</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Apellidos">
-         </div> 
-         <div class="form-group">
-                <label for="exampleInputEmail1">Direccion</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Direccion">
-         </div>    
-         <div class="form-group">
-                <label for="exampleInputEmail1">DNI</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="DNI">
-         </div>               
-     </div>
+     
+     <div class="modal-body" *ngFor="let pro of prop">
+      <div class="form-group">
+              <label for="exampleInputEmail1">Nombre</label>
+              <select class="form-control" id="idpersona" aria-describedby="emailHelp" placeholder="Estado" [(ngModel)]="pro.idpersona">
+               <!--<option *ngFor="let persona of personas">{{persona.idpersona}}</option>--> 
+                <option *ngFor="let persona of personas" [value]="persona.idpersona">{{persona.nombre}}</option>
+           </select>
+          </div>
+   <div class="form-group">
+          <label for="exampleInputEmail1">T_Pro</label>
+          <select class="form-control" id="idpersona" aria-describedby="emailHelp" placeholder="Estado" 
+          [(ngModel)]="pro.tipopropietario">
+            <!--<option *ngFor="let persona of personas">{{persona.idpersona}}</option>--> 
+             <option value="1">Accionista</option>
+             <option value="2">Tercero</option>
+        </select>
+   </div>   
+   <button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal"(click)=modificarPropietario(pro)>Enviar
+      <i class="fa fa-paper-plane ml-1"></i>
+    </button>
+</div>
      <!-- Fin del Body del modal -->
 
      <!-- Footer del modal -->
      <div class="modal-footer justify-content-center">
-       <button type="button" class="btn btn-primary waves-effect waves-light">Enviar
-         <i class="fa fa-paper-plane ml-1"></i>
-       </button>
        <button type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancelar</button>
      </div>
    </div>

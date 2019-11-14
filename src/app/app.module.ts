@@ -26,6 +26,9 @@ import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propie
 import { OpcionesComponent } from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
 import { MantenimientosComponent } from './ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component';
+import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
+import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component'
+
 
 
 
@@ -52,7 +55,9 @@ import { MantenimientosComponent } from './ComponentesVista/Mantenimiento/manten
     PropietariosComponent,
     OpcionesComponent,
     TarjetacComponent,
-    MantenimientosComponent
+    MantenimientosComponent,
+    SoatComponent,
+    VehiculosComponent
   ],
   imports: [
     BrowserModule,

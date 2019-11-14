@@ -14,8 +14,6 @@ import { AgregarRuserComponent } from './ComponentesVista/Seguridad/agregar-ruse
 import { RolusComponent } from './ComponentesVista/Seguridad/rolus/rolus.component';
 import { UseropComponent } from './ComponentesVista/Seguridad/userop/userop.component';
 import { AgregarUseropComponent } from './ComponentesVista/Seguridad/agregar-userop/agregar-userop.component';
-
-
 import { EntradadeproductoComponent } from './ComponentesVista/GestionarAlmacen/entradadeproducto/entradadeproducto.component';
 import { AccionesComponent } from './ComponentesVista/Mantenimiento/acciones/acciones.component';
 import { VinculoComponent } from './ComponentesVista/CV/vinculo/vinculo.component';
@@ -28,6 +26,8 @@ import { OpcionesComponent} from './ComponentesVista/Seguridad/opciones/opciones
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
 
 import { MantenimientosComponent } from "./ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component";
+import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
+import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component'
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
@@ -43,7 +43,6 @@ const routesHome: Routes = [
   {path:'rolus', component:RolusComponent},
   {path: 'userop', component: UseropComponent},
   {path: 'agregar-userop', component: AgregarUseropComponent},
-  
   {path:'entradadeproducto', component:EntradadeproductoComponent},
   {path:'acciones', component:AccionesComponent},
   {path:'vinculo', component:VinculoComponent},
@@ -58,7 +57,9 @@ const routesHome: Routes = [
   {path:'cursos',component:CursosComponent},
   {path:'propietarios', component: PropietariosComponent},
   {path:'opciones',component:OpcionesComponent},
-  {path:'tarjetac',component:TarjetacComponent}
+  {path:'tarjetac',component:TarjetacComponent},
+  {path:'soat',component:SoatComponent},
+  {path: 'vehiculos', component:VehiculosComponent}
 ];
 
 const routes: Routes = [
@@ -89,6 +90,8 @@ export const routingComponents = [
   MantenimientosComponent,
   VinculoComponent,
   CursosComponent,
+  OpcionesComponent,
   TarjetacComponent,
-  PropietariosComponent
+  PropietariosComponent,
+  SoatComponent
 ];

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegistrarubigeoComponent } from './registrarubigeo.component';
+import { SoatComponent } from './soat.component';
 
-describe('RegistrarubigeoComponent', () => {
-  let component: RegistrarubigeoComponent;
-  let fixture: ComponentFixture<RegistrarubigeoComponent>;
+describe('SoatComponent', () => {
+  let component: SoatComponent;
+  let fixture: ComponentFixture<SoatComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegistrarubigeoComponent ]
+      declarations: [ SoatComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegistrarubigeoComponent);
+    fixture = TestBed.createComponent(SoatComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,8 +4,10 @@ import { ServiceService } from 'src/app/service/service.service';
 import { Conductores } from 'src/app/Modelo/Conductores';
 import { Vehiculos } from 'src/app/Modelo/Vehiculos';
 import { Propietarios } from 'src/app/Modelo/Propietarios';
-import { Vinculo, VincuRequi, Vinculos } from 'src/app/Modelo/Vinculos';
+import { Vinculo, VincuRequi, VincuRequis } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
+import * as moment from 'moment';
+import { empleado } from 'src/app/Modelo/empleados';
 
 @Component({
   selector: 'app-vinculomod',
@@ -13,17 +15,22 @@ import { Requisitos } from 'src/app/Modelo/Requisitos';
   styleUrls: ['./vinculomod.component.css']
 })
 export class VinculomodComponent implements OnInit {
-  
+  parts : String[];
   mostrarpropietario: boolean;
   mostrarconductor: boolean;
   id:number;
+  fechai:String;
+  fechaf:String;
+  cont:number
   constructor(private router: Router, private service: ServiceService, private activatedRoute:ActivatedRoute) { }
   
   ngOnInit() {
+    this.cont=0
     this.id=Number(localStorage.getItem("idvinculo"));
     this.getConductor();
     this.getPropietario();
     this.getVehiculo();
+    this.getempleado()
     this.titulo="MODIFICAR VINCULO";
     this.tipo = Number(localStorage.getItem("tipo"));
     this.Tipo();
@@ -34,14 +41,14 @@ export class VinculomodComponent implements OnInit {
   ///// Arraysss
 
   vinculos:Vinculo[];
-  vincurequi: VincuRequi[]; 
+  vincurequi: VincuRequis[]; 
   lisRequisitos: Requisitos[];
   lisConduc: Conductores[];
   lisVehic: Vehiculos[];
   lisPropie: Propietarios[];
-
+  lisEmple: empleado[];
   ////// Objetosssss
-  
+  date_inicio : Date;
 
   ////// Variablesssssss   
 
@@ -70,6 +77,15 @@ export class VinculomodComponent implements OnInit {
       }
     );
   }
+  /////// Listar Empleados
+  getempleado(){
+    this.service.getEmple().subscribe(
+      (data) => {
+        this.lisEmple = data
+        console.log(this.lisEmple)
+      }
+    )
+  }
 
   //////// Listar Vehiculossssssss
 
@@ -84,10 +100,10 @@ export class VinculomodComponent implements OnInit {
 
   ////////// Listar Requisitosssssss
 
-  getRequisito(id: number) {
-    this.service.getRequisitos(id).subscribe(
+  getRequisito(idvinculo: number) {
+    this.service.getrequisitos_vinculo(+idvinculo).subscribe(
       (data) => {
-        this.lisRequisitos = data['P_CUR_REQUISITOS'];
+        this.lisRequisitos = data['P_CUR_VINCULO_REQUISITO'];
         console.log(this.lisRequisitos)
       }
     );
@@ -121,26 +137,35 @@ export class VinculomodComponent implements OnInit {
     alert(v_tipo)*/
     if (this.tipo == 1) {
       this.titulo="MODIFICAR VINCULO CONDUCTOR";
-      this.getRequisito(Number(this.tipo));
+      this.getRequisito(Number(this.id));
       
     }
     if (this.tipo== 2) {
       this.titulo="MODIFICAR VINCULO PROPIETARIO";
-      this.getRequisito(Number(this.tipo));
+      this.getRequisito(Number(this.id));
     }
   }
   
   ///////// Llena datos a las cajassss 
 
    read(id: number){
+     var fecha;
     this.service.getVinculoid(id).subscribe(
       (data) => {
         this.vinculos = data['P_CUR_VINCULOS'];
+        var x = (String(moment(this.vinculos[0].fechainicio).format()).substr(0,10));
+        
+        this.fechai=x
+        this.fechaf=this.convertir_fecha(String(this.vinculos[0].fechafin));
         console.log(this.vinculos)
       }
     );
    }
-
+   convertir_fecha(string:String){
+     this.parts = string.split("/");
+     var fechaparsiada:String = this.parts[2]+"-"+this.parts[1]+"-"+this.parts[0];
+     return fechaparsiada
+   }
    //////// Modifica los datosssss
 
    modificar(vinculos: Vinculo){
@@ -152,5 +177,19 @@ export class VinculomodComponent implements OnInit {
       }
     );
    }
-   
+   modifi_requis(idvinculo:number,idrequisito:number){
+     console.log(idvinculo + " " + idrequisito)
+     this.service.uptrequisitos(idvinculo,idrequisito).subscribe( (data) =>{
+      alert("se actualizo")
+    })
+     /*let requi:VincuRequis
+     requi.idvinculo=idvinculo
+     requi.idrequisito=idrequisito
+     /*alert("hola")
+     console.log(requi)
+    /*this.vincurequi[0].idvinculo = idvinculo
+    this.vincurequi[0].idrequisito = idrequisito
+    console.log(this.vincurequi)
+    this.cont++*/
+   }
 }
