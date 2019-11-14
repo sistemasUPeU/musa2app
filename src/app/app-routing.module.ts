@@ -27,6 +27,7 @@ import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propie
 import { OpcionesComponent} from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
 
+import { MantenimientosComponent } from "./ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component";
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
@@ -48,6 +49,7 @@ const routesHome: Routes = [
   {path:'vinculo', component:VinculoComponent},
   {path:'vinculoopc', component:VinculoopcComponent},
   {path:'acciones/:tipo', component:AccionesComponent},
+  {path:'mantenimientos/:type', component:MantenimientosComponent},
   {path:'conductor',component:ConductorComponent},
   {path:'vinculomod', component:VinculomodComponent},
   {path:'vinculo', component:VinculoComponent},
@@ -84,6 +86,7 @@ export const routingComponents = [
   LoginComponent,
   HomeComponent,
   AccionesComponent,
+  MantenimientosComponent,
   VinculoComponent,
   CursosComponent,
   TarjetacComponent,

@@ -194,6 +194,38 @@
                 </ul>
               </div>
             </li>
+            <li class="sidebar-dropdown">
+              <a>
+                <i class="fa fa-globe"></i>
+                <span>Mantenimientos</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li routerLinkActive="active">
+                    <a [routerLink]="['/home/mantenimientos',0]">Mantenimientos preventivos</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a [routerLink]="['/home/mantenimientos',1]">Mantenimientos correctivos</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="sidebar-dropdown">
+              <a>
+                <i class="fa fa-globe"></i>
+                <span>Revisiones</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li routerLinkActive="active">
+                    <a [routerLink]="['/home/mantenimientos',2]">Revisiones Diarias</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a [routerLink]="['/home/mantenimientos',3]">Revisiones Tecnicas</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
