@@ -1,182 +1,209 @@
 <div id="caja1">
   <br>
-<h1>PERSONA  </h1> 
-<!-- Boton registrar rol -->
-<br>
-<!-- div parte inferior -->
-<div id="caja2">
-  <!-- div parte superior -->
-  <div id="caja3">
+  <h1>PERSONA </h1>
+  <!-- Boton registrar rol -->
+  <br>
+  <!-- div parte inferior -->
+  <div id="caja2">
+    <!-- div parte superior -->
+    <div id="caja3">
       <!-- Buscador -->
       <p id="p">Buscar por: </p>
       <div class="input-group" id="caja_search">
-          <span class="input-group-prepend">
-          </span>
-          <input type="number" class="form-control bg-transparent"  placeholder=" Ingrese Nro de documento" id="buscar1" [(ngModel)]="nrodoc" name="nrodoc"/>
-          <span (click)="searchPersona();" class="input-group-append">
-              <div class="input-group-text bg-transparent " id="buscar2">
-              <i class="fa fa-search"></i>
-              </div>
-          </span>
-      </div> 
-       <!-- Buscador Estado -->
-       <div id="estado">
-          <select class="custom-select" id="inputGroupSelect01" id="caja_estado">
-                  <option selected>Seleccione Estado</option>
-                  <option value="1">Activo</option>
-                  <option value="2">Desactivo</option>
-          </select>
+        <span class="input-group-prepend">
+        </span>
+        <input type="number" class="form-control bg-transparent" placeholder=" Ingrese Nro de documento" id="buscar1"
+          [(ngModel)]="nrodoc" name="nrodoc" />
+        <span (click)="searchPersona();" class="input-group-append">
+          <div class="input-group-text bg-transparent " id="buscar2">
+            <i class="fa fa-search"></i>
+          </div>
+        </span>
       </div>
-   <hr>
+      <!-- Buscador Estado -->
+      <div id="estado">
+        <select class="custom-select" id="inputGroupSelect01" id="caja_estado">
+          <option selected>Seleccione Estado</option>
+          <option value="1">Activo</option>
+          <option value="2">Desactivo</option>
+        </select>
+      </div>
+      <hr>
 
-      <button (click)= "Guardar()" class="btn btn-success"  data-toggle="modal" data-target="#RegisterRol" 
-      style="margin-top: -5px; margin-left: -10px;">Agregar</button>
-<hr>
-  <!-- Tabla -->
-  <table class="table" style="text-align: center; width: 900px; margin: 0 auto;">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col" style="width: 250px;">Nombre</th>
-              <th scope="col">Apellido</th>
-              <th scope="col">tipodoc</th>
-              <th scope="col">nrodoc</th>
-              <th scope="col">sexo</th>
-              <th scope="col">fechanac </th>
-              <th scope="col">direccion</th>
-              <th scope="col">estado</th>
-              <th scope="col">telefono</th>
-              <th scope="col" colspan="1" >Opciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let person of personasLista; let i = index">
-                  <th scope="row">{{ i + 1}}</th>
-                  <td>{{person.NOMBRE}}</td>
-                  <td>{{person.APELLIDO}}</td>
-                  <td>{{person.TIPODOC}}</td>
-                  <td>{{person.NRODOC}}</td>
-                  <td>{{person.SEXO}}</td>
-                  <td>{{person.FECHANAC}}</td>
-                  <td>{{person.DIRECCION}}</td>
-                  <td>{{person.ESTADO}}</td>
-                  <td>{{person.TELEFONO}}</td>
-                  <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"></i></td>
-                  <td ><i class="fas fa-edit" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarRol"></i></td>
-                </tr> 
-          </tbody>
-        </table>
-</div>    
-</div>
-<!-- Modal Registrar Rol -->
-<div class="modal fade" id="RegisterRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registrar Persona</h5>
-
-        <hr>
-        
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="form-row">
-              <div class="form-group col-md-5">
-                      <label for="inputZip" style="text-align: center;text-align: right;">CodUbigeo</label>
-                      <input type="text" class="form-control" id="inputUbigeo">
-                    </div> 
-                    <div class="form-group col-md-5">
-                          <label for="inputZip" style="text-align: center;text-align: right;">CodDepto</label>
-                          <input type="text" class="form-control" id="inputDepto">
-                        </div> 
-                        <div class="form-group col-md-5">
-                              <label for="inputZip" style="text-align: center;text-align: right;">Departamento</label>
-                              <input type="text" class="form-control" id="inputDepartamento">
-                            </div> 
-                            <div class="form-group col-md-5">
-                                  <label for="inputZip" style="text-align: center;text-align: right;">CodProv</label>
-                                  <input type="text" class="form-control" id="inputprov">
-                                </div>
-                                <div class="form-group col-md-5">
-                                      <label for="inputZip" style="text-align: center;text-align: right;">Provincia</label>
-                                      <input type="text" class="form-control" id="inputZip">
-                                    </div>
-                                    <div class="form-group col-md-5">
-                                          <label for="inputZip" style="text-align: center;text-align: right;">CodDist</label>
-                                          <input type="text" class="form-control" id="inputZip">
-                                        </div> 
-                                        <div class="form-group col-md-5">
-                                              <label for="inputZip" style="text-align: center;text-align: right;">Distrito</label>
-                                              <input type="text" class="form-control" id="inputZip">
-                                            </div>  
-                                            <div class="form-group col-md-5">
-                                                  <label for="inputZip" style="text-align: center;text-align: right;">Estado</label>
-                                                  <input type="text" class="form-control" id="inputZip">
-                                                </div>   
-                              </div>
-      <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">Registrar Ubigeo</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-      
-      </div>
+      <button class="btn btn-success" data-toggle="modal" data-target="#RegisterRol"
+        style="margin-top: -5px; margin-left: -10px;">Agregar</button>
+      <hr>
+      <!-- Tabla -->
+      <table class="table" style="text-align: center; width: 900px; margin: 0 auto;">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col" style="width: 250px;">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">tipodoc</th>
+            <th scope="col">nrodoc</th>
+            <th scope="col">sexo</th>
+            <th scope="col">fechanac </th>
+            <th scope="col">direccion</th>
+            <th scope="col">estado</th>
+            <th scope="col">telefono</th>
+            <th scope="col" colspan="1">Opcion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let person of personasLista; let i = index">
+            <th scope="row">{{ i + 1}}</th>
+            <td>{{person.NOMBRE}}</td>
+            <td>{{person.APELLIDO}}</td>
+            <td>{{person.TIPODOC == 1? 'DNI' : 'Carnet de Ext'}}</td>
+            <td>{{person.NRODOC }}</td>
+            <td>{{person.SEXO}}</td>
+            <td>{{person.FECHANAC | date: 'dd/MM/yyyy'}}</td>
+            <td>{{person.DIRECCION}}</td>
+            <td>{{person.ESTADO == 1? 'Activo' : 'NoActivo'}}</td>
+            <td>{{person.TELEFONO}}</td>
+            <button class="btn btn-sm btn-info" ><i class="fas fa-edit"
+                style=" margin-left: -0px;" data-toggle="modal" data-target="#ModificarRol"></i></button>
+            <button class="btn btn-sm btn-danger" (click)="Eliminar(person.IDPERSONA);"><i class="fas fa-trash-alt"
+                style=" margin-left: +2px;"></i></button>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-</div>
-<!-- Modal Modificar Rol -->
-<div class="modal fade" id="ModificarRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">MODIFICAR UBIGEO</h5>
-        <hr>
-
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <!-- Modal Registrar persona -->
+  <div class="modal fade" id="RegisterRol" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">REGISTRAR PERSONA</h5>
+            <hr>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="form-row">
+            <form #f="ngForm" (ngSubmit)="buscar(f)">
+              <div class="row col-md-12">
+                <div class="form-group col-md-5">
+                  <label for="inputZip" style="text-align: center;text-align: right;">Nombre</label>
+                  <input type="text" class="form-control" name="nombre" ngModel required #nombre1="ngModel">
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="inputZip" style="text-align: center;text-align: right;">Apellido</label>
+                  <input type="text" class="form-control" name="apellido" ngModel required #apellido1="ngModel"
+                    id="inputUbigeo">
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="inputZip" style="text-align: center;text-align: right;">TipoDoc</label>
+                  <input type="text" class="form-control" name="tipodoc" ngModel required #tipodoc1="ngModel"
+                    id="inputUbigeo">
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="inputZip" style="text-align: center;text-align: right;">NroDoc</label>
+                  <input type="text" class="form-control" name="nrodoc" ngModel required #nrodoc1="ngModel"
+                    id="inputUbigeo">
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="inputZip" style="width: auto; ">Sexo</label>
+                  <input type="text" class="form-control" name="sexo" ngModel required #sexo1="ngModel">
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="inputZip">FechaNac</label>
+                  <input type="text" class="form-control" name="fechanac" ngModel required #fechanac1="ngModel">
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="inputZip">Direccion</label>
+                  <input type="text" class="form-control" name="direccion" ngModel required #direccion1="ngModel">
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="inputZip">Estado</label>
+                  <input type="text" class="form-control" name="estado" ngModel required #estado1="ngModel">
+                </div>
+                <div class="form-group col-md-5">
+                    <label for="inputZip">Telefono</label>
+                    <input type="text" class="form-control" name="telefono" ngModel required #telefono1="ngModel">
+                  </div>
                   <div class="form-group col-md-5">
-                          <label for="inputZip" style="text-align: center;text-align: right;">CodUbigeo</label>
-                          <input type="text" class="form-control" id="inputUbigeo">
-                        </div> 
-                        <div class="form-group col-md-5">
-                              <label for="inputZip" style="text-align: center;text-align: right;">CodDepto</label>
-                              <input type="text" class="form-control" id="inputDepto">
-                            </div> 
-                            <div class="form-group col-md-5">
-                                  <label for="inputZip" style="text-align: center;text-align: right;">Departamento</label>
-                                  <input type="text" class="form-control" id="inputDepartamento">
-                                </div> 
-                                <div class="form-group col-md-5">
-                                      <label for="inputZip" style="text-align: center;text-align: right;">CodProv</label>
-                                      <input type="text" class="form-control" id="inputprov">
-                                    </div>
-                                    <div class="form-group col-md-5">
-                                          <label for="inputZip" style="text-align: center;text-align: right;">Provincia</label>
-                                          <input type="text" class="form-control" id="inputZip">
-                                        </div>
-                                        <div class="form-group col-md-5">
-                                              <label for="inputZip" style="text-align: center;text-align: right;">CodDist</label>
-                                              <input type="text" class="form-control" id="inputZip">
-                                            </div> 
-                                            <div class="form-group col-md-5">
-                                                  <label for="inputZip" style="text-align: center;text-align: right;">Distrito</label>
-                                                  <input type="text" class="form-control" id="inputZip">
-                                                </div>  
-                                                <div class="form-group col-md-5">
-                                                      <label for="inputZip" style="text-align: center;text-align: right;">Estado</label>
-                                                      <input type="text" class="form-control" id="inputZip">
-                                                    </div>   
-                                  </div>
-          <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
- 
+                      <label for="inputZip">IdUbigeo</label>
+                      <input type="text" class="form-control" name="idubigeo" ngModel required #idubigeo1="ngModel">
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-danger">REGISTRAR UBIGEO</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
 
-        
-        
+
+
+
+
+  <!-- Modal Modificar Rol -->
+  <div class="modal fade" id="ModificarRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">MODIFICAR PERSONA</h5>
+          <hr>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-5">
+            <label for="inputZip" style="text-align: center;text-align: right;">Nombre</label>
+            <input type="text" class="form-control" id="inputUbigeo">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputZip" style="text-align: center;text-align: right;">Apellido</label>
+            <input type="text" class="form-control" id="inputDepto">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputZip" style="text-align: center;text-align: right;">TipoDoc</label>
+            <input type="text" class="form-control" id="inputDepartamento">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputZip" style="text-align: center;text-align: right;">NroDoc</label>
+            <input type="text" class="form-control" id="inputprov">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputZip" style="text-align: center;text-align: right;">Sexo</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputZip" style="text-align: center;text-align: right;">FechaNac</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputZip" style="text-align: center;text-align: right;">Distrito</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputZip" style="text-align: center;text-align: right;">Estado</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputZip" style="text-align: center;text-align: right;">Telefono</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputZip" style="text-align: center;text-align: right;">IdUbigeo</label>
+            <input type="text" class="form-control" id="inputZip">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Registrar Ubigeo</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonaService } from 'src/app/service/persona.service';
 
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-registrarpersona',
@@ -8,9 +10,13 @@ import { PersonaService } from 'src/app/service/persona.service';
   styleUrls: ['./registrarpersona.component.css']
 })
 export class RegistrarpersonaComponent implements OnInit {
-persona: Persona;
-personasLista: Persona[] = [];
-nrodoc
+   
+  personasLista: Persona[] = [];
+  nrodoc: number;
+  idpersonas: String;
+  Personas: Persona[];
+  router: any;
+  service: any;
   constructor(private personaService:PersonaService) { }
 
   ngOnInit() {
@@ -34,5 +40,28 @@ searchPersona(){
   } else {
     this.getAllPersona();
 }
+}
+ buscar(f: NgForm){
+   this.personaService.postPersonas(f.value).subscribe( response => {
+     console.log(response)
+  }, error => {
+ console.log(error)
+   })
+   alert("Se registro persona Correctamente....")
+ }
+ Eliminar(id: number){
+   console.log(id)
+   this.personaService.deletePerson(id).subscribe(data =>{
+alert('Registro Eliminado Correctamente.....!!');
+console.log(data)
+this.ngOnInit();
+   })
+//  }
+//  Actualizar(pers: Persona) {
+  // this.service.updatePersona(pers).subscribe((data) => {
+    // this.per = data;
+    // alert('Registro modificado correctamente...!');
+    // this.ngOnInit();
+  // })
 }
 }
