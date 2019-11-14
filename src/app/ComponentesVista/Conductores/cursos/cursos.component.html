@@ -1,0 +1,119 @@
+<div id="caja1">
+    <br>
+  <h1>Cursos</h1>
+  <!-- Boton registrar curso -->
+  <button id="register" data-toggle="modal" data-target="#RegisterUsuario">
+    <i class="fas fa-user-plus" ></i>
+    <p style="margin-top: -15px;  margin-left: -20px;" >Registrar Cursos</p>
+</button>
+<br>
+<br>
+  <!-- modal registar curso-->
+  <div class="modal fade" id="RegisterUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">REGISTRAR CURSO</h5>
+          <hr>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div  style="height:300px;width:250px;border:1px solid black"class="modal-body">
+          <input [(ngModel)]="curso.nombrecurso" placeholder="Nombre"><br><br>
+          <input [(ngModel)]="curso.nombreinstitucion" placeholder="Institucion"><br><br>
+          <input [(ngModel)]="curso.lugar" placeholder="Lugar"><br><br>
+          <input [(ngModel)]="curso.fechainicio" placeholder="Fecha Fnicio" type="date"><br><br>
+          <input [(ngModel)]="curso.fechafin" placeholder="Fecha Fin" type="date">
+
+     
+      
+       
+        </div>
+        <div class="modal-footer">
+          <button type="button"   class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <button type="button" (click)="crear(curso)" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- div parte inferior -->
+  <div id="caja2" >
+    <!-- div parte superior -->
+    <div id="caja3">
+        <!-- Buscador -->
+        <p id="p">Buscar: </p>
+        <div class="input-group" id="caja_search">
+            <span class="input-group-prepend">
+            </span>
+            <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre" id="buscar1" />
+            <span class="input-group-append">
+                <div class="input-group-text bg-transparent " id="buscar2">
+                <i class="fa fa-search"></i>
+                </div>
+            </span>
+        </div>
+     
+        <!-- Boton Limpiar -->
+        <button type="button" class="btn btn-success" id="limpiar">Limpíar</button>
+    </div>
+    <br>
+    <!-- Tabla -->
+    <table class="table" style="text-align: center; width: 1030px; margin: 0 auto;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" style="width: 250px;">Nombre</th>
+                <th scope="col" style="width: 250px;">Institucion </th>
+                <th scope="col">Lugar</th>
+                <th scope="col">Fecha Inicio</th>
+                <th scope="col">Fecha Fin</th>
+                <th scope="col">Estado</th>
+                <th scope="col" colspan="2" >Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cur of cursos; let i = index">
+                <td scope="col">{{i+1}}</td>
+                <td scope="col" style="width: 250px;">{{cur.nombrecurso}}</td>
+                <td scope="col" style="width: 250px;"> {{cur.nombreinstitucion}}</td>
+                <td scope="col">{{cur.lugar}}</td>
+                <td scope="col">{{cur.fechainicio}}</td>
+                <td scope="col">{{cur.fechafin}}</td>
+                <td scope="col">{{cur.estado_tipo}}</td>
+                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: -50px;" (click)="upt(cur)"></i><i class="fas fa-edit" style="color: blue; margin-left: -30px;" (click)="read(cur.idcursos)"data-toggle="modal" data-target="#modaledit"></i></td>
+              </tr>
+            </tbody>
+          </table>
+
+
+          <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Curso</h5>
+                    <hr>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div  style="height:300px;width:250px;border:1px solid black"class="modal-body">
+                    <input [(ngModel)]="curs.nombrecurso" placeholder="Nombre"><br><br>
+                    <input [(ngModel)]="curs.nombreinstitucion" placeholder="Institucion"><br><br>
+                    <input [(ngModel)]="curs.lugar" placeholder="Lugar"><br><br>
+                    <input [(ngModel)]="curs.fechainicio" placeholder="Fecha Fnicio" type="date"><br><br>
+                    <input [(ngModel)]="curs.fechafin" placeholder="Fecha Fin" type="date">
+          
+               
+                
+                 
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button"   class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="button" (click)="edit(curs)" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+  </div>

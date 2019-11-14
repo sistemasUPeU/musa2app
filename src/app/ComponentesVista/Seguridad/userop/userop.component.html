@@ -1,0 +1,88 @@
+<div id="caja1">
+    <br>
+<h1>OPCIONES - USUARIOS</h1> 
+<!-- Boton registrar user -->
+<button id="register"  (click)="Agregar()">
+    <i class="fas fa-user-plus" ></i>
+    <p style="margin-top: -15px;  margin-left: -20px;" >Registrar Opción - Usuario</p>
+</button>
+<br>
+<br>
+<!-- div parte superior -->
+<div id="caja2">
+    <!-- Buscador -->
+    <p id="p">Buscar por: </p>
+    <div class="input-group" id="caja_search">
+        <span class="input-group-prepend">
+        </span>
+        <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre y Apellido" id="buscar1" [(ngModel)]="usuario_opciones.login"/>
+        <span class="input-group-append">
+            <div class="input-group-text bg-transparent " id="buscar2">
+            <i class="fa fa-search" (click)="getUsOpN()"></i>
+            </div>
+        </span>
+    </div> 
+    <!-- Buscador Estado -->
+    <div id="estado">
+        <select class="custom-select" id="inputGroupSelect01" id="caja_estado" [(ngModel)]="usuario_opciones.estado">
+                <option selected>Seleccione Estado</option>
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+        </select>
+        <button id="listar" type="button" class="btn btn-info"  (click)="getUsOpE()" ><i class="fas fa-check"></i></button>    
+    </div>
+    <!-- Boton Limpiar -->
+    <button type="button" class="btn btn-success" id="limpiar"  (click)="limpiar()">Limpíar</button>
+
+    <br><br>
+    <!-- Tabla -->
+    <table class="table" style="text-align: center;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" >Usuarios</th>
+                <th scope="col">Opción</th>
+                <th scope="col">Estado</th>
+                <th scope="col" colspan="2">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let usop of listarusop" >
+                <td scope="row">1</td>
+                <td>{{usop.login}}</td>
+                <td>{{usop.nombre}}</td>
+                <td>{{usop.estado}}</td>
+                <td ><i class="far fa-check-circle" style="color: green; margin-left: 20px;"(click)="ActivarUsr(usop)"></i></td>
+                 <td ><i class="far fa-times-circle" style="color: red; margin-left: -60px;" (click)="EliminarOpc(usop)"></i></td>
+                </tr>
+            </tbody>
+          </table>
+
+</div>
+       <!-- Modal Modificar Usuario -->
+<div class="modal fade" id="ModificarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">MODIFICAR USUARIO</h5>
+        <hr>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <label for="">Ingrese Estado: </label>
+         <select class="custom-select" id="inputGroupSelect01"  id="user" [(ngModel)]="usuario_opciones.estado">
+          <option selected>Seleccione Estado</option>
+          <option value="1">Activo</option>
+          <option value="0">Inactivo</option>
+  </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="ActualizarUsOp(usuario_opciones)">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>   
+</div>

@@ -28,8 +28,8 @@
     margin-left: 340px;
 }
 #limpiar{
-    margin-top: -62px;
-    margin-left: 640px;
+    margin-top: -102px;
+    margin-left: 660px;
     width: 150px;
     border-radius: 50px;
 }
@@ -44,5 +44,10 @@
     margin-top: -40px;
 }
 #caja3{
-    margin-left: 180px;
+    margin-left: 130px;
+}
+#listar{
+    margin-top: -61px;
+    margin-left: 609px;
+    width: 40px;;
 }

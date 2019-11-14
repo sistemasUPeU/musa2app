@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PersonaService } from 'src/app/service/persona.service';
 
 import { NgForm } from '@angular/forms';
+import { Personas } from 'src/app/Modelo/Personas';
 
 
 @Component({
@@ -10,7 +11,10 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./registrarpersona.component.css']
 })
 export class RegistrarpersonaComponent implements OnInit {
-   
+ persona: Personas= new Personas();
+  id: number
+
+  per: Personas = new Personas();
   personasLista: Persona[] = [];
   nrodoc: number;
   idpersonas: String;
@@ -56,12 +60,5 @@ alert('Registro Eliminado Correctamente.....!!');
 console.log(data)
 this.ngOnInit();
    })
-//  }
-//  Actualizar(pers: Persona) {
-  // this.service.updatePersona(pers).subscribe((data) => {
-    // this.per = data;
-    // alert('Registro modificado correctamente...!');
-    // this.ngOnInit();
-  // })
 }
 }

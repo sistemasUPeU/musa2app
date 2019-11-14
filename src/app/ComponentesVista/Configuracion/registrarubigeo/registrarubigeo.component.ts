@@ -76,20 +76,5 @@ Eliminar(id: number){
   })
 
  }
- myvalue;
- editkardex(i){
-this.ubigeo.IDUBIGEO = this.ubigeosLista[i].IDUBIGEO;
-this.ubigeo.CODUBIGEO = this.ubigeosLista[i].CODUBIGEO;
-this.ubigeo.CODDEPTO = this.ubigeosLista[i].CODDEPTO;
-this.ubigeo.DEPARTAMENTO = this.ubigeosLista[i].DEPARTAMENTO;
-this.ubigeo.CODPROV = this.ubigeosLista[i].CODPROV;
-this.ubigeo.PROVINCIA = this.ubigeosLista[i].PROVINCIA;
-this.ubigeo.CODDIST = this.ubigeosLista[i].CODDIST;
-this.ubigeo.DISTRITO = this.ubigeosLista[i].DISTRITO;
-this.ubigeo.ESTADO = this.ubigeosLista[i].ESTADO;
-this.myvalue = i;
- }
- updatekardex(): void{
-console.log(this.ubigeo)
- }
+
   }

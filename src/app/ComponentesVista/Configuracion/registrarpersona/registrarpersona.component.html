@@ -160,7 +160,7 @@
         <div class="form-row">
           <div class="form-group col-md-5">
             <label for="inputZip" style="text-align: center;text-align: right;">Nombre</label>
-            <input type="text" class="form-control" id="inputUbigeo">
+            <input type="text" class="form-control" [(ngModel)]="per.nombre">
           </div>
           <div class="form-group col-md-5">
             <label for="inputZip" style="text-align: center;text-align: right;">Apellido</label>
@@ -200,7 +200,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Registrar Ubigeo</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="edit(per)">Guardar</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
 
         </div>

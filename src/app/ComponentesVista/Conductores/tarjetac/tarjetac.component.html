@@ -1,0 +1,155 @@
+<div id="caja1">
+    <br>
+<h1>TARJETAS DE CIRCULACION</h1> 
+<!-- Boton registrar user -->
+<button id="register" data-toggle="modal" data-target="#RegisterUsuario">
+    <i class="fas fa-user-plus" ></i>
+    <p style="margin-top: -15px;  margin-left: -20px;" >Registrar TARJETA C</p>
+</button>
+<br>
+<br>
+<!-- div parte superior -->
+<div id="caja2">
+    <!-- Buscador -->
+    <p id="p">Buscar por Nro.Documento: </p>
+    <div class="input-group" id="caja_search">
+        <span class="input-group-prepend">
+        </span>
+        <input class="form-control bg-transparent" id="buscar1" [(ngModel)]="tarjs.nrodocumento"  placeholder=" Ingrese Nro Documento" >
+        <span class="input-group-append">
+            <div  class="input-group-text bg-transparent " id="buscar2">
+            <i  (click)="Buscar()" class ="fa fa-search"></i>
+            </div>
+        </span>
+    </div> 
+    <!-- Buscador por Estado -->
+    <div id="rol">
+        <select class="custom-select" [(ngModel)]="t.estado" (click)="Estado()" id="inputGroupSelect01" id="caja_rol">
+                
+                <option>Seleccione Opcion</option>
+                <option value=1 >Vigente</option>
+                <option value=0>No Vigente</option>
+                <option value=2>Por Recoger</option>
+        </select>
+    </div>
+    <!-- Boton Limpiar -->
+    <button type="button" class="btn btn-success" id="limpiar" (click)="Limpiar()">Limpíar</button>
+
+    <br><br>
+    <!-- Tabla -->
+    <table class="table" style="text-align: center;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" style="width: 250px;">NRO.DOCUMENTO</th>
+                <th scope="col">FECHA EMISION</th>
+                <th scope="col">FECHA VENCIMIENTO</th>
+                <th scope="col">ESTADO</th>
+                <th scope="col">VEHICULO</th>
+                <th scope="col" colspan="2" style="width: 200px;">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tarjetac of tarjetacs; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{tarjetac.nrodocumento}}</td>
+                    <td>{{tarjetac.fechaemision | date : "dd/MM/yyyy"}}</td>
+                    <td>{{tarjetac.fechavencimiento | date : "dd/MM/yyyy"}}</td>
+                    <td>{{tarjetac.estado}}</td>
+                    <td>{{tarjetac.idvehiculo}}</td>
+                    <td ><i class="fas fa-trash-alt" (click)="Eliminar(tarjetac)" style="color: red; margin-left: 20px;"></i></td>
+                <td ><i class="fas fa-edit" (click)="Actualizar(tarjetac)" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarUsuario"></i></td>
+                
+              </tr>
+            
+            </tbody>
+          </table>
+
+</div>
+          
+</div>
+
+<!-- Modal Registrar Usuario -->
+<div class="modal fade" id="RegisterUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Registrar Tarjeta de Circulacion</h5>
+              <hr>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+             <br>
+             <label for="">Nro Documento: </label>
+             <input id="user" type="text" class="form-control" placeholder="Nro.Documento" [(ngModel)]="tarjetac.nrodocumento" >
+              <br>
+              <label for="">Fecha de emision: </label>
+               <input id="user" type="text" class="form-control" placeholder="AAAA-MM-DD" [(ngModel)]="tarjetac.fechaemision" >
+               <br>
+               <label for="">Fecha de Vencimiento: </label>
+               <input id="user" type="text" class="form-control" placeholder="AAAA-MM-DD" [(ngModel)]="tarjetac.fechavencimiento" >
+               <br>
+               <label for="">Seleccione Estado: </label>
+               <select class="custom-select" id="inputGroupSelect01" id="caja_rol" [(ngModel)]="tarjetac.estado" style="margin-left: 52px;">
+                    
+                     <option value=1>Activo</option>
+                     <option value=0>Inactivo</option>
+                     <option value=2>Por entregar</option>
+              </select>
+                 <br>
+                 <br>
+               <label for="">Padron del Vehiculo</label>
+               <input id="user"  type="text" class="form-control" placeholder="Placa del Vehiculo" [(ngModel)]="tarjetac.idvehiculo" >
+               
+              
+           
+            </div>
+            <div class="modal-footer">
+              <button type="button"   class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+              <button type="button" (click)="creartarjetac()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- Modal Modificar Usuario -->
+<div class="modal fade" id="ModificarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modificar Tarjeta de Circulacion</h5>
+              <hr>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <label for="">Nro Documento: </label>
+              <input id="user" type="text" class="form-control" name="nrodocumento" [(ngModel)]="tarj.nrodocumento" >
+               <br>
+               <label for="">Fecha de emision: </label>
+                <input id="user" type="text"  class="form-control"  name="fechaemision" [(ngModel)]="tarj.fechaemision" >
+                <br>
+                <label for="">Fecha de Vencimiento: </label>
+                <input id="user" type="text" class="form-control"   name="fechavencimiento" [(ngModel)]="tarj.fechavencimiento" >
+                <br>
+                <label for="">Seleccione Estado: </label>
+                <select class="custom-select" id="inputGroupSelect01" id="caja_rol" [(ngModel)]="tarj.estado" name="estado" style="margin-left: 52px;">
+                     
+                      <option value=1>Activo</option>
+                      <option value=0>Inactivo</option>
+                      <option value=2>Por entregar</option>
+               </select>
+                  <br>
+                  <br>
+                <label for="">Padron del Vehiculo</label>
+                <input id="user"  type="text" class="form-control" name="idvehiculo" placeholder="Placa del Vehiculo" [(ngModel)]="tarj.idvehiculo" >
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-primary" (click)="Editar(tarj)" data-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>

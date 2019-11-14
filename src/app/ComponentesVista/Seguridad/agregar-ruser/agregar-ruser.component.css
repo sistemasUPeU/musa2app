@@ -1,0 +1,41 @@
+#left{
+    width: 570px;
+    margin-top: 20px;
+    margin-left: -70px;
+    float: left;
+}
+#right{
+    float: right;
+    width: 520px;
+    position: fixed;
+    margin-left: 550px;
+}
+#p{
+    font-size: 20px;
+    margin-left: -10px;
+}
+#caja_search{
+    margin-top: -37px;
+    margin-left: 110px;
+    width: 300px;
+}
+#button{
+    width: 200px;
+    margin: auto;
+    border-radius: 20px;
+}
+#clear{
+    width: 70px;
+    height: 36px;
+    margin-top: -61px;
+    margin-left: 420px;;
+}
+#back{
+    width: 40px;
+    font-size: 35px;
+    margin-top: 30px;;
+    margin-left: -70px;
+}
+#let{
+    margin-top: -45px;
+}

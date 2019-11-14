@@ -1,0 +1,101 @@
+    <div id="paso1" style="display:block;">
+    <br>
+    <h1> {{titulo}}</h1>
+    <!-- Boton registrar rol -->
+
+    <br>
+    <br>
+    <!-- div parte inferior -->
+    <div id="caja2">
+        
+        <!-- div parte superior -->
+        <div id="caja3" *ngIf="paso1">
+            <br>
+            <br>
+            <!-- Buscador -->
+            <div class="form-group">
+                <select class="form-control" id="tipo" (click)="Tipo()" [(ngModel)]="vin.tipovinculo" name="tipovinculo">
+                    <option >Tipo Vinculo</option>
+                    <option value='1'>Conductores</option>
+                    <option value='2'>Propietarios</option>
+                </select>
+            </div>
+            
+            <div id="forconductor" style="display:block;">
+                <form>
+                    <div>
+                        <label for="exampleInputEmail1">Conductor</label>
+                        <select class="form-control" [(ngModel)]="vin.idconductor"  name="idconductor">
+                            <option>Conductor</option>
+                            <option *ngFor="let con of lisConduc" [value]="con.IDCONDUCTOR">{{con.NOMBRE}}</option>
+                        </select>
+                    </div>
+
+                </form>
+            </div>
+            <div id="forpropietario" style="display:none;">
+                <form>
+                    <div>
+                        <label for="exampleInputPassword1">Propietario</label>
+                        <select class="form-control" [(ngModel)]="vin.idpropietario" name="idpropietario">
+                            <option>Propietario</option>
+                            <option *ngFor="let propietario of lisPropie" [value]="propietario.IDPROPIETARIO">
+                                {{propietario.NOMBRE}}</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Vehiculo</label>
+                        <select class="form-control" [(ngModel)]="vin.idvehiculo" name="idvehiculo">
+                            <option>Vehiculo</option>
+                            <option *ngFor="let vehiculo of lisVehic" [value]="vehiculo.IDVEHICULO">{{vehiculo.PLACA}}
+                            </option>
+                        </select>
+                    </div>
+                    <br>
+                </form>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Descripcion</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="..." [(ngModel)]="vin.descripcion" name="descripcion">
+            </div>
+            <div class="form-group">
+                    <label for="exampleInputPassword1">Empleado</label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="empleado" [(ngModel)]="vin.idempleado" name="fechainicio">
+                </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Fecha Inicio</label>
+                <input type="date" class="form-control" id="fechai" placeholder="Password" [(ngModel)]="fechai" name="fechainicio">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Fecha Fin</label>
+                <input type="date" class="form-control" id="fechaf" placeholder="Password" [(ngModel)]="vin.fechafin" name="fechafin">
+            </div>
+        </div>
+        <br>
+        
+    </div>
+
+    
+    <div class="preloader" *ngIf="loading"> </div>
+    <div id="paso2"  *ngIf="cargar">
+            <li ><a id="back"  (click)="regresar()">atras</a></li>
+        <br>
+            <h3>REQUISITOS :</h3>
+            <br>
+        <div>
+            <div *ngFor="let requi of lisRequisitos">
+                <br>
+                <h4>{{ requi.NOMBRE }}</h4><br>
+                <input type="file">
+                <br>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" (click)="crear()">Guardar</button>
+    </div>
+    <br>
+    <br>
+    
+    <button id="next" type="submit" class="btn btn-primary" (click)="siguiente()" *ngIf="paso1">siguiente</button>

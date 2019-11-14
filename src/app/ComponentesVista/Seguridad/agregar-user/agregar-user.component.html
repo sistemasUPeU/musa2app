@@ -1,0 +1,59 @@
+<button id="back" style="border: none; background-color: white;" (click)="atras()"><i class="fas fa-arrow-circle-left"></i></button>
+<h1 id="let">AGREGAR USUARIO</h1>
+<header id="left">
+  <!-- Buscador -->
+  <p style="font-size: 20px;"> Seleccione Persona: </p>
+  <br>
+  <div style="margin-left: 40px; margin-top: -10px;">
+  <p id="p">Buscar por: </p>
+  <div class="input-group" id="caja_search">
+      <span class="input-group-prepend">
+      </span>
+      <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre y Apellido" id="buscar1" [(ngModel)]="usuario.nombre"/>
+      <span class="input-group-append">
+          <div class="input-group-text bg-transparent " id="buscar2">
+          <i class="fa fa-search" (click)="getPerN()"></i>
+          </div>
+      </span>
+  </div>
+  <button type="button" class="btn btn-success" id="clear"><i class="fas fa-eraser" (click)="limpiar()"></i></button>
+  
+  <br>
+  </div>
+  <table class="table" style="text-align: center;">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" style="width: 250px;">Nombres y Apellidos</th>
+        <th scope="col" colspan="2">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of listaruserper" >
+        <td scope="row">{{user.idpersona}}</td>
+        <td>{{user.nombre}} {{user.apellido}}</td>
+        <td ><i class="fas fa-user-plus" style="color: green; margin-left: 20px;" (click)="ObtID(user)"></i></td> </tr>
+    </tbody>
+  </table>
+</header>
+
+<aside id="right" >
+    <br>
+    <h3>Ingrese Datos</h3>
+    <div class="modal-body">
+        <label for="">Seleccione un Nombre: </label>
+        <input  id="name" type="text" class="form-control" placeholder=" Name" >
+        <br>
+       <label for="">Ingrese un Usuario: </label>
+        <input id="user" type="text" class="form-control" placeholder=" Usuario" [(ngModel)]="usuario.login">
+        <br>
+        <label for="">Ingrese Contraseña: </label>
+         <input id="user" type="password" class="form-control" placeholder=" Contraseña" [(ngModel)]="usuario.password">
+         <br>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="button">Limpiar</button>
+        <button type="button" class="btn btn-primary" id="button" (click)="Save()">Guardar</button>
+      </div>
+</aside>
