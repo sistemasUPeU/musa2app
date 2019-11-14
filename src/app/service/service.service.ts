@@ -55,7 +55,11 @@ export class ServiceService {
   }
   ///// Vinculossss -------------- ///
   
+<<<<<<< HEAD
+  getVinculo(tipovinculo: number,estado:number) : Observable<Vinculos[]> {
+=======
   getVinculo(tipovinculo: number, estado:number) : Observable<Vinculos[]> {
+>>>>>>> 191c64dc4c2954ffb4e23a04fa7bf153f0461b15
     return this.http.get<Vinculos[]>(`${ environment.apiUrl }/vinculos/lis/`+tipovinculo+"/"+estado);
   }
 

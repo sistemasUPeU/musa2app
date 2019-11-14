@@ -15,7 +15,7 @@ export class Vinculo {
   idconductor: number;  
   descripcion: string;
   fechainicio: Date;
-  fechafin: Date;
+  fechafin: string;
   usercreate: string;
   datecreate: Date;
   usermodify: string;
