@@ -26,6 +26,7 @@ import { CursosComponent } from './ComponentesVista/Conductores/cursos/cursos.co
 import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propietarios.component'
 import { OpcionesComponent} from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
+import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
 
 
 const routesHome: Routes = [
@@ -56,7 +57,8 @@ const routesHome: Routes = [
   {path:'cursos',component:CursosComponent},
   {path:'propietarios', component: PropietariosComponent},
   {path:'opciones',component:OpcionesComponent},
-  {path:'tarjetac',component:TarjetacComponent}
+  {path:'tarjetac',component:TarjetacComponent},
+  {path:'soat',component:SoatComponent}
 ];
 
 const routes: Routes = [
@@ -87,5 +89,6 @@ export const routingComponents = [
   VinculoComponent,
   CursosComponent,
   TarjetacComponent,
-  PropietariosComponent
+  PropietariosComponent,
+  SoatComponent
 ];

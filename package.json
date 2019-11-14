@@ -24,7 +24,11 @@
     "moment": "^2.24.0",
     "ngx-webstorage-service": "^4.1.0",
     "rxjs": "~6.4.0",
+<<<<<<< HEAD
+    "sweetalert2": "^9.3.4",
+=======
     "sweetalert2": "^9.3.5",
+>>>>>>> 191c64dc4c2954ffb4e23a04fa7bf153f0461b15
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

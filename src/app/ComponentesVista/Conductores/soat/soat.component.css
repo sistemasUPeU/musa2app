@@ -19,8 +19,8 @@
     margin-left: -50px;
 }
 #caja_rol{
-   
-    width: 200px;
+    margin-left: 20px;
+    width: 250px;
     border: solid gray 1px;
 }
 #rol{
@@ -53,12 +53,8 @@
     margin-top: -40px;
 }
 #user{
-    
-    width: 200px; 
-    
+    margin-top: -38px;
+    width: 250px; 
+    margin-left: 185px;
     border: solid gray 1px;
-}
-#modal-body{
-    width: 650px;
-    margin-left: 10px; 
 }
