@@ -14,7 +14,7 @@ export class VinculoComponent implements OnInit {
   /////// Arraysss
 
   listavinculos:Vinculos[];
-
+  
 
   /////// Variablesss
   fechai:Array<string>

@@ -46,7 +46,7 @@ export class VinculomodComponent implements OnInit {
   lisPropie: Propietarios[];
 
   ////// Objetosssss
-  
+  date_inicio : Date;
 
   ////// Variablesssssss   
 
@@ -138,6 +138,7 @@ export class VinculomodComponent implements OnInit {
   ///////// Llena datos a las cajassss 
 
    read(id: number){
+     var fecha;
     this.service.getVinculoid(id).subscribe(
       (data) => {
         this.vinculos = data['P_CUR_VINCULOS'];

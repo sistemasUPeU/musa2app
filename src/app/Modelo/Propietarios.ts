@@ -11,3 +11,8 @@ export class Propietario{
     estado_tipo:number;   
     idpersona:number;
 }
+/*export class Propietarioc{
+    idpersona:number;
+    tipopropietario:number;
+    estado:number;
+}*/
