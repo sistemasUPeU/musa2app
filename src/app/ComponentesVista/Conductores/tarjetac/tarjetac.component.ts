@@ -34,7 +34,6 @@ export class TarjetacComponent implements OnInit {
       (data) =>{ 
         this.ngOnInit();
        }
-
     );
   }
   Eliminar(tarjetac:Tarjetac){
