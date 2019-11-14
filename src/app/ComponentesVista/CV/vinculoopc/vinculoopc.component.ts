@@ -7,6 +7,7 @@ import { Propietarios } from 'src/app/Modelo/Propietarios';
 import { Vinculo, VincuRequi, Contador } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
 
+
 @Component({
   selector: 'app-vinculoopc',
   templateUrl: './vinculoopc.component.html',
@@ -34,8 +35,8 @@ export class VinculoopcComponent implements OnInit {
   cont:number;
   titulo = "";
   tipo:number;
+  
    /// Arraysss
-   
   vincurequi: VincuRequi[];  
   lisRequisitos: Requisitos[]; 
   lisConduc: Conductores[];
@@ -155,10 +156,8 @@ export class VinculoopcComponent implements OnInit {
     });
    }
    regresar(){
-    (<HTMLElement>document.getElementById('caja2')).style.display="block";
-    (<HTMLElement>document.getElementById('next')).style.display="block";
-    (<HTMLElement>document.getElementById('paso2')).style.display="none";
-    (<HTMLElement>document.getElementById('back')).style.display="none";
+    this.paso1 = true
+    this.loading=false
     this.elimininar(this.cont);
    }
    elimininar(id: number){

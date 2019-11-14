@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Vinculos, Vinculo, Vinupd } from 'src/app/Modelo/Vinculos';
 import { ServiceService } from 'src/app/service/service.service';
 
+
 @Component({
   selector: 'app-vinculo',
   templateUrl: './vinculo.component.html',
@@ -26,6 +27,7 @@ export class VinculoComponent implements OnInit {
   constructor(private service: ServiceService, private router: Router) { }
   
   ngOnInit() {
+    
     this.tipo=3;
     this.estado = 1;
     this.listar();
