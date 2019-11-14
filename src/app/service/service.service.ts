@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Usuario } from '../Modelo/Usuario';
 import { Rol_Usuarios } from '../Modelo/Rol_Usuario';
 import { Ubigeo } from '../ComponentesVista/Configuracion/registrarubigeo/ubigeo';
-import { Vinculos, Vinculo, VincuRequi,Contador, Vinupd } from '../Modelo/Vinculos';
+import { Vinculos, Vinculo, VincuRequi,Contador, Vinupd, VincuRequis } from '../Modelo/Vinculos';
 import { Roles, RolesF } from '../Modelo/Roles';
 import { Conductores } from '../Modelo/Conductores';
 import { Propietarios, Propietario } from '../Modelo/Propietarios';
@@ -81,7 +81,11 @@ export class ServiceService {
   getrequisitos_vinculo(idvinculo: number): Observable<Requisitos[]> {
     return this.http.get<Requisitos[]>(`${ environment.apiUrl }/vinrequi/`+idvinculo);
   }
-  
+  uptrequisitos(idvinculo:number,idrequisito:number){
+    var x = new VincuRequis(idvinculo,idrequisito);
+    console.log(x)
+    return this.http.put<VincuRequis>(`${ environment.apiUrl }/vinrequi/upt/`+ idrequisito, x);
+  }
   CreateVinRequi(tipo:number,vincurequi: VincuRequi) {
     return this.http.post<VincuRequi[]>(`${ environment.apiUrl }/vinrequi/add/` + tipo, vincurequi);
   }

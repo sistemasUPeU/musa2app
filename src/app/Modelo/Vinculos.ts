@@ -32,7 +32,11 @@ export class VincuRequi {
 }
 export class VincuRequis {
   idvinculo: number;
-  idrequisito: number
+  idrequisito: number;
+  constructor(vincu:number, requi:number) {
+    this.idvinculo=vincu;
+    this.idrequisito=requi;
+ }
 }
 export class Vinupd {
   idvinculo: number;
