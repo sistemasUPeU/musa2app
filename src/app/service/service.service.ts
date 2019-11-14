@@ -114,7 +114,6 @@ export class ServiceService {
     console.log(propietario)
      return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`, propietario);
   }
-  //////////////Propietarios
   crearPropietarios(propietarioc:Propietario){
     console.log(`(asdasdasdasdasdasd)`)
     console.table(propietarioc)
@@ -123,15 +122,19 @@ export class ServiceService {
   getPropietarioId(id:number){
      return this.http.get<Propietario[]>( `${ environment.apiUrl }/propietarios/`+ id);
   }
-  deleteRoles(roles:Roles){
-    return this.http.delete<Roles>(this.Url+roles.idrol);
-  } 
+
   updatePropietarios(propietario:Propietario){
     return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/`, propietario);
   }
   buscarnombre(nombre:String){
      return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/nombre/`+ nombre);
   }
+  /* FIN DEL CRUD PROPIETARIOS */
+
+  deleteRoles(roles:Roles){
+    return this.http.delete<Roles>(this.Url+roles.idrol);
+  } 
+ 
 
   ///////////////FINPropietarios
   updateRoles(x:number,roles:Roles){

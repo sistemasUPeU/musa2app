@@ -26,8 +26,7 @@ import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propie
 import { OpcionesComponent } from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
 import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
-import { VehiculosComponent } from './Componentes/CV/vehiculos/vehiculos.component';
-
+import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component'
 
 
 @NgModule({
@@ -45,7 +44,6 @@ import { VehiculosComponent } from './Componentes/CV/vehiculos/vehiculos.compone
     RolusComponent,
     UseropComponent,
     AgregarUseropComponent,
-  
     EntradadeproductoComponent,
     VinculoopcComponent,
     VinculomodComponent,

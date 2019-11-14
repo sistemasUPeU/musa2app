@@ -1,1 +1,270 @@
-<p>vehiculos works!</p>
+<h1><small>Vehiculos</small></h1>
+<br>
+<div class="container">
+	<div class="row">
+        <div class="col-md-6">
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="Buscar" />
+                    <span class="input-group-btn">
+                        <button type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+<button style="margin-left: 80%;margin-top: -80px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPoll">
+    Registrar Vehiculos</button>
+ <!-- Inicio de modal -->
+ <div class="modal fade right" id="modalPoll" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+ aria-hidden="true" data-backdrop="false">
+ <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+   <div class="modal-content">
+
+     <!-- Header del modal -->
+     <div class="modal-header" style="background: #32363F;">
+       <p class="heading lead">Registro de Vehiculos</p>
+
+       <!-- Boton de cerrar -->
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true" class="white-text">×</span>
+       </button>
+
+     </div>
+     <!-- Final del header -->
+
+     <!-- Body del modal -->
+     <div class="modal-body">
+            <div class="form-group col-md-4">
+                    <label for="inputState">Propietario</label>
+                    <select id="inputState" class="form-control" style="width: 280px;">
+                      <option selected>Fulano Sutano    ...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">Placa</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Placa">
+            </div>        
+            <div class="form-group col-md-6" style="margin-left: 170px;margin-top: -80px;">
+                    <label for="inputEmail4">Codigo</label>
+                    <input  type="email" class="form-control" id="inputEmail4" placeholder="Codigo">
+            </div> 
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">Marca</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Marca">
+            </div>  
+            <div class="form-group col-md-6" style="margin-left: 170px;margin-top: -80px;">
+                    <label for="inputEmail4">Descripcion</label>
+                    <input  type="email" class="form-control" id="inputEmail4" placeholder="Descripcion">
+            </div>  
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">Tarjeta_PV</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Tarjeta_PV">
+            </div>  
+            <div class="form-group col-md-6" style="margin-left: 170px;margin-top: -80px;">
+                    <label for="inputEmail4">Comprobante</label>
+                    <input  type="email" class="form-control" id="inputEmail4" placeholder="Comprobante">
+            </div> 
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">Categoria</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Categoria">
+            </div> 
+            <div class="form-group col-md-6" style="margin-left: 170px;margin-top: -80px;">
+                    <label for="inputEmail4">Modelo</label>
+                    <input  type="email" class="form-control" id="inputEmail4" placeholder="Modelo">
+            </div> 
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">Año de Farbricacion</label>
+                    <input type="date" class="form-control" id="inputEmail4" placeholder="Año de Frabriacion">
+            </div> 
+            <div class="form-group col-md-6" style="margin-left: 170px;margin-top: -80px;">
+                    <label for="inputEmail4">Kilometraje</label>
+                    <input  type="email" class="form-control" id="inputEmail4" placeholder="Kilometraje">
+            </div> 
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">Combustible</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Combustible">
+            </div> 
+            <div class="form-group col-md-6" style="margin-left: 170px;margin-top: -80px;">
+                    <label for="inputEmail4">N° de Serie</label>
+                    <input  type="number" class="form-control" id="inputEmail4" placeholder="N° de Serie">
+            </div>
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">N° de Ejes</label>
+                    <input type="number" class="form-control" id="inputEmail4" placeholder="N° de Ejes">
+            </div> 
+            <div class="form-group col-md-6" style="margin-left: 170px;margin-top: -80px;">
+                    <label for="inputEmail4">N° de Asientos</label>
+                    <input  type="number" class="form-control" id="inputEmail4" placeholder="N° de Asientos">
+            </div>
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">N° de Pasajeros</label>
+                    <input type="number" class="form-control" id="inputEmail4" placeholder="N° de Ejes">
+            </div> 
+            
+            <div class="col-auto my-1" style="margin-left: 170px;margin-top: -150px;">
+                    <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="margin-top: -90px;">
+                      <option selected>Estado</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+     </div>
+     <!-- Fin del Body del modal -->
+
+     <!-- Footer del modal -->
+     <div class="modal-footer justify-content-center">
+       <button type="button" class="btn btn-primary waves-effect waves-light">Enviar
+         <i class="fa fa-paper-plane ml-1"></i>
+       </button>
+       <button type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancelar</button>
+     </div>
+   </div>
+ </div>
+</div>
+<!-- Fin del modal -->
+<table class="table table-striped" style="margin-right: 500px;">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">NroPadron</th>
+            <th scope="col">Placa</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Serie</th>
+            <th scope="col">Uso</th>
+            <th scope="col">Opcion</th>   
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vehiculo of vehiculos, let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{vehiculo.nropadron}}</td>
+            <td>{{vehiculo.placa}}</td>
+            <td>{{vehiculo.estado}}</td>
+            <td>{{vehiculo.serie}}</td>
+            <td>{{vehiculo.uso}}</td>
+            <td>
+                <a style="color: #FFB02F;size: 10px;" data-target="#editVehiculo" data-toggle="modal">
+                        <i class="fas fa-pencil-alt"></i></a>
+                    <a style="margin-left: 15px;color: red;"><i class="fas fa-trash"></i></a>
+            </td>
+          </tr>
+   </tbody>
+      </table>
+      <!-- Inicio de modal -->
+ <div class="modal fade right" id="editVehiculo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+ aria-hidden="true" data-backdrop="false">
+ <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+   <div class="modal-content">
+
+     <!-- Header del modal -->
+     <div class="modal-header" style="background: #32363F;">
+       <p class="heading lead">Edicion de Vehiculos</p>
+
+       <!-- Boton de cerrar -->
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true" class="white-text">×</span>
+       </button>
+
+     </div>
+     <!-- Final del header -->
+
+     <!-- Body del modal -->
+     <div class="modal-body">
+            <div class="form-group col-md-4">
+                    <label for="inputState">Propietario</label>
+                    <select id="inputState" class="form-control" style="width: 280px;">
+                      <option selected>Fulano Sutano    ...</option>
+                      <option>...</option>
+                    </select>
+                  </div>
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">Placa</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Placa">
+            </div>        
+            <div class="form-group col-md-6" style="margin-left: 170px;margin-top: -80px;">
+                    <label for="inputEmail4">Codigo</label>
+                    <input  type="email" class="form-control" id="inputEmail4" placeholder="Codigo">
+            </div> 
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">Marca</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Marca">
+            </div>  
+            <div class="form-group col-md-6" style="margin-left: 170px;margin-top: -80px;">
+                    <label for="inputEmail4">Descripcion</label>
+                    <input  type="email" class="form-control" id="inputEmail4" placeholder="Descripcion">
+            </div>  
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">Tarjeta_PV</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Tarjeta_PV">
+            </div>  
+            <div class="form-group col-md-6" style="margin-left: 170px;margin-top: -80px;">
+                    <label for="inputEmail4">Comprobante</label>
+                    <input  type="email" class="form-control" id="inputEmail4" placeholder="Comprobante">
+            </div> 
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">Categoria</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Categoria">
+            </div> 
+            <div class="form-group col-md-6" style="margin-left: 170px;margin-top: -80px;">
+                    <label for="inputEmail4">Modelo</label>
+                    <input  type="email" class="form-control" id="inputEmail4" placeholder="Modelo">
+            </div> 
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">Año de Farbricacion</label>
+                    <input type="date" class="form-control" id="inputEmail4" placeholder="Año de Frabriacion">
+            </div> 
+            <div class="form-group col-md-6" style="margin-left: 170px;margin-top: -80px;">
+                    <label for="inputEmail4">Kilometraje</label>
+                    <input  type="email" class="form-control" id="inputEmail4" placeholder="Kilometraje">
+            </div> 
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">Combustible</label>
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Combustible">
+            </div> 
+            <div class="form-group col-md-6" style="margin-left: 170px;margin-top: -80px;">
+                    <label for="inputEmail4">N° de Serie</label>
+                    <input  type="number" class="form-control" id="inputEmail4" placeholder="N° de Serie">
+            </div>
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">N° de Ejes</label>
+                    <input type="number" class="form-control" id="inputEmail4" placeholder="N° de Ejes">
+            </div> 
+            <div class="form-group col-md-6" style="margin-left: 170px;margin-top: -80px;">
+                    <label for="inputEmail4">N° de Asientos</label>
+                    <input  type="number" class="form-control" id="inputEmail4" placeholder="N° de Asientos">
+            </div>
+            <div class="form-group col-md-6">
+                    <label for="inputEmail4">N° de Pasajeros</label>
+                    <input type="number" class="form-control" id="inputEmail4" placeholder="N° de Ejes">
+            </div> 
+            
+            <div class="col-auto my-1" style="margin-left: 170px;margin-top: -150px;">
+                    <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="margin-top: -90px;">
+                      <option selected>Estado</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+     </div>
+     <!-- Fin del Body del modal -->
+
+     <!-- Footer del modal -->
+     <div class="modal-footer justify-content-center">
+       <button type="button" class="btn btn-primary waves-effect waves-light">Enviar
+         <i class="fa fa-paper-plane ml-1"></i>
+       </button>
+       <button type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancelar</button>
+     </div>
+   </div>
+ </div>
+</div>
+<!-- Fin del modal -->
