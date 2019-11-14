@@ -6,6 +6,7 @@ import { Vehiculos } from 'src/app/Modelo/Vehiculos';
 import { Propietarios } from 'src/app/Modelo/Propietarios';
 import { Vinculo, VincuRequi, Vinculos } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-vinculomod',
@@ -17,6 +18,8 @@ export class VinculomodComponent implements OnInit {
   mostrarpropietario: boolean;
   mostrarconductor: boolean;
   id:number;
+  fecha:string;
+
   constructor(private router: Router, private service: ServiceService, private activatedRoute:ActivatedRoute) { }
   
   ngOnInit() {
@@ -41,7 +44,7 @@ export class VinculomodComponent implements OnInit {
   lisPropie: Propietarios[];
 
   ////// Objetosssss
-  
+  date_inicio : Date;
 
   ////// Variablesssssss   
 
@@ -133,10 +136,15 @@ export class VinculomodComponent implements OnInit {
   ///////// Llena datos a las cajassss 
 
    read(id: number){
+     var fecha;
     this.service.getVinculoid(id).subscribe(
       (data) => {
         this.vinculos = data['P_CUR_VINCULOS'];
-        console.log(this.vinculos)
+        console.log(this.vinculos[0].fechainicio);
+        fecha = moment(this.vinculos[0].fechainicio,);
+        fecha = fecha.format('DD/MM/YYYY');
+
+        console.log(fecha)
       }
     );
    }

@@ -35,8 +35,8 @@ export class ServiceService {
 
   ///// Vinculossss -------------- ///
   
-  getVinculo(tipovinculo: number) : Observable<Vinculos[]> {
-    return this.http.get<Vinculos[]>(`${ environment.apiUrl }/vinculos/lis/`+tipovinculo);
+  getVinculo(tipovinculo: number,estado:number) : Observable<Vinculos[]> {
+    return this.http.get<Vinculos[]>(`${ environment.apiUrl }/vinculos/lis/`+tipovinculo+"/"+estado);
   }
 
   getNombreConductor(): Observable<Conductores[]> {

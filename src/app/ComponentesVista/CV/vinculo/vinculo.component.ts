@@ -2,6 +2,7 @@ import { Component, OnInit, Output, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Vinculos, Vinculo, Vinupd } from 'src/app/Modelo/Vinculos';
 import { ServiceService } from 'src/app/service/service.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-vinculo',
@@ -13,12 +14,12 @@ export class VinculoComponent implements OnInit {
   /////// Arraysss
 
   listavinculos:Vinculos[];
-
+  
 
   /////// Variablesss
 
   tipo: number;
-
+  estado:number;
   /////// Objetossssss
 
   vincu : Vinupd = new Vinupd();
@@ -27,13 +28,15 @@ export class VinculoComponent implements OnInit {
   
   ngOnInit() {
     this.tipo=3;
+    this.estado=1;
     this.listar();
   }
-  listar(){
-    this.service.getVinculo(this.tipo).subscribe(
+  listar(){   
+    
+    this.service.getVinculo(this.tipo,this.estado).subscribe(
       (data) => {
         this.listavinculos = data['P_CUR_VINCULOS']
-        console.log(this.listavinculos);  
+           console.log(this.listavinculos);
       }
       );
   }
