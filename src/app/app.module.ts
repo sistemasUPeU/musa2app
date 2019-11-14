@@ -43,10 +43,7 @@ import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarje
     RolusComponent,
     UseropComponent,
     AgregarUseropComponent,
-<<<<<<< HEAD
   
-=======
->>>>>>> 7318204e5107808caef870a11977ea76c8d1af2d
     EntradadeproductoComponent,
     VinculoopcComponent,
     VinculomodComponent,

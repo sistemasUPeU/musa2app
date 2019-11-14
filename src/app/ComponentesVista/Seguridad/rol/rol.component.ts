@@ -9,10 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./rol.component.css']
 })
 export class RolComponent implements OnInit {
-<<<<<<< HEAD
-=======
   rol: Roles;
->>>>>>> 7318204e5107808caef870a11977ea76c8d1af2d
   listaroles:Roles[];
   roles1:Roles=new Roles();
   role:Roles=new Roles();
@@ -174,8 +171,5 @@ export class RolComponent implements OnInit {
         this.ngOnInit();
       })
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 7318204e5107808caef870a11977ea76c8d1af2d
 }
