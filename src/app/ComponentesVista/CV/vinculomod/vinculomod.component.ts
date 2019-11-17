@@ -105,6 +105,7 @@ export class VinculomodComponent implements OnInit {
       (data) => {
         this.lisRequisitos = data['P_CUR_VINCULO_REQUISITO'];
         console.log(this.lisRequisitos)
+        
       }
     );
   }
@@ -170,6 +171,8 @@ export class VinculomodComponent implements OnInit {
 
    modificar(vinculos: Vinculo){
      alert("hola")
+     this.vinculos[0].fechainicio=String(this.fechai)
+     this.vinculos[0].fechafin=String(this.fechaf)
     this.service.uptVinculo(this.vinculos[0]).subscribe(
       (data) => {
 

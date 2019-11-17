@@ -53,12 +53,10 @@ export class VinculoopcComponent implements OnInit {
     this.getVehiculo();
     this.getempleado()
     this.titulo="NUEVO VINCULO";
-    console.log(this.tipo);
     this.service.getcontvin().subscribe(
       (data) => {
         this.cont = data[0].CONTADOR; 
         this.cont++
-        alert(this.cont)
       }
       );
   }
@@ -102,7 +100,6 @@ export class VinculoopcComponent implements OnInit {
     this.service.getEmple().subscribe(
       (data) => {
         this.lisEmple = data
-        console.log(this.lisEmple)
       }
     )
   }
@@ -152,19 +149,24 @@ export class VinculoopcComponent implements OnInit {
   /////  Metodo de crear Vinculo
 
    crear(){
+    this.service.CreateVinRequi(+this.tipo,this.vinrequi).subscribe(data =>{
+      
+     // this.router.navigate(['/home/vinculo']);
+  }
+    );
    }
    siguiente(){
      this.loading=true
      this.paso1 = false
-    var v_tipo=(<HTMLSelectElement>document.getElementById('tipo')).value;
+    this.tipo=Number((<HTMLSelectElement>document.getElementById('tipo')).value);
+    this.vin.idempleado=2
+    console.log(this.vin.idempleado)
+    console.log(this.vin)
     this.service.createvinculo(this.vin).subscribe(data => {
       this.vinrequi.idvinculo=this.cont;
       console.log(this.vinrequi)
-      this.service.CreateVinRequi(+Number(v_tipo),this.vinrequi).subscribe(data =>{
-        this.loading=false
-        this.cargar=true
-    }
-      );
+      this.loading=false
+      this.cargar=true
     });
    }
    regresar(){
@@ -175,7 +177,7 @@ export class VinculoopcComponent implements OnInit {
    }
    elimininar(id: number){
      console.log("delete")
-     this.service.DeleteVinculo(id).subscribe(data => {
+     this.service.DeleteVinculo(+id).subscribe(data => {
         alert("se borro")
      })
    }

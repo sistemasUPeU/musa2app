@@ -24,7 +24,7 @@ import { CursosComponent } from './ComponentesVista/Conductores/cursos/cursos.co
 import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propietarios.component'
 import { OpcionesComponent} from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
-
+import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component'
 import { MantenimientosComponent } from "./ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component";
 import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
 import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component'
@@ -65,6 +65,7 @@ const routesHome: Routes = [
 const routes: Routes = [
   {path:'', redirectTo:'/login',pathMatch:'full'},
   {path:'login', component:LoginComponent},
+  {path:'cambiarcontra', component:ContrasenaComponent},
   {path:'home', component:HomeComponent, children: routesHome},
   {path:'prueba-editar', component:PruebaEditarComponent},
   {path:'agregar-user', component:AgregarUserComponent},

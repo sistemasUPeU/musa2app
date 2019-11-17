@@ -27,7 +27,8 @@ import { OpcionesComponent } from './ComponentesVista/Seguridad/opciones/opcione
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
 import { MantenimientosComponent } from './ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component';
 import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
-import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component'
+import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component';
+import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component'
 
 
 
@@ -57,7 +58,8 @@ import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehicu
     TarjetacComponent,
     MantenimientosComponent,
     SoatComponent,
-    VehiculosComponent
+    VehiculosComponent,
+    ContrasenaComponent
   ],
   imports: [
     BrowserModule,

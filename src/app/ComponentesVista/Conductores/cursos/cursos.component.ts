@@ -53,7 +53,7 @@ export class CursosComponent implements OnInit {
     });
     Swal.fire(
       'Creado!',
-      'El curso fue creado con exito',
+      'El curso fue registrado con exito',
       'success'
     )
   }
