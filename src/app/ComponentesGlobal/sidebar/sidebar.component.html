@@ -16,8 +16,8 @@
               alt="User picture">
           </div>
           <div class="user-info">
-            <span class="user-name">Fulano
-              <strong>Sutano</strong>
+            <span class="user-name">Admin
+              <strong>Hubaldo</strong>
             </span>
             <span class="user-role">Jefe de Operaciones</span>
           </div>
@@ -71,18 +71,18 @@
             <li class="sidebar-dropdown">
               <a>
                 <i class="far fa-gem"></i>
-                <span>Gestionar Venta</span>
+                <span>Modulo Ventas</span>
               </a>
               <div class="sidebar-submenu">
                 <ul>
                   <li>
-                    <a>General</a>
+                    <a routerLink="/home/venta">Reguistrar Venta</a>
                   </li>
                   <li>
-                    <a>Panels</a>
+                    <a routerLink="/home/venta">Anular Venta</a>
                   </li>
                   <li>
-                    <a>Tables</a>
+                    <a routerLink="/home/venta">Registrar Caja</a>
                   </li>
                   <li>
                     <a>Icons</a>
@@ -196,11 +196,43 @@
                 </ul>
               </div>
             </li>
+            <li class="sidebar-dropdown">
+              <a>
+                <i class="fa fa-globe"></i>
+                <span>Mantenimientos</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li routerLinkActive="active">
+                    <a [routerLink]="['/home/mantenimientos',0]">Mantenimientos preventivos</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a [routerLink]="['/home/mantenimientos',1]">Mantenimientos correctivos</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="sidebar-dropdown">
+              <a>
+                <i class="fa fa-globe"></i>
+                <span>Revisiones</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li routerLinkActive="active">
+                    <a [routerLink]="['/home/mantenimientos',2]">Revisiones Diarias</a>
+                  </li>
+                  <li routerLinkActive="active">
+                    <a [routerLink]="['/home/mantenimientos',3]">Revisiones Tecnicas</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
       <div class="sidebar-footer">
-        <a>
+        <a  [routerLink]="['/cambiarcontra']">
           <i class="fa fa-cog"></i>
         </a>
         <a  [routerLink]="['/login']">

@@ -1,0 +1,155 @@
+<div [ngSwitch]="tipo">
+    <div *ngSwitchCase="0">
+        <h3 class="py-5 float-left">
+            Mantenimientos Preventivos
+        </h3>
+        <button class="btn btn-primary float-right" (click)="cargarActions(0)" style="margin: 5% 2%;" type="button" data-toggle="modal"
+            data-target="#exampleModal">Crear accion preventiva</button>
+    </div>
+    <div *ngSwitchCase="1">
+        <h3 class="py-5 float-left">
+            Mantenimientos Correctivos
+        </h3>
+        <button class="btn btn-primary float-right" (click)="cargarActions(1)" style="margin: 5% 2%;" type="button" data-toggle="modal"
+            data-target="#exampleModal">Crear accion correctiva</button>
+    </div>
+    <div *ngSwitchCase="2">
+        <h3 class="py-5 float-left">
+            Revision Diaria
+        </h3>
+        <button class="btn btn-primary float-right" (click)="cargarActions(2)" style="margin: 5% 2%;" type="button" data-toggle="modal"
+            data-target="#exampleModal">Crear revision diaria</button>
+    </div>
+    <div *ngSwitchCase="3">
+        <h3 class="py-5 float-left">
+            Revision Tecnica
+        </h3>
+        <button class="btn btn-primary float-right" (click)="cargarActions(3)" style="margin: 5% 2%;" type="button" data-toggle="modal"
+            data-target="#exampleModal">Crear revision tecnica</button>
+    </div>
+</div>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Bus</th>
+            <th scope="col">Conductor</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Condición</th>
+            <th scope="col" colspan="2">Opcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let request of requests">
+            <td *ngIf="request.estado != 0">{{request.bus}}</td>
+            <td *ngIf="request.estado != 0">{{request.conductor}}</td>
+            <td *ngIf="request.estado != 0">{{request.fechainicio}}</td>
+            <td *ngIf="request.estado != 0">
+                {{request.estado==1?"Creado":request.estado==2?"Pendiente":request.estado==3?"En Proceso":request.estado==4?"Finalizado":request.estado==0?"deshabilitado":"no tiene estado definido"}}
+            </td>
+            <td *ngIf="request.estado != 0">
+                <a style="color: #FFB02F;size: 10px;cursor: pointer;" data-toggle="modal" data-target="#update"
+                    (click)="cargarId(request.idmantenimiento)">
+                    <i class="fas fa-pencil-alt"></i>
+                </a>
+            </td>
+            <td *ngIf="request.estado != 0">
+                <a style="margin-left: 15px;color: red;cursor: pointer;" (click)="eliminar(request)">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #accionesForm="ngForm">
+                    <div class="form-group">
+                        <label for="idvehiculo">Elija Bus</label>
+                        <select class="form-control" [(ngModel)]="mantenimientos.idvehiculo" name="idvehiculo">
+                            <option value="" disabled>Seleccione su opcion</option>
+                            <option *ngFor="let cat of getbuces" [value]="cat.idvehiculo">
+                                {{cat.nropadron}}
+                            </option>
+                        </select>
+                        <div class="form-group">
+                            <label for="idconductor">Elija Conductor</label>
+                            <select class="form-control" [(ngModel)]="mantenimientos.idconductor" name="idconductor">
+                                <option value="" disabled>Seleccione su opcion</option>
+                                <option *ngFor="let cat of getconds" [value]="cat.idconductor">
+                                    {{cat.NOMBRE}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Fecha Inicio</label>
+                            <input type="date" data-date="" data-date-format="YYYY-MM-DD" [value]="2019-11-14"
+                                class="form-control" id="exampleInputPassword1" placeholder="Password"
+                                [(ngModel)]="mantenimientos.fechainicio" name="fechainicio">
+                        </div>
+                        <div class="form-group my-3">
+                            <label for="detalle">Ingrese Descripcion Detallada</label>
+                            <input type="text" placeholder="Detalle" class="form-control" name="detalle"
+                                [(ngModel)]="mantenimientos.detalle" required #detalle="ngModel">
+                            <div class="alert alert-danger my-2"
+                                *ngIf="detalle.invalid && (detalle.dirty || detalle.touched)">
+                                <div *ngIf="detalle.errors.required">
+                                    Descripcion Detallada requerida
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group my-3">
+                            <div class="inputCheckMant" *ngFor="let act of getacts">
+                                <input id="{{act.idmantacciones}}" name="{{act.idmantacciones}}" type="checkbox" />
+                                <label for="{{act.idmantacciones}}">{{act.nombre}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="crearAccion()"
+                    [disabled]="!accionesForm.form.valid" onclick="$('#exampleModal').modal('hide')">Crear</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" *ngFor="let get of getid">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="text" placeholder="Nombre" class="form-control my-3" name="nombre"
+                        [(ngModel)]="get.nombre">
+                    <input type="text" placeholder="Descripcion" class="form-control my-3" name="descripcion"
+                        [(ngModel)]="get.descripcion">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                    (click)="actualizar(get)">Actualizar</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>

@@ -25,8 +25,11 @@ import { CursosComponent } from './ComponentesVista/Conductores/cursos/cursos.co
 import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propietarios.component';
 import { OpcionesComponent } from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
+import { MantenimientosComponent } from './ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component';
 import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
-import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component'
+import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component';
+import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component';
+import { VentaComponent } from './ComponentesVista/Ventas/venta/venta.component'
 
 
 
@@ -54,8 +57,11 @@ import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehicu
     PropietariosComponent,
     OpcionesComponent,
     TarjetacComponent,
+    MantenimientosComponent,
     SoatComponent,
-    VehiculosComponent
+    VehiculosComponent,
+    ContrasenaComponent,
+    VentaComponent
   ],
   imports: [
     BrowserModule,

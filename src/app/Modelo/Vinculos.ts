@@ -14,7 +14,7 @@ export class Vinculo {
   estado: number;
   idconductor: number;  
   descripcion: string;
-  fechainicio: Date;
+  fechainicio: string;
   fechafin: string;
   usercreate: string;
   datecreate: Date;

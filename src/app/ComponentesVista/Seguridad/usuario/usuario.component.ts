@@ -79,8 +79,8 @@ export class UsuarioComponent implements OnInit {
   ActualizarUser(P_CURSOR_USUARIO: Usuario) {
     alert(P_CURSOR_USUARIO.idusuario);
     alert(P_CURSOR_USUARIO.login);
-    alert(P_CURSOR_USUARIO.password);
-    alert(P_CURSOR_USUARIO.estado);
+    //alert(P_CURSOR_USUARIO.password);
+    //alert(P_CURSOR_USUARIO.estado);
     P_CURSOR_USUARIO.user_modify = "Christian"
     this.service.updateUsuario(P_CURSOR_USUARIO).subscribe((data) => {
       this.userf = data;

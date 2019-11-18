@@ -24,8 +24,12 @@ import { CursosComponent } from './ComponentesVista/Conductores/cursos/cursos.co
 import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propietarios.component'
 import { OpcionesComponent} from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
+import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component'
+import { MantenimientosComponent } from "./ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component";
 import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
-import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component'
+import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component';
+import { VentaComponent} from './ComponentesVista/Ventas/venta/venta.component';
+import { from } from 'rxjs';
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
@@ -46,6 +50,7 @@ const routesHome: Routes = [
   {path:'vinculo', component:VinculoComponent},
   {path:'vinculoopc', component:VinculoopcComponent},
   {path:'acciones/:tipo', component:AccionesComponent},
+  {path:'mantenimientos/:type', component:MantenimientosComponent},
   {path:'conductor',component:ConductorComponent},
   {path:'vinculomod', component:VinculomodComponent},
   {path:'vinculo', component:VinculoComponent},
@@ -56,12 +61,14 @@ const routesHome: Routes = [
   {path:'opciones',component:OpcionesComponent},
   {path:'tarjetac',component:TarjetacComponent},
   {path:'soat',component:SoatComponent},
-  {path: 'vehiculos', component:VehiculosComponent}
+  {path: 'vehiculos', component:VehiculosComponent},
+  {path: 'venta', component:VentaComponent}
 ];
 
 const routes: Routes = [
   {path:'', redirectTo:'/login',pathMatch:'full'},
   {path:'login', component:LoginComponent},
+  {path:'cambiarcontra', component:ContrasenaComponent},
   {path:'home', component:HomeComponent, children: routesHome},
   {path:'prueba-editar', component:PruebaEditarComponent},
   {path:'agregar-user', component:AgregarUserComponent},
@@ -84,10 +91,12 @@ export const routingComponents = [
   LoginComponent,
   HomeComponent,
   AccionesComponent,
+  MantenimientosComponent,
   VinculoComponent,
   CursosComponent,
   OpcionesComponent,
   TarjetacComponent,
   PropietariosComponent,
-  SoatComponent
+  SoatComponent,
+  VentaComponent
 ];

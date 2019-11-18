@@ -105,6 +105,7 @@ export class VinculomodComponent implements OnInit {
       (data) => {
         this.lisRequisitos = data['P_CUR_VINCULO_REQUISITO'];
         console.log(this.lisRequisitos)
+        
       }
     );
   }
@@ -153,9 +154,7 @@ export class VinculomodComponent implements OnInit {
     this.service.getVinculoid(id).subscribe(
       (data) => {
         this.vinculos = data['P_CUR_VINCULOS'];
-        var x = (String(moment(this.vinculos[0].fechainicio).format()).substr(0,10));
-        
-        this.fechai=x
+        this.fechai=this.convertir_fecha(String(this.vinculos[0].fechainicio))
         this.fechaf=this.convertir_fecha(String(this.vinculos[0].fechafin));
         console.log(this.vinculos)
       }
@@ -169,11 +168,13 @@ export class VinculomodComponent implements OnInit {
    //////// Modifica los datosssss
 
    modificar(vinculos: Vinculo){
-     alert("hola")
+     this.vinculos[0].fechainicio=String(this.fechai)
+     this.vinculos[0].fechafin=String(this.fechaf)
     this.service.uptVinculo(this.vinculos[0]).subscribe(
       (data) => {
 
         alert(data["p_msgerror"])
+        this.router.navigate(['/home/vinculo']);
       }
     );
    }

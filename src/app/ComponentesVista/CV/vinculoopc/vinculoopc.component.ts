@@ -7,6 +7,10 @@ import { Propietarios } from 'src/app/Modelo/Propietarios';
 import { Vinculo, VincuRequi, Contador } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
 import { empleado } from 'src/app/Modelo/empleados';
+import * as htmlDocx from 'html-docx-js/dist/html-docx';
+
+import { saveAs } from 'file-saver';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
 
 
 @Component({
@@ -18,9 +22,14 @@ export class VinculoopcComponent implements OnInit {
 
   
   
+
   
   constructor(private router: Router, private service: ServiceService) {
     
+    let htmlDocument = '<!DOCTYPE><html><html><head>meta charset="utf-8"><title></title>';
+    htmlDocument = htmlDocument + '</head><body>'+ Content + '</body></html>';
+    const converted = htmlDocx.asBlob(htmlDocument);
+    saveAs(converted, "ella y yo " + '.docx');
    }
 
   ////// Objetossss
@@ -53,12 +62,10 @@ export class VinculoopcComponent implements OnInit {
     this.getVehiculo();
     this.getempleado()
     this.titulo="NUEVO VINCULO";
-    console.log(this.tipo);
     this.service.getcontvin().subscribe(
       (data) => {
         this.cont = data[0].CONTADOR; 
         this.cont++
-        alert(this.cont)
       }
       );
   }
@@ -102,7 +109,6 @@ export class VinculoopcComponent implements OnInit {
     this.service.getEmple().subscribe(
       (data) => {
         this.lisEmple = data
-        console.log(this.lisEmple)
       }
     )
   }
@@ -152,19 +158,25 @@ export class VinculoopcComponent implements OnInit {
   /////  Metodo de crear Vinculo
 
    crear(){
+    this.service.CreateVinRequi(+this.tipo,this.vinrequi).subscribe(data =>{
+      this.router.navigate(['/home/vinculo']);
+      
+     // this.router.navigate(['/home/vinculo']);
+  }
+    );
    }
    siguiente(){
      this.loading=true
      this.paso1 = false
-    var v_tipo=(<HTMLSelectElement>document.getElementById('tipo')).value;
+    this.tipo=Number((<HTMLSelectElement>document.getElementById('tipo')).value);
+    this.vin.idempleado=2
+    console.log(this.vin.idempleado)
+    console.log(this.vin)
     this.service.createvinculo(this.vin).subscribe(data => {
       this.vinrequi.idvinculo=this.cont;
       console.log(this.vinrequi)
-      this.service.CreateVinRequi(+Number(v_tipo),this.vinrequi).subscribe(data =>{
-        this.loading=false
-        this.cargar=true
-    }
-      );
+      this.loading=false
+      this.cargar=true
     });
    }
    regresar(){
@@ -175,11 +187,12 @@ export class VinculoopcComponent implements OnInit {
    }
    elimininar(id: number){
      console.log("delete")
-     this.service.DeleteVinculo(id).subscribe(data => {
+     this.service.DeleteVinculo(+id).subscribe(data => {
         alert("se borro")
      })
    }
    sumador(){
      this.cont+1;
    }
+   
 }

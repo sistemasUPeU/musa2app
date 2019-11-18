@@ -53,7 +53,6 @@
                 <th scope="col" style="width: 250px;">Nombres</th>
                 <th scope="col">Fecha Inicio</th>
                 <th scope="col">Fecha Fin</th>
-                <th scope="col">Estado</th>
                 <th scope="col" colspan="2" >Opciones</th>
               </tr>
             </thead>
@@ -63,7 +62,6 @@
                 <td>{{vin.NOMBRE}}{{vin.APELLIDO}}</td>
                 <td>{{vin.FECHAINICIO}}</td>
                 <td >{{vin.FECHAFIN}}</td>
-                <td >{{vin.ESTADO}}</td>
                 <td ><i id="modificar" (click)="valor(vin.TIPOVINCULO,vin.IDVINCULO)" class="fas fa-edit" style="color: blue; margin-left: -60px;" ></i>  <i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"  (click)="eliminar(vin.IDVINCULO, vin.ESTADO)"></i></td>
               </tr>
             </tbody>
