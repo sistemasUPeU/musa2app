@@ -7,17 +7,21 @@ export class Vehiculosc{
     nropadron:number;
     estado:number;
     placa:String;
-    motor:String;
     serie:number;
-    anhofabricacion:Date;
-    pasajerossentados:number;
-    pasajerospie:number;
     idvehmodelo:number;
     idvehmarca:number;
     idvehcategoria:number;
     uso:String;
-    usecreate:String;
-    datecreate:Date;
-    usermodify:String;
-    datemodify:Date;
+}
+export class Veh_modelo{
+    idvehmodelo:number;
+    nombre:String;
+}
+export class Veh_marca{
+    idvehmarca:number;
+    nombre:String;
+}
+export class Veh_categoria{
+    idvehcategoria:number;
+    nombre:String;
 }
