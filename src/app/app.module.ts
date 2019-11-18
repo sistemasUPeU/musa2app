@@ -28,7 +28,8 @@ import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarje
 import { MantenimientosComponent } from './ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component';
 import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
 import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component';
-import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component'
+import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component';
+import { VentaComponent } from './ComponentesVista/Ventas/venta/venta.component'
 
 
 
@@ -59,7 +60,8 @@ import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/con
     MantenimientosComponent,
     SoatComponent,
     VehiculosComponent,
-    ContrasenaComponent
+    ContrasenaComponent,
+    VentaComponent
   ],
   imports: [
     BrowserModule,

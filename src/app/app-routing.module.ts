@@ -27,7 +27,9 @@ import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarje
 import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component'
 import { MantenimientosComponent } from "./ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component";
 import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
-import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component'
+import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component';
+import { VentaComponent} from './ComponentesVista/Ventas/venta/venta.component';
+import { from } from 'rxjs';
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
@@ -59,7 +61,8 @@ const routesHome: Routes = [
   {path:'opciones',component:OpcionesComponent},
   {path:'tarjetac',component:TarjetacComponent},
   {path:'soat',component:SoatComponent},
-  {path: 'vehiculos', component:VehiculosComponent}
+  {path: 'vehiculos', component:VehiculosComponent},
+  {path: 'venta', component:VentaComponent}
 ];
 
 const routes: Routes = [
@@ -94,5 +97,6 @@ export const routingComponents = [
   OpcionesComponent,
   TarjetacComponent,
   PropietariosComponent,
-  SoatComponent
+  SoatComponent,
+  VentaComponent
 ];

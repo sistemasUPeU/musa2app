@@ -7,6 +7,10 @@ import { Propietarios } from 'src/app/Modelo/Propietarios';
 import { Vinculo, VincuRequi, Contador } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
 import { empleado } from 'src/app/Modelo/empleados';
+import * as htmlDocx from 'html-docx-js/dist/html-docx';
+
+import { saveAs } from 'file-saver';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
 
 
 @Component({
@@ -18,9 +22,14 @@ export class VinculoopcComponent implements OnInit {
 
   
   
+
   
   constructor(private router: Router, private service: ServiceService) {
     
+    let htmlDocument = '<!DOCTYPE><html><html><head>meta charset="utf-8"><title></title>';
+    htmlDocument = htmlDocument + '</head><body>'+ Content + '</body></html>';
+    const converted = htmlDocx.asBlob(htmlDocument);
+    saveAs(converted, "ella y yo " + '.docx');
    }
 
   ////// Objetossss
@@ -150,6 +159,7 @@ export class VinculoopcComponent implements OnInit {
 
    crear(){
     this.service.CreateVinRequi(+this.tipo,this.vinrequi).subscribe(data =>{
+      this.router.navigate(['/home/vinculo']);
       
      // this.router.navigate(['/home/vinculo']);
   }
@@ -184,4 +194,5 @@ export class VinculoopcComponent implements OnInit {
    sumador(){
      this.cont+1;
    }
+   
 }
