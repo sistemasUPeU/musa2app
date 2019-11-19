@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Vehiculosc , Veh_categoria, Veh_marca, Veh_modelo} from 'src/app/Modelo/Vehiculos';
+import { Vehiculosc} from 'src/app/Modelo/Vehiculos';
+import { Veh_categoria } from 'src/app/Modelo/Vehiculos';
+import { Veh_marca } from 'src/app/Modelo/Vehiculos';
+import { Veh_modelo } from 'src/app/Modelo/Vehiculos';
 import { VehiculoService } from 'src/app/service/vehiculos.service';
 import { Router , ActivatedRoute } from '@angular/router'
 
@@ -17,6 +20,8 @@ export class VehiculosComponent implements OnInit {
   veh_marcas:Veh_marca[] = [];
   veh_categoria: Veh_categoria = new Veh_categoria();
   veh_categorias:Veh_categoria[] = [];
+  veh:Vehiculosc[] = [];
+  vehi_borrar:Vehiculosc = new Vehiculosc;
   constructor(private vehiculosservice:VehiculoService, private router:Router, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
@@ -71,4 +76,16 @@ export class VehiculosComponent implements OnInit {
        }
      );
   }
+   delete(veh:number){
+     alert("Dime que estas orgulloso chifu");
+     this.vehi_borrar.idvehiculo=veh;
+     this.vehiculosservice.deleteVehiculos(this.vehi_borrar).subscribe(   
+        data => {
+          alert("LLEGA")
+           console.log('entro al metodo');
+           alert(this.vehiculo);
+           this.getVehiculos();
+        }
+      );
+   } 
 }
