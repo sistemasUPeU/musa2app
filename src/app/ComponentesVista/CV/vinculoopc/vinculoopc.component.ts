@@ -7,7 +7,10 @@ import { Propietarios } from 'src/app/Modelo/Propietarios';
 import { Vinculo, VincuRequi, Contador } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
 import { empleado } from 'src/app/Modelo/empleados';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 675770574d288af27792194b4cbbe807b68f78c2
 
 
 @Component({
@@ -21,10 +24,14 @@ export class VinculoopcComponent implements OnInit {
   
 
   
+<<<<<<< HEAD
   constructor(private router: Router, private service: ServiceService) {
     
     
    }
+=======
+  constructor(private router: Router, private service: ServiceService) {}
+>>>>>>> 675770574d288af27792194b4cbbe807b68f78c2
 
   ////// Objetossss
    cargar:boolean;
@@ -51,6 +58,9 @@ export class VinculoopcComponent implements OnInit {
     this.loading = false
     this.paso1 = true
     this.cargar = false;
+    this.tipo = Number(localStorage.getItem("tipo"));
+    this.Tipo(this.tipo)
+    alert(this.tipo)
     this.getConductor();
     this.getPropietario();
     this.getVehiculo();
@@ -132,16 +142,17 @@ export class VinculoopcComponent implements OnInit {
 
   ////// Metodo para seleccionar tipo de vinculo
 
-  Tipo(){
-    var v_tipo=(<HTMLSelectElement>document.getElementById('tipo')).value;
-    if (v_tipo == '1') {
+  Tipo(v_tipo:number){
+    this.vin.tipovinculo=v_tipo
+    if (v_tipo == 1) {
+
       this.titulo="NUEVO VINCULO CONDUCTOR";
       this.getRequisito(Number(v_tipo));
     (<HTMLElement>document.getElementById('forconductor')).style.display="block";
     (<HTMLElement>document.getElementById('forpropietario')).style.display="none";
       
     }
-    if (v_tipo== '2') {
+    if (v_tipo== 2) {
       this.titulo="NUEVO VINCULO PROPIETARIO";
       this.getRequisito(Number(v_tipo));
     (<HTMLElement>document.getElementById('forconductor')).style.display="none";
@@ -152,12 +163,14 @@ export class VinculoopcComponent implements OnInit {
   /////  Metodo de crear Vinculo
 
    crear(){
+    var x = 1;
+    if(this.tipo = x){
     this.service.CreateVinRequi(+this.tipo,this.vinrequi).subscribe(data =>{
       this.router.navigate(['/home/vinculo']);
-      
      // this.router.navigate(['/home/vinculo']);
-  }
+      }
     );
+    }
    }
    siguiente(){
      this.loading=true

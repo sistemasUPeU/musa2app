@@ -30,6 +30,10 @@ import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.componen
 import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component';
 import { VentaComponent} from './ComponentesVista/Ventas/venta/venta.component';
 import { from } from 'rxjs';
+import { RegistrarventaComponent} from './ComponentesVista/Ventas/registrarventa/registrarventa.component';
+import { AnularventaComponent } from './ComponentesVista/Ventas/anularventa/anularventa.component';
+import { RegistrarcajaComponent } from './ComponentesVista/Ventas/registrarcaja/registrarcaja.component';
+import { VinculoproComponent} from './ComponentesVista/CV/vinculopro/vinculopro.component';
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
@@ -62,7 +66,11 @@ const routesHome: Routes = [
   {path:'tarjetac',component:TarjetacComponent},
   {path:'soat',component:SoatComponent},
   {path: 'vehiculos', component:VehiculosComponent},
-  {path: 'venta', component:VentaComponent}
+  {path: 'venta', component:VentaComponent},
+  {path: 'registrarven', component:RegistrarventaComponent},
+  {path: 'anularven', component:AnularventaComponent},
+  {path: 'registrarcaja', component:RegistrarcajaComponent},
+  {path: 'vinculopropietario', component: VinculoproComponent}
 ];
 
 const routes: Routes = [
@@ -98,5 +106,8 @@ export const routingComponents = [
   TarjetacComponent,
   PropietariosComponent,
   SoatComponent,
-  VentaComponent
+  VentaComponent,
+  RegistrarcajaComponent,
+  RegistrarventaComponent,
+  VinculoproComponent,
 ];

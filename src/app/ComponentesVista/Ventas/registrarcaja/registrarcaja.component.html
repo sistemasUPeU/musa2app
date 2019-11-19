@@ -1,0 +1,44 @@
+<div id="caja1">
+        <br>
+      <h1>REGISTRAR CAJA</h1>
+      <!-- Boton registrar rol -->
+      <br>
+      <br>
+      <br>
+      <!-- div parte inferior -->
+      <div id="caja2">
+        <!-- div parte superior -->
+        <div id="caja3">
+            <!-- Buscador -->
+            
+            <!-- Selecionar por Tipo -->
+            
+            <!-- Buscador Estado -->
+
+            <!-- Boton Limpiar -->
+            
+        </div>
+        <br>
+        <!-- Tabla -->
+        <table class="table" style="text-align: center; width: 900px; margin: 0 auto;">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" style="width: 250px;">Nombres</th>
+                    <th scope="col">Fecha Inicio</th>
+                    <th scope="col">Fecha Fin</th>
+                    <th scope="col" colspan="2" >Opciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let vin of listavinculos; let i = index">
+                    <td scope="row">{{ i + 1}}</td>
+                    <td>{{vin.NOMBRE}}{{vin.APELLIDO}}</td>
+                    <td>{{vin.FECHAINICIO}}</td>
+                    <td >{{vin.FECHAFIN}}</td>
+                    <td ><i id="modificar" (click)="valor(vin.TIPOVINCULO,vin.IDVINCULO)" class="fas fa-edit" style="color: blue; margin-left: -60px;" ></i>  <i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"  (click)="eliminar(vin.IDVINCULO, vin.ESTADO)"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+      </div>
+

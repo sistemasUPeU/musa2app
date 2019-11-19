@@ -29,7 +29,11 @@ import { MantenimientosComponent } from './ComponentesVista/Mantenimiento/manten
 import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
 import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component';
 import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component';
-import { VentaComponent } from './ComponentesVista/Ventas/venta/venta.component'
+import { VentaComponent } from './ComponentesVista/Ventas/venta/venta.component';
+import { RegistrarventaComponent } from './ComponentesVista/Ventas/registrarventa/registrarventa.component';
+import { AnularventaComponent } from './ComponentesVista/Ventas/anularventa/anularventa.component';
+import { RegistrarcajaComponent } from './ComponentesVista/Ventas/registrarcaja/registrarcaja.component';
+import { VinculoproComponent } from './ComponentesVista/CV/vinculopro/vinculopro.component'
 
 
 
@@ -61,7 +65,11 @@ import { VentaComponent } from './ComponentesVista/Ventas/venta/venta.component'
     SoatComponent,
     VehiculosComponent,
     ContrasenaComponent,
-    VentaComponent
+    VentaComponent,
+    RegistrarventaComponent,
+    AnularventaComponent,
+    RegistrarcajaComponent,
+    VinculoproComponent
   ],
   imports: [
     BrowserModule,
