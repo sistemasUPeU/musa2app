@@ -25,8 +25,17 @@ import { CursosComponent } from './ComponentesVista/Conductores/cursos/cursos.co
 import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propietarios.component';
 import { OpcionesComponent } from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
+import { MantenimientosComponent } from './ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component';
 import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
 //import { NgxPopper } from 'angular-popper';
+import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component';
+import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component';
+import { VentaComponent } from './ComponentesVista/Ventas/venta/venta.component';
+import { RegistrarventaComponent } from './ComponentesVista/Ventas/registrarventa/registrarventa.component';
+import { AnularventaComponent } from './ComponentesVista/Ventas/anularventa/anularventa.component';
+import { RegistrarcajaComponent } from './ComponentesVista/Ventas/registrarcaja/registrarcaja.component';
+import { VinculoproComponent } from './ComponentesVista/CV/vinculopro/vinculopro.component'
+
 
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Routes, RouterModule } from '@angular/router';
@@ -59,7 +68,15 @@ const routes: Routes = [
     PropietariosComponent,
     OpcionesComponent,
     TarjetacComponent,
-    SoatComponent
+    MantenimientosComponent,
+    SoatComponent,
+    VehiculosComponent,
+    ContrasenaComponent,
+    VentaComponent,
+    RegistrarventaComponent,
+    AnularventaComponent,
+    RegistrarcajaComponent,
+    VinculoproComponent
   ],
   imports: [
     BrowserModule,

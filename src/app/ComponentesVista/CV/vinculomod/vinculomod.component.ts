@@ -7,6 +7,7 @@ import { Propietarios } from 'src/app/Modelo/Propietarios';
 import { Vinculo, VincuRequi, VincuRequis } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
 import * as moment from 'moment';
+import { empleado } from 'src/app/Modelo/empleados';
 
 @Component({
   selector: 'app-vinculomod',
@@ -29,6 +30,7 @@ export class VinculomodComponent implements OnInit {
     this.getConductor();
     this.getPropietario();
     this.getVehiculo();
+    this.getempleado()
     this.titulo="MODIFICAR VINCULO";
     this.tipo = Number(localStorage.getItem("tipo"));
     this.Tipo();
@@ -44,7 +46,7 @@ export class VinculomodComponent implements OnInit {
   lisConduc: Conductores[];
   lisVehic: Vehiculos[];
   lisPropie: Propietarios[];
-
+  lisEmple: empleado[];
   ////// Objetosssss
   date_inicio : Date;
 
@@ -75,6 +77,15 @@ export class VinculomodComponent implements OnInit {
       }
     );
   }
+  /////// Listar Empleados
+  getempleado(){
+    this.service.getEmple().subscribe(
+      (data) => {
+        this.lisEmple = data
+        console.log(this.lisEmple)
+      }
+    )
+  }
 
   //////// Listar Vehiculossssssss
 
@@ -94,6 +105,7 @@ export class VinculomodComponent implements OnInit {
       (data) => {
         this.lisRequisitos = data['P_CUR_VINCULO_REQUISITO'];
         console.log(this.lisRequisitos)
+        
       }
     );
   }
@@ -142,9 +154,7 @@ export class VinculomodComponent implements OnInit {
     this.service.getVinculoid(id).subscribe(
       (data) => {
         this.vinculos = data['P_CUR_VINCULOS'];
-        var x = (String(moment(this.vinculos[0].fechainicio).format()).substr(0,10));
-        
-        this.fechai=x
+        this.fechai=this.convertir_fecha(String(this.vinculos[0].fechainicio))
         this.fechaf=this.convertir_fecha(String(this.vinculos[0].fechafin));
         console.log(this.vinculos)
       }
@@ -158,18 +168,29 @@ export class VinculomodComponent implements OnInit {
    //////// Modifica los datosssss
 
    modificar(vinculos: Vinculo){
-     alert("hola")
+     this.vinculos[0].fechainicio=String(this.fechai)
+     this.vinculos[0].fechafin=String(this.fechaf)
     this.service.uptVinculo(this.vinculos[0]).subscribe(
       (data) => {
 
         alert(data["p_msgerror"])
+        this.router.navigate(['/home/vinculo']);
       }
     );
    }
-   modifi_requis(estado:number,idvinculo:number,idrequisito:number){
-    this.vincurequi[this.cont].idvinculo = idvinculo
-    this.vincurequi[this.cont].idrequisito = idrequisito
+   modifi_requis(idvinculo:number,idrequisito:number){
+     console.log(idvinculo + " " + idrequisito)
+     this.service.uptrequisitos(idvinculo,idrequisito).subscribe( (data) =>{
+      alert("se actualizo")
+    })
+     /*let requi:VincuRequis
+     requi.idvinculo=idvinculo
+     requi.idrequisito=idrequisito
+     /*alert("hola")
+     console.log(requi)
+    /*this.vincurequi[0].idvinculo = idvinculo
+    this.vincurequi[0].idrequisito = idrequisito
     console.log(this.vincurequi)
-    this.cont++
+    this.cont++*/
    }
 }

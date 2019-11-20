@@ -19,7 +19,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div  style="height:300px;width:250px;border:1px solid black"class="modal-body">
+        <div   style="height:220px;width:250px;margin-left: 50px;"class="modal-body">
           <input [(ngModel)]="curso.nombrecurso" placeholder="Nombre"><br><br>
           <input [(ngModel)]="curso.nombreinstitucion" placeholder="Institucion"><br><br>
           <input [(ngModel)]="curso.lugar" placeholder="Lugar"><br><br>
@@ -81,9 +81,40 @@
                 <td scope="col">{{cur.fechainicio}}</td>
                 <td scope="col">{{cur.fechafin}}</td>
                 <td scope="col">{{cur.estado_tipo}}</td>
-                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 1px;" (click)="upt(cur)"></i><i class="fas fa-edit" style="color: blue; margin-left: -30px;" data-toggle="modal" data-target=""></i></td>
+                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: -50px;" (click)="upt(cur)"></i><i class="fas fa-edit" style="color: blue; margin-left: -30px;" (click)="read(cur.idcursos)"data-toggle="modal" data-target="#modaledit"></i></td>
               </tr>
             </tbody>
           </table>
+
+
+          <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar Curso</h5>
+                    <hr>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div  style="height:220px;width:250px;margin-left: 50px;"class="modal-body">
+                    <a>Ingrese Nombre del Curso</a><br><br>
+                    <input [(ngModel)]="curs.nombrecurso" placeholder="Nombre"><br><br>
+                    <input [(ngModel)]="curs.nombreinstitucion" placeholder="Institucion"><br><br>
+                    <input [(ngModel)]="curs.lugar" placeholder="Lugar"><br><br>
+                    <input [(ngModel)]="curs.fechainicio" placeholder="Fecha Fnicio" type="date"><br><br>
+                    <input [(ngModel)]="curs.fechafin" placeholder="Fecha Fin" type="date">
+          
+               
+                
+                 
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button"   class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    <button type="button" (click)="edit(curs)" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
   
   </div>

@@ -6,6 +6,8 @@ import { Vehiculos } from 'src/app/Modelo/Vehiculos';
 import { Propietarios } from 'src/app/Modelo/Propietarios';
 import { Vinculo, VincuRequi, Contador } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
+import { empleado } from 'src/app/Modelo/empleados';
+
 
 
 @Component({
@@ -17,8 +19,10 @@ export class VinculoopcComponent implements OnInit {
 
   
   
+
   
   constructor(private router: Router, private service: ServiceService) {
+    
     
    }
 
@@ -42,21 +46,23 @@ export class VinculoopcComponent implements OnInit {
   lisConduc: Conductores[];
   lisVehic: Vehiculos[];
   lisPropie: Propietarios[];
-
+  lisEmple: empleado[];
   ngOnInit() {
     this.loading = false
     this.paso1 = true
     this.cargar = false;
+    this.tipo = Number(localStorage.getItem("tipo"));
+    this.Tipo(this.tipo)
+    alert(this.tipo)
     this.getConductor();
     this.getPropietario();
     this.getVehiculo();
+    //this.getempleado()
     this.titulo="NUEVO VINCULO";
-    console.log(this.tipo);
     this.service.getcontvin().subscribe(
       (data) => {
         this.cont = data[0].CONTADOR; 
         this.cont++
-        alert(this.cont)
       }
       );
   }
@@ -95,6 +101,15 @@ export class VinculoopcComponent implements OnInit {
       }
     );
   }
+  /////// Listar empleados 
+  /*getempleado(){
+    this.service.getEmple().subscribe(
+      (data) => {
+        this.lisEmple = data
+      }
+    )
+  }*/
+
 
    ///// Listado de Vehiculos
 
@@ -120,16 +135,17 @@ export class VinculoopcComponent implements OnInit {
 
   ////// Metodo para seleccionar tipo de vinculo
 
-  Tipo(){
-    var v_tipo=(<HTMLSelectElement>document.getElementById('tipo')).value;
-    if (v_tipo == '1') {
+  Tipo(v_tipo:number){
+    this.vin.tipovinculo=v_tipo
+    if (v_tipo == 1) {
+
       this.titulo="NUEVO VINCULO CONDUCTOR";
       this.getRequisito(Number(v_tipo));
     (<HTMLElement>document.getElementById('forconductor')).style.display="block";
     (<HTMLElement>document.getElementById('forpropietario')).style.display="none";
       
     }
-    if (v_tipo== '2') {
+    if (v_tipo== 2) {
       this.titulo="NUEVO VINCULO PROPIETARIO";
       this.getRequisito(Number(v_tipo));
     (<HTMLElement>document.getElementById('forconductor')).style.display="none";
@@ -140,33 +156,43 @@ export class VinculoopcComponent implements OnInit {
   /////  Metodo de crear Vinculo
 
    crear(){
+    var x = 1;
+    if(this.tipo = x){
+    this.service.CreateVinRequi(+this.tipo,this.vinrequi).subscribe(data =>{
+      this.router.navigate(['/home/vinculo']);
+     // this.router.navigate(['/home/vinculo']);
+      }
+    );
+    }
    }
    siguiente(){
      this.loading=true
      this.paso1 = false
-    var v_tipo=(<HTMLSelectElement>document.getElementById('tipo')).value;
+    this.tipo=Number((<HTMLSelectElement>document.getElementById('tipo')).value);
+    this.vin.idempleado=2
+    console.log(this.vin.idempleado)
+    console.log(this.vin)
     this.service.createvinculo(this.vin).subscribe(data => {
       this.vinrequi.idvinculo=this.cont;
       console.log(this.vinrequi)
-      this.service.CreateVinRequi(+Number(v_tipo),this.vinrequi).subscribe(data =>{
-        this.loading=false
-        this.cargar=true
-    }
-      );
+      this.loading=false
+      this.cargar=true
     });
    }
    regresar(){
     this.paso1 = true
     this.loading=false
+    this.cargar=false
     this.elimininar(this.cont);
    }
    elimininar(id: number){
      console.log("delete")
-     this.service.DeleteVinculo(id).subscribe(data => {
+     this.service.DeleteVinculo(+id).subscribe(data => {
         alert("se borro")
      })
    }
    sumador(){
      this.cont+1;
    }
+   
 }

@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Usuario } from '../Modelo/Usuario';
 import { Rol_Usuarios } from '../Modelo/Rol_Usuario';
 import { Ubigeo } from '../ComponentesVista/Configuracion/registrarubigeo/ubigeo';
-import { Vinculos, Vinculo, VincuRequi,Contador, Vinupd } from '../Modelo/Vinculos';
+import { Vinculos, Vinculo, VincuRequi,Contador, Vinupd, VincuRequis } from '../Modelo/Vinculos';
 import { Roles, RolesF } from '../Modelo/Roles';
 import { Conductores } from '../Modelo/Conductores';
 import { Propietarios, Propietario } from '../Modelo/Propietarios';
@@ -44,7 +44,7 @@ export class ServiceService {
   }
 
   postUbigeo(ubigeo: Ubigeo): Observable<number> {
-    return this.http.post<number>(`${ environment.apiUrl }/add`, ubigeo);
+    return this.http.post<number>(`${ environment.apiUrl }/ubigeos/add`, ubigeo);
   }
   getAllRoles(): Observable<Roles[]> {
     return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
@@ -72,6 +72,12 @@ export class ServiceService {
     }));
 
   }
+  ////////////////////EMPLEADOSSS
+  //getEmple() : Observable<empleado[]> {
+   // return this.http.get<empleado[]>(`${ environment.apiUrl }/empleado/lis`);
+ // }
+
+
   ///// Vinculossss -------------- ///
   
   getVinculo(tipovinculo: number, estado:number) : Observable<Vinculos[]> {
@@ -100,7 +106,11 @@ export class ServiceService {
   getrequisitos_vinculo(idvinculo: number): Observable<Requisitos[]> {
     return this.http.get<Requisitos[]>(`${ environment.apiUrl }/vinrequi/`+idvinculo);
   }
-  
+  uptrequisitos(idvinculo:number,idrequisito:number){
+    var x = new VincuRequis(idvinculo,idrequisito);
+    console.log(x)
+    return this.http.put<VincuRequis>(`${ environment.apiUrl }/vinrequi/upt/`+ idrequisito, x);
+  }
   CreateVinRequi(tipo:number,vincurequi: VincuRequi) {
     return this.http.post<VincuRequi[]>(`${ environment.apiUrl }/vinrequi/add/` + tipo, vincurequi);
   }
@@ -137,7 +147,6 @@ export class ServiceService {
     console.log(propietario)
      return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`, propietario);
   }
-  //////////////Propietarios
   crearPropietarios(propietarioc:Propietario){
     console.log(`(asdasdasdasdasdasd)`)
     console.table(propietarioc)
@@ -146,15 +155,19 @@ export class ServiceService {
   getPropietarioId(id:number){
      return this.http.get<Propietario[]>( `${ environment.apiUrl }/propietarios/`+ id);
   }
-  deleteRoles(roles:Roles){
-    return this.http.delete<Roles>(this.Url+roles.idrol);
-  } 
+
   updatePropietarios(propietario:Propietario){
     return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/`, propietario);
   }
   buscarnombre(nombre:String){
      return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/nombre/`+ nombre);
   }
+  /* FIN DEL CRUD PROPIETARIOS */
+
+  deleteRoles(roles:Roles){
+    return this.http.delete<Roles>(this.Url+roles.idrol);
+  } 
+ 
 
   ///////////////FINPropietarios
   updateRoles(x:number,roles:Roles){

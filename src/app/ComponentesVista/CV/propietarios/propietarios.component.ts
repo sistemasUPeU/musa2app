@@ -45,7 +45,8 @@ export class PropietariosComponent implements OnInit {
   }
   delete(prop:Propietario){
     alert('hola mundo')
-    this.propietarioservice.deletePropietarios(prop).subscribe( data => {
+    this.propietarioservice.deletePropietarios(prop).subscribe( 
+      data => {
          console.log(this.propietario);
          this.getpropietario();
     })
