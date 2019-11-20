@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+//import { HttpClient } from '@angular/common/http';
+import { Observable , throwError} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../Modelo/Usuario';
 import { Rol_Usuarios } from '../Modelo/Rol_Usuario';
@@ -12,20 +12,32 @@ import { Propietarios, Propietario } from '../Modelo/Propietarios';
 import { Vehiculos } from '../Modelo/Vehiculos';
 import { Requisitos } from '../Modelo/Requisitos';
 import { Usuarios_Opciones } from '../Modelo/Usuarios_Opciones';
+import {HttpClient, HttpHeaders, HttpRequest, HttpEvent} from '@angular/common/http';
+import { LoginService } from 'src/app/service/login.service';
+import { map, catchError, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
-
-  constructor(private http: HttpClient) { }
+  
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
+  constructor(private http: HttpClient, private loginService:LoginService) { }
   Url = 'http://localhost:8081/roles/'
   Url2 = 'http://localhost:8081/usuarios/'
   Url3 = 'http://localhost:8081/ru'
   Url4 = 'http://localhost:8081/usop/'
   roles:RolesF;
 
- 
+  private agregarAutorizacion(){
+    let token = this.loginService.token;
+    if(token!=null){
+      console.log("ESTE ES EL TOKEN "+token);
+      return this.httpHeaders.append('Authorization','Bearer' + token);
+    }
+    console.log("NO LLEGA EL TOKEN");
+    return this.httpHeaders;
+  }
 
   searchUbigeo(codigo: number) {
     return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ codigo }`);
@@ -35,7 +47,11 @@ export class ServiceService {
     return this.http.post<number>(`${ environment.apiUrl }/add`, ubigeo);
   }
   getAllRoles(): Observable<Roles[]> {
-    return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/`);
+    return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
   }
   getAllUser(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(`${ environment.apiUrl }/usuarios/user/`);
@@ -50,7 +66,10 @@ export class ServiceService {
     return this.http.post<Roles[]>(this.Url+'add',x);   
   }
   getAllUbigeo(): Observable<Ubigeo[]> {
-    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`);
+    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
 
   }
   ///// Vinculossss -------------- ///
@@ -108,7 +127,11 @@ export class ServiceService {
   }
   //******PROPIETARIOS */
   getPropietarios(): Observable<Propietario[]> {
-    return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`);
+    return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
   deletePropietarios( propietario:Propietario){
     console.log(propietario)
@@ -164,7 +187,11 @@ getPersonaId(idrol: number): Observable<Roles[]> {
 ////////////////////////////
 
 getUsuario(): Observable<Usuario[]>{
-  return this.http.get<Usuario[]>(this.Url2);
+  return this.http.get<Usuario[]>(this.Url2, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  })
+  )
 }
 getUsuarioN(e): Observable<Usuario[]>{
   return this.http.get<Usuario[]>(this.Url2+ "nombre/"+e);

@@ -16,10 +16,10 @@
               alt="User picture">
           </div>
           <div class="user-info">
-            <span class="user-name">Fulano
-              <strong>Sutano</strong>
+            <span class="user-name">{{loginService.personas.nombre}}
+              <strong>{{loginService.personas.apellido}}</strong>
             </span>
-            <span class="user-role">Jefe de Operaciones</span>
+            <span class="user-role">{{loginService.personas.rol}}</span>
           </div>
         </div>
 
@@ -200,7 +200,7 @@
         <a>
           <i class="fa fa-cog"></i>
         </a>
-        <a  [routerLink]="['/login']">
+        <a  (click)="logout()">
           <i class="fa fa-power-off"></i>
         </a>
       </div>

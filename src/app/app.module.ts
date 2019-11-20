@@ -26,8 +26,14 @@ import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propie
 import { OpcionesComponent } from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
 import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
+//import { NgxPopper } from 'angular-popper';
 
-
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './ComponentesVista/Seguridad/login/login.component';
+const routes: Routes = [
+  {path: '/login', component:LoginComponent}
+];
 
 @NgModule({
   declarations: [
@@ -44,7 +50,7 @@ import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.componen
     RolusComponent,
     UseropComponent,
     AgregarUseropComponent,
-  
+    LoginComponent,
     EntradadeproductoComponent,
     VinculoopcComponent,
     VinculomodComponent,
@@ -58,7 +64,10 @@ import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
+    //NgxPopper,
+    //FontAwesomeModule,
     FormsModule,
+    RouterModule,
     HttpClientModule
   ],
   providers: [],

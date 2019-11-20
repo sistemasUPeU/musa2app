@@ -18,11 +18,18 @@ export class UsuarioComponent implements OnInit {
   constructor( private service:ServiceService , private router:Router) { }
 
   ngOnInit() {
-    this.service.getUsuario().subscribe((data) => {
-      this.listaruser = data['P_CURSOR_USUARIO'];
-      console.log(this.listaruser);
-    })
+    this.getUsuario();
+    
   }
+
+getUsuario(){
+  this.service.getUsuario().subscribe((data) => {
+    this.listaruser = data['P_CURSOR'];
+    console.log(data);
+})
+}
+
+
   Ros(){
     this.router.navigate(["home/rolus"]);
   }
