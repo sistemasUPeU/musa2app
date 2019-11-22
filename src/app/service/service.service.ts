@@ -15,6 +15,7 @@ import { Usuarios_Opciones } from '../Modelo/Usuarios_Opciones';
 import {HttpClient, HttpHeaders, HttpRequest, HttpEvent} from '@angular/common/http';
 import { LoginService } from 'src/app/service/login.service';
 import { map, catchError, tap} from 'rxjs/operators';
+import { Caja } from '../Modelo/Caja';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +54,9 @@ export class ServiceService {
     })
     )
   }
+  deleteUbigeo(id: number){
+
+  }
   getAllUser(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(`${ environment.apiUrl }/usuarios/user/`);
   }
@@ -81,30 +85,58 @@ export class ServiceService {
   ///// Vinculossss -------------- ///
   
   getVinculo(tipovinculo: number, estado:number) : Observable<Vinculos[]> {
-    return this.http.get<Vinculos[]>(`${ environment.apiUrl }/vinculos/lis/`+tipovinculo+"/"+estado);
+    return this.http.get<Vinculos[]>(`${ environment.apiUrl }/vinculos/lis/`+tipovinculo+"/"+estado , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   getNombreConductor(): Observable<Conductores[]> {
-    return this.http.get<Conductores[]>(`${ environment.apiUrl }/conductores/lis/`);
+    return this.http.get<Conductores[]>(`${ environment.apiUrl }/vinculos/lisc/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   getNombrePropietario(): Observable<Propietarios[]> {
-    return this.http.get<Propietarios[]>(`${ environment.apiUrl }/propietarios/lis/`);
+    return this.http.get<Propietarios[]>(`${ environment.apiUrl }/vinculos/lisp/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   getVinculoid(id:number): Observable<Vinculos> {
-    return this.http.get<Vinculos>(`${ environment.apiUrl }/vinculos/`+id);
+    return this.http.get<Vinculos>(`${ environment.apiUrl }/vinculos/`+id, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   getNombreVeh(): Observable<Vehiculos[]> {
-    return this.http.get<Vehiculos[]>(`${ environment.apiUrl }/vehiculos/lis/`);
+    return this.http.get<Vehiculos[]>(`${ environment.apiUrl }/vinculos/lisv/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   getRequisitos(tipovinculo: number): Observable<Requisitos[]> {
-    return this.http.get<Requisitos[]>(`${ environment.apiUrl }/requisitos/lis/`+tipovinculo);
+    return this.http.get<Requisitos[]>(`${ environment.apiUrl }/vinculos/lis/`+tipovinculo, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
   getrequisitos_vinculo(idvinculo: number): Observable<Requisitos[]> {
-    return this.http.get<Requisitos[]>(`${ environment.apiUrl }/vinrequi/`+idvinculo);
+    return this.http.get<Requisitos[]>(`${ environment.apiUrl }/vinrequi/`+idvinculo, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
   uptrequisitos(idvinculo:number,idrequisito:number){
     var x = new VincuRequis(idvinculo,idrequisito);
@@ -135,6 +167,20 @@ export class ServiceService {
   DeleteVinculo(idvinculo: number){
     return this.http.delete<Vinculo[]>(`${ environment.apiUrl }/vinrequi/`+ idvinculo);
   }
+
+  //******VENTASSS */
+
+
+  //******CAJAAA */
+
+  CreateCaja(caja: Caja){
+    return this.http.post<Caja>(`${ environment.apiUrl }/caja/add`, caja , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
+  }
+
   //******PROPIETARIOS */
   getPropietarios(): Observable<Propietario[]> {
     return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{

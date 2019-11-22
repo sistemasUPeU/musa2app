@@ -97,7 +97,7 @@ export class VinculoopcComponent implements OnInit {
     this.service.getNombrePropietario().subscribe(
       (data) => {
         this.lisPropie = data['P_CURSOR'];
-        console.log(this.lisPropie)
+        console.log(data['P_CURSOR'])
       }
     );
   }
@@ -141,15 +141,13 @@ export class VinculoopcComponent implements OnInit {
 
       this.titulo="NUEVO VINCULO CONDUCTOR";
       this.getRequisito(Number(v_tipo));
-    (<HTMLElement>document.getElementById('forconductor')).style.display="block";
-    (<HTMLElement>document.getElementById('forpropietario')).style.display="none";
+    
       
     }
     if (v_tipo== 2) {
       this.titulo="NUEVO VINCULO PROPIETARIO";
       this.getRequisito(Number(v_tipo));
-    (<HTMLElement>document.getElementById('forconductor')).style.display="none";
-    (<HTMLElement>document.getElementById('forpropietario')).style.display="block";  
+
     }  
   }
 
@@ -194,5 +192,6 @@ export class VinculoopcComponent implements OnInit {
    sumador(){
      this.cont+1;
    }
-   
+
 }
+

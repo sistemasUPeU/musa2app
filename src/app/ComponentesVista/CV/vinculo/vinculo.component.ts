@@ -28,7 +28,10 @@ export class VinculoComponent implements OnInit {
   constructor(private service: ServiceService, private router: Router) { }
   
   ngOnInit() {
-    
+    function myFunction() {
+       var x = (<HTMLElement>document.getElementById('buscar1'));
+      
+    }
     this.tipo=1;
     this.estado = 1;
     this.listar();

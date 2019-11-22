@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   }
   login():void{
     console.log(this.usuario);
+    localStorage.setItem("user", this.usuario.login )
     if(this.usuario.login==null || this.usuario.password==null){
       Swal.fire('Error Login','Username o Password incorrectos');
       

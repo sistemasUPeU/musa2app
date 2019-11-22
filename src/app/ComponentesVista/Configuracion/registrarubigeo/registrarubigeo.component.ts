@@ -66,7 +66,7 @@ export class RegistrarubigeoComponent implements OnInit {
 alert("registrado correctamente...")
   }
 
-
+/*
 Eliminar(id: number){
   console.log(id)
   this.serviceService.deleteUbige(id).subscribe(data => {
@@ -76,5 +76,5 @@ Eliminar(id: number){
   })
 
  }
-
+*/
   }
