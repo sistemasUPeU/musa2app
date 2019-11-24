@@ -14,8 +14,8 @@ export class Vinculo {
   estado: number;
   idconductor: number;  
   descripcion: string;
-  fechainicio: Date;
-  fechafin: Date;
+  fechainicio: string;
+  fechafin: string;
   usercreate: string;
   datecreate: Date;
   usermodify: string;
@@ -30,7 +30,14 @@ export class Contador{
 export class VincuRequi {
   idvinculo: number;
 }
-
+export class VincuRequis {
+  idvinculo: number;
+  idrequisito: number;
+  constructor(vincu:number, requi:number) {
+    this.idvinculo=vincu;
+    this.idrequisito=requi;
+ }
+}
 export class Vinupd {
   idvinculo: number;
   estado: number;

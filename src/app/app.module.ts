@@ -39,8 +39,24 @@ import { ManteVComponent } from './ComponentesVista/Reportes/mante-v/mante-v.com
 import { RevisionesDComponent } from './ComponentesVista/Reportes/revisiones-d/revisiones-d.component';
 import { PropiComponent } from './ComponentesVista/Reportes/propi/propi.component';
 import { VincComponent } from './ComponentesVista/Reportes/vinc/vinc.component';
+import { MantenimientosComponent } from './ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component';
+import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
+//import { NgxPopper } from 'angular-popper';
+import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component';
+import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component';
+import { VentaComponent } from './ComponentesVista/Ventas/venta/venta.component';
+import { RegistrarventaComponent } from './ComponentesVista/Ventas/registrarventa/registrarventa.component';
+import { AnularventaComponent } from './ComponentesVista/Ventas/anularventa/anularventa.component';
+import { RegistrarcajaComponent } from './ComponentesVista/Ventas/registrarcaja/registrarcaja.component';
+import { VinculoproComponent } from './ComponentesVista/CV/vinculopro/vinculopro.component'
 
 
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './ComponentesVista/Seguridad/login/login.component';
+const routes: Routes = [
+  {path: '/login', component:LoginComponent}
+];
 
 @NgModule({
   declarations: [
@@ -57,7 +73,7 @@ import { VincComponent } from './ComponentesVista/Reportes/vinc/vinc.component';
     RolusComponent,
     UseropComponent,
     AgregarUseropComponent,
-  
+    LoginComponent,
     EntradadeproductoComponent,
     VinculoopcComponent,
     VinculomodComponent,
@@ -79,12 +95,24 @@ import { VincComponent } from './ComponentesVista/Reportes/vinc/vinc.component';
     ManteVComponent,
     RevisionesDComponent,
     PropiComponent,
-    VincComponent
+    VincComponent,
+    MantenimientosComponent,
+    SoatComponent,
+    VehiculosComponent,
+    ContrasenaComponent,
+    VentaComponent,
+    RegistrarventaComponent,
+    AnularventaComponent,
+    RegistrarcajaComponent,
+    VinculoproComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    //NgxPopper,
+    //FontAwesomeModule,
     FormsModule,
+    RouterModule,
     HttpClientModule
   ],
   providers: [],

@@ -77,7 +77,7 @@
               <label for="idaccionpadre">Elija categoria</label>
               <select class="form-control" [(ngModel)]="mantAcciones.idaccionpadre" name="idaccionpadre">
                   <option value="" disabled>Seleccione su opcion</option>
-                  <option value="0">Categoria de revision diaria</option>
+                  <option value="0">Categoria acciones</option>
                   <option *ngFor="let cat of getcat" [value]="cat.idmantacciones">
                     {{cat.nombre}}
                   </option>

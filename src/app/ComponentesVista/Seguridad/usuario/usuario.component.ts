@@ -18,11 +18,18 @@ export class UsuarioComponent implements OnInit {
   constructor( private service:ServiceService , private router:Router) { }
 
   ngOnInit() {
-    this.service.getUsuario().subscribe((data) => {
-      this.listaruser = data['P_CURSOR_USUARIO'];
-      console.log(this.listaruser);
-    })
+    this.getUsuario();
+    
   }
+
+getUsuario(){
+  this.service.getUsuario().subscribe((data) => {
+    this.listaruser = data['P_CURSOR'];
+    console.log(data);
+})
+}
+
+
   Ros(){
     this.router.navigate(["home/rolus"]);
   }
@@ -79,8 +86,8 @@ export class UsuarioComponent implements OnInit {
   ActualizarUser(P_CURSOR_USUARIO: Usuario) {
     alert(P_CURSOR_USUARIO.idusuario);
     alert(P_CURSOR_USUARIO.login);
-    alert(P_CURSOR_USUARIO.password);
-    alert(P_CURSOR_USUARIO.estado);
+    //alert(P_CURSOR_USUARIO.password);
+    //alert(P_CURSOR_USUARIO.estado);
     P_CURSOR_USUARIO.user_modify = "Christian"
     this.service.updateUsuario(P_CURSOR_USUARIO).subscribe((data) => {
       this.userf = data;

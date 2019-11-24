@@ -14,8 +14,6 @@ import { AgregarRuserComponent } from './ComponentesVista/Seguridad/agregar-ruse
 import { RolusComponent } from './ComponentesVista/Seguridad/rolus/rolus.component';
 import { UseropComponent } from './ComponentesVista/Seguridad/userop/userop.component';
 import { AgregarUseropComponent } from './ComponentesVista/Seguridad/agregar-userop/agregar-userop.component';
-
-
 import { EntradadeproductoComponent } from './ComponentesVista/GestionarAlmacen/entradadeproducto/entradadeproducto.component';
 import { AccionesComponent } from './ComponentesVista/Mantenimiento/acciones/acciones.component';
 import { VinculoComponent } from './ComponentesVista/CV/vinculo/vinculo.component';
@@ -40,6 +38,16 @@ import { ManteVComponent } from './ComponentesVista/Reportes/mante-v/mante-v.com
 import { RevisionesDComponent } from './ComponentesVista/Reportes/revisiones-d/revisiones-d.component';
 import { PropiComponent } from './ComponentesVista/Reportes/propi/propi.component';
 import { VincComponent } from './ComponentesVista/Reportes/vinc/vinc.component';
+import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component'
+import { MantenimientosComponent } from "./ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component";
+import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
+import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component';
+import { VentaComponent} from './ComponentesVista/Ventas/venta/venta.component';
+import { from } from 'rxjs';
+import { RegistrarventaComponent} from './ComponentesVista/Ventas/registrarventa/registrarventa.component';
+import { AnularventaComponent } from './ComponentesVista/Ventas/anularventa/anularventa.component';
+import { RegistrarcajaComponent } from './ComponentesVista/Ventas/registrarcaja/registrarcaja.component';
+import { VinculoproComponent} from './ComponentesVista/CV/vinculopro/vinculopro.component';
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
@@ -55,12 +63,12 @@ const routesHome: Routes = [
   {path:'rolus', component:RolusComponent},
   {path: 'userop', component: UseropComponent},
   {path: 'agregar-userop', component: AgregarUseropComponent},
-  
   {path:'entradadeproducto', component:EntradadeproductoComponent},
   {path:'acciones', component:AccionesComponent},
   {path:'vinculo', component:VinculoComponent},
   {path:'vinculoopc', component:VinculoopcComponent},
   {path:'acciones/:tipo', component:AccionesComponent},
+  {path:'mantenimientos/:type', component:MantenimientosComponent},
   {path:'conductor',component:ConductorComponent},
   {path:'vinculomod', component:VinculomodComponent},
   {path:'vinculo', component:VinculoComponent},
@@ -84,12 +92,20 @@ const routesHome: Routes = [
   {path:'mantev',component:ManteVComponent},
   {path:'revisionesd',component:RevisionesDComponent},
   {path:'propi',component:PropiComponent},
-  {path:'vinc',component:VincComponent}
+  {path:'vinc',component:VincComponent},
+  {path:'soat',component:SoatComponent},
+  {path: 'vehiculos', component:VehiculosComponent},
+  {path: 'venta', component:VentaComponent},
+  {path: 'registrarven', component:RegistrarventaComponent},
+  {path: 'anularven', component:AnularventaComponent},
+  {path: 'registrarcaja', component:RegistrarcajaComponent},
+  {path: 'vinculopropietario', component: VinculoproComponent}
 ];
 
 const routes: Routes = [
   {path:'', redirectTo:'/login',pathMatch:'full'},
   {path:'login', component:LoginComponent},
+  {path:'cambiarcontra', component:ContrasenaComponent},
   {path:'home', component:HomeComponent, children: routesHome},
   {path:'prueba-editar', component:PruebaEditarComponent},
   {path:'agregar-user', component:AgregarUserComponent},
@@ -112,8 +128,15 @@ export const routingComponents = [
   LoginComponent,
   HomeComponent,
   AccionesComponent,
+  MantenimientosComponent,
   VinculoComponent,
   CursosComponent,
+  OpcionesComponent,
   TarjetacComponent,
-  PropietariosComponent
+  PropietariosComponent,
+  SoatComponent,
+  VentaComponent,
+  RegistrarcajaComponent,
+  RegistrarventaComponent,
+  VinculoproComponent
 ];

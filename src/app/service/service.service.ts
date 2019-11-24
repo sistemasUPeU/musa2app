@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+//import { HttpClient } from '@angular/common/http';
+import { Observable , throwError} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../Modelo/Usuario';
 import { Rol_Usuarios } from '../Modelo/Rol_Usuario';
 import { Ubigeo } from '../ComponentesVista/Configuracion/registrarubigeo/ubigeo';
-import { Vinculos, Vinculo, VincuRequi,Contador, Vinupd } from '../Modelo/Vinculos';
+import { Vinculos, Vinculo, VincuRequi,Contador, Vinupd, VincuRequis } from '../Modelo/Vinculos';
 import { Roles, RolesF } from '../Modelo/Roles';
 import { Conductores } from '../Modelo/Conductores';
 import { Propietarios, Propietario } from '../Modelo/Propietarios';
@@ -27,13 +27,18 @@ import { Propi } from '../Modelo/Propi';
 import { ManTReg } from '../Modelo/MantReg';
 import { MantVal } from '../Modelo/MantVal';
 import { RevDiarias } from '../Modelo/RevDiarias';
+import {HttpClient, HttpHeaders, HttpRequest, HttpEvent} from '@angular/common/http';
+import { LoginService } from 'src/app/service/login.service';
+import { map, catchError, tap} from 'rxjs/operators';
+import { Caja } from '../Modelo/Caja';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
-
-  constructor(private http: HttpClient) { }
+  
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
+  constructor(private http: HttpClient, private loginService:LoginService) { }
   Url = 'http://localhost:8081/roles/'
   Url2 = 'http://localhost:8081/usuarios/'
   Url3 = 'http://localhost:8081/ru'
@@ -42,17 +47,32 @@ export class ServiceService {
   Url6 = 'http://localhost:8081/reporte/'
   roles:RolesF;
 
- 
+  private agregarAutorizacion(){
+    let token = this.loginService.token;
+    if(token!=null){
+      console.log("ESTE ES EL TOKEN "+token);
+      return this.httpHeaders.append('Authorization','Bearer' + token);
+    }
+    console.log("NO LLEGA EL TOKEN");
+    return this.httpHeaders;
+  }
 
   searchUbigeo(codigo: number) {
     return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ codigo }`);
   }
 
   postUbigeo(ubigeo: Ubigeo): Observable<number> {
-    return this.http.post<number>(`${ environment.apiUrl }/add`, ubigeo);
+    return this.http.post<number>(`${ environment.apiUrl }/ubigeos/add`, ubigeo);
   }
   getAllRoles(): Observable<Roles[]> {
-    return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/`);
+    return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
+  }
+  deleteUbigeo(id: number){
+
   }
   getAllUser(): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(`${ environment.apiUrl }/usuarios/user/`);
@@ -67,35 +87,79 @@ export class ServiceService {
     return this.http.post<Roles[]>(this.Url+'add',x);   
   }
   getAllUbigeo(): Observable<Ubigeo[]> {
-    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`);
+    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
 
   }
+  ////////////////////EMPLEADOSSS
+  //getEmple() : Observable<empleado[]> {
+   // return this.http.get<empleado[]>(`${ environment.apiUrl }/empleado/lis`);
+ // }
+
+
   ///// Vinculossss -------------- ///
   
   getVinculo(tipovinculo: number, estado:number) : Observable<Vinculos[]> {
-    return this.http.get<Vinculos[]>(`${ environment.apiUrl }/vinculos/lis/`+tipovinculo+"/"+estado);
+    return this.http.get<Vinculos[]>(`${ environment.apiUrl }/vinculos/lis/`+tipovinculo+"/"+estado , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   getNombreConductor(): Observable<Conductores[]> {
-    return this.http.get<Conductores[]>(`${ environment.apiUrl }/conductores/lis/`);
+    return this.http.get<Conductores[]>(`${ environment.apiUrl }/vinculos/lisc/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   getNombrePropietario(): Observable<Propietarios[]> {
-    return this.http.get<Propietarios[]>(`${ environment.apiUrl }/propietarios/lis/`);
+    return this.http.get<Propietarios[]>(`${ environment.apiUrl }/vinculos/lisp/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   getVinculoid(id:number): Observable<Vinculos> {
-    return this.http.get<Vinculos>(`${ environment.apiUrl }/vinculos/`+id);
+    return this.http.get<Vinculos>(`${ environment.apiUrl }/vinculos/`+id, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   getNombreVeh(): Observable<Vehiculos[]> {
-    return this.http.get<Vehiculos[]>(`${ environment.apiUrl }/vehiculos/lis/`);
+    return this.http.get<Vehiculos[]>(`${ environment.apiUrl }/vinculos/lisv/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   getRequisitos(tipovinculo: number): Observable<Requisitos[]> {
-    return this.http.get<Requisitos[]>(`${ environment.apiUrl }/requisitos/lis/`+tipovinculo);
+    return this.http.get<Requisitos[]>(`${ environment.apiUrl }/vinculos/lis/`+tipovinculo, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
-
+  getrequisitos_vinculo(idvinculo: number): Observable<Requisitos[]> {
+    return this.http.get<Requisitos[]>(`${ environment.apiUrl }/vinrequi/`+idvinculo, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
+  }
+  uptrequisitos(idvinculo:number,idrequisito:number){
+    var x = new VincuRequis(idvinculo,idrequisito);
+    console.log(x)
+    return this.http.put<VincuRequis>(`${ environment.apiUrl }/vinrequi/upt/`+ idrequisito, x);
+  }
   CreateVinRequi(tipo:number,vincurequi: VincuRequi) {
     return this.http.post<VincuRequi[]>(`${ environment.apiUrl }/vinrequi/add/` + tipo, vincurequi);
   }
@@ -120,21 +184,55 @@ export class ServiceService {
   DeleteVinculo(idvinculo: number){
     return this.http.delete<Vinculo[]>(`${ environment.apiUrl }/vinrequi/`+ idvinculo);
   }
+
+  //******VENTASSS */
+
+
+  //******CAJAAA */
+
+  CreateCaja(caja: Caja){
+    return this.http.post<Caja>(`${ environment.apiUrl }/caja/add`, caja , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
+  }
+
   //******PROPIETARIOS */
   getPropietarios(): Observable<Propietario[]> {
-    return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`);
+    return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
   deletePropietarios( propietario:Propietario){
     console.log(propietario)
      return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`, propietario);
   }
-  
   crearPropietarios(propietarioc:Propietario){
+    console.log(`(asdasdasdasdasdasd)`)
+    console.table(propietarioc)
      return this.http.post<Propietario>( `${ environment.apiUrl }/propietarios/add`, propietarioc);
   }
+  getPropietarioId(id:number){
+     return this.http.get<Propietario[]>( `${ environment.apiUrl }/propietarios/`+ id);
+  }
+
+  updatePropietarios(propietario:Propietario){
+    return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/`, propietario);
+  }
+  buscarnombre(nombre:String){
+     return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/nombre/`+ nombre);
+  }
+  /* FIN DEL CRUD PROPIETARIOS */
+
   deleteRoles(roles:Roles){
     return this.http.delete<Roles>(this.Url+roles.idrol);
   } 
+ 
+
+  ///////////////FINPropietarios
   updateRoles(x:number,roles:Roles){
     return this.http.put<Roles>(this.Url+x, roles);
   }
@@ -165,7 +263,11 @@ getPersonaId(idrol: number): Observable<Roles[]> {
 ////////////////////////////
 
 getUsuario(): Observable<Usuario[]>{
-  return this.http.get<Usuario[]>(this.Url2);
+  return this.http.get<Usuario[]>(this.Url2, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  })
+  )
 }
 getUsuarioN(e): Observable<Usuario[]>{
   return this.http.get<Usuario[]>(this.Url2+ "nombre/"+e);

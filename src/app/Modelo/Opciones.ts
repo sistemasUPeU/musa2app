@@ -1,7 +1,7 @@
 export class Opciones{
       idopciones: number;
 	  nombre: String;
-	  Descripcion: String;
+	  descripcion: String;
 	  enlace: String;
 	  icono: String;
 	  tipo: number;

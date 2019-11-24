@@ -1,12 +1,12 @@
 export class Usuario{
     idusuario: Number;
-    login: String;
-    password: String;
-    rol:String;
+    login: string;
+    password: string;
+    rol:string;
     estado: Number;
     idpersona: Number;
-    nombre:String;
-    apellido:String;
+    nombre:string;
+    apellido:string;
     user_create: String;
     date_create: Date;
     user_modify: String;

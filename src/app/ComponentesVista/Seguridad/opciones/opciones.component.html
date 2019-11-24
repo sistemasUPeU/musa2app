@@ -11,20 +11,20 @@
 <!-- div parte superior -->
 <div id="caja2">
   <!-- Buscador -->
-  <p id="p">Buscar por: </p>
+  <p id="p">Buscar por Nro.Opcion: </p>
   <div class="input-group" id="caja_search">
       <span class="input-group-prepend">
       </span>
-      <input class="form-control bg-transparent" type="search" placeholder=" Buscar" id="buscar1" />
+      <input class="form-control bg-transparent" id="buscar1" [(ngModel)]="ops.idopciones"  placeholder=" Ingrese Nro Documento" >
       <span class="input-group-append">
-          <div class="input-group-text bg-transparent " id="buscar2">
-          <i class="fa fa-search"></i>
+          <div  class="input-group-text bg-transparent " id="buscar2">
+          <i  (click)="Buscar()" class ="fa fa-search"></i>
           </div>
       </span>
   </div> 
   <!-- Buscador Tipo -->
   <div id="tipo">
-      <select class="custom-select" id="inputGroupSelect01" id="caja_tipo">
+    <select class="custom-select" [(ngModel)]="o.tipo" (click)="Tipo()" id="inputGroupSelect01" id="caja_rol">
               <option selected>Seleccione Tipo</option>
               <option value="1">Activo</option>
               <option value="2">Desactivo</option>
@@ -32,14 +32,16 @@
   </div>
   <!-- Buscador Estado -->
   <div id="estado">
-      <select class="custom-select" id="inputGroupSelect01" id="caja_estado">
-              <option selected>Seleccione Estado</option>
-              <option value="1">Activo</option>
-              <option value="2">Desactivo</option>
-      </select>
-  </div>
+    <select class="custom-select" [(ngModel)]="o.estado" (click)="Estado()" id="inputGroupSelect01" id="caja_rol">
+                
+      <option>Seleccione estado</option>
+      <option value=1 >Vigente</option>
+      <option value=0>No Vigente</option>
+      <option value=2>Por Recoger</option>
+</select>
+</div>
   <!-- Boton Limpiar -->
-  <button type="button" class="btn btn-success" id="limpiar">Limpíar</button>
+  <button type="button" class="btn btn-success" id="limpiar" (click)="Limpiar()">Limpíar</button>
 
   <br><br>
   <!-- Tabla -->
@@ -59,18 +61,17 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let opciones of opciones; let i = index">
-            <td>{{i+1}}</td>
-            <td>{{opciones.idpadre}}</td>
-            <td>{{opciones.nombre}}</td>
-            <td>{{opcioens.descripcion}}</td>
-            <td>{{opciones.enlace}}</td>
-            <td>{{opciones.icono}}</td>
-            <td>{{opciones.tipo}}</td>
-            <td>{{opciones.orden}}</td>
-            <td>{{opciones.estado}}</td>
-            <td ><i class="fas fa-trash-alt" (click)="Eliminar(opciones)" style="color: red; margin-left: 20px;"></i></td>
-        <td ><i class="fas fa-edit" (click)="Actualizar(opciones)" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarUsuario"></i></td>
+        <tr *ngFor="let opcion of opciones1; let i = index">
+          <td scope="row">{{i + 1}}</td>
+            <td>{{opcion.idpadre}}</td>
+            <td>{{opcion.nombre}}</td>
+            <td>{{opcion.descripcion}}</td>
+            <td>{{opcion.enlace}}</td>
+            <td>{{opcion.icono}}</td>
+            <td>{{opcion.tipo}}</td>
+            <td>{{opcion.orden}}</td>
+            <td>{{opcion.estado}}</td>
+            <td ><i class="fas fa-trash-alt" (click)="Eliminar(opcion)" style="color: red; margin-left: 20px;"></i><i class="fas fa-edit mx-5" (click)="Actualizar(opcion)" style="color: blue; margin-left: -5px;cursor: pointer;" data-toggle="modal" data-target="#ModificarUsuario"></i></td>
         
       </tr>
     </tbody>
@@ -127,7 +128,7 @@
     </div>
     <div class="modal-footer">
       <button type="button"   class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-      <button type="button" (click)="creartarjetac()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+      <button type="button" (click)="crearopciones()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
     </div>
   </div>
 </div>
@@ -176,7 +177,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" (click)="Editar(tarj)" data-dismiss="modal">Guardar</button>
+        <button type="button" class="btn btn-primary" (click)="Editar(opcion)" data-dismiss="modal">Guardar</button>
       </div>
     </div>
   </div>
