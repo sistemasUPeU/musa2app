@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login.service';
 import Swal from 'sweetalert2';
 import 'src/assets/js/script.js'
+import { Opciones } from 'src/app/Modelo/Opciones';
+import { OpcionesService } from 'src/app/service/opciones.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,8 +13,9 @@ import 'src/assets/js/script.js'
 })
 export class SidebarComponent implements OnInit {
   
-    
-  constructor(private loginService:LoginService, private router: Router) { }
+  opciones1: Opciones[] = [];
+
+  constructor(private loginService:LoginService, private router: Router,private opcionesService:OpcionesService) { }
   logout():void{
     this.loginService.logout();
     //let usuario = this.;
@@ -21,7 +24,7 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.cargarOpciones();
   }
    caja() {
     Swal.fire({
@@ -58,5 +61,15 @@ export class SidebarComponent implements OnInit {
     })
   
    }
+
+   cargarOpciones(){
+    this.opcionesService.listopciones().subscribe(
+      (data) => {
+        this.opciones1=data['P_CUR_OPCION'];
+        console.log(this.opciones1);
+      }
+    );
+  }
+
 }
 
