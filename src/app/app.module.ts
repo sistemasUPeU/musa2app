@@ -25,6 +25,20 @@ import { CursosComponent } from './ComponentesVista/Conductores/cursos/cursos.co
 import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propietarios.component';
 import { OpcionesComponent } from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
+import { ConfiguracionGrupoComponent } from './ComponentesVista/CronogramaDespacho/configuracion-grupo/configuracion-grupo.component';
+import { BusesComponent } from './ComponentesVista/Reportes/buses/buses.component';
+import { UsuariosComponent } from './ComponentesVista/Reportes/usuarios/usuarios.component';
+import { ConductoresComponent } from './ComponentesVista/Reportes/conductores/conductores.component';
+import { OproComponent } from './ComponentesVista/Reportes/opro/opro.component';
+import { UsroComponent } from './ComponentesVista/Reportes/usro/usro.component';
+import { PediReComponent } from './ComponentesVista/Reportes/pedi-re/pedi-re.component';
+import { EstaPeComponent } from './ComponentesVista/Reportes/esta-pe/esta-pe.component';
+import { PediAComponent } from './ComponentesVista/Reportes/pedi-a/pedi-a.component';
+import { ManteComponent } from './ComponentesVista/Reportes/mante/mante.component';
+import { ManteVComponent } from './ComponentesVista/Reportes/mante-v/mante-v.component';
+import { RevisionesDComponent } from './ComponentesVista/Reportes/revisiones-d/revisiones-d.component';
+import { PropiComponent } from './ComponentesVista/Reportes/propi/propi.component';
+import { VincComponent } from './ComponentesVista/Reportes/vinc/vinc.component';
 
 
 
@@ -51,7 +65,21 @@ import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarje
     CursosComponent,
     PropietariosComponent,
     OpcionesComponent,
-    TarjetacComponent
+    TarjetacComponent,
+    ConfiguracionGrupoComponent,
+    BusesComponent,
+    UsuariosComponent,
+    ConductoresComponent,
+    OproComponent,
+    UsroComponent,
+    PediReComponent,
+    EstaPeComponent,
+    PediAComponent,
+    ManteComponent,
+    ManteVComponent,
+    RevisionesDComponent,
+    PropiComponent,
+    VincComponent
   ],
   imports: [
     BrowserModule,

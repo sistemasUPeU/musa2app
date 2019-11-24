@@ -1,0 +1,61 @@
+<div id="caja1">
+    <br>
+<h1>USUARIOS ROLES</h1> 
+
+<br>
+<br>
+<!-- div parte inferior -->
+<div id="caja2">
+    <!-- div parte superior -->
+    <div id="caja3">
+        <!-- Buscador -->
+        <p id="p">Buscar por: </p>
+        <div class="input-group" id="caja_search">
+            <span class="input-group-prepend">
+            </span>
+            <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre de Rol" id="buscar1" />
+            <span class="input-group-append">
+                <div class="input-group-text bg-transparent " id="buscar2">
+                <i class="fa fa-search" (click)="getRolesN(roles1)"></i>
+                </div>
+            </span>
+        </div> 
+        <!-- Buscador Estado -->
+        <div id="estado">
+            <select class="custom-select" id="inputGroupSelect01" id="caja_estado" >
+                    <option  >Seleccione Estado</option>
+                    <option value="1" >Activo</option>
+                    <option value="0">Inactivo</option>                        
+            </select>
+        </div>
+        <button id="listar" type="button" class="btn btn-info"  (click)="getRolesE()" ><i class="fas fa-check"></i></button>         
+        <!-- Boton Limpiar -->
+        <button type="button" class="btn btn-success" id="limpiar" (click)="Limpiar()">Limpíar</button>
+
+    </div>
+
+    </div>
+    <!-- Tabla -->
+    <table class="table" style="text-align: center; width: 900px; margin: 0 auto;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">USUARIO</th>
+                <th scope="col">ROL</th>
+                <th scope="col">DETALLE</th>
+                <th scope="col">ESTADO</th>
+                <th scope="col">REGISTRADO POR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ur of listarur; let i = index">
+                <td scope="row">{{i+1}}</td>
+                <td>{{ur.USUARIO}}</td>
+                <td>{{ur.ROL}}</td>
+                <td>{{ur.DETALLE}}</td>
+                <td>{{ur.ESTADO}}</td>
+                <td>{{ur.CREADO}}</td>
+              </tr>
+            </tbody>
+          </table>
+</div>

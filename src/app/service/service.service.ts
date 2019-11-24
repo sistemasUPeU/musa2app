@@ -12,6 +12,21 @@ import { Propietarios, Propietario } from '../Modelo/Propietarios';
 import { Vehiculos } from '../Modelo/Vehiculos';
 import { Requisitos } from '../Modelo/Requisitos';
 import { Usuarios_Opciones } from '../Modelo/Usuarios_Opciones';
+import { Configuracion_Grupos } from '../Modelo/Configuracion_Grupos';
+import { BusesR } from '../Modelo/Buses_Reportes';
+import { UsuarioR } from '../Modelo/Usuario_Reportes';
+import { Conductor } from '../Modelo/Conductor';
+import { ConductoresRegR } from '../Modelo/ConductoresReg_Reporte';
+import { OpcRolR } from '../Modelo/OpcRolR';
+import { UserRolR } from '../Modelo/UserRol';
+import { PedidosReg } from '../Modelo/PedidosReg';
+import { PedidoEs } from '../Modelo/PedidoEsR';
+import { PediAproR } from '../Modelo/PediAproR';
+import { VinculoPropi } from '../Modelo/VinculoPropi';
+import { Propi } from '../Modelo/Propi';
+import { ManTReg } from '../Modelo/MantReg';
+import { MantVal } from '../Modelo/MantVal';
+import { RevDiarias } from '../Modelo/RevDiarias';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +38,8 @@ export class ServiceService {
   Url2 = 'http://localhost:8081/usuarios/'
   Url3 = 'http://localhost:8081/ru'
   Url4 = 'http://localhost:8081/usop/'
+  Url5 = 'http://localhost:8081/cg/'
+  Url6 = 'http://localhost:8081/reporte/'
   roles:RolesF;
 
  
@@ -231,5 +248,70 @@ deleteUsr(usr: Rol_Usuarios){
 activarUsr(usr: Rol_Usuarios){
   return this.http.put<Rol_Usuarios>(this.Url3 +"/"+usr.idrol+"/"+usr.idusuario, usr.user_modify);
 }
+
+/////////////////////////////////////////////
+
+
+getConfiP(e): Observable<Configuracion_Grupos[]>{
+  return this.http.get<Configuracion_Grupos[]>(this.Url5 + "paradero/"+e);
+}
+
+createConfi(x){
+  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add',x);   
+}
+getConfiUNO(): Observable<Configuracion_Grupos[]>{
+  return this.http.get<Configuracion_Grupos[]>(this.Url5 + "1");
+}
+getConfiDOS(): Observable<Configuracion_Grupos[]>{
+  return this.http.get<Configuracion_Grupos[]>(this.Url5 + "2");
+}
+createUNO(x){
+  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add/1',x);   
+}
+createDOS(x){
+  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add/2',x);   
+}
+
+/////////////////////////////////////// REPORTES ///////////////////////////////////
+getBuses(): Observable<BusesR[]>{
+  return this.http.get<BusesR[]>(this.Url6+"bus");
+}
+getUsi(): Observable<UsuarioR[]>{
+  return this.http.get<UsuarioR[]>(this.Url6+"user");
+}
+getConductor(): Observable<ConductoresRegR[]>{
+  return this.http.get<ConductoresRegR[]>(this.Url6+"conductor");
+}
+getOR(): Observable<OpcRolR[]>{
+  return this.http.get<OpcRolR[]>(this.Url6+"opr");
+}
+getUR(): Observable<UserRolR[]>{
+  return this.http.get<UserRolR[]>(this.Url6+"usro");
+}
+getPedidosR(): Observable<PedidosReg[]>{
+  return this.http.get<PedidosReg[]>(this.Url6+"pedr");
+}
+getPedidosE(): Observable<PedidoEs[]>{
+  return this.http.get<PedidoEs[]>(this.Url6+"pede");
+}
+getPedidosA(): Observable<PediAproR[]>{
+  return this.http.get<PediAproR[]>(this.Url6+"peda");
+}
+getVnc(): Observable<VinculoPropi[]>{
+  return this.http.get<VinculoPropi[]>(this.Url6+"vinculo");
+}
+getPro(): Observable<Propi[]>{
+  return this.http.get<Propi[]>(this.Url6+"propietario");
+}
+getMantr(): Observable<ManTReg[]>{
+  return this.http.get<ManTReg[]>(this.Url6+"mantr");
+}
+getMantv(): Observable<MantVal[]>{
+  return this.http.get<MantVal[]>(this.Url6+"mantv");
+}
+getRevd(): Observable<RevDiarias[]>{
+  return this.http.get<RevDiarias[]>(this.Url6+"revd");
+}
+
 }
 

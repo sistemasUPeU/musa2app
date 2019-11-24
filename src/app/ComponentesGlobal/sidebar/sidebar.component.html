@@ -117,7 +117,7 @@
               <div class="sidebar-submenu">
                 <ul>
                   <li>
-                    <a>Google maps</a>
+                    <a [routerLink]="['configuraciongrupo']">Configuracion Grupo</a>
                   </li>
                   <li>
                     <a>Open street map</a>
@@ -160,6 +160,56 @@
                   </li>
                   <li>
                     <a [routerLink]="['registrarubigeo']">Registrar Ubigeo</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="sidebar-dropdown">
+              <a>
+                <i class="fa fa-cog"></i>
+                <span>Reportes True</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a [routerLink]="['buse']">Buses</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['use']">Usuarios</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['conduc']">Conductores</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['opro']">Opciones - Rol</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['usro']">Usuarios - Rol</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['pedire']">Pedidos Regis</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['estape']">Estado Pedidos</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['pedia']">Pedidos Apro.</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['vinc']">Vinculo</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['propi']">Propietarios</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['mante']">Mantenimiento</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['mantev']">Mantenimiento Validados</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['revisionesd']">Revisiones Diarias</a>
                   </li>
                 </ul>
               </div>

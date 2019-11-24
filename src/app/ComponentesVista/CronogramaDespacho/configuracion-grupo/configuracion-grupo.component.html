@@ -1,0 +1,296 @@
+
+<div id="caja1">
+    <br>
+<h1>CONFIGURACIÓN GRUPOS</h1> 
+<!-- Boton registrar rol -->
+<button id="register" data-toggle="modal" data-target="#RegisterRol">
+    <i class="fas fa-user-plus" ></i>
+    <p style="margin-top: -15px; margin-left: -20px;">Agregar Configuración</p>
+</button>
+<br>
+<br>
+
+<button id="modificar" class="btn btn-info" style="display: none;" data-toggle="modal" data-target="#Modificar" (click)="LoadConfiUNO()">MODIFICAR</button>
+<button id="modificar1" class="btn btn-info" style="display: none;" data-toggle="modal" data-target="#Modificar1" (click)="LoadConfiDOS()">MODIFICAR</button>
+<!-- div parte inferior -->
+<div id="caja2">
+    <!-- div parte superior -->
+    <div id="caja3">
+        <!-- Buscador Estado -->
+        <div id="estado">
+            <select class="custom-select"  id="inputGroupSelect01" id="caja_estado" [(ngModel)]="configuracion.idparadero" (click)="getRolesN()">
+                    <option  value="0">Seleccione Paradero</option>
+                    <option value="1" >Ate</option>
+                    <option value="2">Cieneguilla</option>                        
+            </select>
+        </div>
+        <br>
+        <br>     
+       
+    </div>
+
+    </div>
+    <!-- Tabla -->
+    <table class="table" style="text-align: center; width: 900px; margin: 0 auto;">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" style="width: 250px;">Cantidad de Grupos</th>
+                <th scope="col">Intervalo</th>
+                <th scope="col">Hora Inicio</th>
+                <th scope="col">Hora Fin</th>
+                <th scope="col">Buses</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let con of listarconfig; let i = index">
+                <td scope="row">{{con.idconfiggrupo}}</td>
+                <td>{{con.cantidadgrupos}}</td>
+                <td>{{con.intervalo}}</td>
+                <td>{{con.horainicio}}</td>
+                <td>{{con.horafin}}</td>
+                <td>{{con.cantidadvehiculo}}</td>
+              </tr>
+            </tbody>
+          </table>      
+</div>
+<div class="modal fade" id="RegisterRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">REGISTRAR CONFIGURACIÓN</h5>
+          <hr>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label for="">Cantidad de Grupos: </label>
+          <input id="cajag" type="text" class="form-control" placeholder="Grupos" [(ngModel)]="configuracion.cantidadgrupos">
+          <div id="la">
+             <label for=""> Grupos</label>
+          </div>
+         
+          <br>
+          <div id="salida">
+            <label for="">Intervalo de Salida: </label>
+            <input id="cajag" type="text" class="form-control" placeholder="Intervalo" [(ngModel)]="configuracion.intervalo">
+            <div id="la2">
+                <label for="" id="la"> min.</label>
+            </div>
+            
+          </div>
+          <br>
+          <div id="inicio">
+          <label for="">Hora Inicio: </label>
+          <input id="cajas" type="time" class="form-control" placeholder="Nombre Rol" [(ngModel)]="configuracion.horainicio">
+          </div>
+          <br>
+          <div id="fin">
+          <label for="">Hora Fin: </label>
+          <input id="cajas" type="time" class="form-control" placeholder="Nombre Rol" [(ngModel)]="configuracion.horafin">
+          </div>
+          <br>
+          <div id="buses">
+          <label for="">Cantidad de Buses: </label>
+          <input id="cajas" type="text" class="form-control" placeholder="Buses" [(ngModel)]="configuracion.cantidadvehiculo">
+          </div>
+          <br>
+          <div id="paradero">
+            <label for="">Paradero: </label>
+            <br>
+            <select class="custom-select" id="inputGroupSelect01" id="cajas" [(ngModel)]="configuracion.idparadero">
+              <option value="0">Seleccione Opcion</option>
+              <option value="1">Ate</option>
+              <option value="2">Cieneguilla</option>
+            </select>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="SaveConfi()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="RegisterRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">REGISTRAR CONFIGURACIÓN</h5>
+          <hr>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label for="">Cantidad de Grupos: </label>
+          <input id="cajag" type="text" class="form-control" placeholder="Grupos" [(ngModel)]="configuracion.cantidadgrupos">
+          <div id="la">
+             <label for=""> Grupos</label>
+          </div>
+         
+          <br>
+          <div id="salida">
+            <label for="">Intervalo de Salida: </label>
+            <input id="cajag" type="text" class="form-control" placeholder="Intervalo" [(ngModel)]="configuracion.intervalo">
+            <div id="la2">
+                <label for="" id="la"> min.</label>
+            </div>
+            
+          </div>
+          <br>
+          <div id="inicio">
+          <label for="">Hora Inicio: </label>
+          <input id="cajas" type="time" class="form-control" placeholder="Nombre Rol" [(ngModel)]="configuracion.horainicio">
+          </div>
+          <br>
+          <div id="fin">
+          <label for="">Hora Fin: </label>
+          <input id="cajas" type="time" class="form-control" placeholder="Nombre Rol" [(ngModel)]="configuracion.horafin">
+          </div>
+          <br>
+          <div id="buses">
+          <label for="">Cantidad de Buses: </label>
+          <input id="cajas" type="text" class="form-control" placeholder="Buses" [(ngModel)]="configuracion.cantidadvehiculo">
+          </div>
+          <br>
+          <div id="paradero">
+            <label for="">Paradero: </label>
+            <br>
+            <select class="custom-select" id="inputGroupSelect01" id="cajas" [(ngModel)]="configuracion.idparadero">
+              <option value="0">Seleccione Opcion</option>
+              <option value="1">Ate</option>
+              <option value="2">Cieneguilla</option>
+            </select>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="SaveConfi()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Modificar -->
+<div class="modal fade" id="Modificar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" *ngFor="let cu of loadCU">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">MODIFICAR CONFIGURACIÓN</h5>
+        <hr>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="">Cantidad de Grupos: </label>
+        <input id="cajag" type="text" class="form-control" placeholder="Grupos" [(ngModel)]="cu.cantidadgrupos">
+        <div id="la">
+           <label for=""> Grupos</label>
+        </div>
+       
+        <br>
+        <div id="salida">
+          <label for="">Intervalo de Salida: </label>
+          <input id="cajag" type="text" class="form-control" placeholder="Intervalo" [(ngModel)]="cu.intervalo" disabled>
+          <div id="la2">
+              <label for="" id="la"> min.</label>
+          </div>
+          
+        </div>
+        <br>
+        <div id="inicio">
+        <label for="">Hora Inicio: </label>
+        <input id="cajas" type="text" class="form-control" placeholder="Nombre Rol" [(ngModel)]="cu.horainicio" disabled>
+        </div>
+        <br>
+        <div id="fin">
+        <label for="">Hora Fin: </label>
+        <input id="cajas" type="text" class="form-control" placeholder="Nombre Rol" [(ngModel)]="cu.horafin" disabled>
+        </div>
+        <br>
+        <div id="buses">
+        <label for="">Cantidad de Buses: </label>
+        <input id="cajas" type="text" class="form-control" placeholder="Buses" [(ngModel)]="cu.cantidadvehiculo" >
+        </div>
+        <br>
+        <div id="paradero">
+          <label for="">Paradero: </label>
+          <br>
+          <input id="cajas" type="text" class="form-control" placeholder="Buses" [(ngModel)]="cu.idparadero" disabled>
+          </div>
+      </div>
+      
+      <div class="modal-footer">
+          
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="ActualizarUNO(cu)">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODIFICAR1 -->
+<div class="modal fade" id="Modificar1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" *ngFor="let cu of loadCD">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">MODIFICAR CONFIGURACIÓN</h5>
+        <hr>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="">Cantidad de Grupos: </label>
+        <input id="cajag" type="text" class="form-control" placeholder="Grupos" [(ngModel)]="cu.cantidadgrupos">
+        <div id="la">
+           <label for=""> Grupos</label>
+        </div>
+       
+        <br>
+        <div id="salida">
+          <label for="">Intervalo de Salida: </label>
+          <input id="cajag" type="text" class="form-control" placeholder="Intervalo" [(ngModel)]="cu.intervalo" disabled>
+          <div id="la2">
+              <label for="" id="la"> min.</label>
+          </div>
+          
+        </div>
+        <br>
+        <div id="inicio">
+        <label for="">Hora Inicio: </label>
+        <input id="cajas" type="text" class="form-control" placeholder="Nombre Rol" [(ngModel)]="cu.horainicio" disabled>
+        </div>
+        <br>
+        <div id="fin">
+        <label for="">Hora Fin: </label>
+        <input id="cajas" type="text" class="form-control" placeholder="Nombre Rol" [(ngModel)]="cu.horafin" disabled>
+        </div>
+        <br>
+        <div id="buses">
+        <label for="">Cantidad de Buses: </label>
+        <input id="cajas" type="text" class="form-control" placeholder="Buses" [(ngModel)]="cu.cantidadvehiculo" >
+        </div>
+        <br>
+        <div id="paradero">
+          <label for="">Paradero: </label>
+          <br>
+          <input id="cajas" type="text" class="form-control" placeholder="Buses" [(ngModel)]="cu.idparadero" disabled>
+          </div>
+      </div>
+      
+      <div class="modal-footer">
+          
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="ActualizarDOS(cu)">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
