@@ -54,7 +54,7 @@
             <tbody>
               <tr *ngFor="let user of listaruser" >
                 <td scope="row">{{user.idusuario}}</td>
-                <td>{{user.nombres}} {{user.apellidos}}</td>
+                <td>{{user.nombre}} {{user.apellido}}</td>
                 <td>{{user.login}}</td>
                 <td>{{user.estado}}</td>
                 <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;" (click)="EliminarUsuario(user)"></i></td>

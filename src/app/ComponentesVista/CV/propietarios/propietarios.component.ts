@@ -21,6 +21,8 @@ export class PropietariosComponent implements OnInit {
   propietarios:Propietario[] = [];
   prop:Propietario[] = [];
   prop_nombre:Propietario[] = [];
+  pro_borrar:Propietario = new Propietario();
+  nropadron="689";
   constructor(private propietarioservice:ServiceService, private router:Router, private personasservice:PersonaService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
@@ -43,12 +45,29 @@ export class PropietariosComponent implements OnInit {
       }
     )
   }
-  delete(prop:Propietario){
-    alert('hola mundo')
-    this.propietarioservice.deletePropietarios(prop).subscribe( 
+  delete(id:number){
+    Swal.fire({
+      title: 'Estas seguro de cambiar el estado?',
+      text: "Ya no hay vuelta atrás!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, cambialo!'
+    }).then((result) => {
+      if (result.value) {
+        this.pro_borrar.idpropietario = id; 
+    this.propietarioservice.deletePropietarios(id).subscribe( 
       data => {
          console.log(this.propietario);
          this.getpropietario();
+    })
+        Swal.fire(
+          'Cambiado!',
+          'El estado del propietario ha sido cambiado',
+          'success'
+        )
+      }
     })
   }
   
@@ -60,6 +79,11 @@ export class PropietariosComponent implements OnInit {
         console.log(this.propietario);
         this.getpropietario();
       });
+      Swal.fire(
+        'Hecho!',
+        'El registro se ha registrado con exito',
+        'success'
+      )
   }
   getPropietarioId(id:number){
     this.idpropietario = id;
@@ -80,14 +104,22 @@ export class PropietariosComponent implements OnInit {
          this.getpropietario();
        }
      );
+     Swal.fire(
+      'Hecho!',
+      'El registro se ha modificado con exito',
+      'success'
+    )
   }
   buscarnombre(){
     this.propietarioservice.buscarnombre(this.propietario.nombre).subscribe(
       (data) => {
         console.log(this.propietario.nombre);
         console.log(data);
-        this.prop_nombre = data['P_CURSOR_NOMBRE'];
+        this.propietarios = data['P_CURSOR_NOMBRE'];
       }
     );
+  }
+  limpiar(){
+    this.getpropietario();
   }
 }

@@ -206,25 +206,40 @@ export class ServiceService {
     })
     );
   }
-  deletePropietarios( propietario:Propietario){
-    console.log(propietario)
-     return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`, propietario);
+  deletePropietarios(id:number){
+     return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`+id, Propietario, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
   crearPropietarios(propietarioc:Propietario){
     console.log(`(asdasdasdasdasdasd)`)
     console.table(propietarioc)
-     return this.http.post<Propietario>( `${ environment.apiUrl }/propietarios/add`, propietarioc);
+     return this.http.post<Propietario>( `${ environment.apiUrl }/propietarios/add`, propietarioc,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
   getPropietarioId(id:number){
-     return this.http.get<Propietario[]>( `${ environment.apiUrl }/propietarios/`+ id);
+     return this.http.get<Propietario[]>( `${ environment.apiUrl }/propietarios/`+ id, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
 
   updatePropietarios(propietario:Propietario){
-    return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/`, propietario);
+    return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/`, propietario, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
   buscarnombre(nombre:String){
-     return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/nombre/`+ nombre);
+     return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/nombre/`+ nombre, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
+  getP
   /* FIN DEL CRUD PROPIETARIOS */
 
   deleteRoles(roles:Roles){
