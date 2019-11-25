@@ -75,16 +75,28 @@ export class ServiceService {
 
   }
   getAllUser(): Observable<Usuario[]>{
-    return this.http.get<Usuario[]>(`${ environment.apiUrl }/usuarios/user/`);
+    return this.http.get<Usuario[]>(`${ environment.apiUrl }/usuarios/user/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
   getRolesN(e): Observable<Roles[]>{
-    return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/nombre/`+e);
+    return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/nombre/`+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
   getRolesE(e): Observable<Roles[]>{
-    return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/estado/`+e);
+    return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/estado/`+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
   createRoles(x){
-    return this.http.post<Roles[]>(this.Url+'add',x);   
+    return this.http.post<Roles[]>(this.Url+'add',x, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));   
   }
   getAllUbigeo(): Observable<Ubigeo[]> {
     return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
@@ -228,7 +240,10 @@ export class ServiceService {
   /* FIN DEL CRUD PROPIETARIOS */
 
   deleteRoles(roles:Roles){
-    return this.http.delete<Roles>(this.Url+roles.idrol);
+    return this.http.delete<Roles>(this.Url+roles.idrol ,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   } 
  
 
@@ -253,10 +268,16 @@ getLibroIdL(idlibro:number){
   return this.http.get<Roles>(this.Url+idlibro);
 }
 updatePersona(roles: Roles){
-  return this.http.put<Roles>(this.Url + roles.idrol, roles);
+  return this.http.put<Roles>(this.Url + roles.idrol, roles ,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getPersonaId(idrol: number): Observable<Roles[]> {
-  return this.http.get<Roles[]>(this.Url+idrol);
+  return this.http.get<Roles[]>(this.Url+idrol  ,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 
 
@@ -268,151 +289,283 @@ getUsuario(): Observable<Usuario[]>{
     return throwError(e);
   })
   )
-}
+} 
 getUsuarioN(e): Observable<Usuario[]>{
-  return this.http.get<Usuario[]>(this.Url2+ "nombre/"+e);
+  return this.http.get<Usuario[]>(this.Url2+ "nombre/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getUsuarioE(e): Observable<Roles[]>{
-  return this.http.get<Roles[]>(this.Url2+ "estado/"+e);
+  return this.http.get<Roles[]>(this.Url2+ "estado/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getUserPer(): Observable<Usuario[]>{
-  return this.http.get<Usuario[]>(this.Url2 + "per/");
+  return this.http.get<Usuario[]>(this.Url2 + "per/", {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getUserPerN(e): Observable<Roles[]>{
-  return this.http.get<Roles[]>(this.Url2+ "per/"+e);
+  return this.http.get<Roles[]>(this.Url2+ "per/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 createUsuario(user:Usuario){
-  return this.http.post<Usuario[]>(this.Url2+'add',user);   
+  return this.http.post<Usuario[]>(this.Url2+'add',user, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }) );   
 }
 createRU(rolus:Rol_Usuarios){
-  return this.http.post<Rol_Usuarios[]>(this.Url3+'/ru/add',rolus);   
+  return this.http.post<Rol_Usuarios[]>(this.Url3+'/ru/add',rolus, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));   
 }
 deleteUsuario(user:Usuario){
-  return this.http.delete<Usuario>(this.Url2+user.idusuario);
+  return this.http.delete<Usuario>(this.Url2+user.idusuario, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 } 
 updateUsuario(user: Usuario){
-  return this.http.put<Usuario>(this.Url2 + user.idusuario, user);
+  return this.http.put<Usuario>(this.Url2 + user.idusuario, user, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getUsuarioId(idusuario: Number): Observable<Usuario[]> {
-  return this.http.get<Usuario[]>(this.Url2+idusuario);
+  return this.http.get<Usuario[]>(this.Url2+idusuario, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 
 
 getUse(): Observable<Usuario[]>{
-  return this.http.get<Usuario[]>(this.Url2+"use/");
+  return this.http.get<Usuario[]>(this.Url2+"use/", {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getRolus(): Observable<Usuario[]>{
-  return this.http.get<Usuario[]>(this.Url2+"rolus/");
+  return this.http.get<Usuario[]>(this.Url2+"rolus/", {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getRolusN(e): Observable<Usuario[]>{
-  return this.http.get<Usuario[]>(this.Url3+ "/rol1/"+e);
+  return this.http.get<Usuario[]>(this.Url3+ "/rol1/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getUserN(e): Observable<Usuario[]>{
-  return this.http.get<Usuario[]>(this.Url2+ "use/"+e);
+  return this.http.get<Usuario[]>(this.Url2+ "use/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getRolusE(e): Observable<Usuario[]>{
-  return this.http.get<Usuario[]>(this.Url3+ "/rol/"+e);
+  return this.http.get<Usuario[]>(this.Url3+ "/rol/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 
 ///////////////////////////////////// USUARIOS - OPCIONES
 
 getUsOp(): Observable<Usuarios_Opciones[]>{
-  return this.http.get<Usuarios_Opciones[]>(this.Url4);
+  return this.http.get<Usuarios_Opciones[]>(this.Url4, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getUsOpN(e): Observable<Usuarios_Opciones[]>{
-  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "nombre/"+e);
+  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "nombre/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getUsOpE(e): Observable<Usuarios_Opciones[]>{
-  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "estado/"+e);
+  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "estado/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getOpc1(): Observable<Usuarios_Opciones[]>{
-  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "opcion1/");
+  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "opcion1/", {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getOpc2(e): Observable<Usuarios_Opciones[]>{
-  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "opc2/"+e);
+  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "opc2/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getOpc3(e): Observable<Usuarios_Opciones[]>{
-  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "op3/"+e);
+  return this.http.get<Usuarios_Opciones[]>(this.Url4+ "op3/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 
 createOpc(userop:Usuarios_Opciones){
-  return this.http.post<Usuarios_Opciones[]>(this.Url4+'add',userop);   
+  return this.http.post<Usuarios_Opciones[]>(this.Url4+'add',userop, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));   
 }
 deleteUsOp(usop: Usuarios_Opciones){
-  return this.http.put<Usuarios_Opciones>(this.Url4+"des/"+usop.idusuario+"/"+usop.idopcion,usop.user_modify);
+  return this.http.put<Usuarios_Opciones>(this.Url4+"des/"+usop.idusuario+"/"+usop.idopcion,usop.user_modify, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 } 
 activarUsOp(usop: Usuarios_Opciones){
-  return this.http.put<Usuarios_Opciones>(this.Url4+usop.idusuario+"/"+usop.idopcion,usop.user_modify);
+  return this.http.put<Usuarios_Opciones>(this.Url4+usop.idusuario+"/"+usop.idopcion,usop.user_modify, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 } 
 deleteUsr(usr: Rol_Usuarios){
-  return this.http.put<Usuario>(this.Url3+"/des/"+usr.idrol+"/"+usr.idusuario, usr.user_modify);
+  return this.http.put<Usuario>(this.Url3+"/des/"+usr.idrol+"/"+usr.idusuario, usr.user_modify, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 } 
 activarUsr(usr: Rol_Usuarios){
-  return this.http.put<Rol_Usuarios>(this.Url3 +"/"+usr.idrol+"/"+usr.idusuario, usr.user_modify);
+  return this.http.put<Rol_Usuarios>(this.Url3 +"/"+usr.idrol+"/"+usr.idusuario, usr.user_modify, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 
 /////////////////////////////////////////////
 
 
 getConfiP(e): Observable<Configuracion_Grupos[]>{
-  return this.http.get<Configuracion_Grupos[]>(this.Url5 + "paradero/"+e);
+  return this.http.get<Configuracion_Grupos[]>(this.Url5 + "paradero/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 
 createConfi(x){
-  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add',x);   
+  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add', {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));   
 }
 getConfiUNO(): Observable<Configuracion_Grupos[]>{
-  return this.http.get<Configuracion_Grupos[]>(this.Url5 + "1");
+  return this.http.get<Configuracion_Grupos[]>(this.Url5 + "1", {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getConfiDOS(): Observable<Configuracion_Grupos[]>{
-  return this.http.get<Configuracion_Grupos[]>(this.Url5 + "2");
+  return this.http.get<Configuracion_Grupos[]>(this.Url5 + "2", {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 createUNO(x){
-  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add/1',x);   
+  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add/1',x, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));   
 }
 createDOS(x){
-  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add/2',x);   
+  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add/2',x, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));   
 }
 
 /////////////////////////////////////// REPORTES ///////////////////////////////////
 getBuses(): Observable<BusesR[]>{
-  return this.http.get<BusesR[]>(this.Url6+"bus");
+  return this.http.get<BusesR[]>(this.Url6+"bus" , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getUsi(): Observable<UsuarioR[]>{
-  return this.http.get<UsuarioR[]>(this.Url6+"user");
+  return this.http.get<UsuarioR[]>(this.Url6+"user" , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getConductor(): Observable<ConductoresRegR[]>{
-  return this.http.get<ConductoresRegR[]>(this.Url6+"conductor");
+  return this.http.get<ConductoresRegR[]>(this.Url6+"conductor" , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getOR(): Observable<OpcRolR[]>{
-  return this.http.get<OpcRolR[]>(this.Url6+"opr");
+  return this.http.get<OpcRolR[]>(this.Url6+"opr" , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getUR(): Observable<UserRolR[]>{
-  return this.http.get<UserRolR[]>(this.Url6+"usro");
+  return this.http.get<UserRolR[]>(this.Url6+"usro" , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getPedidosR(): Observable<PedidosReg[]>{
-  return this.http.get<PedidosReg[]>(this.Url6+"pedr");
+  return this.http.get<PedidosReg[]>(this.Url6+"pedr" , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getPedidosE(): Observable<PedidoEs[]>{
-  return this.http.get<PedidoEs[]>(this.Url6+"pede");
+  return this.http.get<PedidoEs[]>(this.Url6+"pede" , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getPedidosA(): Observable<PediAproR[]>{
-  return this.http.get<PediAproR[]>(this.Url6+"peda");
+  return this.http.get<PediAproR[]>(this.Url6+"peda" , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getVnc(): Observable<VinculoPropi[]>{
-  return this.http.get<VinculoPropi[]>(this.Url6+"vinculo");
+  return this.http.get<VinculoPropi[]>(this.Url6+"vinculo" , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getPro(): Observable<Propi[]>{
-  return this.http.get<Propi[]>(this.Url6+"propietario");
+  return this.http.get<Propi[]>(this.Url6+"propietario" , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getMantr(): Observable<ManTReg[]>{
-  return this.http.get<ManTReg[]>(this.Url6+"mantr");
+  return this.http.get<ManTReg[]>(this.Url6+"mantr" , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getMantv(): Observable<MantVal[]>{
-  return this.http.get<MantVal[]>(this.Url6+"mantv");
+  return this.http.get<MantVal[]>(this.Url6+"mantv" , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 getRevd(): Observable<RevDiarias[]>{
-  return this.http.get<RevDiarias[]>(this.Url6+"revd");
+  return this.http.get<RevDiarias[]>(this.Url6+"revd" , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  }));
 }
 
 }
