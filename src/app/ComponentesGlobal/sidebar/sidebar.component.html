@@ -182,6 +182,200 @@
             </div>
           </li>
 
+        <div class="sidebar-menu">
+          <ul>
+            <li class="header-menu">
+              <span>Ver</span>
+            </li>
+            <li routerLinkActive="active">
+              <a routerLink="/home/plantilla">
+                <i class="fas fa-eye"></i>
+                PLantilla
+              </a>
+            </li>
+            <li class="header-menu">
+                <span>Módulos</span>
+            </li>
+            <li class="sidebar-dropdown">
+              <a>
+                <i class="fa fa-shopping-cart"></i>
+                <span>Conductores Vehículos</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a routerLink="/home/propietarios">Propietarios</a>
+                  </li>
+                    <li>
+                    <a routerLink="/home/cursos">Registrar Curso</a>
+                  </li>
+                  <li>
+                    <a routerLink="/home/vinculo">Vinculos</a>
+                  </li>
+                  <li>
+                    <a   routerLink='conductor' >Conductores</a>
+                  </li>
+                  <li>
+                    <a   routerLink='tarjetac' >Tarjetas de Circulacion</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="sidebar-dropdown">
+              <a>
+                <i class="far fa-gem"></i>
+                <span>Gestionar Venta</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a>General</a>
+                  </li>
+                  <li>
+                    <a>Panels</a>
+                  </li>
+                  <li>
+                    <a>Tables</a>
+                  </li>
+                  <li>
+                    <a>Icons</a>
+                  </li>
+                  <li>
+                    <a>Forms</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="sidebar-dropdown">
+              <a>
+                <i class="fa fa-chart-line"></i>
+                <span>Gestionar Almacén</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a>Pie chart</a>
+                  </li>
+                  <li>
+                    <a>Line chart</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['entradadeproducto']">Entrada de Producto</a>
+                  </li>
+                  <li>
+                    <a>Histogram</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="sidebar-dropdown">
+              <a>
+                <i class="fa fa-globe"></i>
+                <span>Crono. Despacho</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a [routerLink]="['configuraciongrupo']">Configuracion Grupo</a>
+                  </li>
+                  <li>
+                    <a>Open street map</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="sidebar-dropdown">
+              <a>
+                <i class="fa fa-globe"></i>
+                <span>Seguridad</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a [routerLink]="['usuario']">Usuarios</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['rol']">Rol</a>
+                  </li>
+                  <li>
+                    <li>
+                      <a [routerLink]="['userop']">Usuarios - Opciones</a>
+                    </li>
+                    <li>
+                    <a>Opciones</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="sidebar-dropdown">
+              <a>
+                <i class="fa fa-cog"></i>
+                <span>Reportes</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a [routerLink]="['registrarpersona']">Registrar Persona</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['registrarubigeo']">Registrar Ubigeo</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="sidebar-dropdown">
+              <a>
+                <i class="fa fa-cog"></i>
+                <span>Reportes True</span>
+              </a>
+              <div class="sidebar-submenu">
+                <ul>
+                  <li>
+                    <a [routerLink]="['buse']">Buses</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['use']">Usuarios</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['conduc']">Conductores</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['opro']">Opciones - Rol</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['usro']">Usuarios - Rol</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['pedire']">Pedidos Regis</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['estape']">Estado Pedidos</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['pedia']">Pedidos Apro.</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['vinc']">Vinculo</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['propi']">Propietarios</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['mante']">Mantenimiento</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['mantev']">Mantenimiento Validados</a>
+                  </li>
+                  <li>
+                    <a [routerLink]="['revisionesd']">Revisiones Diarias</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            
+            <li class="header-menu">
+              <span>Mantenimiento</span>
           <li class="header-menu">
             <span>Mantenimiento</span>
           </li>
