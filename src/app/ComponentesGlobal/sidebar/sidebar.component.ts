@@ -24,7 +24,10 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cargarOpciones();
+
+     let idusuario=this.loginService.personas.idusuario;
+     console.log(idusuario+" quejesto");
+    this.cargarOpciones(idusuario);
   }
    caja() {
     Swal.fire({
@@ -62,10 +65,12 @@ export class SidebarComponent implements OnInit {
   
    }
 
-   cargarOpciones(){
-    this.opcionesService.listopciones().subscribe(
+   cargarOpciones(idusuario:number){
+    let c=idusuario;
+    //console.log(c+"es el usuario");  si llega el usuario
+     this.opcionesService.listopciones(c).subscribe(
       (data) => {
-        this.opciones1=data['P_CUR_OPCION'];
+        this.opciones1=data['p_cur_opcion'];
         console.log(this.opciones1);
       }
     );

@@ -6,7 +6,7 @@ import { OpcionesComponent } from '../ComponentesVista/Seguridad/opciones/opcion
 import { Observable } from 'rxjs';
 import { Opciones } from '../Modelo/Opciones';
 import { LoginService } from './login.service';
-
+import { map, catchError, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -23,15 +23,16 @@ export class OpcionesService {
   private agregarAutorizacion(){
     let token = this.loginService.token;
     if(token!=null){
-      console.log("ESTE ES EL TOKEN "+token);
+      
       return this.httpHeaders.append('Authorization','Bearer' + token);
     }
     console.log("NO LLEGA EL TOKEN");
     return this.httpHeaders;
   }
 
-  listopciones(): Observable<Opciones[]>{
-    return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/`, {headers: this.agregarAutorizacion()});
+  listopciones(c:number): Observable<Opciones[]>{
+   // console.log(c+" llega al SERVICE");
+    return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/getOPC/`+c, {headers: this.agregarAutorizacion()});
   }
   crearopciones(opciones:Opciones){
     return this.http.post<Opciones>(`${ environment.apiUrl }/opciones/add`,opciones);
