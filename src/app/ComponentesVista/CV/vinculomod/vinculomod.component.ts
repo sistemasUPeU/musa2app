@@ -30,7 +30,6 @@ export class VinculomodComponent implements OnInit {
     this.getConductor();
     this.getPropietario();
     this.getVehiculo();
-    this.getempleado()
     this.titulo="MODIFICAR VINCULO";
     this.tipo = Number(localStorage.getItem("tipo"));
     this.Tipo();
@@ -78,15 +77,17 @@ export class VinculomodComponent implements OnInit {
     );
   }
   /////// Listar Empleados
+
+  /*
   getempleado(){
-    this.service.getEmple().subscribe(
+    this.service.getNEmple().subscribe(
       (data) => {
         this.lisEmple = data
         console.log(this.lisEmple)
       }
     )
   }
-
+  */
   //////// Listar Vehiculossssssss
 
   getVehiculo() {

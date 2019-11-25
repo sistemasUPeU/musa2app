@@ -19,11 +19,11 @@ export class OpcionesComponent implements OnInit {
   opciones1: Opciones[] = []
   service: any;
 
-  constructor(private opcionesService:OpcionesService) { }
+  constructor(private opcionesService:OpcionesService,) { }
   
   ngOnInit() {
     
-    this.opcionesService.listopciones().subscribe(
+    this.opcionesService.listopciones(1).subscribe(
       (data) => {
         this.opciones1=data['P_CUR_OPCION'];
     

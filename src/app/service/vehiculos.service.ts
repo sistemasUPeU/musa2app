@@ -29,4 +29,23 @@ import { Vehiculosc , Veh_categoria, Veh_modelo, Veh_marca} from 'src/app/Modelo
     getVehMarca(){
        return this.http.get<Veh_marca[]>(`${environment.apiUrl}/vehiculos/marca/`);
     }
+    deleteVehiculos(vehiculos:Vehiculosc){
+       console.log('hola vehiculos');
+       console.log(vehiculos);
+      return this.http.put<Vehiculosc>(` ${environment.apiUrl}/vehiculos/delete/`, vehiculos);
+    } 
+    /*getPropietarioId(id:number){
+     return this.http.get<Propietario[]>( `${ environment.apiUrl }/propietarios/`+ id);
+  }
+
+  updatePropietarios(propietario:Propietario){
+    return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/`, propietario);
+  }*/
+
+   getVehiculosId(id:number){
+        return this.http.get<Vehiculosc[]>(` ${environment.apiUrl}/vehiculos/` + id);
+   }
+   updateVehiculos(vehiculos:Vehiculosc){
+       return this.http.put<Vehiculosc>(` ${environment.apiUrl}/vehiculos/`, vehiculos);
+   }
  } 

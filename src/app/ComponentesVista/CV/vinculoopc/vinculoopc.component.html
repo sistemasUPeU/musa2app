@@ -28,7 +28,7 @@
                         <form>
                             <div >
                                 <label for="exampleInputEmail1">Conductor</label>
-                                <select class="form-control" id="idconductor" [(ngModel)]="vinculo.idconductor" name="idconductor">
+                                <select class="form-control" id="idconductor" [(ngModel)]="vin.idconductor" name="idconductor">
                                     <option>Conductor</option>
                                     <option *ngFor="let con of lisConduc" [value]="con.IDCONDUCTOR">{{con.NOMBRE}}</option>
                                 </select>
@@ -42,7 +42,7 @@
                         <form>
                             <div >
                                 <label for="exampleInputPassword1">Propietario</label>
-                                <select class="form-control" id="idpropietario" [(ngModel)]="vinculo.idpropietario" name="idpropietario">
+                                <select class="form-control" id="idpropietario" [(ngModel)]="vin.idpropietario" name="idpropietario">
                                     <option>Propietario</option>
                                     <option *ngFor="let propietario of lisPropie" [value]="propietario.IDPROPIETARIO">
                                         {{propietario.NOMBRE}}</option>
@@ -51,7 +51,7 @@
                             <br>
                             <div class="form-group" >
                                 <label for="exampleInputPassword1">Vehiculo</label>
-                                <select class="form-control" id="idvehiculo" [(ngModel)]="vinculo.idvehiculo" name="idvehiculo">
+                                <select class="form-control" id="idvehiculo" [(ngModel)]="vin.idvehiculo" name="idvehiculo">
                                     <option>Vehiculo</option>
                                     <option *ngFor="let vehiculo of lisVehic" [value]="vehiculo.IDVEHICULO">{{vehiculo.PLACA}}
                                     </option>

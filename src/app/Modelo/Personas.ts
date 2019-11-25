@@ -1,13 +1,20 @@
 export class Personas{
     idpersona:number;
-    nombre:String;
-    apellido: String;
-    tipodoc: number;
-    nrodoc: number;
-    sexo: String;
-    fechanac: String;
-    direccion: String;
+    nombre:string;
+    apellido:string;
+    rol:string;
+    tipodoc:string;
+    nrodoc:number;
+    sexo:string;
+    fechanac:Date;
+    direccion: string;
     estado: number;
-    telefono: String;
-    idubigeo: number;
+    telefono:string;
+    usercreate:string;
+    datecreate:Date;
+    usermodify:string;
+    datemodify:Date;
+    idubigeo:number;
+
+    idusuario:number;
 }

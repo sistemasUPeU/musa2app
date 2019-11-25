@@ -9,6 +9,7 @@ import { Requisitos } from 'src/app/Modelo/Requisitos';
 import { empleado } from 'src/app/Modelo/empleados';
 
 
+
 @Component({
   selector: 'app-vinculoopc',
   templateUrl: './vinculoopc.component.html',
@@ -20,7 +21,10 @@ export class VinculoopcComponent implements OnInit {
   
 
   
-  constructor(private router: Router, private service: ServiceService) {}
+  constructor(private router: Router, private service: ServiceService) {
+    
+    
+   }
 
   ////// Objetossss
    cargar:boolean;
@@ -53,7 +57,7 @@ export class VinculoopcComponent implements OnInit {
     this.getConductor();
     this.getPropietario();
     this.getVehiculo();
-    this.getempleado()
+    //this.getempleado()
     this.titulo="NUEVO VINCULO";
     this.service.getcontvin().subscribe(
       (data) => {
@@ -93,18 +97,18 @@ export class VinculoopcComponent implements OnInit {
     this.service.getNombrePropietario().subscribe(
       (data) => {
         this.lisPropie = data['P_CURSOR'];
-        console.log(this.lisPropie)
+        console.log(data['P_CURSOR'])
       }
     );
   }
   /////// Listar empleados 
-  getempleado(){
+  /*getempleado(){
     this.service.getEmple().subscribe(
       (data) => {
         this.lisEmple = data
       }
     )
-  }
+  }*/
 
 
    ///// Listado de Vehiculos
@@ -137,15 +141,13 @@ export class VinculoopcComponent implements OnInit {
 
       this.titulo="NUEVO VINCULO CONDUCTOR";
       this.getRequisito(Number(v_tipo));
-    (<HTMLElement>document.getElementById('forconductor')).style.display="block";
-    (<HTMLElement>document.getElementById('forpropietario')).style.display="none";
+    
       
     }
     if (v_tipo== 2) {
       this.titulo="NUEVO VINCULO PROPIETARIO";
       this.getRequisito(Number(v_tipo));
-    (<HTMLElement>document.getElementById('forconductor')).style.display="none";
-    (<HTMLElement>document.getElementById('forpropietario')).style.display="block";  
+
     }  
   }
 
@@ -190,5 +192,6 @@ export class VinculoopcComponent implements OnInit {
    sumador(){
      this.cont+1;
    }
-   
+
 }
+

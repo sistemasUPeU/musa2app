@@ -5,7 +5,8 @@ import { environment } from 'src/environments/environment';
 import { OpcionesComponent } from '../ComponentesVista/Seguridad/opciones/opciones.component';
 import { Observable } from 'rxjs';
 import { Opciones } from '../Modelo/Opciones';
-
+import { LoginService } from './login.service';
+import { map, catchError, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,24 @@ export class OpcionesService {
   listaropciones() {
     throw new Error("Method not implemented.");
   }
-  constructor(private http:HttpClient, private router:Router) { }
 
-  listopciones(): Observable<Opciones[]>{
-    return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/`);
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
+
+  constructor(private http:HttpClient, private router:Router,private loginService:LoginService) { }
+
+  private agregarAutorizacion(){
+    let token = this.loginService.token;
+    if(token!=null){
+      
+      return this.httpHeaders.append('Authorization','Bearer' + token);
+    }
+    console.log("NO LLEGA EL TOKEN");
+    return this.httpHeaders;
+  }
+
+  listopciones(c:number): Observable<Opciones[]>{
+   // console.log(c+" llega al SERVICE");
+    return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/getOPC/`+c, {headers: this.agregarAutorizacion()});
   }
   crearopciones(opciones:Opciones){
     return this.http.post<Opciones>(`${ environment.apiUrl }/opciones/add`,opciones);

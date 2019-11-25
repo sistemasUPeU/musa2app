@@ -24,6 +24,20 @@ import { CursosComponent } from './ComponentesVista/Conductores/cursos/cursos.co
 import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propietarios.component'
 import { OpcionesComponent} from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
+import { ConfiguracionGrupoComponent } from './ComponentesVista/CronogramaDespacho/configuracion-grupo/configuracion-grupo.component';
+import { BusesComponent } from './ComponentesVista/Reportes/buses/buses.component';
+import { UsuariosComponent } from './ComponentesVista/Reportes/usuarios/usuarios.component';
+import { ConductoresComponent } from './ComponentesVista/Reportes/conductores/conductores.component';
+import { OproComponent } from './ComponentesVista/Reportes/opro/opro.component';
+import { UsroComponent } from './ComponentesVista/Reportes/usro/usro.component';
+import { PediReComponent } from './ComponentesVista/Reportes/pedi-re/pedi-re.component';
+import { EstaPeComponent } from './ComponentesVista/Reportes/esta-pe/esta-pe.component';
+import { PediAComponent } from './ComponentesVista/Reportes/pedi-a/pedi-a.component';
+import { ManteComponent } from './ComponentesVista/Reportes/mante/mante.component';
+import { ManteVComponent } from './ComponentesVista/Reportes/mante-v/mante-v.component';
+import { RevisionesDComponent } from './ComponentesVista/Reportes/revisiones-d/revisiones-d.component';
+import { PropiComponent } from './ComponentesVista/Reportes/propi/propi.component';
+import { VincComponent } from './ComponentesVista/Reportes/vinc/vinc.component';
 import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component'
 import { MantenimientosComponent } from "./ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component";
 import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
@@ -65,6 +79,21 @@ const routesHome: Routes = [
   {path:'propietarios', component: PropietariosComponent},
   {path:'opciones',component:OpcionesComponent},
   {path:'tarjetac',component:TarjetacComponent},
+  {path:'configuraciongrupo',component:ConfiguracionGrupoComponent},
+
+  {path:'buse',component:BusesComponent},
+  {path:'use',component:UsuariosComponent},
+  {path:'conduc',component:ConductoresComponent},
+  {path:'opro',component:OproComponent},
+  {path:'usro',component:UsroComponent},
+  {path:'pedire',component:PediReComponent},
+  {path:'estape',component:EstaPeComponent},
+  {path:'pedia',component:PediAComponent},
+  {path:'mante',component:ManteComponent},
+  {path:'mantev',component:ManteVComponent},
+  {path:'revisionesd',component:RevisionesDComponent},
+  {path:'propi',component:PropiComponent},
+  {path:'vinc',component:VincComponent},
   {path:'soat',component:SoatComponent},
   {path: 'vehiculos', component:VehiculosComponent},
   {path: 'venta', component:VentaComponent},
@@ -112,5 +141,5 @@ export const routingComponents = [
   VentaComponent,
   RegistrarcajaComponent,
   RegistrarventaComponent,
-  VinculoproComponent,
+  VinculoproComponent
 ];

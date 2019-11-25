@@ -25,8 +25,23 @@ import { CursosComponent } from './ComponentesVista/Conductores/cursos/cursos.co
 import { PropietariosComponent } from './ComponentesVista/CV/propietarios/propietarios.component';
 import { OpcionesComponent } from './ComponentesVista/Seguridad/opciones/opciones.component';
 import { TarjetacComponent } from './ComponentesVista/Conductores/tarjetac/tarjetac.component';
+import { ConfiguracionGrupoComponent } from './ComponentesVista/CronogramaDespacho/configuracion-grupo/configuracion-grupo.component';
+import { BusesComponent } from './ComponentesVista/Reportes/buses/buses.component';
+import { UsuariosComponent } from './ComponentesVista/Reportes/usuarios/usuarios.component';
+import { ConductoresComponent } from './ComponentesVista/Reportes/conductores/conductores.component';
+import { OproComponent } from './ComponentesVista/Reportes/opro/opro.component';
+import { UsroComponent } from './ComponentesVista/Reportes/usro/usro.component';
+import { PediReComponent } from './ComponentesVista/Reportes/pedi-re/pedi-re.component';
+import { EstaPeComponent } from './ComponentesVista/Reportes/esta-pe/esta-pe.component';
+import { PediAComponent } from './ComponentesVista/Reportes/pedi-a/pedi-a.component';
+import { ManteComponent } from './ComponentesVista/Reportes/mante/mante.component';
+import { ManteVComponent } from './ComponentesVista/Reportes/mante-v/mante-v.component';
+import { RevisionesDComponent } from './ComponentesVista/Reportes/revisiones-d/revisiones-d.component';
+import { PropiComponent } from './ComponentesVista/Reportes/propi/propi.component';
+import { VincComponent } from './ComponentesVista/Reportes/vinc/vinc.component';
 import { MantenimientosComponent } from './ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component';
 import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
+//import { NgxPopper } from 'angular-popper';
 import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component';
 import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component';
 import { VentaComponent } from './ComponentesVista/Ventas/venta/venta.component';
@@ -37,7 +52,12 @@ import { VinculoproComponent } from './ComponentesVista/CV/vinculopro/vinculopro
 import { VinculoCursoComponent } from './ComponentesVista/Conductores/vinculo-curso/vinculo-curso.component'
 
 
-
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './ComponentesVista/Seguridad/login/login.component';
+const routes: Routes = [
+  {path: '/login', component:LoginComponent}
+];
 
 @NgModule({
   declarations: [
@@ -54,6 +74,7 @@ import { VinculoCursoComponent } from './ComponentesVista/Conductores/vinculo-cu
     RolusComponent,
     UseropComponent,
     AgregarUseropComponent,
+    LoginComponent,
     EntradadeproductoComponent,
     VinculoopcComponent,
     VinculomodComponent,
@@ -62,6 +83,20 @@ import { VinculoCursoComponent } from './ComponentesVista/Conductores/vinculo-cu
     PropietariosComponent,
     OpcionesComponent,
     TarjetacComponent,
+    ConfiguracionGrupoComponent,
+    BusesComponent,
+    UsuariosComponent,
+    ConductoresComponent,
+    OproComponent,
+    UsroComponent,
+    PediReComponent,
+    EstaPeComponent,
+    PediAComponent,
+    ManteComponent,
+    ManteVComponent,
+    RevisionesDComponent,
+    PropiComponent,
+    VincComponent,
     MantenimientosComponent,
     SoatComponent,
     VehiculosComponent,
@@ -77,7 +112,10 @@ import { VinculoCursoComponent } from './ComponentesVista/Conductores/vinculo-cu
   imports: [
     BrowserModule,
     AppRoutingModule,
+    //NgxPopper,
+    //FontAwesomeModule,
     FormsModule,
+    RouterModule,
     HttpClientModule
   ],
   providers: [],
