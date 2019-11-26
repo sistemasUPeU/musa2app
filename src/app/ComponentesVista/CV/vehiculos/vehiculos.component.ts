@@ -25,7 +25,7 @@ export class VehiculosComponent implements OnInit {
   vehi_borrar:Vehiculosc = new Vehiculosc;
   valor:any;
   vehs:Vehiculosc = new Vehiculosc();
-  nropadron="689";
+  nropadron:any;
   constructor(private vehiculosservice:VehiculoService, private router:Router, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {

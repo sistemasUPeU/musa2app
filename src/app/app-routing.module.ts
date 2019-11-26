@@ -79,7 +79,6 @@ const routesHome: Routes = [
   {path:'opciones',component:OpcionesComponent},
   {path:'tarjetac',component:TarjetacComponent},
   {path:'configuraciongrupo',component:ConfiguracionGrupoComponent},
-
   {path:'buse',component:BusesComponent},
   {path:'use',component:UsuariosComponent},
   {path:'conduc',component:ConductoresComponent},

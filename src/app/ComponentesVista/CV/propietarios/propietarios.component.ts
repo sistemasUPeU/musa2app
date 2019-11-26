@@ -22,7 +22,7 @@ export class PropietariosComponent implements OnInit {
   prop:Propietario[] = [];
   prop_nombre:Propietario[] = [];
   pro_borrar:Propietario = new Propietario();
-  nropadron="689";
+
   constructor(private propietarioservice:ServiceService, private router:Router, private personasservice:PersonaService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {

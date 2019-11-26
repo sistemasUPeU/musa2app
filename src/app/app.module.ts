@@ -54,6 +54,7 @@ import { VinculoproComponent } from './ComponentesVista/CV/vinculopro/vinculopro
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './ComponentesVista/Seguridad/login/login.component';
+import { RequisitosComponent } from './ComponentesVista/CV/requisitos/requisitos.component';
 const routes: Routes = [
   {path: '/login', component:LoginComponent}
 ];
@@ -104,7 +105,8 @@ const routes: Routes = [
     RegistrarventaComponent,
     AnularventaComponent,
     RegistrarcajaComponent,
-    VinculoproComponent
+    VinculoproComponent,
+    RequisitosComponent
   ],
   imports: [
     BrowserModule,
