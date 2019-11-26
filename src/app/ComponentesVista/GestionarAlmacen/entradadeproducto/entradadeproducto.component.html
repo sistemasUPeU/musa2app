@@ -1,6 +1,30 @@
 <div id="caja1">
   <br>
-  <h1>Entrada</h1>
+  <div class="card" style="max-width: 600px;">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-5">
+          <h3 class="card-title">Entrada</h3>
+        </div>
+        <div class="col-md-8">
+          <p id="card-text">Buscar por: </p>
+          <div class="input-group" id="">
+            <span class="input-group-prepend">
+            </span>
+            <input type="number" class="form-control bg-transparent" placeholder=" Ingrese NroComprob" id="buscar1"
+              [(ngModel)]="nrocomprobante" name="nrocomprobante" />
+            <span (click)="searchKardex();" class="input-group-append">
+              <div class="input-group-text bg-transparent " id="buscar2">
+                <i class="fa fa-search"></i>
+              </div>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- Boton registrar rol -->
   <br>
   <!-- div parte inferior -->
@@ -8,24 +32,13 @@
     <!-- div parte superior -->
     <div id="caja3">
       <!-- Buscador -->
-      <p id="p">Buscar por: </p>
-      <div class="input-group" id="caja_search">
-        <span class="input-group-prepend">
-        </span>
-        <input type="number" class="form-control bg-transparent" placeholder=" Ingrese NroComprob" id="buscar1"
-          [(ngModel)]="nrocomprobante" name="nrocomprobante" />
-        <span (click)="searchKardex();" class="input-group-append">
-          <div class="input-group-text bg-transparent " id="buscar2">
-            <i class="fa fa-search"></i>
-          </div>
-        </span>
-      </div>
+
       <hr>
       <button class="btn btn-success" data-toggle="modal" data-target="#RegisterRol"
         style="margin-top: -5px; margin-left: -10px;">Agregar</button>
       <hr>
       <!--tabla-->
-      <table class="table" style="width: 40px; height: 60px; text-align: center;  margin: 20;">
+      <table class="table" style=" text-align: center; width: 850px; margin: 0 auto;">
         <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
@@ -36,48 +49,29 @@
             <th scope="col">NroComprobante</th>
             <th scope="col">Estado</th>
             <th scope="col">NroSerie</th>
+            <th scope="col">A</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let karde of kardexLista; let i = index">
-            <th scope="row">{{ i + 1}}</th>
-            <td>{{karde.IDTIPOCOMPROBANTE ==1 ? 'Boleta' : ' Factura'}}</td>
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{karde.IDTIPOCOMPROBANTE == 1 ? 'Boleta' : ' Factura'}}</td>
             <td>{{karde.TIPOMOVIMIENTO  ==1 ? 'E' : ' S'}}</td>
             <td>{{karde.CONCEPTO}}</td>
             <td>{{karde.FECHA | date: 'dd/MM/yyyy'}}</td>
             <td>{{karde.NROCOMPROBANTE}}</td>
             <td>{{karde.ESTADO}}</td>
             <td>{{karde.NROSERIE}}</td>
-            <button class="btn btn-sm btn-info"><i class="fas fa-eye" style=" margin-left: -0px;" data-toggle="modal"
+            <button class="btn btn-sm btn-info"><i class="fas fa-cart-plus" style=" margin-left: -0px;"
+                data-toggle="modal" (click)="documentoProductos(karde.IDKARDEX ,karde.NROCOMPROBANTE)"
                 data-target="#ModificarRol"></i></button>
+           <button  class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"
+             style=" margin-left: +2px;" (click)="Eliminar(karde.IDKARDEX);"></i></button>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-  <hr>
-  <form>
-    <div class="row">
-      <div class="col">
-        <label for="inputZip">Productos</label>
-        <select class="custom-select">
-          <option value="1">llantas</option>
-          <option value="2">frenos</option>
-        </select>
-      </div>
-      <div class="col">
-        <label for="inputZip">Cantidad</label>
-        <input type="text" class="form-control" placeholder="Cantidad">
-      </div>
-      <div class="col">
-        <label for="inputZip">Precio Uni</label>
-        <input type="text" class="form-control" placeholder="Cantidad">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Registrar</button>
-      </div>
-    </div>
-  </form>
 </div>
 <!-- Modal Registrar Rol -->
 <div class="modal fade" id="RegisterRol" aria-hidden="true">
@@ -90,43 +84,58 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
       <div class="form-row">
-        <form  >
+        <form>
           <div class="row col-md-12">
-            
-            <div class="form-group col-md-5">
-              <label for="inputZip" style="text-align: center;text-align: right;">Tipo Mov</label>
-              <input type="text" class="form-control" name="tipomovimiento" [(ngModel)]="kardex.TIPOMOVIMIENTO" required 
-                id="inputUbigeo">
+            <div class="form-group col-md-6">
+              <label for="">Tipo Mov: </label>
+              <select class="custom-select" id="tipomovimiento" name="tipomovimiento"
+                [(ngModel)]="kardex.TIPOMOVIMIENTO">
+                <option value=0>Entrada</option>
+                <option value=1>Salida</option>
+              </select>
             </div>
-            <div class="form-group col-md-5">
+
+            <div class="form-group col-md-6">
               <label for="inputZip" style="text-align: center;text-align: right;">Concepto</label>
-              <input type="text" class="form-control" name="concepto" [(ngModel)]="kardex.CONCEPTO" required #concepto1="ngModel"
-                id="inputUbigeo">
+              <input type="text" class="form-control" placeholder="ingrese Concepto" name="concepto" maxlength="1"
+                [(ngModel)]="kardex.CONCEPTO" required #concepto1="ngModel" id="inputUbigeo">
             </div>
-            <div class="form-group col-md-5">
-              <label for="inputZip" style="text-align: center;text-align: right;">Id Tipo Comprob</label>
-              <input type="text" class="form-control" name="idtipocomprobante" [(ngModel)]="kardex.IDTIPOCOMPROBANTE" required #idtipocomprobante1="ngModel"
-                id="inputUbigeo">
+            <div class="form-group col-md-6">
+              <label for="">Tipo Doc: </label>
+              <select class="custom-select" name="tipodoc" ngModel required #tipodoc1="ngModel"
+                [(ngModel)]="kardex.IDTIPOCOMPROBANTE" id="inputUbigeo">
+                <option value="0">Bauher</option>
+                <option value="1">Factura</option>
+              </select>
             </div>
-            <div class="form-group col-md-5">
-              <label for="inputZip" style="text-align: center;text-align: right;">Estado</label>
-              <input type="text" class="form-control" name="estado" [(ngModel)]="kardex.ESTADO" required #estado1="ngModel"
-                id="inputUbigeo">
+            <div class="form-group col-md-6">
+              <label for="">Estado: </label>
+              <select class="custom-select" name="estado" [(ngModel)]="kardex.ESTADO" ngModel required
+                #estado1="ngModel">
+                <option value=0>Inactivo</option>
+                <option value=1>Activo</option>
+              </select>
             </div>
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-6">
               <label for="inputZip" style="text-align: center;text-align: right;">NroComprobante</label>
-              <input type="text" class="form-control" name="nrocomprobante" [(ngModel)]="kardex.NROCOMPROBANTE" required #nrocomprobante1="ngModel">
+              <input type="text" class="form-control" placeholder="ingrese NroComprob" name="nrocomprobante"
+                maxlength="10" [(ngModel)]="kardex.NROCOMPROBANTE" required #nrocomprobante1="ngModel">
             </div>
-            <div class="form-group col-md-5">
+            <div class="form-group col-md-6">
               <label for="inputZip" style="text-align: center;text-align: right;">NroSerie</label>
-              <input type="text" class="form-control" name="nroserie" [(ngModel)]="kardex.NROSERIE" required #nroserie1="ngModel">
+              <input type="text" class="form-control" placeholder="ingrese NroSerie" name="nroserie" maxlength="5"
+                [(ngModel)]="kardex.NROSERIE" required #nroserie1="ngModel">
             </div>
-            
-      <div class="form-group col-md-5">
-        <label style="text-align: center;text-align: right;">Fecha</label>
-        <input type="date" name="fecha" max="3000-12-31" min="1000-01-01" class="form-control" [(ngModel)]="kardex.FECHA" required #fecha1="ngModel">
-      </div>
+
+            <div class="form-group row col">
+              <label for="inputPassword4" class="col-sm-2 col-form-label">Fecha</label>
+              <div class="col-sm-7">
+                <input type="date" name="fecha" class="form-control" [(ngModel)]="kardex.FECHA" required
+                  #fecha1="ngModel">
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
@@ -138,44 +147,75 @@
   </div>
 </div>
 
-<!-- Modal Modificar Rol -->
+<!-- Modal Registrar Entrada de Producto -->
 <div class="modal fade" id="ModificarRol" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">LISTA DE PRODUCTO DE UN DOCUMENTO</h5>
+        <h5 class="modal-title" id="exampleModalLabel">AGREGAR PRODUCTO DE UN DOCUMENTO</h5>
         <hr>
-        <hr>
-
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <br>
+      <form>
+        <div class="form-group row col">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Productos</label>
+          <div class="col-sm-8">
+            <select class="custom-select" name="estado" [(ngModel)]="karProd.IDPRODUCTO">
+              <option *ngFor="let prod of productos" value="{{ prod.IDPRODUCTO }}">{{ prod.NOMBRE }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row col">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Cantidad</label>
+          <div class="col-sm-8">
+            <input class="form-control" placeholder="Ingrese Cantidad" name="cantidad" [(ngModel)]="karProd.CANTIDAD" (keyup)="calcularPrecioTotal()">
+          </div>
+        </div>
+        <div class="form-group row col">
+          <label for="inputPassword3" class="col-sm-2 col-form-label"  >Precio Unitario</label>
+          <div class="col-sm-8">
+            <input class="form-control" placeholder="Ingrese Precio Unitario" name="precio_unitario" [(ngModel)]="karProd.PRECIOUNITARIO" (keyup)="calcularPrecioTotal()" >
+          </div>
+        </div>
+        <div class="form-group row col">
+          <label for="inputPassword3" class="col-sm-2 col-form-label"  >Precio Total</label>
+          <div class="col-sm-8">
+            <p>{{ precio_total }}</p>
+          </div>
+        </div>
+        <div class="modal-footer col-md-11">
+          <button type="button" class="btn btn-primary" (click)="registrarKadexProducto()" >Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+      </form>
+      <hr>
       <div class="container">
-        <table class="table table-bordered table-sm">
+        <table class="table table-bordered table-sm" style=" text-align: center; width: 450px; margin: 0 auto;">
           <thead>
             <tr>
               <th>#</th>
-              <th>Precio</th>
               <th>Cantidad</th>
+              <th>Precio Unit</th>
               <th>P.Total</th>
+             <!--<th>Accion</th> --> 
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>producto01</td>
-              <td>12</td>
-              <td>2</td>
-              <td>24</td>
+            <tr *ngFor="let prodK of productoByKadex; let i = index">
+              <td>{{ prodK.NOMBRE }}</td>
+              <td>{{ prodK.CANTIDAD }}</td>
+              <td>{{ prodK.PRECIOUNITARIO }}</td>
+              <td>{{ prodK.PRECIOTOTAL }}</td>
+              <!-- button -->
+            <!--  <button  class="btn btn-sm btn-danger"><i class="fas fa-trash-alt" -->
+               <!--  style=" margin-left: +1px;" (click)="Eliminares(prodK.IDKARDEXPRODUCTO);"></i></button> -->
             </tr>
           </tbody>
         </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-
       </div>
     </div>
   </div>
