@@ -47,32 +47,35 @@ export class ServiceService {
   Url6 = 'http://localhost:8081/reporte/'
   roles:RolesF;
 
-<<<<<<< HEAD
   getAllUbigeo(): Observable<Ubigeo[]> {
-    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`);
+    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
   }
 
   deleteUbige(id: number){
-    return this.http.delete<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ id}`);
-
-=======
-  private agregarAutorizacion(){
-    let token = this.loginService.token;
-    if(token!=null){
-      console.log("ESTE ES EL TOKEN "+token);
-      return this.httpHeaders.append('Authorization','Bearer' + token);
-    }
-    console.log("NO LLEGA EL TOKEN");
-    return this.httpHeaders;
->>>>>>> 51fa20e3977364c8c9ff1894368ddea469dac065
+    return this.http.delete<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ id}`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
   }
 
   searchUbigeo(codigo: number) {
-    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ codigo }`);
+    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ codigo }`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
   }
-
   postUbigeo(ubigeo: Ubigeo): Observable<number> {
-    return this.http.post<number>(`${ environment.apiUrl }/ubigeos/add`, ubigeo);
+    return this.http.post<number>(`${ environment.apiUrl }/ubigeos/add`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
   }
   getAllRoles(): Observable<Roles[]> {
     return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
@@ -89,6 +92,9 @@ export class ServiceService {
       
       return throwError(e);
     }));
+  }
+  agregarAutorizacion(): HttpHeaders | { [header: string]: string | string[]; } {
+    throw new Error("Method not implemented.");
   }
   getRolesN(e): Observable<Roles[]>{
     return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/nombre/`+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
@@ -108,14 +114,6 @@ export class ServiceService {
       return throwError(e);
     }));   
   }
-<<<<<<< HEAD
-=======
-  getAllUbigeo(): Observable<Ubigeo[]> {
-    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
-      
-      return throwError(e);
-    }));
->>>>>>> 51fa20e3977364c8c9ff1894368ddea469dac065
 
   ////////////////////EMPLEADOSSS
   //getEmple() : Observable<empleado[]> {
