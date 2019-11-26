@@ -1,11 +1,12 @@
 export class Opciones{
-      idopciones: number;
-	  nombre: String;
-	  Descripcion: String;
-	  enlace: String;
-	  icono: String;
+	  idopciones: number;
+	  IDOPCION: number;
+	  NOMBRE: string;
+	  DESCRIPCION: string;
+	  ENLACE: string;
+	  ICONO: string;
 	  tipo: number;
-	  orden: number;
+	  ORDEN: number;
 	  estado: number;
-	  idpadre: number;
+	  IDPADRE: number;
 }

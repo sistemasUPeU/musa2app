@@ -14,58 +14,65 @@
             <br>
             <!-- Buscador -->
             <div class="form-group">
-                <select class="form-control" id="tipo" (click)="Tipo()" [(ngModel)]="vin.tipovinculo" name="tipovinculo">
+                    <label for="exampleInputEmail1">Tipo Vinculo</label>
+                <select class="form-control" id="tipo"  [(ngModel)]="vin.tipovinculo" name="tipovinculo" disabled>
                     <option >Tipo Vinculo</option>
                     <option value='1'>Conductores</option>
                     <option value='2'>Propietarios</option>
                 </select>
             </div>
             
-            <div id="forconductor" style="display:block;">
-                <form>
-                    <div>
-                        <label for="exampleInputEmail1">Conductor</label>
-                        <select class="form-control" [(ngModel)]="vin.idconductor"  name="idconductor">
-                            <option>Conductor</option>
-                            <option *ngFor="let con of lisConduc" [value]="con.IDCONDUCTOR">{{con.NOMBRE}}</option>
-                        </select>
+            <div [ngSwitch]="tipo">
+                <div *ngSwitchCase="1">
+                    <div id="forconductor"  >
+                        <form>
+                            <div >
+                                <label for="exampleInputEmail1">Conductor</label>
+                                <select class="form-control" id="idconductor" [(ngModel)]="vin.idconductor" name="idconductor">
+                                    <option>Conductor</option>
+                                    <option *ngFor="let con of lisConduc" [value]="con.IDCONDUCTOR">{{con.NOMBRE}}</option>
+                                </select>
+                            </div>
+        
+                        </form>
                     </div>
-
-                </form>
-            </div>
-            <div id="forpropietario" style="display:none;">
-                <form>
-                    <div>
-                        <label for="exampleInputPassword1">Propietario</label>
-                        <select class="form-control" [(ngModel)]="vin.idpropietario" name="idpropietario">
-                            <option>Propietario</option>
-                            <option *ngFor="let propietario of lisPropie" [value]="propietario.IDPROPIETARIO">
-                                {{propietario.NOMBRE}}</option>
-                        </select>
+                </div>
+                <div *ngSwitchCase="2">
+                    <div id="forpropietario" >
+                        <form>
+                            <div >
+                                <label for="exampleInputPassword1">Propietario</label>
+                                <select class="form-control" id="idpropietario" [(ngModel)]="vin.idpropietario" name="idpropietario">
+                                    <option>Propietario</option>
+                                    <option *ngFor="let propietario of lisPropie" [value]="propietario.IDPROPIETARIO">
+                                        {{propietario.NOMBRE}}</option>
+                                </select>
+                            </div>
+                            <br>
+                            <div class="form-group" >
+                                <label for="exampleInputPassword1">Vehiculo</label>
+                                <select class="form-control" id="idvehiculo" [(ngModel)]="vin.idvehiculo" name="idvehiculo">
+                                    <option>Vehiculo</option>
+                                    <option *ngFor="let vehiculo of lisVehic" [value]="vehiculo.IDVEHICULO">{{vehiculo.PLACA}}
+                                    </option>
+                                </select>
+                            </div>
+                            <br>
+                        </form>
                     </div>
-                    <br>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Vehiculo</label>
-                        <select class="form-control" [(ngModel)]="vin.idvehiculo" name="idvehiculo">
-                            <option>Vehiculo</option>
-                            <option *ngFor="let vehiculo of lisVehic" [value]="vehiculo.IDVEHICULO">{{vehiculo.PLACA}}
-                            </option>
-                        </select>
-                    </div>
-                    <br>
-                </form>
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Descripcion</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="..." [(ngModel)]="vin.descripcion" name="descripcion">
             </div>
-            <div>
-                <label for="exampleInputPassword1">Empleado</label>
+            <div style="display: none;">
+                <label for="exampleInputPassword1" >Empleado</label>
                 <select class="form-control" [(ngModel)]="vin.idempleado" name="idpropietario">
                     <option>Propietario</option>
-                    <option *ngFor="let emple of lisEmple" [value]="emple.IDEMPLEADO">
-                        {{emple.NOMBRE}}</option>
+                    <option [value]='2'>
+                        hola</option>
                 </select>
             </div>
             <div class="form-group">

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-
+import Swal from 'sweetalert2';
+import { LoginService } from "src/app/service/login.service";
+import { Usuario } from 'src/app/Modelo/Usuario';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,9 +11,16 @@ import * as $ from 'jquery';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  usuario : Usuario;
+  
+  constructor(private loginService:LoginService ,private router:Router) {
+    this.usuario = new Usuario();
+
+   }
 
   ngOnInit() {
+    
+
     $(document).ready(function () {
 
       $(".sidebar-dropdown > a").click(function() {

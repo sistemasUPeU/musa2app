@@ -17,7 +17,7 @@ export class RolComponent implements OnInit {
   rolid:Roles[];
   rolf: Roles=new Roles();
   p_cur_rol: Roles =new Roles();
-
+  sv=[];
   constructor(private service:ServiceService, private router:Router) { }
 
   ngOnInit() {
@@ -48,6 +48,31 @@ export class RolComponent implements OnInit {
      this.getAllRoles();
    })
   }
+
+  VerificarRol(){
+    var sv=this.roles1.nombre;
+    let verificar = 0;
+    this.listaroles.forEach(function(ef){
+      console.log(ef.nombre);
+      while (ef.nombre==sv) {
+        alert("ya existe");
+        verificar=1;
+        this.router.navigate(["home/usuario"])
+      }
+    })
+    alert(verificar);
+      this.GuardarRol();
+    
+    //this.Save();
+    //let arr=Cliente;
+    //if (this.cliente.c_dni=="asd") {
+      
+   // }else{
+   //   alert("HAS FRACASADO EFE")
+   // }
+  }
+
+
   getRolesN(roles:Roles) {
     let c=this.roles1.nom;
     alert(c);

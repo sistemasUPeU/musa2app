@@ -19,12 +19,27 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div   style="height:220px;width:250px;margin-left: 50px;"class="modal-body">
-          <input [(ngModel)]="curso.nombrecurso" placeholder="Nombre"><br><br>
-          <input [(ngModel)]="curso.nombreinstitucion" placeholder="Institucion"><br><br>
-          <input [(ngModel)]="curso.lugar" placeholder="Lugar"><br><br>
-          <input [(ngModel)]="curso.fechainicio" placeholder="Fecha Fnicio" type="date"><br><br>
-          <input [(ngModel)]="curso.fechafin" placeholder="Fecha Fin" type="date">
+        <div   style="height:380px;width:250px;margin-left: 50px;"class="modal-body">
+        <label > Curso:
+          <input [(ngModel)]="curso.nombrecurso" placeholder=" Nombre" style="    margin-top: 10px;
+        width: 180px; border: solid gray 1px;border-radius: 5px;">
+        </label >  <br>
+         <label >Institucion:
+            <input [(ngModel)]="curso.nombreinstitucion" placeholder=" Institucion" style="    margin-top: 10px;
+            width: 180px; border: solid gray 1px;border-radius: 5px;">
+         </label> <br>
+         <label >Lugar:
+            <input [(ngModel)]="curso.lugar" placeholder=" Lugar" style="    margin-top: 10px;
+            width: 180px; border: solid gray 1px;border-radius: 5px;">
+         </label> <br>
+         <label >Fecha Inicio:
+            <input [(ngModel)]="curso.fechainicio" placeholder=" Fecha Fnicio" type="date"style="    margin-top: 10px;
+            width: 180px; border: solid gray 1px;border-radius: 5px;">
+         </label> <br>
+         <label >Fecha Fin:
+            <input [(ngModel)]="curso.fechafin" placeholder=" Fecha Fin" type="date" style="    margin-top: 10px;
+            width: 180px; border: solid gray 1px;border-radius: 5px;">
+         </label> 
 
      
       
@@ -81,7 +96,8 @@
                 <td scope="col">{{cur.fechainicio}}</td>
                 <td scope="col">{{cur.fechafin}}</td>
                 <td scope="col">{{cur.estado_tipo}}</td>
-                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: -50px;" (click)="upt(cur)"></i><i class="fas fa-edit" style="color: blue; margin-left: -30px;" (click)="read(cur.idcursos)"data-toggle="modal" data-target="#modaledit"></i></td>
+                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: -50px;" (click)="upt(cur.idcursos)"></i>
+                  <i class="fas fa-edit" style="color: blue; margin-left: -30px;" (click)="read(cur.idcursos)"data-toggle="modal" data-target="#modaledit"></i></td>
               </tr>
             </tbody>
           </table>
@@ -97,16 +113,31 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div  style="height:220px;width:250px;margin-left: 50px;"class="modal-body">
-                    <input [(ngModel)]="curs.nombrecurso" placeholder="Nombre"><br><br>
-                    <input [(ngModel)]="curs.nombreinstitucion" placeholder="Institucion"><br><br>
-                    <input [(ngModel)]="curs.lugar" placeholder="Lugar"><br><br>
-                    <input [(ngModel)]="curs.fechainicio" placeholder="Fecha Fnicio" type="date"><br><br>
-                    <input [(ngModel)]="curs.fechafin" placeholder="Fecha Fin" type="date">
-          
-               
-                
-                 
+                  <div  style="height:350px;width:250px;margin-left: 50px;"class="modal-body">
+                      <label>Curso:
+                          <input [(ngModel)]=" curs.nombrecurso"  style="    margin-top: 10px;
+                          width: 180px; border: solid gray 1px;border-radius: 5px;">
+                       </label> <br>
+                       <label>Institucion: 
+                          <input [(ngModel)]=" curs.nombreinstitucion" style="    margin-top: 10px;
+                          width: 180px; border: solid gray 1px;border-radius: 5px;">
+                       </label> 
+                       <br>
+                       <label>Lugar:
+                          <input [(ngModel)]=" curs.lugar"  style="    margin-top: 10px;
+                          width: 180px; border: solid gray 1px;border-radius: 5px;">
+                       </label> <br><br>
+                      <label>Fecha Inicio
+                          <input [(ngModel)]=" curs.fechainicio"  type="date" style="    margin-top: 10px;
+                          width: 180px; border: solid gray 1px;border-radius: 5px;">
+                      </label>  <br><br>
+                      <label>Fecha Fin
+                          <input [(ngModel)]=" curs.fechafin"  type="date" style="    margin-top: 10px;
+                          width: 180px; border: solid gray 1px;border-radius: 5px;">
+                      </label> 
+              
+                   
+                    
                   </div>
                   <div class="modal-footer">
                     <button type="button"   class="btn btn-danger" data-dismiss="modal">Cerrar</button>

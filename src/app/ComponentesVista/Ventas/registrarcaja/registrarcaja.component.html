@@ -1,0 +1,102 @@
+<div id="caja1">
+        <br>
+      <h1>REGISTRAR CAJA</h1>
+      <!-- Boton registrar rol -->
+      <br>
+      <br>
+      <br>
+      <!-- div parte inferior -->
+      <div id="caja2">
+        <!-- div parte superior -->
+        <div id="caja3">
+            <!-- Buscador -->
+            
+            <!-- Selecionar por Tipo -->
+            
+            <!-- Buscador Estado -->
+            
+                  <button *ngIf="abrir" type="button" class="btn btn-primary" id="apcaja" data-toggle="modal" data-target="#registrocaja" >Aperturar Caja</button>
+            
+              
+            </div>
+            
+            <!-- Boton Limpiar -->
+            
+        </div>
+
+        <br>
+        <!-- Tabla -->
+        <table class="table table-striped" style="text-align: center; width: 900px; margin: 0 auto;">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" style="width: 250px;">Cliente</th>
+                    <th scope="col">Comprobante</th>
+                    <th scope="col">Tipo Venta</th>
+                    <th scope="col">Total</th>
+                    <th scope="col" colspan="2" >Opciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let vin of listavinculos; let i = index">
+                    <td scope="row">{{ i + 1}}</td>
+                    <td>{{vin.NOMBRE}}{{vin.APELLIDO}}</td>
+                    <td>{{vin.FECHAINICIO}}</td>
+                    <td>{{vin.FECHAINICIO}}</td>
+                    <td >{{vin.FECHAFIN}}</td>
+                    <td ><i id="modificar"  (click)="valor(vin.TIPOVINCULO,vin.IDVINCULO)" class="fas fa-edit" style="color: blue; margin-left: -60px;" ></i>  <i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"  (click)="eliminar(vin.IDVINCULO, vin.ESTADO)"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+              <br>
+              
+      
+                <button type="button" *ngIf="cerrar" class="btn btn-primary" id="cierrecaja" (click)="alerta1()">Cerrar Caja</button>
+              
+      </div>
+
+<!-- Inicio de modal -->
+<div class="modal fade right" id="registrocaja" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true" data-backdrop="false">
+<div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+  <div class="modal-content">
+
+    <!-- Header del modal -->
+    <div class="modal-header" style="background: #32363F;">
+      <p class="heading lead">Caja</p>
+
+      <!-- Boton de cerrar -->
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true" class="white-text">×</span>
+      </button>
+
+    </div>
+    <!-- Final del header -->
+
+    <!-- Body del modal -->
+    
+    <div class="modal-body" >
+     <div class="form-group">
+             <label for="exampleInputEmail1">Monto Apertura</label>
+             <input type="text" class="form-control" [(ngModel)]="caja.montoapertura">
+         </div>
+  <div class="form-group">
+         <label for="exampleInputEmail1">Fecha</label>
+         <br>
+         <input type="Date" class="form-control" [(ngModel)]="caja.fechainicio">
+  </div>   
+  
+</div>
+    <!-- Fin del Body del modal -->
+
+    <!-- Footer del modal -->
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal"(click)=alerta()>Enviar
+            <i class="fa fa-paper-plane ml-1"></i>
+          </button>
+      <button type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancelar</button>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Fin del modal -->

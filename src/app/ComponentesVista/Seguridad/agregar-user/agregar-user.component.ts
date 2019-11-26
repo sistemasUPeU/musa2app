@@ -14,9 +14,12 @@ export class AgregarUserComponent implements OnInit {
   listaruserper: Usuario[] = [];
   listaroles:Roles[];
   listarusu:Usuario[];
+  sv:[];
+  al:Usuario[];
   usuario: Usuario = new Usuario();
   rolu: Rol_Usuarios = new Rol_Usuarios();
   x:Number;
+  verificar:Number;
   constructor(private service:ServiceService, private router:Router) { }
 
   ngOnInit() {
@@ -78,6 +81,30 @@ export class AgregarUserComponent implements OnInit {
      this.router.navigate(["home/usuario"]);
    })
   }
+
+  VerificarUser(){
+    var sv=this.usuario.login;
+    let verificar = 0;
+    this.listarusu.forEach(function(ef){
+      console.log(ef.login);
+      while (sv==ef.login) {
+        alert("ya existe");
+        verificar=1;
+        this.router.navigate(["home/usuario"])
+      }
+    })
+    alert("no existe");
+      this.Save();
+      
+    //this.Save();
+    //let arr=Cliente;
+    //if (this.cliente.c_dni=="asd") {
+      
+   // }else{
+   //   alert("HAS FRACASADO EFE")
+   // }
+  }
+
   trasladar(){
     this.router.navigate(["home/rolus"]);
   }

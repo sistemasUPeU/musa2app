@@ -28,8 +28,11 @@ export class VinculoComponent implements OnInit {
   constructor(private service: ServiceService, private router: Router) { }
   
   ngOnInit() {
-    
-    this.tipo=3;
+    function myFunction() {
+       var x = (<HTMLElement>document.getElementById('buscar1'));
+      
+    }
+    this.tipo=1;
     this.estado = 1;
     this.listar();
   }
@@ -68,7 +71,7 @@ export class VinculoComponent implements OnInit {
   /// Metodo para redireccionar a ingresar a Nuevo Vinculo
 
   Modo(){   
-    localStorage.setItem("tipo",'3');
+    localStorage.setItem("tipo",'1');
     this.router.navigate(['/home/vinculoopc']);
    }
    

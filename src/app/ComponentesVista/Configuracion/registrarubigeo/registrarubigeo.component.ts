@@ -54,12 +54,19 @@ export class RegistrarubigeoComponent implements OnInit {
     }, error => {
       console.log(error)
     })
+<<<<<<< HEAD
   alert("registrado correctamente...")
   console.log(Response)
   this.ngOnInit();
    }
   
 
+=======
+alert("registrado correctamente...")
+  }
+
+/*
+>>>>>>> 51fa20e3977364c8c9ff1894368ddea469dac065
 Eliminar(id: number){
   console.log(id)
   this.serviceService.deleteUbige(id).subscribe(data => {
@@ -69,9 +76,13 @@ Eliminar(id: number){
   })
 
  }
+<<<<<<< HEAD
 editar(ubigeo: Ubigeo){
   console.log("ubige editart:", ubigeo)
   this.ubigeoEditar = ubigeo;
   alert("Modificado Correcto");
 }
+=======
+*/
+>>>>>>> 51fa20e3977364c8c9ff1894368ddea469dac065
   }

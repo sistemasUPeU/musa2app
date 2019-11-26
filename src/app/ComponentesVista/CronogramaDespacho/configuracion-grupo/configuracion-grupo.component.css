@@ -1,0 +1,101 @@
+#p{
+    font-size: 20px;
+}
+#caja_search{
+    margin-left: 20px;
+    width: 300px;
+}
+#buscar1{
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border: solid gray 1px;
+}
+#buscar2{
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border: solid gray 1px;
+}
+#caja1{
+    margin-left: -50px;
+}
+#caja_estado{
+    margin-left: -120px;
+    width: 250px;
+    border: solid gray 1px;
+}
+#estado{
+    margin-top: -38px;
+    margin-left: 340px;
+}
+#limpiar{
+    margin-top: -102px;
+    margin-left: 560px;
+    width: 150px;
+    border-radius: 50px;
+}
+#register{
+    margin-top: -80px;
+    width: 300px;
+    margin-left: 900px; 
+    font-size: 70px;
+    text-align: center;
+}
+#caja2{
+    margin-top: -40px;
+}
+#caja3{
+    margin-left: 130px;
+}
+#listar{
+    margin-top: -61px;
+    margin-left: 469px;
+    width: 40px;;
+}
+#cajas{
+    width: 225px;
+}
+#cajag{
+    width: 125px;
+}
+#salida{
+    float: right;
+    margin-top: -90px;
+    margin-right: 90px;
+}
+#inicio{
+    float: left;
+    margin-top: -30px;
+}
+#fin{
+    float: right;
+    margin-top: -52px;
+}
+#buses{
+    float: left;
+    margin-top: 10px;
+}
+#paradero{
+    float: right;
+    margin-top: -12px;
+}
+#la{
+    margin-left: 135px;
+    margin-top: -30px;
+    width: 40px;
+}
+#la2{
+    margin-right: 135px;
+    margin-top: -30px;
+    width: 0px;
+    float: right;
+}
+#modificar{
+    width: 180px;
+    border-radius: 50px;
+    
+}
+#modificar1{
+    width: 180px;
+    border-radius: 50px;
+
+}

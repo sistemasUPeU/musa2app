@@ -14,6 +14,7 @@
                 <br>
                 <!-- Buscador -->
                 <div class="form-group" >
+                        <label for="exampleInputEmail1">Tipo Vinculo</label>
                     <select class="form-control" id="tipo" [(ngModel)]="vinculo.tipovinculo" name="tipovinculo" disabled>
                         <option>Tipo Vinculo</option>
                         <option value='1'>Conductores</option>
@@ -82,14 +83,53 @@
                     <input type="date" class="form-control" id="fechafin" [(ngModel)]="fechaf" name="fechafin">
                 </div>
             </div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPoll">Requisitos</button>
             <br>
-            <div  >
-                <div *ngFor="let requi of lisRequisitos">
-                    <h2>{{ requi.NOMBRE }}</h2><br>
-                    <input type="file" >
-                    <input type="checkbox" id="aceptado" (click)="modifi_requis(requi.IDVINCULO,requi.IDREQUISITO)" >
-                </div>
-            </div>
+            <div class="modal fade right" id="modalPoll" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+ aria-hidden="true" data-backdrop="false">
+ <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+   <div class="modal-content">
+
+     <!-- Header del modal -->
+     <div class="modal-header" style="background: #32363F;">
+       <p class="heading lead">Registro de Requisitos</p>
+
+       <!-- Boton de cerrar -->
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true" class="white-text">×</span>
+       </button>
+
+     </div>
+     <!-- Final del header -->
+
+     <!-- Body del modal -->
+     <div class="modal-body">
+            <div>
+                    <div *ngFor="let requi of lisRequisitos; let i = index">
+                        <div id="div_file"> 
+                            <p id="texto">{{ requi.NOMBRE }}</p>
+                            <input type="file" id="btn_enviar">
+                        </div>
+                        <div class="demo">
+                            <input type="checkbox" id="{{ requi.NOMBRE }}" name="{{ requi.NOMBRE }}" disabled>
+                            <label for="{{ requi.NOMBRE }}"><span></span>{{ requi.ESTADO }}</label>
+                        </div>
+                    </div>
+                </div>     
+     </div>
+     <!-- Fin del Body del modal -->
+
+     <!-- Footer del modal -->
+     <div class="modal-footer justify-content-center">
+       <button type="button" class="btn btn-primary waves-effect waves-light" data-dismiss="modal" (click)="crearPropietarios()">Enviar
+         <i class="fa fa-paper-plane ml-1"></i>
+       </button>
+       <button type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cancelar</button>
+     </div>
+   </div>
+ </div>
+</div>
+            
         </div>
         <br>
         <button type="submit" class="btn btn-primary" (click)="modificar(vinculo)">Guardar</button>

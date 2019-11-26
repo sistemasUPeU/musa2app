@@ -10,7 +10,7 @@ import { OpcionesService } from 'src/app/service/opciones.service';
 })
 export class OpcionesComponent implements OnInit {
 
-  opciones :Opciones=new Opciones();
+  opciones :Opciones =new Opciones();
   opcion:Opciones=new Opciones();
   ops:Opciones=new Opciones();
   o : Opciones=new Opciones();
@@ -19,15 +19,15 @@ export class OpcionesComponent implements OnInit {
   opciones1: Opciones[] = []
   service: any;
 
-  constructor(private opcionesService:OpcionesService) { }
+  constructor(private opcionesService:OpcionesService,) { }
   
   ngOnInit() {
     
-    this.opcionesService.listopciones().subscribe(
+    this.opcionesService.listopciones(1).subscribe(
       (data) => {
-        this.opciones=data['p_opciones'];
+        this.opciones1=data['P_CUR_OPCION'];
     
-        console.log(this.opciones);
+        console.log(this.opciones1);
       }
     );
   }
