@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, from } from 'rxjs';
+import {HttpClient, HttpHeaders, HttpRequest, HttpEvent} from '@angular/common/http';
+import { Observable , throwError} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Kardex, KardexProducto } from '../ComponentesVista/GestionarAlmacen/entradadeproducto/kardex';
 import { Producto, _Producto } from '../ComponentesVista/GestionarAlmacen/entradadeproducto/Producto';
+import { LoginService } from 'src/app/service/login.service';
+import { map, catchError, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +13,19 @@ import { Producto, _Producto } from '../ComponentesVista/GestionarAlmacen/entrad
 export class KardexService {
 
 private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-  
-constructor(private http: HttpClient) {
+constructor(private http: HttpClient,private loginService:LoginService) {
   console.log('servicio de persona funcionando');
  }
+ agregarAutorizacion(): HttpHeaders | { [header: string]: string | string[]; } {
+  throw new Error("Method not implemented.");
+}
  getAllKardex():Observable<Kardex[]>{
-   return this.http.get<Kardex[]>(`${ environment.apiUrl }/kardes/`);
- }
+   return this.http.get<Kardex[]>(`${ environment.apiUrl }/kardes/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+    return throwError(e);
+  })
+  )
+}
  searchKardex(nrocomprobante: number){
    return this.http.get<Kardex[]>(`${ environment.apiUrl }/kardes/kar/${ nrocomprobante }`);
  }
