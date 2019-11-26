@@ -5,6 +5,7 @@ import { MantAcciones } from '../Modelo/MantAcciones';
 import { Mantenimientos } from '../Modelo/Mantenimientos';
 import { Vehiculos } from "../Modelo/Vehiculos";
 import { Conductores } from "../Modelo/Conductores";
+import { empleado } from "../Modelo/empleados";
 import { MantAccionMantenimiento } from "../Modelo/MantAccionMantenimiento";
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
@@ -53,7 +54,7 @@ export class MantenimientoService {
   }
 
   updateMantenimiento(mant:Mantenimientos): Observable<Mantenimientos>{
-    return this.http.put<Mantenimientos>(`${ environment.apiUrl }/mantenimiento/update${mant.idmantenimiento}`, mant, {headers: this.httpHeaders});
+    return this.http.put<Mantenimientos>(`${ environment.apiUrl }/mantenimiento/update${mant.idMantenimiento}`, mant, {headers: this.httpHeaders});
   }
 
   getMantById(id:number){
@@ -84,6 +85,10 @@ export class MantenimientoService {
     return this.http.get<Mantenimientos>(`${ environment.apiUrl }/mantenimiento/add/detalle/man=`+id+`/acc=`+idAcc);
   }
 
+  updateDetalle(id:number, idAcc:number, sta:number){
+    return this.http.get<Mantenimientos>(`${ environment.apiUrl }/mantenimiento/update/detalle/man=`+id+`/acc=`+idAcc+`/sta=`+sta);
+  }
+
   deleteDetalle(id:number, idAcc:number){
     return this.http.get<Mantenimientos>(`${ environment.apiUrl }/mantenimiento/delete/detalle/man=`+id+`/acc=`+idAcc);
   }
@@ -96,5 +101,8 @@ export class MantenimientoService {
     return this.http.get<Conductores>(`${ environment.apiUrl }/conductores/lis/`);
   }
 
+  getEmpleados(){
+    return this.http.get<empleado>(`${ environment.apiUrl }/empleado/lis`);
+  }
 
 }

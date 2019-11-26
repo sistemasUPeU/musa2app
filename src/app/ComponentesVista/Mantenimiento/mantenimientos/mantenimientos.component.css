@@ -102,6 +102,52 @@
   
   code {
     background-color: #9aa3ac;
-    padding: 0 8px;
   }
+
+
+
+ /*para revision tecnica*/
+
+ .radio-group-mant input[type="radio"] {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+  height: 15px;
+}
+
+.radio-group-mant label {
+  color: #9a929e;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0px 20px;
+  z-index: 1000;
+  margin: 0px;
+}
+
+.radio-group-mant input[type="radio"]:checked + label {
+  color: #ccc8ce;
+  background: #675f6b;
+}
+
+.radio-group-mant label + input[type="radio"] + label {
+  border-left: solid 3px #675f6b;
   
+  height: 100%;
+}
+
+.radio-group-mant {
+  border: solid 3px #675f6b;
+  display: inline-block;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0%;
+}
+
+.tit_acc_tec {
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+  border-bottom: solid 3px #675f6b;
+}
