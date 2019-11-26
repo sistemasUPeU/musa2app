@@ -16,6 +16,7 @@ export class CursosComponent implements OnInit {
    feachai:String
    feachaf:String
    id:number
+
   constructor(private service:CursosService , private ruter: Router) { }
 
   ngOnInit() {
@@ -30,19 +31,21 @@ export class CursosComponent implements OnInit {
     );
     
   }
-
-  upt(cur: Cursos){
-    this.service.uptCursos(cur).subscribe(data => {
   
-      this.listar()
-      
-    }
-    );
+  upt(id: number,curso :Cursos){
+  
+    this.service.uptCursos(+id,curso).subscribe(data => {
+  
+    this.listar()
     Swal.fire(
       'Eliminado!',
-      'El Curso ha sido Eliminado',
+      'El curso fue Eliminado con exito',
       'success'
     )
+    }
+
+    )  ;  
+  
     
   }
   crear(cursos:Cursos){
@@ -63,10 +66,7 @@ this.id=id;
 this.service.readcurso(+id).subscribe(data =>{
   this.curs=data["P_CUR_CURSOS"][0];
   
-  this.feachaf = (String(this.curs.fechafin)).substr(0,10)
-  this.feachai = (String(this.curs.fechainicio)).substr(0,10)
-  this.curs.fechafin=new Date(String(this.feachaf))
-  this.curs.fechainicio=new Date(String(this.feachai))
+
   console.log(this.feachaf,this.feachai)
 })
 }

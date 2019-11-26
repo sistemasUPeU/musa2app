@@ -15,4 +15,6 @@ export class Personas{
     usermodify:string;
     datemodify:Date;
     idubigeo:number;
+
+    idusuario:number;
 }

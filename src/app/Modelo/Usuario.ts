@@ -11,7 +11,9 @@ export class Usuario{
     date_create: Date;
     user_modify: String;
     date_modify: Date;
-
+    
+    
+    
 
          
 

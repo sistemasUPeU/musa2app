@@ -3,8 +3,8 @@ export class Cursos{
      nombrecurso:String;
      nombreinstitucin:String;
     lugar:String;
-    fechainicio:Date;
-    fechafin:Date;
+    fechainicio:String;
+    fechafin:String;
     estado:number;
      estado_tipo:String;
 

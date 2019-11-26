@@ -1,0 +1,109 @@
+<div id="caja1">
+  <br>
+<h1>VINCULO CONDUCTORES</h1>
+<!-- Boton registrar rol -->
+<button id="register" value='1' data-toggle="modal" data-target="#RegisterRol" data-toggle="modal" data-target="#modalcrear" >
+  <i class="fas fa-user-plus"></i>
+  <p style="margin-top: -15px; margin-left: -20px;">Registrar Vinculo </p>
+</button>
+<br>
+<br>
+<!-- div parte inferior -->
+<div id="caja2">
+  <!-- div parte superior -->
+  <div id="caja3">
+      <!-- Buscador -->
+      <p id="p">Buscar por: </p>
+      <div class="input-group" id="caja_search">
+          <span class="input-group-prepend">
+          </span>
+          <input class="form-control bg-transparent form-control is-valid" val='1' type="search" placeholder=" Ingrese Nombre" id="buscar1" />
+          <span class="input-group-append">
+              <div class="input-group-text bg-transparent " id="buscar2">
+              <i class="fa fa-search"></i>
+              </div>
+          </span>
+      </div>
+      <!-- Selecionar por Tipo -->
+      
+      <!-- Boton Limpiar -->
+      <button type="button" class="btn btn-success" id="limpiar">Limpíar</button>
+  </div>
+  <br>
+  <!-- Tabla -->
+  <table class="table" style="text-align: center; width: 1030px; margin: 0 auto;">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" style="width: 100px;">Curso</th>
+        <th scope="col" style="width: 100px;">Conductor </th>
+        <th scope="col">Estado</th>
+        <th scope="col">Fecha Emision </th>
+        <th scope="col">Fecha Caducidad</th>
+        <th scope="col">Resultado</th>
+        <th scope="col" >Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let curvin of vincurso; let i = index">
+        <td scope="col">{{i+1}}</td>
+        <td scope="col" style="width: 100px;">{{curvin.nombrecurso}}</td>
+        <td scope="col" style="width: 100px;"> {{curvin.nombre}}</td>
+        <td scope="col">{{curvin.estado}}</td>
+        <td scope="col">{{curvin.fechaemision}}</td>
+        <td scope="col">{{curvin.fechacaducidad}}</td>
+        <td scope="col">{{curvin.resultado}}</td>
+        <td ><i class="fas fa-trash-alt" style="color: red; margin-left: -50px;" (click)="upt(curvin.idcursos,curvin.idconductor)"></i><i class="fas fa-edit" style="color: blue; margin-left: -30px;" (click)="read(curvin.idcursos,curvin.idconductor)"data-toggle="modal" data-target="#modaledit"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="modal fade" id="modalcrear" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear Vinculo Curso</h5>
+        <hr>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Seleccione Curso:</label>
+        <select class="form-control" id="idcurso" [(ngModel)]="vinc.idcurso" name="idcurso">
+            <option value="-1" disabled>Curso</option>
+            <option *ngFor="let cur of cur" [value]="cu.idcurso">
+                {{cu.nombre}}</option>
+        </select>
+    </div>
+    <br>
+    <div class="form-group" >
+        <label for="exampleInputPassword1">Conductor :</label>
+        <select class="form-control" id="idconductor" [(ngModel)]="vinc.idconductor" name="idconductor">
+            <option>Conductor</option>
+            <option *ngFor="let co of con" [value]="co.idconductor">{{co.nombre}}
+            </option>
+        </select>
+    </div>
+        <label>Fecha Emision:
+          <input [(ngModel)]="vinc.fechaemision" name="fechaemi" type="date">
+
+        </label><br><br>
+       <label>Fecha Caducidad:
+         <input [(ngModel)]="vinc.fechacaducidad" name="fechacad" type="date">
+
+       </label> <br><br>
+       <label>Resultado:
+         <input [(ngModel)]="vinc.resultado" name="result">
+
+       </label> 
+      </div>
+      <div class="modal-footer">
+        <button type="button"   class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="button" (click)="edit(vincur)" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

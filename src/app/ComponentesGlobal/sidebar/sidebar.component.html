@@ -206,6 +206,15 @@
                   <li>
                     <a routerLink="/home/propietarios">Propietarios</a>
                   </li>
+<<<<<<< HEAD
+                  <li>
+                    <a routerLink="/home/vehiculos">Vehiculos</a>
+                  </li>
+                      <li>
+                    <a routerLink="/home/vinculocurso">Registrar Vinculo Curso</a>
+                  </li>
+=======
+>>>>>>> 73f0cb6a8a59e38e7faa305eb3ee9086203f487d
                     <li>
                     <a routerLink="/home/cursos">Registrar Curso</a>
                   </li>
@@ -440,13 +449,13 @@
 
           <!--lista por rol opciones-->
           <div *ngFor="let pa of opciones1">
-            <li class="header-menu" *ngIf="pa.idpadre==null">
-              <span>{{pa.nombre}}</span>
+            <li class="header-menu" *ngIf="pa.IDPADRE==null">
+              <span>{{pa.NOMBRE}}</span>
             </li>
             <li routerLinkActive="active" *ngFor="let hi of opciones1">
-              <a routerLink="{{hi.enlace}}" *ngIf="hi.idpadre==pa.idopciones">
-                <i class="{{hi.icono}}"></i>
-                {{hi.nombre}}
+              <a routerLink="{{hi.ENLACE}}" *ngIf="hi.IDPADRE==pa.IDOPCION">
+                <i class="{{hi.ICONO}}"></i>
+                {{hi.NOMBRE}}
               </a>
             </li>
           </div>

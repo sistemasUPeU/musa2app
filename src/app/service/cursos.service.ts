@@ -13,9 +13,9 @@ export class CursosService {
   getCursos(): Observable<Cursos[]> {
     return this.http.get<Cursos[]>(`${ environment.apiUrl }/cursos/`);
   }
-  uptCursos(cursos: Cursos){
-    console.log(cursos)
-    return this.http.put<Cursos>(`${ environment.apiUrl }/cursos/upt/` , cursos);
+  uptCursos(id: number, curso:Cursos){
+    console.log(id)
+    return this.http.put<Cursos>(`${ environment.apiUrl }/cursos/upt/`+ id,curso );
   }
   createCurso(cursos: Cursos){
     return this.http.post<Cursos>(`${ environment.apiUrl }/cursos/add`, cursos);

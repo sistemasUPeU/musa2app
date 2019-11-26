@@ -1,4 +1,4 @@
 export class Conductores {
-    IDCONDUCTOR: number;
-    NOMBRE: string;
+    idconductor: number;
+    nombre: string;
 }

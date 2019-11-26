@@ -79,7 +79,7 @@ getUsuario(){
   loadPersona(user: Usuario): void {
     alert(user.idusuario);
     this.service.getUsuarioId(user.idusuario).subscribe((data) => {
-      this.loadUsuarioData = data['P_CURSOR_USUARIO'];
+      this.loadUsuarioData = data['P_CUR_USUARIOS'];
       console.log(data);
     })
   }

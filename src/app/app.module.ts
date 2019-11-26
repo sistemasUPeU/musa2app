@@ -48,7 +48,8 @@ import { VentaComponent } from './ComponentesVista/Ventas/venta/venta.component'
 import { RegistrarventaComponent } from './ComponentesVista/Ventas/registrarventa/registrarventa.component';
 import { AnularventaComponent } from './ComponentesVista/Ventas/anularventa/anularventa.component';
 import { RegistrarcajaComponent } from './ComponentesVista/Ventas/registrarcaja/registrarcaja.component';
-import { VinculoproComponent } from './ComponentesVista/CV/vinculopro/vinculopro.component'
+import { VinculoproComponent } from './ComponentesVista/CV/vinculopro/vinculopro.component';
+import { VinculoCursoComponent } from './ComponentesVista/Conductores/vinculo-curso/vinculo-curso.component'
 
 
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -106,7 +107,8 @@ const routes: Routes = [
     AnularventaComponent,
     RegistrarcajaComponent,
     VinculoproComponent,
-    RequisitosComponent
+    VinculoCursoComponent,
+    
   ],
   imports: [
     BrowserModule,
