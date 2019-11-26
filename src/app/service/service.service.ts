@@ -27,6 +27,10 @@ export class ServiceService {
   Url4 = 'http://localhost:8081/usop/'
   roles:RolesF;
 
+  getAllUbigeo(): Observable<Ubigeo[]> {
+    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`);
+  }
+
   deleteUbige(id: number){
     return this.http.delete<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ id}`);
 
@@ -54,10 +58,7 @@ export class ServiceService {
   createRoles(x){
     return this.http.post<Roles[]>(this.Url+'add',x);   
   }
-  getAllUbigeo(): Observable<Ubigeo[]> {
-    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`);
 
-  }
   ////////////////////EMPLEADOSSS
   getEmple() : Observable<empleado[]> {
     return this.http.get<empleado[]>(`${ environment.apiUrl }/empleado/lis`);

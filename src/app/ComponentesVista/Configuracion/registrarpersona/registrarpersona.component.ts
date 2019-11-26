@@ -19,8 +19,8 @@ export class RegistrarpersonaComponent implements OnInit {
   nrodoc: number;
   idpersonas: String;
   Personas: Persona[];
-  router: any;
-  service: any;
+
+  personaEditar: Personas = new Personas();
   constructor(private personaService:PersonaService) { }
 
   ngOnInit() {
@@ -45,14 +45,19 @@ searchPersona(){
     this.getAllPersona();
 }
 }
- buscar(f: NgForm){
-   this.personaService.postPersonas(f.value).subscribe( response => {
-     console.log(response)
+
+ save(){
+   alert(this.per.nombre);
+  this.personaService.postPersonas(this.per).subscribe( response => {
+    console.log(response)
   }, error => {
- console.log(error)
-   })
-   alert("Se registro persona Correctamente....")
+    console.log(error)
+  })
+alert("registrado correctamente...")
+console.log(Response)
+this.ngOnInit();
  }
+
  Eliminar(id: number){
    console.log(id)
    this.personaService.deletePerson(id).subscribe(data =>{
@@ -61,4 +66,11 @@ console.log(data)
 this.ngOnInit();
    })
 }
+
+editar(persona: Personas){
+console.log("person editart: ",persona)
+this.personaEditar = persona;
+// this.personaService.
+}
+
 }

@@ -29,8 +29,8 @@ import { Personas } from 'src/app/Modelo/Personas'
     deletePerson(id: number){
       return this.http.delete<Personas[]>(`${ environment.apiUrl }/personas/per/${id}`);
     } 
-    postPersonas(persona: Personas): Observable<number> {
-      return this.http.post<number>(`${ environment.apiUrl }/personas/add`, persona);
+    postPersonas(personas: Personas): Observable<number> {
+      return this.http.post<number>(`${ environment.apiUrl }/personas/add`, personas);
     }
   }
   
