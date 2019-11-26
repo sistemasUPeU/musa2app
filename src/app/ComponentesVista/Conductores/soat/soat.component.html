@@ -1,36 +1,35 @@
-
 <div id="caja1">
-    <br>
-<h1>SOATS</h1> 
-<!-- Boton registrar user -->
-<button id="register" data-toggle="modal" data-target="#RegisterUsuario">
+  <br>
+  <h1>SOATS</h1>
+  <!-- Boton registrar user -->
+  <button id="register" data-toggle="modal" (click)="getveh()" data-target="#RegisterUsuario">
     <i class="fas fa-user-plus" ></i>
-    <p style="margin-top: -15px;  margin-left: -20px;" >Registrar Soat</p>
-</button>
-<br>
-<br>
-<!-- div parte superior -->
-<div id="caja2">
+    <p style="margin-top: -15px;  margin-left: -20px;">Registrar Soat</p>
+  </button>
+  <br>
+  <br>
+  <!-- div parte superior -->
+  <div id="caja2">
     <!-- Buscador -->
     <p id="p">Buscar por Nro.Documento: </p>
     <div class="input-group" id="caja_search">
-        <span class="input-group-prepend">
-        </span>
-            <input class="form-control bg-transparent" [(ngModel)]="soa.nrodocumento"  placeholder=" Ingrese Nro Documento" >
-        <span class="input-group-append">
-            <div  class="input-group-text bg-transparent " id="buscar2">
-            <i  (click)="Buscar()" class ="fa fa-search"></i>
-            </div>
-        </span>
-    </div> 
+      <span class="input-group-prepend">
+      </span>
+      <input class="form-control bg-transparent" id="buscar1" [(ngModel)]="soa.nrodocumento" placeholder=" Ingrese Nro Documento">
+      <span class="input-group-append">
+        <div class="input-group-text bg-transparent " id="buscar2">
+          <i (click)="Buscar()" class="fa fa-search"></i>
+        </div>
+      </span>
+    </div>
     <!-- Buscador por Estado -->
     <div id="rol">
-        <select class="custom-select" [(ngModel)]="s.estado" (click)="Estado()" id="inputGroupSelect01" id="caja_rol">
-                
-                <option value=1 >Vigente</option>
-                <option value=0>No Vigente</option>
-                <option value=2>Por Recoger</option>
-        </select>
+      <select class="custom-select" [(ngModel)]="s.estado" (click)="Estado()" id="inputGroupSelect01" id="caja_rol">
+
+       
+        <option value=0>No Vigente</option>
+        <option value=2>Por Recoger</option>
+      </select>
     </div>
     <!-- Boton Limpiar -->
     <button type="button" class="btn btn-success" id="limpiar" (click)="Limpiar()">Limpíar</button>
@@ -38,156 +37,234 @@
     <br><br>
     <!-- Tabla -->
     <table class="table" style="text-align: center;">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col" style="width: 250px;">NRO.DOCUMENTO</th>
-                <th scope="col">NRO.POLIZA</th>
-                
-                <th scope="col">VIGENCIA HASTA</th>
-                
-                <th scope="col">CERTIFICADO HASTA</th>
-               
-                <th scope="col">ASEGURADORA</th>
-                <th scope="col">VEHICULO</th>
-                <th scope="col">ESTADO</th>
-                <th scope="col" colspan="2" style="width: 400px;">Opciones</th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let soat of soats; let i = index">
-                    <td>{{i+1}}</td>
-                    <td>{{soat.nrodocumento}}</td>
-                    <td>{{soat.nropoliza }}</td>
-                    
-                    <td>{{soat.vigenciahasta}}</td>
-                  
-                    <td>{{soat.certificadohasta}}</td>
-                  
-                    <td>{{soat.aseguradora}}</td>
-                    <td>{{soat.idvehiculo}}</td>
-                    <td>{{soat.estado}}</td>
-                    <td ><i class="fas fa-trash-alt" (click)="Eliminar(soat)" style="color: red; margin-left: 20px;"></i></td>
-                <td ><i class="fas fa-edit" (click)="Actualizar(soat)" style="color: blue; margin-left: -60px;" data-toggle="modal" data-target="#ModificarUsuario"></i></td>
-                
-              </tr>
-            
-            </tbody>
-          </table>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col" style="width: 250px;">NRO.DOCUMENTO</th>
+          <th scope="col">NRO.POLIZA</th>
+
+          <th scope="col">VIGENCIA HASTA</th>
+
+          <th scope="col">CERTIFICADO HASTA</th>
+
+          <th scope="col">ASEGURADORA</th>
+          <th scope="col">VEHICULO</th>
+          <th scope="col">ESTADO</th>
+          <th scope="col" colspan="2" style="width: 400px;">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let soat of soats; let i = index">
+          <td>{{i+1}}</td>
+          <td>{{soat.nrodocumento}}</td>
+          <td>{{soat.nropoliza }}</td>
+
+          <td>{{soat.vigenciahasta}}</td>
+
+          <td>{{soat.certificadohasta}}</td>
+
+          <td>{{soat.aseguradora}}</td>
+          <td>{{soat.idvehiculo}}</td>
+          <td>{{soat.estado ==1? 'Vigente' : (soat.estado ==2?  'Por entregar' :  'No vigente') }}</td>
+          <td><i class="fas fa-trash-alt" (click)="Eliminar(soat)" style="color: red; margin-left: 20px;"></i></td>
+          <td><i class="fas fa-edit" (click)="Actualizar(soat)" style="color: blue; margin-left: -60px;"
+              data-toggle="modal" data-target="#ModificarUsuario"></i></td>
+
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
 
 </div>
-          
-</div>
-
-<!-- Modal Registrar Usuario -->
-<div class="modal fade" id="RegisterUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">REGISTRAR SOAT</h5>
-              <hr>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-             <br>
-                      
-             <label for="">Nro Documento: </label>
-             <input id="user" type="text" class="form-control" name="nrodocumento" [(ngModel)]=" soat.nrodocumento" >
-              <br>
-              <label for="">Nro Poliza: </label>
-               <input id="user" type="text"  class="form-control"  name="nropoliza" [(ngModel)]=" soat.nropoliza " >
-               <br>
-               <label for="">Vigencia inicial: </label>
-               <input id="user" type="text" class="form-control"   name="vigenciadesde" [(ngModel)]=" soat.vigenciadesde " >
-               <br>
-               <label for="">Vigencia Final: </label>
-             <input id="user" type="text" class="form-control" name="vigenciahasta" [(ngModel)]=" soat.vigenciahasta" >
-              <br>
-              <label for="">Fecha inicial : </label>
-               <input id="user" type="text"  class="form-control"  name="certificadodesde" [(ngModel)]="  soat.certificadodesde" >
-               <br>
-               <label for="">Fecha final: </label>
-               <input id="user" type="text" class="form-control"   name="certificadohasta" [(ngModel)]=" soat.certificadohasta" >
-               <br>
-               <label for="">Montoprima: </label>
-               <input id="user" type="text" class="form-control" name="montoprima" [(ngModel)]="soat.montoprima" >
-                <br>
-                <label for="">Aseguradora: </label>
-                 <input id="user" type="text"  class="form-control"  name="aseguradora" [(ngModel)]=" soat.aseguradora" >
-                 <br>
-                 <label for="">Padron del Vehiculo: </label>
-                 <input id="user" type="text" class="form-control"   name="idvehicu" [(ngModel)]="soat.idvehiculo" >
-                 <br>
-               <label for="">Seleccione Estado: </label>
-               <select class="custom-select" id="inputGroupSelect01" id="caja_rol" [(ngModel)]="soat.estado" name="estado" style="margin-left: 52px;">
-                    
-                     <option value=1>Activo</option>
-                     <option value=0>Inactivo</option>
-                     <option value=2>Por entregar</option>
-              </select>
-           
-            </div>
-            <div class="modal-footer">
-              <button type="button"   class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-              <button type="button" (click)="CREARSOAT()" class="btn btn-primary" data-dismiss="modal">Registrar</button>
-            </div>
+<div class="modal fade" data-target="#modal" id="RegisterUsuario">
+  <div class="modal-dialog" role="document" style="margin-right: 750px;">
+    <div class="modal-content" style="width: 1000px; ;margin-left: 100px; margin-top: 10px">
+      <div class="modal-header" style="width: 1000px;">
+        <h5 class="modal-title" id="exampleModalLabel">REGISTRAR SOAT</h5>
+        <hr>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="modal-body" style="width: 1000px;">
+        <div style="width: 500px;float: left;">
+          <p id="p" style="margin-left: 20px;">Buscar por: </p>
+          <div class="input-group" id="caja_search">
+            <span class="input-group-prepend">
+            </span>
+            <input class="form-control bg-transparent"  [(ngModel)]="vehicu.nropadron"  type="text"  placeholder=" Ingrese Nro padron" id="bus"/>
+            <span class="input-group-append">
+              <div class="input-group-text bg-transparent "  (click)="buscarp()" id="buscar2">
+                <i class="fa fa-search" ></i>
+              </div>
+            </span>
           </div>
+          <div class="table" style="overflow: scroll; height: 320px;margin-top: 10px;">
+            <table class="table " style="text-align: center; height: 320px;">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Placa</th>
+                  <th scope="col">Padron</th>
+                  <th scope="col">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let vehiculo of vehiculos">
+                    <td>{{vehiculo.placa}}</td>
+                    <td>{{vehiculo.nropadron}}</td>
+                    <td><i class="fas fa-plus-square" (click)="Add(vehiculo.nropadron)" style="color: green; "
+                    ></i></td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+
+
+        </div>
+        <div style="width: 500px; height: 420px;" class="form-row">
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Nro Documento: </label>
+            <input id="user" type="text" class="form-control" name="nrodocumento" [(ngModel)]=" soat.nrodocumento">
+
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Nro Poliza: </label>
+            <input id="user" type="text" class="form-control" name="nropoliza" [(ngModel)]=" soat.nropoliza ">
+
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Vigencia inicial: </label>
+            <input id="user" type="date" class="form-control" name="vigenciadesde" [(ngModel)]=" soat.vigenciadesde ">
+
+          </div>
+          <div class="form-group col-md-5 " style="margin-left: 10px;">
+            <label for="">Vigencia Final: </label>
+            <input id="user" type="date" class="form-control" name="vigenciahasta" [(ngModel)]=" soat.vigenciahasta">
+
+          </div>
+
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Fecha inicial : </label>
+            <input id="user" type="date" class="form-control" name="certificadodesde"
+              [(ngModel)]="  soat.certificadodesde">
+
+
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Fecha final: </label>
+            <input id="user" type="date" class="form-control" name="certificadohasta"
+              [(ngModel)]=" soat.certificadohasta">
+
+
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Montoprima: </label>
+            <input id="user" type="text" class="form-control" name="montoprima" [(ngModel)]="soat.montoprima">
+
+          </div>
+
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Aseguradora: </label>
+            <input id="user" type="text" class="form-control" name="aseguradora" [(ngModel)]=" soat.aseguradora">
+
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Padron del Vehiculo: </label>
+            <input id="user1" type="text" class="form-control" name="idvehiculo" [(ngModel)]="soat.idvehiculo">
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Seleccione Estado: </label>
+            <select class="custom-select" id="inputGroupSelect01" id="caja_rol" [(ngModel)]="soat.estado" name="estado"
+            >
+
+              <option value=1>Vigente</option>
+              <option value=0>No vigente</option>
+              <option value=2>Por entregar</option>
+            </select> </div>
         </div>
       </div>
+
+      <div class="modal-footer" style="width: 1000px;">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button type="button" (click)="CREARSOAT()" class="btn btn-primary" data-dismiss="modal">Registrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Modal Modificar Usuario -->
-<div class="modal fade" id="ModificarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">MODIFICAR SOAT</h5>
-              <hr>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body"> 
-              <label for="">Nro Documento: </label>
-              <input id="user" type="text" class="form-control" name="nrodocumento" [(ngModel)]=" so.nrodocumento" >
-               <br>
-               <label for=""> Nro Poliza:</label>
-                <input id="user" type="text"  class="form-control"  name="nropoliza" [(ngModel)]=" so.nropoliza " >
-                <br>
-                <label for="">Vigencia inicial: </label>
-                <input id="user" type="text" class="form-control"   name="vigenciadesde" [(ngModel)]=" so.vigenciadesde " >
-                <br>
-                <label for="">Vigencia Final:</label>
-              <input id="user" type="text" class="form-control" name="vigenciahasta" [(ngModel)]=" so.vigenciahasta" >
-               <br>
-               <label for="">Fecha inicial : </label>
-                <input id="user" type="text"  class="form-control"  name="certificadodesde" [(ngModel)]="  so.certificadodesde" >
-                <br>
-                <label for="">  Fecha final: </label>
-                <input id="user" type="text" class="form-control"   name="certificadohasta" [(ngModel)]=" so.certificadohasta" >
-                <br>
-                <label for=""> Montoprima:</label>
-                <input id="user" type="text" class="form-control" name="montoprima" [(ngModel)]="so.montoprima" >
-                 <br>
-                 <label for="">  Aseguradora: </label>
-                  <input id="user" type="text"  class="form-control"  name="aseguradora" [(ngModel)]=" so.aseguradora" >
-                  <br>
-                  <label for="">Padron del Vehiculo:  </label>
-                  <input id="user" type="text" class="form-control"   name="idvehicu" [(ngModel)]="so.idvehiculo" >
-                  <br>
-                <label for="">Seleccione Estado: </label>
-                <select class="custom-select" id="inputGroupSelect01" id="caja_rol" [(ngModel)]="so.estado" name="estado" style="margin-left: 52px;">
-                     
-                      <option value=1>Activo</option>
-                      <option value=0>Inactivo</option>
-                      <option value=2>Por entregar</option>
-               </select>
-                
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" (click)="Editar(so)" data-dismiss="modal">Modificar</button>
-            </div>
+<div class="modal fade" id="ModificarUsuario" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" >
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">MODIFICAR SOAT</h5>
+          <hr>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="form-row" id="modal-body"  >
+            <div class="form-group col-md-5" style="margin-left: 20px;">
+                <label for="">Nro Documento: </label>
+                <input id="user" type="text" class="form-control" name="nrodocumento" [(ngModel)]=" so.nrodocumento">
+              </div>
+          <div class="form-group col-md-5" style="margin-left: 20px;">
+              <label for=""> Nro Poliza:</label>
+              <input id="user" type="text" class="form-control" name="nropoliza" [(ngModel)]=" so.nropoliza ">
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 20px;">
+              <label for="">Vigencia inicial: </label>
+                <input id="user" type="date" class="form-control" name="vigenciadesde" [(ngModel)]=" so.vigenciadesde ">
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 20px;">
+              <label for="">Vigencia Final:</label>
+                <input id="user" type="date" class="form-control" name="vigenciahasta" [(ngModel)]=" so.vigenciahasta">
+          </div>
+          
+          <div class="form-group col-md-5" style="margin-left: 20px;">
+              <label for="">Fecha inicial:</label>
+              <input id="user" type="date" class="form-control" name="vigenciahasta" [(ngModel)]=" so.certificadodesde">
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 20px;">
+              <label for=""> Fecha final: </label>
+              <input id="user" type="date" class="form-control" name="certificadohasta" [(ngModel)]=" so.certificadohasta">
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 20px;">
+              <label for=""> Montoprima:</label>
+              <input id="user" type="text" class="form-control" name="montoprima" [(ngModel)]="so.montoprima">
+          </div>
+  
+          <div class="form-group col-md-5" style="margin-left: 20px;">
+              <label for=""> Aseguradora: </label>
+              <input id="user" type="text" class="form-control" name="aseguradora" [(ngModel)]=" so.aseguradora">
+          </div>
+          <div class="form-group col-md-5" style="margin-left:20px;">
+            <label for="">Padron del Vehiculo: </label>
+                <input id="user" type="text" class="form-control" name="idvehicu" [(ngModel)]="so.idvehiculo" disabled>
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 20px;">
+              <label for="">Seleccione Estado: </label>
+              <select class="custom-select" id="inputGroupSelect01" id="caja_rol" [(ngModel)]="so.estado" name="estado" >
+      
+                <option value=1>Vigente</option>
+                <option value=0>No vigente</option>
+                <option value=2>Por entregar</option>
+              </select>
           </div>
         </div>
+        <div class="modal-footer" style="margin-left: 20px;">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" (click)="Editar(so)" data-dismiss="modal">Modificar</button>        </div>
       </div>
+    </div>
+  </div>
+
+         
+                
+     
+
+  
