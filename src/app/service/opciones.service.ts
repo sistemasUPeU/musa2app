@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { OpcionesComponent } from '../ComponentesVista/Seguridad/opciones/opciones.component';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Opciones } from '../Modelo/Opciones';
 import { LoginService } from './login.service';
 import { map, catchError, tap} from 'rxjs/operators';
@@ -34,26 +34,28 @@ export class OpcionesService {
    // console.log(c+" llega al SERVICE");
     return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/getOPC/`+c, {headers: this.agregarAutorizacion()});
   }
+  listaopciones(): Observable<Opciones[]>{
+     return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones`, {headers: this.agregarAutorizacion()});
+   }
   crearopciones(opciones:Opciones){
-    return this.http.post<Opciones>(`${ environment.apiUrl }/opciones/add`,opciones);
+    return this.http.post<Opciones>(`${ environment.apiUrl }/opciones/add`,opciones, {headers: this.agregarAutorizacion()});
   }
-  deleteopciones(idopciones:number){
-    return this.http.delete<number>(`${ environment.apiUrl }/opciones/`+idopciones);
+  deleteopciones(opc:Opciones){
+    return this.http.put<Opciones>(`${ environment.apiUrl }/opciones/Opc/`,opc ,{headers: this.agregarAutorizacion()});
 
   }
   editar(opciones:Opciones){
-   return this.http.put<Opciones>(`${ environment.apiUrl }/opciones/ `+opciones.idopciones,opciones);
+   return this.http.put<Opciones>(`${ environment.apiUrl }/opciones/ `+opciones.IDOPCION,opciones,{headers: this.agregarAutorizacion()});
   
   }
-  buscar(tipo:number): Observable<Opciones[]>{
-    return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/P/` + tipo );
-
-  }
-  buscar1(idopciones:number): Observable<Opciones[]>{
-    return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/P/` + idopciones );
-
+  buscar(idopcion:number): Observable<Opciones[]>{
+    return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/` + idopcion, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
   }
   estado(estado:number): Observable<Opciones[]>{
-    return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/Po/`+ estado);
+    return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/est/`+ estado,{headers: this.agregarAutorizacion()});
   }
 }
