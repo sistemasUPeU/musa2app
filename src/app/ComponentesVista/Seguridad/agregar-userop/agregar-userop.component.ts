@@ -3,6 +3,7 @@ import { ServiceService } from 'src/app/service/service.service';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/Modelo/Usuario';
 import { Usuarios_Opciones } from 'src/app/Modelo/Usuarios_Opciones';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregar-userop',
@@ -86,6 +87,11 @@ export class AgregarUseropComponent implements OnInit {
     this.usuario_opciones.user_create = "Christian";
     console.log(this.usuario_opciones);
         this.service.createOpc(this.usuario_opciones).subscribe(data=>{
+          Swal.fire(
+            'REGISTRADO!',
+            'Se ha asignado una Opcion al Usuario',
+            'success'
+          )
      this.ngOnInit();
      console.log(this.usuario_opciones)
      this.router.navigate(["home/userop"]);
