@@ -46,23 +46,44 @@ export class ServiceService {
   Url5 = 'http://localhost:8081/cg/'
   Url6 = 'http://localhost:8081/reporte/'
   roles:RolesF;
-
-  private agregarAutorizacion(){
+  private agregarAutorizacion1(){
     let token = this.loginService.token;
     if(token!=null){
       console.log("ESTE ES EL TOKEN "+token);
       return this.httpHeaders.append('Authorization','Bearer' + token);
     }
-    console.log("NO LLEGA EL TOKEN");
+    
     return this.httpHeaders;
+  }
+  getAllUbigeo(): Observable<Ubigeo[]> {
+    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
+  }
+
+  deleteUbige(id: number){
+    return this.http.delete<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ id}`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
   }
 
   searchUbigeo(codigo: number) {
-    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ codigo }`);
+    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ codigo }`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
   }
-
   postUbigeo(ubigeo: Ubigeo): Observable<number> {
-    return this.http.post<number>(`${ environment.apiUrl }/ubigeos/add`, ubigeo);
+    return this.http.post<number>(`${ environment.apiUrl }/ubigeos/add`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
   }
   getAllRoles(): Observable<Roles[]> {
     return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
@@ -79,6 +100,9 @@ export class ServiceService {
       
       return throwError(e);
     }));
+  }
+  agregarAutorizacion(): HttpHeaders | { [header: string]: string | string[]; } {
+    throw new Error("Method not implemented.");
   }
   getRolesN(e): Observable<Roles[]>{
     return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/nombre/`+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
@@ -98,13 +122,7 @@ export class ServiceService {
       return throwError(e);
     }));   
   }
-  getAllUbigeo(): Observable<Ubigeo[]> {
-    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
-      
-      return throwError(e);
-    }));
 
-  }
   ////////////////////EMPLEADOSSS
   //getEmple() : Observable<empleado[]> {
    // return this.http.get<empleado[]>(`${ environment.apiUrl }/empleado/lis`);
@@ -212,31 +230,46 @@ export class ServiceService {
 
   //******PROPIETARIOS */
   getPropietarios(): Observable<Propietario[]> {
-    return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     })
     );
   }
-  deletePropietarios( propietario:Propietario){
-    console.log(propietario)
-     return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`, propietario);
+  deletePropietarios(id:number){
+     return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`+id, Propietario, {headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
   crearPropietarios(propietarioc:Propietario){
     console.log(`(asdasdasdasdasdasd)`)
     console.table(propietarioc)
-     return this.http.post<Propietario>( `${ environment.apiUrl }/propietarios/add`, propietarioc);
+     return this.http.post<Propietario>( `${ environment.apiUrl }/propietarios/add`, propietarioc,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
   getPropietarioId(id:number){
-     return this.http.get<Propietario[]>( `${ environment.apiUrl }/propietarios/`+ id);
+     return this.http.get<Propietario[]>( `${ environment.apiUrl }/propietarios/`+ id, {headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
 
   updatePropietarios(propietario:Propietario){
-    return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/`, propietario);
+    return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/`, propietario, {headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
   buscarnombre(nombre:String){
-     return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/nombre/`+ nombre);
+     return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/nombre/`+ nombre, {headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
+  getP
   /* FIN DEL CRUD PROPIETARIOS */
 
   deleteRoles(roles:Roles){

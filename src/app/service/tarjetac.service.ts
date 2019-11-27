@@ -1,39 +1,72 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Tarjetac } from '../Modelo/Tarjetac';
+import { LoginService } from 'src/app/service/login.service';
+import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class TarjetacService {
-
-  constructor(private http:HttpClient, private router:Router) { }
+  
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
+  private agregarAutorizacion(){
+     let token = this.loginService.token;
+     if(token!=null){
+       console.log("ESTE ES EL TOKEN "+token);
+       return this.httpHeaders.append('Authorization','Bearer' + token);
+     }
+     
+     return this.httpHeaders;
+   }
+  constructor(private http:HttpClient, private router:Router,private loginService:LoginService) { }
 
   listtarjeta(): Observable<Tarjetac[]>{
-    return this.http.get<Tarjetac[]>(`${ environment.apiUrl }/tarjetac/`);
+    return this.http.get<Tarjetac[]>(`${ environment.apiUrl }/tarjetac/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
   creartarjeta(tarjetac:Tarjetac){
-    return this.http.post<Tarjetac>(`${ environment.apiUrl }/tarjetac/add`,tarjetac);
+    return this.http.post<Tarjetac>(`${ environment.apiUrl }/tarjetac/add`,tarjetac, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
   eliminartarjeta(idtarjetac:number){
-    return this.http.delete<number>(`${ environment.apiUrl }/tarjetac/`+idtarjetac);
+    return this.http.delete<number>(`${ environment.apiUrl }/tarjetac/`+idtarjetac, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
   }
   modificartarjeta(tarjetac:Tarjetac){
-    return this.http.put<Tarjetac>(`${ environment.apiUrl }/tarjetac/`+ tarjetac.idtarjetac,tarjetac);
+    return this.http.put<Tarjetac>(`${ environment.apiUrl }/tarjetac/`+ tarjetac.idtarjetac,tarjetac, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
 
   }
   listtarjid(id:number): Observable<Tarjetac[]>{
-    return this.http.get<Tarjetac[]>(`${ environment.apiUrl }/tarjetac/`+ id);
+    return this.http.get<Tarjetac[]>(`${ environment.apiUrl }/tarjetac/`+ id, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
 
   }
   buscarnro(nrodocumento:number): Observable<Tarjetac[]>{
-    return this.http.get<Tarjetac[]>(`${ environment.apiUrl }/tarjetac/P/`+ nrodocumento);
+    return this.http.get<Tarjetac[]>(`${ environment.apiUrl }/tarjetac/P/`+ nrodocumento, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
 
   }
   listarestado(estado:number): Observable<Tarjetac[]>{
-    return this.http.get<Tarjetac[]>(`${ environment.apiUrl }/tarjetac/Po/`+ estado);
+    return this.http.get<Tarjetac[]>(`${ environment.apiUrl }/tarjetac/Po/`+ estado, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
 
   }
 

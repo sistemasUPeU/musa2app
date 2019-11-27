@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, from } from 'rxjs';
+import { HttpClient , HttpHeaders } from '@angular/common/http';
+import { Observable , throwError} from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { LoginService } from 'src/app/service/login.service';
+import { map, catchError, tap} from 'rxjs/operators';
 import { Vehiculosc , Veh_categoria, Veh_modelo, Veh_marca} from 'src/app/Modelo/Vehiculos'
 
 @Injectable({
@@ -9,30 +11,54 @@ import { Vehiculosc , Veh_categoria, Veh_modelo, Veh_marca} from 'src/app/Modelo
   })
 
  export class VehiculoService{
-     
-    constructor(private http: HttpClient) { }
-
+   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+    constructor(private http: HttpClient, private loginService:LoginService) { }
+    private agregarAutorizacion(){
+      let token = this.loginService.token;
+      if(token!=null){
+        console.log("ESTE ES EL TOKEN "+token);
+        return this.httpHeaders.append('Authorization','Bearer' + token);
+      }
+      
+      return this.httpHeaders;
+    }
     getVehiculos(): Observable<Vehiculosc[]>{
-          return this.http.get<Vehiculosc[]>(` ${environment.apiUrl}/vehiculos/`);
+          return this.http.get<Vehiculosc[]>(` ${environment.apiUrl}/vehiculos/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+            return throwError(e);
+          }));
     }
 
     crearVehiculos(vehiculosc:Vehiculosc){
        console.log(vehiculosc);
-       return this.http.post<Vehiculosc>(`${environment.apiUrl}/vehiculos/add`, vehiculosc);
+       return this.http.post<Vehiculosc>(`${environment.apiUrl}/vehiculos/add`, vehiculosc,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+        return throwError(e);
+      }));
     }
     getVehCategoria(){
-       return this.http.get<Veh_categoria[]>(`${environment.apiUrl}/vehiculos/categoria/`);
+       return this.http.get<Veh_categoria[]>(`${environment.apiUrl}/vehiculos/categoria/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+        return throwError(e);
+      }));
     }
     getVehModelo(){
-       return this.http.get<Veh_modelo[]>(`${environment.apiUrl}/vehiculos/modelo/`);
+       return this.http.get<Veh_modelo[]>(`${environment.apiUrl}/vehiculos/modelo/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+        return throwError(e);
+      }));
     }
     getVehMarca(){
-       return this.http.get<Veh_marca[]>(`${environment.apiUrl}/vehiculos/marca/`);
+       return this.http.get<Veh_marca[]>(`${environment.apiUrl}/vehiculos/marca/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+        return throwError(e);
+      }));
     }
-    deleteVehiculos(vehiculos:Vehiculosc){
-       console.log('hola vehiculos');
-       console.log(vehiculos);
-      return this.http.put<Vehiculosc>(` ${environment.apiUrl}/vehiculos/delete/`, vehiculos);
+    deleteVehiculos(id:number){
+      return this.http.put<Vehiculosc>(` ${environment.apiUrl}/vehiculos/delete/`+id, Vehiculosc,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+        return throwError(e);
+      }));
     } 
     /*getPropietarioId(id:number){
      return this.http.get<Propietario[]>( `${ environment.apiUrl }/propietarios/`+ id);
@@ -43,9 +69,21 @@ import { Vehiculosc , Veh_categoria, Veh_modelo, Veh_marca} from 'src/app/Modelo
   }*/
 
    getVehiculosId(id:number){
-        return this.http.get<Vehiculosc[]>(` ${environment.apiUrl}/vehiculos/` + id);
+        return this.http.get<Vehiculosc[]>(` ${environment.apiUrl}/vehiculos/` + id,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+          return throwError(e);
+        }));
    }
    updateVehiculos(vehiculos:Vehiculosc){
-       return this.http.put<Vehiculosc>(` ${environment.apiUrl}/vehiculos/`, vehiculos);
+       return this.http.put<Vehiculosc>(` ${environment.apiUrl}/vehiculos/update/`, vehiculos,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+        return throwError(e);
+      }));
+   }
+   buscarNroPadron(nropadron:number){
+     return this.http.get<Vehiculosc[]>(` ${environment.apiUrl}/vehiculos/nropadron/` + nropadron, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e + "errorsito");
+    }));
    }
  } 

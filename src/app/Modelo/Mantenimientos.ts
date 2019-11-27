@@ -1,19 +1,19 @@
 export class Mantenimientos {
-    idmantenimiento: number;
-    idvehiculo: number;
-    tipomantenimiento:number;
-    detalle:String;
-    fechainicio:String;
-    fechafin:String;
+    idMantenimiento: number;
+    idVehiculo: number;
+    tipoMantenimiento:number;
+    Detalle:String;
+    fechaInicio:String;
+    fechaFin:String;
     estado:number;
-    fecvalidacionmant:number;
-    fecvalidacionoper:number;
-    idempleado:number;
-    idconductor:number;
-    idjefeoperaciones:number;
-    idjefemantenimiento:number;
-    usercreate:String;
-    datecreate:String;
-    usermodify:String;
-    datemodify:String;
+    fecValidacionMant:number;
+    fecValidacionOper:number;
+    idEmpleado:number;
+    idConductor:number;
+    idJefeOperaciones:number;
+    idJefeMantenimiento:number;
+    userCreate:String;
+    dateCreate:String;
+    userModify:String;
+    dateModify:String;
 }

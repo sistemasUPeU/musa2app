@@ -41,19 +41,21 @@ import { PropiComponent } from './ComponentesVista/Reportes/propi/propi.componen
 import { VincComponent } from './ComponentesVista/Reportes/vinc/vinc.component';
 import { MantenimientosComponent } from './ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component';
 import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
-//import { NgxPopper } from 'angular-popper';
-import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component';
-import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component';
-import { VentaComponent } from './ComponentesVista/Ventas/venta/venta.component';
-import { RegistrarventaComponent } from './ComponentesVista/Ventas/registrarventa/registrarventa.component';
-import { AnularventaComponent } from './ComponentesVista/Ventas/anularventa/anularventa.component';
-import { RegistrarcajaComponent } from './ComponentesVista/Ventas/registrarcaja/registrarcaja.component';
-import { VinculoproComponent } from './ComponentesVista/CV/vinculopro/vinculopro.component'
+import { DatePipe } from '@angular/common';
 
 
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './ComponentesVista/Seguridad/login/login.component';
+import { RequisitosComponent } from './ComponentesVista/CV/requisitos/requisitos.component';
+import { VehiculosComponent } from './ComponentesVista/CV/vehiculos/vehiculos.component';
+import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component';
+import { VentaComponent } from './ComponentesVista/Ventas/venta/venta.component';
+import { RegistrarventaComponent } from './ComponentesVista/Ventas/registrarventa/registrarventa.component';
+import { AnularventaComponent } from './ComponentesVista/Ventas/anularventa/anularventa.component';
+import { RegistrarcajaComponent } from './ComponentesVista/Ventas/registrarcaja/registrarcaja.component';
+import { VinculoCursoComponent } from './ComponentesVista/Conductores/vinculo-curso/vinculo-curso.component';
+import { VinculoproComponent } from './ComponentesVista/CV/vinculopro/vinculopro.component';
 const routes: Routes = [
   {path: '/login', component:LoginComponent}
 ];
@@ -104,7 +106,9 @@ const routes: Routes = [
     RegistrarventaComponent,
     AnularventaComponent,
     RegistrarcajaComponent,
-    VinculoproComponent
+    VinculoproComponent,
+    VinculoCursoComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -115,7 +119,9 @@ const routes: Routes = [
     RouterModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -28,6 +28,7 @@
 <table class="table">
     <thead class="thead-dark">
       <tr>
+        <th scope="col">N°</th>
         <th scope="col">Nombre</th>
         <th scope="col">Descripcion</th>
         <th scope="col">Orden</th>
@@ -35,7 +36,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let request of requests">
+      <tr *ngFor="let request of requests; let i = index; let i = index">
+        <td *ngIf="request.estado == 1">{{i+1}}</td>
         <td *ngIf="request.estado == 1">{{request.nombre}}</td>
         <td *ngIf="request.estado == 1">{{request.descripcion}}</td>
         <td *ngIf="request.estado == 1">{{request.orden}}</td>

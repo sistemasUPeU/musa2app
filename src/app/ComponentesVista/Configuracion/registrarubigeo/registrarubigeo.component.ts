@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./registrarubigeo.component.css']
 })
 export class RegistrarubigeoComponent implements OnInit {
+ ubi: Ubigeo = new Ubigeo();
   ubigeosLista: Ubigeo[] = [];
   codigo: number;
   idubigeo: string;
@@ -16,7 +17,7 @@ export class RegistrarubigeoComponent implements OnInit {
   router: any;
   ubigeo: Ubigeo = new Ubigeo();
   service: any;
-
+  ubigeoEditar: Ubigeo = new Ubigeo();
   constructor(private serviceService: ServiceService) {
     this.ubigeo = new Ubigeo()
   }
@@ -46,27 +47,19 @@ export class RegistrarubigeoComponent implements OnInit {
     }
   }
 
-  // deleteUbigeo(ubigeo: Ubigeo){
-  // if(!ubigeo) return;
-  // this.serviceService.delUbigeo(ubigeo.IDUBIGEO).subscribe(
-  // (data) => {
-  // this.ubigeosLista = data['P_CURSOR'].filter(h=> h !==ubigeo);
-
-  //  }     );
-  // }}
-  //addUbigeo(): void{
-  //this.router.navigate(['add-ubigeo']);
-  // }
-  buscar(f: NgForm) {
-    this.serviceService.postUbigeo(f.value).subscribe( response => {
+  save(){
+    alert(this.ubi.CODUBIGEO)
+    this.serviceService.postUbigeo(this.ubi).subscribe( response => {
       console.log(response)
     }, error => {
       console.log(error)
     })
-alert("registrado correctamente...")
-  }
+  alert("registrado correctamente...")
+  console.log(Response)
+  this.ngOnInit();
+   }
+  
 
-/*
 Eliminar(id: number){
   console.log(id)
   this.serviceService.deleteUbige(id).subscribe(data => {
@@ -76,5 +69,9 @@ Eliminar(id: number){
   })
 
  }
-*/
+editar(ubigeo: Ubigeo){
+  console.log("ubige editart:", ubigeo)
+  this.ubigeoEditar = ubigeo;
+  alert("Modificado Correcto");
+}
   }

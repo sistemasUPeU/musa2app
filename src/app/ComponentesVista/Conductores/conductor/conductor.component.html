@@ -2,7 +2,7 @@
   <br>
   <h1>CONDUCTORES</h1>
   <!-- Boton registrar user -->
-  <button id="register" data-toggle="modal" data-target="#RegisterUsuario">
+  <button id="register" data-toggle="modal" data-target="#RegisterUsuario" (click)="getpersonas()">
     <i class="fas fa-user-plus"></i>
     <p style="margin-top: -15px;  margin-left: -20px;">Registrar Conductores</p>
   </button>
@@ -15,7 +15,8 @@
     <div class="input-group" id="caja_search">
       <span class="input-group-prepend">
       </span>
-      <input [(ngModel)]="c.codigo" class="form-control bg-transparent"  type="search" placeholder=" Ingrese Nombre y Apellido" id="buscar1" />
+      <input [(ngModel)]="c.codigo" class="form-control bg-transparent" type="search"
+        placeholder=" Ingrese Codigo" id="buscar1" />
       <span class="input-group-append">
         <div class="input-group-text bg-transparent " (click)="buscar()" id="buscar2">
           <i class="fa fa-search"></i>
@@ -27,7 +28,6 @@
       <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="c.estado" (click)="estado()" id="caja_rol">
         <option selected>Seleccione Estado</option>
         <option value=0>Inactivo</option>
-        <option value=1>Activo</option>
         <option value=2>Vinculado</option>
       </select>
     </div>
@@ -39,8 +39,8 @@
     <table class="table" style="text-align: center;">
       <thead class="thead-dark">
         <tr>
-          
-          <th scope="col" >Tipo</th>
+
+          <th scope="col">Tipo</th>
           <th scope="col">Estado</th>
           <th scope="col">Codigo</th>
           <th scope="col">Nrolicencia</th>
@@ -51,15 +51,15 @@
       </thead>
       <tbody>
         <tr *ngFor="let condu of conductores">
-          <td>{{condu.tipooperador == 1? 'Conductor' : 'Conductor Cobrador'  }}</td>
-          <td>{{condu.estado ==1? 'Activo' : 'Inactivo'}}</td>
+          <td>{{condu.tipooperador == 1 ? 'Conductor' : (condu.tipooperador == 2 ? 'Conductor cobrador' : 'Cobrador')    }}</td>
+          <td>{{ condu.estado == 1 ? 'Activo' : (condu.estado == 2 ? 'Vinculado' : 'Inactivo')   }}</td>
           <td>{{condu.codigo}}</td>
           <td>{{condu.nrolicencia}}</td>
           <td>{{condu.cursovial ==1? 'Aprobo' : 'No aprobo'}}</td>
           <td>{{condu.idpersona}}</td>
           <td><i class="fas fa-trash-alt" (click)="eliminar(condu)" style="color: red; margin-left: 20px;"></i></td>
-          <td><i class="fas fa-edit" (click)="actualizar(condu)" style="color: blue; margin-left: -60px;" data-toggle="modal"
-              data-target="#ModificarUsuario"></i></td>
+          <td><i class="fas fa-edit" (click)="actualizar(condu)" style="color: blue; margin-left: -60px;"
+              data-toggle="modal" data-target="#ModificarUsuario"></i></td>
 
         </tr>
 
@@ -69,74 +69,122 @@
   </div>
 
 </div>
-<div class="modal fade" id="RegisterUsuario" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+<div class="modal fade" data-target="#modal" id="RegisterUsuario">
+  <div class="modal-dialog" role="document" style="margin-right: 750px;">
+    <div class="modal-content" style="width: 1000px; ;margin-left: 100px; margin-top: 10px">
+      <div class="modal-header" style="width: 1000px;">
         <h5 class="modal-title" id="exampleModalLabel">Registrar Conductor</h5>
         <hr>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="form-row" id="modal-body">
-        <div class="form-group col-md-5">
-          <label for="">Seleccione Tipo: </label>
-        <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="conductor.tipooperador" id="caja_rol">
-          <option value=1>Conductor</option>
-          <option value=0>Cobrador</option>
-          <option value=2>Conductor cobrador</option>
-        </select>
-        </div>
-        <div class="form-group col-md-5">
-          <label for="">Codigo: </label>
-        <input id="user" type="text" placeholder="Ingrese codigo del conductor" class="form-control" [(ngModel)]="conductor.codigo">
-        </div>
-        <div class="form-group col-md-5">
-          <label for="">Seleccione Estado: </label>
-          <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="conductor.estado" id="caja_rol">
-            <option value=0>Inactivo</option>
-            <option value=1>Activo</option>
-            <option value=2>Vinculado</option>
-          </select>
-        </div>
-        <div class="form-group col-md-5">
-          <label for="">Dni de Persona: </label>
-        <input id="user" type="text" placeholder="Ingrese Nro documento" class="form-control" [(ngModel)]="conductor.idpersona">
-        </div>
-        <div class="form-group col-md-5">
-          <label for="">Nro Licencia: </label>
-          <input id="user" type="text"  placeholder="Ingrese Nro.Licencia" class="form-control" [(ngModel)]="conductor.nrolicencia">
-       
-        </div>
-        <div class="form-group col-md-5">
-          <label for="">Estado del Curso Vial: </label>
-          <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="conductor.cursovial" id="caja_rol">
-            <option value=1>Aprobo</option>
-            <option value=0>No aprobo</option>
-          </select>
-     
-        </div>
-        <div class="form-group col-md-5">
-          <label for="">Ingrese Fecha Inicial de Licencia: </label>
-        <input id="user" placeholder="AAAA-MM-DD" type="text" class="form-control" [(ngModel)]="conductor.linc_fechainicio">
-        </div>
+      <div id="modal-body" style="width: 1000px;">
+        <div style="width: 500px;float: left;" >
+          <p id="p" style="margin-left: 20px;">Buscar por: </p>
+          <div class="input-group" id="caja_search">
+            <span class="input-group-prepend">
+            </span>
+            <input [(ngModel)]="p.nrodoc" class="form-control bg-transparent" type="text"
+              placeholder=" Ingrese Nombre y Apellido" id="bus"/>
+            <span class="input-group-append">
+              <div class="input-group-text bg-transparent " (click)="serachp()" id="buscar2">
+                <i class="fa fa-search"></i>
+              </div>
+            </span>
+          </div>
+          <div class="table" style="overflow: scroll; height: 320px;margin-top: 10px;">
+            <table class="table " style="text-align: center; height: 320px;">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Nombres y pellidos</th>
+                  <th scope="col">Nro Documento</th>
+                  <th scope="col">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let persona of personas">
 
-        <div class="form-group col-md-5">
-          <label for="">Ingrese Fecha Final de Licencia: </label>
-        <input id="user" placeholder="AAAA-MM-DD" type="text" class="form-control" [(ngModel)]="conductor.linc_fechafin">
+                  <td>{{persona.NOMBRE || persona.APELLIDO }}</td>
+                  <td>{{persona.NRODOC}}</td>
+                  <td><i class="fas fa-plus-square" (click)="Add(persona.NRODOC)" style="color: green; "
+                  ></i></td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+
+
         </div>
-        <div class="form-group col-md-5">
-          <label for=""> Clase: </label>
-        <input id="user" type="text" placeholder="Ingrese clase" class="form-control" [(ngModel)]="conductor.clase">
-        </div>
-        <div class="form-group col-md-5">
-          <label for="">Categoria: </label>
-          <input id="user" type="text" class="form-control" placeholder="Ingrese Categoria" [(ngModel)]="conductor.categoria">
+        <div style="width: 500px;" class="form-row">
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Dni de Persona: </label>
+            <input id="user1" type="text" placeholder="Ingrese Nro documento" class="form-control"
+              [(ngModel)]="conductor.idpersona">
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Seleccione Tipo: </label>
+            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="conductor.tipooperador" id="caja_rol">
+              <option value=1>Conductor</option>
+              <option value=0>Cobrador</option>
+              <option value=2>Conductor cobrador</option>
+            </select>
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Codigo: </label>
+            <input id="user" type="text" placeholder="Ingrese codigo del conductor" class="form-control"
+              [(ngModel)]="conductor.codigo">
+          </div>
+          <div class="form-group col-md-5 "style="margin-left: 10px;">
+            <label for="">Seleccione Estado: </label>
+            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="conductor.estado" id="caja_rol">
+              <option value=0>Inactivo</option>
+              <option value=1>Activo</option>
+              <option value=2>Vinculado</option>
+            </select>
+          </div>
+         
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Nro Licencia: </label>
+            <input id="user" type="text" placeholder="Ingrese Nro.Licencia" class="form-control"
+              [(ngModel)]="conductor.nrolicencia">
+
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Estado del Curso Vial: </label>
+            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="conductor.cursovial" id="caja_rol">
+              <option value=1>Aprobo</option>
+              <option value=0>No aprobo</option>
+            </select>
+
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Ingrese Fecha Inicial de Licencia: </label>
+            <input id="user" placeholder="AAAA-MM-DD" type="date" class="form-control"
+              [(ngModel)]="conductor.linc_fechainicio">
+          </div>
+
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Ingrese Fecha Final de Licencia: </label>
+            <input id="user" placeholder="AAAA-MM-DD" type="date" class="form-control"
+              [(ngModel)]="conductor.linc_fechafin">
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for=""> Clase: </label>
+            <input id="user" type="text" placeholder="Ingrese clase" class="form-control" [(ngModel)]="conductor.clase">
+          </div>
+          <div class="form-group col-md-5" style="margin-left: 10px;">
+            <label for="">Categoria: </label>
+            <input id="user" type="text" class="form-control" placeholder="Ingrese Categoria"
+              [(ngModel)]="conductor.categoria">
+          </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+
+      <div class="modal-footer" style="width: 1000px;">
+        <button type="button"  class="btn btn-danger" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="guardar(conductor)">Guardar</button>
       </div>
     </div>
@@ -144,13 +192,13 @@
 </div>
 
 
-      
+
 
 
 <!-- Modal Modificar Usuario -->
 <div class="modal fade" id="ModificarUsuario" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content" >
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Modificar Conductor</h5>
         <hr>
@@ -158,20 +206,24 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="form-row" id="modal-body">
-        <div class="form-group col-md-5">
+      <div class="form-row" id="modal-body"  >
+          <div class="form-group col-md-5" style="margin-left: 20px;">
+              <label for="">Dni Pesona: </label>
+              <input id="user" type="text" class="form-control" [(ngModel)]="cond.idpersona" disabled>
+            </div>
+        <div class="form-group col-md-5" style="margin-left: 20px;">
           <label for="">Seleccione Tipo: </label>
-        <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="cond.tipooperador" id="caja_rol">
-          <option value=1>Conductor</option>
-          <option value=0>Cobrador</option>
-          <option value=2>Conductor cobrador</option>
-        </select>
+          <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="cond.tipooperador" id="caja_rol">
+            <option value=1>Conductor</option>
+            <option value=0>Cobrador</option>
+            <option value=2>Conductor cobrador</option>
+          </select>
         </div>
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-5" style="margin-left: 20px;">
           <label for="">Codigo: </label>
-        <input id="user" type="text" class="form-control" [(ngModel)]="cond.codigo">
+          <input id="user" type="text" class="form-control" [(ngModel)]="cond.codigo">
         </div>
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-5" style="margin-left: 20px;">
           <label for="">Seleccione Estado: </label>
           <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="cond.estado" id="caja_rol">
             <option value=1>Inactivo</option>
@@ -179,42 +231,39 @@
             <option value=2>Vinculado</option>
           </select>
         </div>
-        <div class="form-group col-md-5">
-          <label for="">Dni Pesona: </label>
-        <input id="user" type="text" class="form-control" [(ngModel)]="cond.idpersona">
-        </div>
-        <div class="form-group col-md-5">
+        
+        <div class="form-group col-md-5" style="margin-left: 20px;">
           <label for="">Nro Licencia:</label>
           <input id="user" type="text" class="form-control" [(ngModel)]="cond.nrolicencia">
-       
+
         </div>
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-5" style="margin-left: 20px;">
           <label for="">Estado del Curso Vial: </label>
           <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="cond.cursovial" id="caja_rol">
             <option value=1>Aprobo</option>
             <option value=0>No aprobo</option>
           </select>
-     
+
         </div>
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-5" style="margin-left: 20px;">
           <label for="">Fecha Inicial de la Licencia: </label>
-        <input id="user" type="text" class="form-control" [(ngModel)]="cond.linc_fechainicio">
+          <input id="user" type="date" class="form-control" [(ngModel)]="cond.linc_fechainicio">
         </div>
 
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-5" style="margin-left: 20px;">
           <label for=""> Fecha Final de la Licencia: </label>
-        <input id="user" type="text" class="form-control" [(ngModel)]="cond.linc_fechafin">
+          <input id="user" type="date" class="form-control" [(ngModel)]="cond.linc_fechafin">
         </div>
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-5" style="margin-left:20px;">
           <label for="">Ingrese clase: </label>
-        <input id="user" type="text" class="form-control" [(ngModel)]="cond.clase">
+          <input id="user" type="text" class="form-control" [(ngModel)]="cond.clase">
         </div>
-        <div class="form-group col-md-5">
+        <div class="form-group col-md-5" style="margin-left: 20px;">
           <label for="">Ingrese Categoria: </label>
           <input id="user" type="text" class="form-control" [(ngModel)]="cond.categoria">
         </div>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" style="margin-left: 20px;">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editar(cond)">Modificar</button>
       </div>

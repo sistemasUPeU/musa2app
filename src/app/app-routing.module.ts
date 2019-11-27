@@ -48,6 +48,7 @@ import { RegistrarventaComponent} from './ComponentesVista/Ventas/registrarventa
 import { AnularventaComponent } from './ComponentesVista/Ventas/anularventa/anularventa.component';
 import { RegistrarcajaComponent } from './ComponentesVista/Ventas/registrarcaja/registrarcaja.component';
 import { VinculoproComponent} from './ComponentesVista/CV/vinculopro/vinculopro.component';
+import { VinculoCursoComponent } from './ComponentesVista/Conductores/vinculo-curso/vinculo-curso.component';
 
 const routesHome: Routes = [
   {path:'', redirectTo:'',pathMatch:'full'},
@@ -79,7 +80,6 @@ const routesHome: Routes = [
   {path:'opciones',component:OpcionesComponent},
   {path:'tarjetac',component:TarjetacComponent},
   {path:'configuraciongrupo',component:ConfiguracionGrupoComponent},
-
   {path:'buse',component:BusesComponent},
   {path:'use',component:UsuariosComponent},
   {path:'conduc',component:ConductoresComponent},
@@ -99,7 +99,9 @@ const routesHome: Routes = [
   {path: 'registrarven', component:RegistrarventaComponent},
   {path: 'anularven', component:AnularventaComponent},
   {path: 'registrarcaja', component:RegistrarcajaComponent},
-  {path: 'vinculopropietario', component: VinculoproComponent}
+  {path: 'vinculopropietario', component: VinculoproComponent},
+  {path: 'vinculocurso', component:VinculoCursoComponent}
+  
 ];
 
 const routes: Routes = [
