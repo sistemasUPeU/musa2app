@@ -34,8 +34,8 @@ export class OpcionesService {
    // console.log(c+" llega al SERVICE");
     return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/getOPC/`+c, {headers: this.agregarAutorizacion()});
   }
-  listaopciones(): Observable<Opciones[]>{
-     return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones`, {headers: this.agregarAutorizacion()});
+  listaropciones2(): Observable<Opciones[]>{
+     return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/getOpciones/`, {headers: this.agregarAutorizacion()});
    }
   crearopciones(opciones:Opciones){
     return this.http.post<Opciones>(`${ environment.apiUrl }/opciones/add`,opciones, {headers: this.agregarAutorizacion()});

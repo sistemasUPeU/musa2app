@@ -17,4 +17,5 @@ export class Personas{
     idubigeo:number;
 
     idusuario:number;
+    login: string;
 }

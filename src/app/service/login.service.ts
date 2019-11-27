@@ -54,6 +54,7 @@ import { Personas } from '../Modelo/Personas';
         this._persona.apellido = datos.APELLIDOS;
         this._persona.rol= datos.ROL;
         this._persona.idusuario= datos.IDUSUARIO;
+        this._persona.login=datos.LOGIN;
         sessionStorage.setItem('personas',JSON.stringify(this._persona));
         
       }

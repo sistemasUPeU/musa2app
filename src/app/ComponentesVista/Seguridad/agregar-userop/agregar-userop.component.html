@@ -55,12 +55,7 @@
           <option value="0"> Seleccionar Opción</option>
           <option [value]="op2.idopcion" *ngFor="let op2 of listarop2" > {{op2.nombre}}</option>
         </select>
-         <br>
-         <label for="">Seleccione Sub - Opción: </label>
-         <select id="caja_op3" type="text" class="form-control" placeholder=" Sub - Opción" [(ngModel)]="usuario_opciones.idopcion3">
-          <option value="0"> Seleccionar Sub - Opción</option>
-          <option [value]="op3.idopcion" *ngFor="let op3 of listarop3" > {{op3.nombre}}</option>
-        </select>        
+         <br>       
         
       </div>
       <div class="modal-footer">
