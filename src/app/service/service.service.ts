@@ -185,34 +185,67 @@ export class ServiceService {
     })
     );
   }
-  uptrequisitos(idvinculo:number,idrequisito:number){
-    var x = new VincuRequis(idvinculo,idrequisito);
+  uptrequisitos(idvinculo:number,idrequisito:number, archivo: File){
+    var x = new VincuRequis(idvinculo,idrequisito,archivo);
+    let formData = new FormData();
+    console.log(x);
+    formData.append("archivo", archivo);
+    formData.append("idr", idrequisito.toString());
+    formData.append("idv", idvinculo.toString());
     console.log(x)
-    return this.http.put<VincuRequis>(`${ environment.apiUrl }/vinrequi/upt/`+ idrequisito, x);
+    return this.http.post<VincuRequis>(`${ environment.apiUrl }/vinrequi/upload`,formData,  {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
-  CreateVinRequi(tipo:number,vincurequi: VincuRequi) {
-    return this.http.post<VincuRequi[]>(`${ environment.apiUrl }/vinrequi/add/` + tipo, vincurequi);
+  CreateVinRequi(tipo:number,id: number) {
+    return this.http.post<VincuRequi[]>(`${ environment.apiUrl }/vinrequi/add/` + tipo + '/'+ id,VincuRequis, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   createvinculo(vinculo: Vinculo){
-    return this.http.post<Vinculo>(`${ environment.apiUrl }/vinculos/add`, vinculo);
+    return this.http.post<Vinculo>(`${ environment.apiUrl }/vinculos/add`, vinculo , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   getcontvin(){
-    return this.http.get<Contador[]>(`${ environment.apiUrl }/vinculos/conta/`);
+    return this.http.get<Contador[]>(`${ environment.apiUrl }/vinculos/conta/`,  {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   uptVinculo(vinculo: Vinculo){
     console.log(vinculo)
-    return this.http.put<Vinculo>(`${ environment.apiUrl }/vinculos/upd` , vinculo);
+    return this.http.put<Vinculo>(`${ environment.apiUrl }/vinculos/upd` , vinculo , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   uptEstadovin(vincu: Vinupd) {
-    return this.http.put<Vinupd>(`${ environment.apiUrl }/vinculos/stado/` , vincu);
+    return this.http.put<Vinupd>(`${ environment.apiUrl }/vinculos/stado/` , vincu , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   DeleteVinculo(idvinculo: number){
-    return this.http.delete<Vinculo[]>(`${ environment.apiUrl }/vinrequi/`+ idvinculo);
+    return this.http.delete<Vinculo[]>(`${ environment.apiUrl }/vinrequi/`+ idvinculo , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   //******VENTASSS */

@@ -8,6 +8,7 @@ import { Vinculo, VincuRequi, VincuRequis } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
 import * as moment from 'moment';
 import { empleado } from 'src/app/Modelo/empleados';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vinculomod',
@@ -53,7 +54,7 @@ export class VinculomodComponent implements OnInit {
 
   titulo = "";
   tipo:number;
-
+  private foto : File;
   ///// Listar conductoressssssssss
   
   getConductor() {
@@ -168,20 +169,44 @@ export class VinculomodComponent implements OnInit {
    }
    //////// Modifica los datosssss
 
-   modificar(vinculos: Vinculo){
+   modificar(){
      this.vinculos[0].fechainicio=String(this.fechai)
      this.vinculos[0].fechafin=String(this.fechaf)
+     this.vinculos[0].idempleado=2
     this.service.uptVinculo(this.vinculos[0]).subscribe(
       (data) => {
-
-        alert(data["p_msgerror"])
-        this.router.navigate(['/home/vinculo']);
+        if(this.tipo == 1){
+          this.router.navigate(['/home/vinculo']);
+        }else{
+          this.router.navigate(['/home/vinculopropietario']);
+        }
+        
       }
     );
    }
-   modifi_requis(idvinculo:number,idrequisito:number){
-     console.log(idvinculo + " " + idrequisito)
-     this.service.uptrequisitos(idvinculo,idrequisito).subscribe( (data) =>{
+   alertaa(){
+    Swal.fire({
+      title: 'Seguro desea modificar?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        
+        Swal.fire(
+          'Vinculo Modificado!',
+          'Your file has been modified.',
+          'success'
+        )
+      }
+      this.modificar();
+    })
+   }
+   modifi_requis(idrequisito:number){
+     this.service.uptrequisitos(this.id,idrequisito,this.foto).subscribe( (data) =>{
       alert("se actualizo")
     })
      /*let requi:VincuRequis
@@ -193,5 +218,11 @@ export class VinculomodComponent implements OnInit {
     this.vincurequi[0].idrequisito = idrequisito
     console.log(this.vincurequi)
     this.cont++*/
+   }
+
+   selecfoto(event){
+      this.foto = event.target.files[0];
+      console.log(this.foto)
+
    }
 }

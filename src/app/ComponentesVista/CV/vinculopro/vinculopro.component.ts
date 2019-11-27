@@ -61,7 +61,7 @@ valor(tipo2:number,id:number){
   console.log(tipo2);
   console.log(id);
   localStorage.setItem("idvinculo",id.toString());
-  localStorage.setItem("tipo",tipo2.toString());
+  localStorage.setItem("tipo",'2');
   this.router.navigate(['/home/vinculomod']);
 }
 
