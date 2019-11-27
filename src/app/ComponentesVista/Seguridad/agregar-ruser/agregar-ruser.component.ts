@@ -4,6 +4,8 @@ import { ServiceService } from 'src/app/service/service.service';
 import { Roles } from 'src/app/Modelo/Roles';
 import { Router } from '@angular/router';
 import { Rol_Usuarios } from 'src/app/Modelo/Rol_Usuario'
+import { LoginService } from 'src/app/service/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregar-ruser',
@@ -17,7 +19,7 @@ export class AgregarRuserComponent implements OnInit {
   usuario: Usuario = new Usuario();
   rolu: Rol_Usuarios = new Rol_Usuarios();
   x:Number;
-  constructor(private service:ServiceService, private router:Router) { }
+  constructor(private service:ServiceService, private router:Router, private loginService:LoginService) { }
 
   ngOnInit() {
     this.service.getUse().subscribe((data) => {
@@ -44,15 +46,19 @@ export class AgregarRuserComponent implements OnInit {
     );
   }
   SaveRU(){
-    alert(this.rolu.idrol);
-    this.rolu.user_create = "Christian";
+    //alert(this.rolu.idrol);
+    this.rolu.user_create = " "+this.loginService.personas.login;;
     var x = this.x ;
     this.rolu.idusuario = x;
-    alert(this.rolu.idusuario);
+    //alert(this.rolu.idusuario);
     console.log(this.rolu);
     this.service.createRU(this.rolu).subscribe(data=>{
-      
-     alert(">>>> REGISTRO GUARDADO <<<<");
+      Swal.fire({
+        title: "Usuario Guardado!",
+        text: "Se Asigno el Rol al Usuario!",
+        icon: "success",
+        button: "OK",
+      });
      this.router.navigate(["home/rolus"]);
      })
 
@@ -68,7 +74,7 @@ export class AgregarRuserComponent implements OnInit {
 
   getUserN(){
     var x = this.usuario.login;
-    alert(x);
+   // alert(x);
     this.service.getUserN(x).subscribe((data)=>{
       this.listaruse = data['P_CURSOR_USUARIO'];
       console.log(this.listaruse);

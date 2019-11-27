@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/Modelo/Usuario';
 import { Roles } from 'src/app/Modelo/Roles';
 import { Rol_Usuarios } from 'src/app/Modelo/Rol_Usuario';
+import { LoginService } from 'src/app/service/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregar-user',
@@ -20,12 +22,12 @@ export class AgregarUserComponent implements OnInit {
   rolu: Rol_Usuarios = new Rol_Usuarios();
   x:Number;
   verificar:Number;
-  constructor(private service:ServiceService, private router:Router) { }
+  constructor(private service:ServiceService, private router:Router, private loginService:LoginService) { }
 
   ngOnInit() {
     this.service.getUserPer().subscribe((data) => {
       this.listaruserper = data['P_CURSOR_USUARIO'];
-      console.log(this.listaruserper);
+      //console.log(this.loginService.personas.login);
     })
     this.getAllRoles();
     this.getAllUser();
@@ -39,7 +41,7 @@ export class AgregarUserComponent implements OnInit {
   }
   getPerN(){
     var x = this.usuario.nombre;
-    alert(x);
+    //alert(x);
     this.service.getUserPerN(x).subscribe((data)=>{
       this.listaruserper = data['P_CURSOR_USUARIO'];
       console.log(this.listaruserper);
@@ -72,10 +74,16 @@ export class AgregarUserComponent implements OnInit {
   }
   Save(){
     this.usuario.idpersona =  this.x;
-    this.usuario.user_create = "Christian";
-    alert(this.usuario.login);
+    this.usuario.user_create = " "+this.loginService.personas.login;
+   // alert(this.usuario.user_create);
     console.log(this.usuario)
         this.service.createUsuario(this.usuario).subscribe(data=>{
+          Swal.fire({
+            title: "Usuario Guardado!",
+            text: "Se Registro el Nuevo Usuario!",
+            icon: "success",
+            button: "OK",
+          });
      this.ngOnInit();
      console.log(this.usuario)
      this.router.navigate(["home/usuario"]);
@@ -88,12 +96,18 @@ export class AgregarUserComponent implements OnInit {
     this.listarusu.forEach(function(ef){
       console.log(ef.login);
       while (sv==ef.login) {
-        alert("ya existe");
+        //alert("ya existe");
+        Swal.fire({
+          title: "Usuario Reptido!",
+          text: "Ingrese un usuario diferente!",
+          icon: "warning",
+          button: "OK",
+        });
         verificar=1;
         this.router.navigate(["home/usuario"])
       }
     })
-    alert("no existe");
+    //alert("no existe");
       this.Save();
       
     //this.Save();

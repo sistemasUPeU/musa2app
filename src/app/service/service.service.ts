@@ -458,7 +458,7 @@ getConfiP(e): Observable<Configuracion_Grupos[]>{
 }
 
 createConfi(x){
-  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add', {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add',x, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       
     return throwError(e);
   }));   

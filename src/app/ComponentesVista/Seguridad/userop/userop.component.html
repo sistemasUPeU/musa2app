@@ -47,8 +47,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let usop of listarusop" >
-                <td scope="row">1</td>
+              <tr *ngFor="let usop of listarusop; let i = index" >
+                <td scope="row">{{i+1}}</td>
                 <td>{{usop.login}}</td>
                 <td>{{usop.nombre}}</td>
                 <td>{{usop.estado}}</td>
