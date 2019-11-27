@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConductorService } from 'src/app/service/conductor.service';
 import { Conductor } from 'src/app/Modelo/Conductor';
+import { Personas } from 'src/app/Modelo/Personas';
 
 @Component({
   selector: 'app-conductor',
@@ -13,17 +14,18 @@ export class ConductorComponent implements OnInit {
   cond: Conductor = new Conductor();
   c:Conductor=new Conductor();
 
+  personas:Personas [] =[];
+  p:Personas=new Personas();
+
 
 
   constructor(private conductorService: ConductorService) { }
 
   ngOnInit() {
-    this.conductorService.listConductor().subscribe(
-      (data) => {
-        this.conductores = data['p_conductor'];
-        console.log(this.conductores);
-      }
-    );
+    this.conductorService.estado(1).subscribe((data)=>{
+      this.conductores=data['p_conductor']
+    })
+    
   }
   guardar(conductor: Conductor) {
     this.conductorService.crearConductor(conductor).subscribe(
@@ -31,6 +33,10 @@ export class ConductorComponent implements OnInit {
         this.ngOnInit();
       }
     );
+    (<HTMLInputElement>document.getElementById("user1")).value ="";
+    (<HTMLInputElement>document.getElementById("user1")).disabled=false;
+    (<HTMLInputElement>document.getElementById("user")).value ="";
+  
   }
   eliminar(conductor: Conductor) {
     this.conductorService.deleteconductor(conductor).subscribe((data) => {
@@ -66,7 +72,38 @@ export class ConductorComponent implements OnInit {
   }
   Limpiar(){
     this.ngOnInit();
-    (<HTMLSelectElement>document.getElementById("inputGroupSelect01")).value ="";
+    
+  }
+  getpersonas(){
+    this.conductorService.getAllPersona().subscribe((data)=>{
+           this.personas=data["P_CURSOR"]
+    })
+  }
+  Add(nro:number){
+    (<HTMLInputElement>document.getElementById("user1")).value =""+nro;
+    console.log(nro);
+    (<HTMLInputElement>document.getElementById("user1")).disabled=true;
+    this.conductor.idpersona=nro;
+    
+  }
+  Todos(){
+    this.conductorService.listConductor().subscribe(
+      (data) => {
+        this.conductores = data['p_conductor'];
+        console.log(this.conductores);
+      }
+    );
+  }
+  serachp(){
+     this.conductorService.searchPersona(this.p.nrodoc).subscribe((data)=>{
+      this.personas=data["P_CURSOR"]
+     });
+     (<HTMLInputElement>document.getElementById("bus")).value = "";
+  }
+  limpiar2(){
+    (<HTMLInputElement>document.getElementById("user1")).value ="";
+    (<HTMLInputElement>document.getElementById("user1")).disabled=false;
+    
   }
 
 

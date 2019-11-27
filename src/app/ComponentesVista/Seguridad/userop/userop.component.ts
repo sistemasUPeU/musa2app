@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from 'src/app/service/service.service';
 import { Router } from '@angular/router';
 import { Usuarios_Opciones, Us } from 'src/app/Modelo/Usuarios_Opciones';
+import { LoginService } from 'src/app/service/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-userop',
@@ -14,7 +16,7 @@ export class UseropComponent implements OnInit {
   us:Us = new Us();
   a:Number;
   b:Number;
-  constructor(private service:ServiceService, private router:Router) { }
+  constructor(private service:ServiceService, private router:Router, private loginService: LoginService) { }
 
   ngOnInit() {
     this.service.getUsOp().subscribe((data) => {
@@ -55,27 +57,64 @@ export class UseropComponent implements OnInit {
 
   EliminarOpc(usop:Usuarios_Opciones){
     var x = usop.idusuario;
-    alert(x);
+    //alert(x);
     var c = usop.idopcion;
-    alert(c);
-    usop.user_modify = "Christian1";
-    this.service.deleteUsOp(usop).subscribe(data=>{
-      alert(">>>> REGISTRO DESACTIVADO <<<<");
-      this.ngOnInit();
-  
-    })  
+    //alert(c);
+    usop.user_modify = " "+this.loginService.personas.login;;
+    
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Esta accion no se podra revertir!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, desactivar!'
+    }).then((result) => {
+      if (result.value) {
+
+        this.service.deleteUsOp(usop).subscribe(data=>{
+          //alert(">>>> REGISTRO DESACTIVADO <<<<");
+          this.ngOnInit();
+      
+        }) 
+        Swal.fire(
+          'Desactivado!',
+          'Ha sido desactivado',
+          'success'
+        )
+      }
+    })
   }
   ActivarUsr(usop: Usuarios_Opciones) {
     var x = usop.idusuario;
-    alert(x);
+   // alert(x);
     var c = usop.idopcion;
-    alert(c);
-    usop.user_modify = "Christian12";
-    this.service.activarUsOp(usop).subscribe((data) => {
-      this.usuario_opciones = data;
-      console.log(data);
-      alert('>>>> REGISTRO ACTIVADO <<<<');
-      this.ngOnInit();
+    //alert(c);
+    usop.user_modify = " "+this.loginService.personas.login;;
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Esta accion no se podra revertir!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, activar!'
+    }).then((result) => {
+      if (result.value) {
+
+        this.service.activarUsOp(usop).subscribe((data) => {
+          this.usuario_opciones = data;
+          console.log(data);
+          //alert('>>>> REGISTRO ACTIVADO <<<<');
+          this.ngOnInit();
+        })
+        Swal.fire(
+          'Activado!',
+          'Ha sido activado',
+          'success'
+        )
+      }
     })
   }
 

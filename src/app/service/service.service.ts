@@ -46,7 +46,15 @@ export class ServiceService {
   Url5 = 'http://localhost:8081/cg/'
   Url6 = 'http://localhost:8081/reporte/'
   roles:RolesF;
-
+  private agregarAutorizacion1(){
+    let token = this.loginService.token;
+    if(token!=null){
+      console.log("ESTE ES EL TOKEN "+token);
+      return this.httpHeaders.append('Authorization','Bearer' + token);
+    }
+    
+    return this.httpHeaders;
+  }
   getAllUbigeo(): Observable<Ubigeo[]> {
     return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       
@@ -222,14 +230,14 @@ export class ServiceService {
 
   //******PROPIETARIOS */
   getPropietarios(): Observable<Propietario[]> {
-    return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     })
     );
   }
   deletePropietarios(id:number){
-     return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`+id, Propietario, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+     return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`+id, Propietario, {headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     }));
@@ -237,26 +245,26 @@ export class ServiceService {
   crearPropietarios(propietarioc:Propietario){
     console.log(`(asdasdasdasdasdasd)`)
     console.table(propietarioc)
-     return this.http.post<Propietario>( `${ environment.apiUrl }/propietarios/add`, propietarioc,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+     return this.http.post<Propietario>( `${ environment.apiUrl }/propietarios/add`, propietarioc,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     }));
   }
   getPropietarioId(id:number){
-     return this.http.get<Propietario[]>( `${ environment.apiUrl }/propietarios/`+ id, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+     return this.http.get<Propietario[]>( `${ environment.apiUrl }/propietarios/`+ id, {headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     }));
   }
 
   updatePropietarios(propietario:Propietario){
-    return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/`, propietario, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/`, propietario, {headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     }));
   }
   buscarnombre(nombre:String){
-     return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/nombre/`+ nombre, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+     return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/nombre/`+ nombre, {headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     }));
@@ -483,7 +491,7 @@ getConfiP(e): Observable<Configuracion_Grupos[]>{
 }
 
 createConfi(x){
-  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add', {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add',x, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       
     return throwError(e);
   }));   

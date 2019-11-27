@@ -15,33 +15,23 @@
   <div class="input-group" id="caja_search">
       <span class="input-group-prepend">
       </span>
-      <input class="form-control bg-transparent" id="buscar1" [(ngModel)]="ops.idopciones"  placeholder=" Ingrese Nro Documento" >
+      <input class="form-control bg-transparent" [(ngModel)]="ops.idopciones"    placeholder=" Ingrese N° Opcion" id="buscar1" />
       <span class="input-group-append">
-          <div  class="input-group-text bg-transparent " id="buscar2">
-          <i  (click)="Buscar()" class ="fa fa-search"></i>
-          </div>
+        <div class="input-group-text bg-transparent " (click)="buscar()" id="buscar2">
+          <i class="fa fa-search"></i>
+        </div>
       </span>
   </div> 
-  <!-- Buscador Tipo -->
-  <div id="tipo">
-    <select class="custom-select" [(ngModel)]="o.tipo" (click)="Tipo()" id="inputGroupSelect01" id="caja_rol">
-              <option selected>Seleccione Tipo</option>
-              <option value="1">Activo</option>
-              <option value="2">Desactivo</option>
-      </select>
-  </div>
   <!-- Buscador Estado -->
   <div id="estado">
-    <select class="custom-select" [(ngModel)]="o.estado" (click)="Estado()" id="inputGroupSelect01" id="caja_rol">
-                
-      <option>Seleccione estado</option>
-      <option value=1 >Vigente</option>
-      <option value=0>No Vigente</option>
-      <option value=2>Por Recoger</option>
-</select>
-</div>
+    <select class="custom-select" [(ngModel)]="o.estado" (click)="Estado()" id="inputGroupSelect02" id="caja_rol">
+      <option selected>Seleccione Estado</option>
+      <option value=1>Activo</option>
+      <option value=0>Inactivo</option>
+    </select>
+  </div>
   <!-- Boton Limpiar -->
-  <button type="button" class="btn btn-success" id="limpiar" (click)="Limpiar()">Limpíar</button>
+  <button type="button" class="btn btn-success" (click)="Limpiar()" id="limpiar">Limpíar</button>
 
   <br><br>
   <!-- Tabla -->
@@ -70,8 +60,9 @@
             <td>{{opcion.icono}}</td>
             <td>{{opcion.tipo}}</td>
             <td>{{opcion.orden}}</td>
-            <td>{{opcion.estado}}</td>
-            <td ><i class="fas fa-trash-alt" (click)="Eliminar(opcion)" style="color: red; margin-left: 20px;"></i><i class="fas fa-edit mx-5" (click)="Actualizar(opcion)" style="color: blue; margin-left: -5px;cursor: pointer;" data-toggle="modal" data-target="#ModificarUsuario"></i></td>
+            <td>{{opcion.estado == 1 ? 'Activo' : (opcion.estado == 2 ? 'Vinculado' : 'Inactivo')   }}</td>
+            <td><i class="fas fa-trash-alt" (click)="Eliminar(opcion)" style="color: red; margin-left: 20px;"></i><i class="fas fa-edit" (click)="Actualizar(opcion.idopciones)" style="color: blue; margin-left: -60px;"
+                data-toggle="modal" data-target="#ModificarUsuario"></i></td>
         
       </tr>
     </tbody>
@@ -134,50 +125,49 @@
 </div>
 </div>
 <!-- Modal Modificar Opcion -->
-<div class="modal fade" id="ModificarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+<div class="modal fade" id="ModificarUsuario" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" >
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">MODIFICAR OPCION</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Opcion</h5>
         <hr>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" *ngFor="let opc of opciones">
         <label for="">N° Padre: </label>
-        <input id="user" type="text" class="form-control" name="idpadre" [(ngModel)]="opciones.idpadre" >
+        <input id="user" type="text" class="form-control" name="idpadre" [(ngModel)]="opc.idpadre" >
          <br>
          <label for="">Nombre: </label>
-          <input id="user" type="text"  class="form-control"  name="nombre" [(ngModel)]="opciones.nombre" >
+          <input id="user" type="text"  class="form-control"  name="nombre" [(ngModel)]="opc.nombre" >
           <br>
           <label for="">Descripcion: </label>
-          <input id="user" type="text" class="form-control"   name="descripcion" [(ngModel)]="opciones.descripcion" >
+          <input id="user" type="text" class="form-control"   name="descripcion" [(ngModel)]="opc.descripcion" >
           <br>
           <label for="">Enlace: </label>
-          <input id="user" type="text"  class="form-control"  name="enlace" [(ngModel)]="opciones.enlace" >
+          <input id="user" type="text"  class="form-control"  name="enlace" [(ngModel)]="opc.enlace" >
           <br>
           <label for="">Icono: </label>
-          <input id="user" type="text"  class="form-control"  name="icono" [(ngModel)]="opciones.icono" >
+          <input id="user" type="text"  class="form-control"  name="icono" [(ngModel)]="opc.icono" >
           <br>
           <label for="">Tipo: </label>
-          <input id="user" type="text"  class="form-control"  name="tipo" [(ngModel)]="opciones.tipo" >
+          <input id="user" type="text"  class="form-control"  name="tipo" [(ngModel)]="opc.tipo" >
           <br>
           <label for="">Orden: </label>
-          <input id="user" type="text"  class="form-control"  name="orden" [(ngModel)]="opciones.orden" >
+          <input id="user" type="text"  class="form-control"  name="orden" [(ngModel)]="opc.orden" >
           <br>
-          <label for=""> Estado: </label>
-          <select class="custom-select" id="inputGroupSelect01" id="caja_rol" [(ngModel)]="opciones.estado" name="estado" style="margin-left: 52px;">
+          <label for="">Seleccione Estado: </label>
+          <select class="custom-select" id="inputGroupSelect01" id="caja_rol" [(ngModel)]="opc.estado" style="margin-left: 50px;">
                
                 <option value=1>Activo</option>
                 <option value=0>Inactivo</option>
-                <option value=2>Por entregar</option>
          </select>
             <br>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" (click)="Editar(opcion)" data-dismiss="modal">Guardar</button>
+      <div class="modal-footer" style="margin-right: 10px;">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="Editar(opc)">Modificar</button>
       </div>
     </div>
   </div>
