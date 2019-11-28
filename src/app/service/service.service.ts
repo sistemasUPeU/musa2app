@@ -393,7 +393,7 @@ createUsuario(user:Usuario){
   }) );   
 }
 createRU(rolus:Rol_Usuarios){
-  return this.http.post<Rol_Usuarios[]>(this.Url3+'/ru/add',rolus, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+  return this.http.post<Rol_Usuarios[]>(this.Url3+'ru/add',rolus, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       
     return throwError(e);
   }));   
@@ -431,7 +431,7 @@ getRolus(): Observable<Usuario[]>{
   }));
 }
 getRolusN(e): Observable<Usuario[]>{
-  return this.http.get<Usuario[]>(this.Url3+ "/rol1/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+  return this.http.get<Usuario[]>(this.Url3+ "rol1/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       
     return throwError(e);
   }));
@@ -443,7 +443,7 @@ getUserN(e): Observable<Usuario[]>{
   }));
 }
 getRolusE(e): Observable<Usuario[]>{
-  return this.http.get<Usuario[]>(this.Url3+ "/rol/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+  return this.http.get<Usuario[]>(this.Url3+ "rol/"+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       
     return throwError(e);
   }));
@@ -507,13 +507,13 @@ activarUsOp(usop: Usuarios_Opciones){
   }));
 } 
 deleteUsr(usr: Rol_Usuarios){
-  return this.http.put<Usuario>(this.Url3+"/des/"+usr.idrol+"/"+usr.idusuario, usr.user_modify, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+  return this.http.put<Usuario>(this.Url3+"des/"+usr.idrol+"/"+usr.idusuario, usr.user_modify, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       
     return throwError(e);
   }));
 } 
 activarUsr(usr: Rol_Usuarios){
-  return this.http.put<Rol_Usuarios>(this.Url3 +"/"+usr.idrol+"/"+usr.idusuario, usr.user_modify, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+  return this.http.put<Rol_Usuarios>(this.Url3 +usr.idrol+"/"+usr.idusuario, usr.user_modify, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       
     return throwError(e);
   }));
