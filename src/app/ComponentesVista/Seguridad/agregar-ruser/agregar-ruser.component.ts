@@ -19,12 +19,15 @@ export class AgregarRuserComponent implements OnInit {
   usuario: Usuario = new Usuario();
   rolu: Rol_Usuarios = new Rol_Usuarios();
   x:Number;
+  
+
+ah:number=1;
   constructor(private service:ServiceService, private router:Router, private loginService:LoginService) { }
 
   ngOnInit() {
     this.service.getUse().subscribe((data) => {
       this.listaruse = data['P_CURSOR_USUARIO'];
-      console.log(this.listaruse);
+    
     })
     this.getAllRoles();
   }
@@ -41,17 +44,17 @@ export class AgregarRuserComponent implements OnInit {
     this.service.getAllRoles().subscribe(
       (data) => {
         this.listaroles = data['p_cur_rol'];
-        console.log(this.listaroles)
+        
       }
     );
   }
   SaveRU(){
-    //alert(this.rolu.idrol);
+ 
     this.rolu.user_create = " "+this.loginService.personas.login;;
     var x = this.x ;
     this.rolu.idusuario = x;
-    //alert(this.rolu.idusuario);
-    console.log(this.rolu);
+   
+ 
     this.service.createRU(this.rolu).subscribe(data=>{
       Swal.fire({
         title: "Usuario Guardado!",
@@ -77,7 +80,7 @@ export class AgregarRuserComponent implements OnInit {
    // alert(x);
     this.service.getUserN(x).subscribe((data)=>{
       this.listaruse = data['P_CURSOR_USUARIO'];
-      console.log(this.listaruse);
+      
     })
   }
 }

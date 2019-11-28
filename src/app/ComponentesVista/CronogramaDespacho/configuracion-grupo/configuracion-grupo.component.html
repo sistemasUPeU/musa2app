@@ -31,6 +31,11 @@
 
     </div>
     <!-- Tabla -->
+    <div style="text-align: center; ">
+      <pagination-controls (pageChange)="ah=$event" previousLabel="Anterior" nextLabel="Siguiente" style="margin: auto;"> </pagination-controls>
+
+    </div>
+
     <table class="table" style="text-align: center; width: 900px; margin: 0 auto;">
             <thead class="thead-dark">
               <tr>
@@ -43,8 +48,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let con of listarconfig; let i = index">
-                <td scope="row">{{con.idconfiggrupo}}</td>
+              <tr *ngFor="let con of listarconfig 
+              | paginate: {itemsPerPage:6, currentPage: ah}; let f=index
+              
+              ">
+                <td scope="row">{{f+1}}</td>
                 <td>{{con.cantidadgrupos}}</td>
                 <td>{{con.intervalo}}</td>
                 <td>{{con.horainicio}}</td>

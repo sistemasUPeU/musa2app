@@ -56,6 +56,7 @@ import { AnularventaComponent } from './ComponentesVista/Ventas/anularventa/anul
 import { RegistrarcajaComponent } from './ComponentesVista/Ventas/registrarcaja/registrarcaja.component';
 import { VinculoCursoComponent } from './ComponentesVista/Conductores/vinculo-curso/vinculo-curso.component';
 import { VinculoproComponent } from './ComponentesVista/CV/vinculopro/vinculopro.component';
+import { NgxPaginationModule} from 'ngx-pagination';
 const routes: Routes = [
   {path: '/login', component:LoginComponent}
 ];
@@ -113,6 +114,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxPaginationModule,
     //NgxPopper,
     //FontAwesomeModule,
     FormsModule,

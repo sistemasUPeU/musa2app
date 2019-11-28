@@ -101,8 +101,14 @@ export class ServiceService {
       return throwError(e);
     }));
   }
-  agregarAutorizacion(): HttpHeaders | { [header: string]: string | string[]; } {
-    throw new Error("Method not implemented.");
+  private agregarAutorizacion(){
+    let token = this.loginService.token;
+    if(token!=null){
+      console.log("ESTE ES EL TOKEN "+token);
+      return this.httpHeaders.append('Authorization','Bearer' + token);
+    }
+    console.log("NO LLEGA EL TOKEN");
+    return this.httpHeaders;
   }
   getRolesN(e): Observable<Roles[]>{
     return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/nombre/`+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{

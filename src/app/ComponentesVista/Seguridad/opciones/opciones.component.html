@@ -45,6 +45,12 @@
 
   <br><br>
   <!-- Tabla -->
+  <div style="text-align: center; ">
+    <pagination-controls (pageChange)="ah=$event" previousLabel="Anterior" nextLabel="Siguiente" style="margin: auto;"> </pagination-controls>
+
+  </div>
+
+
   <table class="table" style="text-align: center;">
     <thead class="thead-dark">
       <tr>
@@ -61,8 +67,8 @@
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let opcion of opciones1; let i = index">
-          <td scope="row">{{i + 1}}</td>
+        <tr *ngFor="let opcion of opciones1  | paginate: {itemsPerPage:6, currentPage: ah}; let f=index">
+          <td scope="row">{{f + 1}}</td>
             <td>{{opcion.idpadre}}</td>
             <td>{{opcion.nombre}}</td>
             <td>{{opcion.descripcion}}</td>

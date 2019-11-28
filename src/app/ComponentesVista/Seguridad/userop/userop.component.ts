@@ -16,12 +16,13 @@ export class UseropComponent implements OnInit {
   us:Us = new Us();
   a:Number;
   b:Number;
+  ah:number=1;
   constructor(private service:ServiceService, private router:Router, private loginService: LoginService) { }
-
+  
   ngOnInit() {
     this.service.getUsOp().subscribe((data) => {
       this.listarusop = data['p_opsu'];
-      console.log(this.listarusop);
+     
     })
   }
 
@@ -31,11 +32,11 @@ export class UseropComponent implements OnInit {
 
   getUsOpN(){
     let c=this.usuario_opciones.login;
-    alert(c);
+    
     this.service.getUsOpN(c).subscribe(
       (data) => {
       this.listarusop = data['p_opsu'];
-        console.log(this.listarusop);
+    
         (<HTMLInputElement>document.getElementById("buscar1")).value = "";
       }
     );
@@ -43,11 +44,11 @@ export class UseropComponent implements OnInit {
 
   getUsOpE(){
     let c=this.usuario_opciones.estado;
-    alert(c);
+  
     this.service.getUsOpE(c).subscribe(
       (data) => {
       this.listarusop = data['p_opsu'];
-        console.log(this.listarusop);
+      
       }
     );
   }
@@ -57,9 +58,9 @@ export class UseropComponent implements OnInit {
 
   EliminarOpc(usop:Usuarios_Opciones){
     var x = usop.idusuario;
-    //alert(x);
+  
     var c = usop.idopcion;
-    //alert(c);
+  
     usop.user_modify = " "+this.loginService.personas.login;;
     
     Swal.fire({
@@ -74,7 +75,7 @@ export class UseropComponent implements OnInit {
       if (result.value) {
 
         this.service.deleteUsOp(usop).subscribe(data=>{
-          //alert(">>>> REGISTRO DESACTIVADO <<<<");
+      
           this.ngOnInit();
       
         }) 
@@ -88,9 +89,9 @@ export class UseropComponent implements OnInit {
   }
   ActivarUsr(usop: Usuarios_Opciones) {
     var x = usop.idusuario;
-   // alert(x);
+  
     var c = usop.idopcion;
-    //alert(c);
+  
     usop.user_modify = " "+this.loginService.personas.login;;
     Swal.fire({
       title: 'Estas seguro?',
@@ -104,9 +105,8 @@ export class UseropComponent implements OnInit {
       if (result.value) {
 
         this.service.activarUsOp(usop).subscribe((data) => {
-          this.usuario_opciones = data;
-          console.log(data);
-          //alert('>>>> REGISTRO ACTIVADO <<<<');
+          
+        
           this.ngOnInit();
         })
         Swal.fire(

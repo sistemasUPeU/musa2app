@@ -18,6 +18,7 @@ export class RolComponent implements OnInit {
   rolf: Roles=new Roles();
   p_cur_rol: Roles =new Roles();
   sv=[];
+  ah:number=1;
   constructor(private service:ServiceService, private router:Router) { }
 
   ngOnInit() {
@@ -58,7 +59,6 @@ export class RolComponent implements OnInit {
     var sv=this.roles1.nombre;
     let verificar = 0;
     this.listaroles.forEach(function(ef){
-     // console.log(ef.nombre);
       while (ef.nombre==sv) {
         Swal.fire({
           title: "Rol Repetido!",
@@ -70,16 +70,10 @@ export class RolComponent implements OnInit {
         this.router.navigate(["home/usuario"])
       }
     })
-   // alert(verificar);
+
       this.GuardarRol();
     
-    //this.Save();
-    //let arr=Cliente;
-    //if (this.cliente.c_dni=="asd") {
-      
-   // }else{
-   //   alert("HAS FRACASADO EFE")
-   // }
+
   }
 
 
@@ -95,11 +89,11 @@ export class RolComponent implements OnInit {
   }
   getRolesE(roles:Roles) {
     var hola=(<HTMLSelectElement>document.getElementById('caja_estado')).value;
-   /// alert(hola);
+
     this.service.getRolesE(hola).subscribe(
       (data) => {
         this.listaroles = data['p_cur_rol'];
-        console.log(this.listaroles)
+  
       }
     );
   }
@@ -131,61 +125,26 @@ export class RolComponent implements OnInit {
 
  }
 
-//EditarRoles(roles:Roles):void{  
-  //alert(roles.NOMBRE);
-  //this.service.getRolesIdE(roles.IDROL).subscribe(data=>{
-   // var d=roles.IDROL ;
-    //alert(d);
-  //})
-//}
-//ActualizarR(roles:Roles){
-//this.service.updateRoles(roles).subscribe(data=>{
- //   alert("hola");  
-  //   this.roles1=data;
-   //  alert(data);
-   // alert("modificado");
- //  })
-//}
 
-
-  //EditarR(c:number){
-//this.service.getRolesIdE(c).subscribe((data)=>{
-    //  this.role=data;
-    //  console.log(data);
-    //})
-  //}
    ActualizarR(roles:Roles){
-     //alert(roles.idrol);
-  //  alert(this.roles1.nombre);
+  
     roles.nombre=this.roles1.nombre;
-    //alert(this.roles1.estado);
+   
     roles.estado=this.roles1.estado;
-    //alert(roles);
+  
     var id=37;
      this.service.updateRoles(id,roles).subscribe(data=>{
        this.role=data;
-       //(data);
+   
      }) 
   }
   
-//////////////
-// ActualizarR(roles:Roles){
- // alert(this.roles1.NOMBRE);
- // alert(this.roles1.ESTADO);
-// var id=37;
- //  this.service.updateRoles(id,roles).subscribe(data=>{
-  //   this.role=data;
-  //   alert(data);
-  //  var l =id;
-  // })
-//}
-//////////////////////////
-  
+
   EditarR(id) {
     this.service.getRolesIdE(id).subscribe((res: Roles) => {
-     // alert(id);
+ 
       this.role = res;
-      console.log(res);
+    
     }); 
 
   }
@@ -195,7 +154,6 @@ export class RolComponent implements OnInit {
   EditarRoles(roles:Roles):number{
     alert(roles.idrol);
     localStorage.setItem("IDROL",roles.idrol.toString());
-    alert("vale");
     this.EditarR(roles.idrol);
     return roles.idrol;
   }
@@ -236,7 +194,7 @@ export class RolComponent implements OnInit {
         })
         Swal.fire(
           'Modificar!',
-          'La accion ha sido cambiada',
+          'La accion ha sido modificada',
           'success'
         )
       }

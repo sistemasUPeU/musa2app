@@ -15,7 +15,7 @@ export class OpcionesComponent implements OnInit {
   ops:Opciones=new Opciones();
   o : Opciones=new Opciones();
 
-
+  ah:number=1;
   opciones1: Opciones[] = []
   service: any;
 

@@ -15,12 +15,13 @@ export class RolusComponent implements OnInit {
   usuario: Usuario = new Usuario();
   listarusr: Rol_Usuarios[];
   rol_usuario : Rol_Usuarios = new Rol_Usuarios();
+  ah:number=1;
   constructor(private router:Router, private service:ServiceService) { }
 
   ngOnInit() {
     this.service.getRolus().subscribe((data) => {
       this.listarolusu = data['P_CURSOR_USUARIO'];
-      console.log(this.listarolusu);
+    
     })
   }
   Agregar(){
@@ -31,22 +32,22 @@ export class RolusComponent implements OnInit {
   }
   getRolusN(){
     let c=this.usuario.login;
-    //alert(c);
+  
     this.service.getRolusN(c).subscribe(
       (data) => {
       this.listarolusu = data['P_CURSOR_USUARIO'];
-        console.log(this.listarolusu);
+        
         (<HTMLInputElement>document.getElementById("buscar1")).value = "";
       }
     );
   }
   getRolusE(){
     let c=this.usuario.estado;
-   // alert(c);
+   
     this.service.getRolusE(c).subscribe(
       (data) => {
       this.listarolusu = data['P_CURSOR_USUARIO'];
-        console.log(this.listarolusu);
+      
       }
     );
   }
@@ -56,9 +57,9 @@ export class RolusComponent implements OnInit {
 
   EliminarUsr(usr:Rol_Usuarios){
     var x = usr.idrol;
-   // alert(x);
+   
     var c = usr.idusuario;
-    //alert(c);
+   
     usr.user_modify = "Christian13";
 
     Swal.fire({
@@ -73,7 +74,7 @@ export class RolusComponent implements OnInit {
       if (result.value) {
 
         this.service.deleteUsr(usr).subscribe(data=>{
-          //alert(">>>> REGISTRO DESACTIVADO <<<<");
+          
           this.ngOnInit();
         }) 
         Swal.fire(
@@ -86,9 +87,9 @@ export class RolusComponent implements OnInit {
   }
   ActivarUsr(usr: Rol_Usuarios) {
     var x = usr.idrol;
-    //alert(x);
+  
     var c = usr.idusuario;
-   // alert(c);
+   
     usr.user_modify = "Christian13";
 
     Swal.fire({
@@ -104,8 +105,7 @@ export class RolusComponent implements OnInit {
 
         this.service.activarUsr(usr).subscribe((data) => {
           this.rol_usuario = data;
-          console.log(data);
-          //alert('>>>> REGISTRO ACTIVADO <<<<');
+    
           this.ngOnInit();
         })
         Swal.fire(
