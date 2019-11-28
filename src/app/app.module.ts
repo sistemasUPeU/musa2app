@@ -114,6 +114,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxPaginationModule,
     //NgxPopper,
     //FontAwesomeModule,
     FormsModule,

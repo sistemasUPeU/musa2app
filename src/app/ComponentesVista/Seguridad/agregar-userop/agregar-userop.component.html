@@ -20,6 +20,12 @@
   
   <br>
   </div>
+  <div style="text-align: center; ">
+    <pagination-controls (pageChange)="ah=$event" previousLabel="Anterior" nextLabel="Siguiente" style="margin: auto;"> </pagination-controls>
+
+  </div>
+
+
   <table class="table" style="text-align: center;">
     <thead class="thead-dark">
       <tr>
@@ -29,8 +35,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let use of listaruse">
-        <td scope="row">{{use.idusuario}}</td>
+      <tr *ngFor="let use of listaruse | paginate: {itemsPerPage:6, currentPage: ah}; let f=index">
+        <td scope="row">{{f+1}}</td>
         <td>{{use.login}}</td>
         <td ><i class="fas fa-user-plus" style="color: green; margin-left: 20px;" (click)="ObtID(use)"></i></td> </tr>
     </tbody>
@@ -55,12 +61,7 @@
           <option value="0"> Seleccionar Opción</option>
           <option [value]="op2.idopcion" *ngFor="let op2 of listarop2" > {{op2.nombre}}</option>
         </select>
-         <br>
-         <label for="">Seleccione Sub - Opción: </label>
-         <select id="caja_op3" type="text" class="form-control" placeholder=" Sub - Opción" [(ngModel)]="usuario_opciones.idopcion3">
-          <option value="0"> Seleccionar Sub - Opción</option>
-          <option [value]="op3.idopcion" *ngFor="let op3 of listarop3" > {{op3.nombre}}</option>
-        </select>        
+         <br>       
         
       </div>
       <div class="modal-footer">

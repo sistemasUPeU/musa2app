@@ -19,7 +19,7 @@
     <div class="input-group" id="caja_search">
         <span class="input-group-prepend">
         </span>
-        <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre y Apellido" id="buscar1" [(ngModel)]="usuario.login"/>
+        <input class="form-control bg-transparent" type="search" placeholder=" Ingrese  el Usuario" id="buscar1" [(ngModel)]="usuario.login"/>
         <span class="input-group-append">
             <div class="input-group-text bg-transparent " id="buscar2">
             <i class="fa fa-search" (click)="getRolusN()"></i>
@@ -28,18 +28,23 @@
     </div> 
     <!-- Buscador Estado -->
     <div id="estado">
-        <select class="custom-select" id="inputGroupSelect01" id="caja_estado" [(ngModel)]="usuario.estado">
+        <select class="custom-select" id="inputGroupSelect01" id="caja_estado" [(ngModel)]="usuario.estado" (click)="getRolusE()">
                 <option selected>Seleccione Estado</option>
                 <option value="1">Activo</option>
                 <option value="0">Inactivo</option>
-        </select>
-        <button id="listar" type="button" class="btn btn-info"  (click)="getRolusE()" ><i class="fas fa-check"></i></button>    
+        </select>  
     </div>
     <!-- Boton Limpiar -->
     <button type="button" class="btn btn-success" id="limpiar"  (click)="limpiar()">Limpíar</button>
 
     <br><br>
     <!-- Tabla -->
+    <div style="text-align: center; ">
+      <pagination-controls (pageChange)="ah=$event" previousLabel="Anterior" nextLabel="Siguiente" style="margin: auto;"> </pagination-controls>
+
+    </div>
+
+
     <table class="table" style="text-align: center;">
             <thead class="thead-dark">
               <tr>
@@ -51,8 +56,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let rolus of listarolusu" >
-                <td scope="row">{{rolus.idusuario}}</td>
+              <tr *ngFor="let rolus of listarolusu | paginate: {itemsPerPage:6, currentPage: ah}; let f=index" >
+                <td scope="row">{{f+1}}</td>
                 <td>{{rolus.login}}</td>
                 <td>{{rolus.rol}}</td>
                 <td>{{rolus.estado}}</td>

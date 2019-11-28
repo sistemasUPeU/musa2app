@@ -3,6 +3,7 @@ import { ServiceService } from 'src/app/service/service.service';
 import { Router } from '@angular/router';
 import { Configuracion_Grupos } from 'src/app/Modelo/Configuracion_Grupos';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-configuracion-grupo',
@@ -17,6 +18,8 @@ export class ConfiguracionGrupoComponent implements OnInit {
   loadCU: Configuracion_Grupos[] = [];
   loadCD: Configuracion_Grupos[] = [];
   configuracion: Configuracion_Grupos = new Configuracion_Grupos();
+  
+ah:number=1;
   constructor(private router:Router, private service:ServiceService) { }
 
   ngOnInit() {
@@ -24,11 +27,11 @@ export class ConfiguracionGrupoComponent implements OnInit {
   }
   getRolesN(config:Configuracion_Grupos) {
     let c=this.configuracion.idparadero;
-    //alert(c);
+  
     this.service.getConfiP(c).subscribe(
       (data) => {
         this.listarconfig = data['P_CURSOR'];
-        console.log(this.listarconfig)
+     
       }
     );
     if (c==1) {
@@ -42,10 +45,13 @@ export class ConfiguracionGrupoComponent implements OnInit {
   SaveConfi(){
     let c=this.configuracion.intervalo;
     this.configuracion.usercreate="Christian";
-    console.log(this.configuracion);
-    console.log(c)
+
         this.service.createConfi(this.configuracion).subscribe(data=>{
-     alert(">>>> REGISTRO GUARDADO <<<<");
+          Swal.fire(
+            'Creada!',
+            'La configuracion ha sido creada',
+            'success'
+          )
    })
   }
 
@@ -53,7 +59,7 @@ export class ConfiguracionGrupoComponent implements OnInit {
     this.service.getConfiUNO().subscribe(
       (data) => {
         this.loadCU = data['P_CURSOR'];
-        console.log(this.loadCU)
+        
       }
     );
   }
@@ -62,24 +68,59 @@ export class ConfiguracionGrupoComponent implements OnInit {
     this.service.getConfiDOS().subscribe(
       (data) => {
         this.loadCD = data['P_CURSOR'];
-        console.log(this.loadCD)
+     
       }
     );
   }
 
   ActualizarUNO(uno: Configuracion_Grupos) {
-    uno.usermodify="funca";
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Esta accion no se podra revertir!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, modificar!'
+    }).then((result) => {
+      if (result.value) {
+      uno.usermodify="funca";
     this.service.createUNO(uno).subscribe(data=>{
-      alert(">>>> REGISTRO GUARDADO <<<<");
+    
       this.router.navigate(["home/configuraciongrupo"]);
     })
+        Swal.fire(
+          'Modificado!',
+          'La configuracion ha sido modificada',
+          'success'
+        )
+      }
+    })
+    
   }
 
   ActualizarDOS(dos: Configuracion_Grupos) {
-    dos.usermodify="funca";
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Esta accion no se podra revertir!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, modificar!'
+    }).then((result) => {
+      if (result.value) {
+        dos.usermodify="funca";
     this.service.createDOS(dos).subscribe(data=>{
-      alert(">>>> REGISTRO GUARDADO <<<<");
+
       this.router.navigate(["home/configuraciongrupo"]);
+    })
+        Swal.fire(
+          'Modificado!',
+          'La configuracion ha sido modificada',
+          'success'
+        )
+      }
     })
   }
 

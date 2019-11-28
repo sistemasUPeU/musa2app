@@ -16,9 +16,9 @@ export class CursosComponent implements OnInit {
    feachai:String
    feachaf:String
    id:number
-
+  c1: Cursos;
   constructor(private service:CursosService , private ruter: Router) { }
-
+  p:number = 1;
   ngOnInit() {
     this.listar();
   }
@@ -26,22 +26,33 @@ export class CursosComponent implements OnInit {
     this.service.getCursos().subscribe( (data)=>{
 
       this.cursos=data["P_CURSOR"];
-      console.log(this.cursos)
+ 
     }
     );
     
   }
   
-  upt(id: number,curso :Cursos){
-  
-    this.service.uptCursos(+id,curso).subscribe(data => {
-  
-    this.listar()
-    Swal.fire(
-      'Eliminado!',
-      'El curso fue Eliminado con exito',
-      'success'
-    )
+  upt(curs :Cursos){
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Esta accion no se podra revertir!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar!'
+    }).then((result) => {
+      if (result.value) {
+        this.service.uptCursos(curs).subscribe(response=>{
+          this.cursos = this.cursos.filter(req=>req!==curs)
+        });
+        Swal.fire(
+          'Eliminado!',
+          'La accion ha sido eliminada',
+          'success'
+        )
+      }
+   
     }
 
     )  ;  
@@ -49,7 +60,7 @@ export class CursosComponent implements OnInit {
     
   }
   crear(cursos:Cursos){
-    console.log(cursos.nombrecurso);
+
     this.service.createCurso(cursos).subscribe(data =>{
 
       this.listar();
@@ -61,29 +72,58 @@ export class CursosComponent implements OnInit {
     )
   }
   read(id:number){
-console.log(id);
+
 this.id=id;
 this.service.readcurso(+id).subscribe(data =>{
   this.curs=data["P_CUR_CURSOS"][0];
   
 
-  console.log(this.feachaf,this.feachai)
 })
 }
 edit(cursos:Cursos){
-  console.log();
-  //cursos.fechainicio = Date.parse(this.feachai);
-  cursos.idcursos=this.id;
-  console.log(cursos)
-  this.service.editCurso(cursos).subscribe(data => {
+  Swal.fire({
+    title: 'Estas seguro?',
+    text: "El curso fue editado, Desea conservar los cambios ?!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, confirmar!'
+  }).then((result) => {
+    if (result.value) {
+      cursos.idcursos=this.id;
+     
+      this.service.editCurso(cursos).subscribe(data => {
+    
+      this.listar();
+      });
+      Swal.fire(
+        'Editado!',
+        'El curso ha sido editado desea con exito',
+        'success'
+      )
+    }
+ 
+  }
 
-  this.listar();
-  });
-       Swal.fire(
-          'Editado!',
-          'El Curso ha sido Editado',
-          'success'
-        )
+  )  ;
 
 }
+Limpiar(){
+  this.ngOnInit();
+  (<HTMLInputElement>document.getElementById("buscar1")).value = "";
+  (<HTMLInputElement>document.getElementById("caja_estado")).value = "Seleccione Estado";
+
+}
+getUsuarioN(cu:Cursos) {
+  let c=this.curs.nombrecurso;
+ 
+    this.service.getCursoN(c).subscribe(
+      (data) => {
+      this.cursos = data['P_CURSOR'];
+      
+      }
+    );
+  }
+
 }

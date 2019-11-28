@@ -26,13 +26,12 @@
             </div> 
             <!-- Buscador Estado -->
             <div id="estado">
-                <select class="custom-select" id="inputGroupSelect01" id="caja_estado" [(ngModel)]="roles1.estado">
+                <select class="custom-select" id="inputGroupSelect01" id="caja_estado" [(ngModel)]="roles1.estado"  (click)="getRolesE()" >
                         <option  >Seleccione Estado</option>
                         <option value="1" >Activo</option>
                         <option value="0">Inactivo</option>                        
                 </select>
-            </div>
-            <button id="listar" type="button" class="btn btn-info"  (click)="getRolesE()" ><i class="fas fa-check"></i></button>         
+            </div>     
             <!-- Boton Limpiar -->
             <button type="button" class="btn btn-success" id="limpiar" (click)="Limpiar()">Limpíar</button>
 
@@ -40,6 +39,11 @@
 
         </div>
         <!-- Tabla -->
+        <div style="text-align: center; ">
+          <pagination-controls (pageChange)="ah=$event" previousLabel="Anterior" nextLabel="Siguiente" style="margin: auto;"> </pagination-controls>
+    
+        </div>
+    
         <table class="table" style="text-align: center; width: 900px; margin: 0 auto;">
                 <thead class="thead-dark">
                   <tr>
@@ -50,8 +54,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let rol of listaroles; let i = index">
-                    <td scope="row">{{rol.idrol}}</td>
+                  <tr *ngFor="let rol of listaroles | paginate: {itemsPerPage:6, currentPage: ah}; let f=index">
+                    <td scope="row">{{f+1}}</td>
                     <td>{{rol.nombre}}</td>
                     <td>{{rol.estado}}</td>
                     <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 20px;" (click)="EliminarRol(rol)"></i></td>
@@ -102,7 +106,7 @@
             </div>
             <div class="modal-body">
               <label for="">Ingrese Rol: </label>
-              <input type="text" class="form-control" placeholder="Nombre Rol" name="NOMBRE" [(ngModel)]="p_cur_rol.nombre">
+              <input type="text" class="form-control"  id="caja_rol" placeholder="Nombre Rol" name="NOMBRE" [(ngModel)]="p_cur_rol.nombre">
               <br>
               <label for="">Ingrese Estado: </label>
               <select class="custom-select" id="inputGroupSelect01" id="caja_estado" [(ngModel)]="p_cur_rol.estado">

@@ -33,9 +33,11 @@ export class VincuRequi {
 export class VincuRequis {
   idvinculo: number;
   idrequisito: number;
-  constructor(vincu:number, requi:number) {
+  archivo:File;
+  constructor(vincu:number, requi:number,archivo:File) {
     this.idvinculo=vincu;
     this.idrequisito=requi;
+    this.archivo = archivo;
  }
 }
 export class Vinupd {

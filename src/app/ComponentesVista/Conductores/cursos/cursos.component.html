@@ -19,27 +19,28 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div   style="height:380px;width:250px;margin-left: 50px;"class="modal-body">
+        <div   style="height:420px;width:250px;margin-left: 50px;"class="modal-body">
         <label > Curso:
           <input [(ngModel)]="curso.nombrecurso" placeholder=" Nombre" style="    margin-top: 10px;
-        width: 180px; border: solid gray 1px;border-radius: 5px;">
+        width: 300px; "class="form-control">
         </label >  <br>
          <label >Institucion:
             <input [(ngModel)]="curso.nombreinstitucion" placeholder=" Institucion" style="    margin-top: 10px;
-            width: 180px; border: solid gray 1px;border-radius: 5px;">
+            width: 300px; "class="form-control">
          </label> <br>
          <label >Lugar:
             <input [(ngModel)]="curso.lugar" placeholder=" Lugar" style="    margin-top: 10px;
-            width: 180px; border: solid gray 1px;border-radius: 5px;">
+            width: 300px; "class="form-control">
          </label> <br>
          <label >Fecha Inicio:
             <input [(ngModel)]="curso.fechainicio" placeholder=" Fecha Fnicio" type="date"style="    margin-top: 10px;
-            width: 180px; border: solid gray 1px;border-radius: 5px;">
+            width: 300px;" class="form-control">
          </label> <br>
          <label >Fecha Fin:
             <input [(ngModel)]="curso.fechafin" placeholder=" Fecha Fin" type="date" style="    margin-top: 10px;
-            width: 180px; border: solid gray 1px;border-radius: 5px;">
+            width: 300px; " class="form-control">
          </label> 
+
 
      
       
@@ -61,19 +62,23 @@
         <div class="input-group" id="caja_search">
             <span class="input-group-prepend">
             </span>
-            <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre" id="buscar1" />
+            <input class="form-control bg-transparent" type="search" placeholder=" Ingrese Nombre" id="buscar1" [(ngModel)]="curs.nombrecurso"/>
             <span class="input-group-append">
                 <div class="input-group-text bg-transparent " id="buscar2">
-                <i class="fa fa-search"></i>
+                <i class="fa fa-search" (click)="getUsuarioN()"></i>
                 </div>
             </span>
         </div>
      
         <!-- Boton Limpiar -->
-        <button type="button" class="btn btn-success" id="limpiar">Limpíar</button>
+        <button type="button" (click)="Limpiar()" class="btn btn-success" id="limpiar">Limpíar</button>
     </div>
     <br>
     <!-- Tabla -->
+    <div style="text-align: center;">
+      <pagination-controls (pageChange)="p=$event" previousLabel="Anterior" nextLabel="Siguiente" > </pagination-controls>
+    </div>
+
     <table class="table" style="text-align: center; width: 1030px; margin: 0 auto;">
             <thead class="thead-dark">
               <tr>
@@ -88,7 +93,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let cur of cursos; let i = index">
+              <tr *ngFor="let cur of cursos | paginate: {itemsPerPage:6, currentPage: p}; let i = index">
                 <td scope="col">{{i+1}}</td>
                 <td scope="col" style="width: 250px;">{{cur.nombrecurso}}</td>
                 <td scope="col" style="width: 250px;"> {{cur.nombreinstitucion}}</td>
@@ -96,11 +101,12 @@
                 <td scope="col">{{cur.fechainicio}}</td>
                 <td scope="col">{{cur.fechafin}}</td>
                 <td scope="col">{{cur.estado_tipo}}</td>
-                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: -50px;" (click)="upt(cur.idcursos)"></i>
+                <td ><i class="fas fa-trash-alt" style="color: red; margin-left: 5px;" (click)="upt(cur)"></i>
                   <i class="fas fa-edit" style="color: blue; margin-left: -30px;" (click)="read(cur.idcursos)"data-toggle="modal" data-target="#modaledit"></i></td>
               </tr>
             </tbody>
           </table>
+         
 
 
           <div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -113,27 +119,27 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div  style="height:350px;width:250px;margin-left: 50px;"class="modal-body">
+                  <div  style="height:450px;width:250px;margin-left: 50px;"class="modal-body">
                       <label>Curso:
                           <input [(ngModel)]=" curs.nombrecurso"  style="    margin-top: 10px;
-                          width: 180px; border: solid gray 1px;border-radius: 5px;">
+                          width: 180px;" class="form-control">
                        </label> <br>
                        <label>Institucion: 
                           <input [(ngModel)]=" curs.nombreinstitucion" style="    margin-top: 10px;
-                          width: 180px; border: solid gray 1px;border-radius: 5px;">
+                          width: 180px;" class="form-control">
                        </label> 
                        <br>
                        <label>Lugar:
                           <input [(ngModel)]=" curs.lugar"  style="    margin-top: 10px;
-                          width: 180px; border: solid gray 1px;border-radius: 5px;">
+                          width: 180px; " class="form-control">
                        </label> <br><br>
                       <label>Fecha Inicio
                           <input [(ngModel)]=" curs.fechainicio"  type="date" style="    margin-top: 10px;
-                          width: 180px; border: solid gray 1px;border-radius: 5px;">
+                          width: 180px; " class="form-control">
                       </label>  <br><br>
                       <label>Fecha Fin
                           <input [(ngModel)]=" curs.fechafin"  type="date" style="    margin-top: 10px;
-                          width: 180px; border: solid gray 1px;border-radius: 5px;">
+                          width: 180px;" class="form-control">
                       </label> 
               
                    

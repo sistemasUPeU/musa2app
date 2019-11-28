@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MantAccionMantenimiento } from 'src/app/Modelo/MantAccionMantenimiento';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { LoginService } from 'src/app/service/login.service';
 
 
 
@@ -25,6 +26,8 @@ export class MantenimientosComponent implements OnInit {
   getacts: any;
   getactshijos: any;
   newid: number;
+  detallemantid:any;
+  accionmantid:any;
 
 
 
@@ -33,7 +36,7 @@ export class MantenimientosComponent implements OnInit {
   private mantenimientos: Mantenimientos = new Mantenimientos();
   tipo: number;
 
-  constructor(private accionesService: MantenimientoService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private accionesService: MantenimientoService, private router: Router, private activatedRoute: ActivatedRoute, private loginService: LoginService) { }
 
 
   ngOnInit() {
@@ -56,6 +59,17 @@ export class MantenimientosComponent implements OnInit {
       (data) => {
         this.getacts = data['p_cursor'];
         console.log(this.getacts);
+      }
+    );
+  }
+
+  cargarMantId(id:number){
+    this.accionesService.getMantById(id).subscribe(
+      (data) => {
+        this.detallemantid = data['P_CURSOR_DETALLE'];
+        this.accionmantid = data['P_CURSOR_ACCIONES'];
+        console.log(this.detallemantid);
+        console.log(this.accionmantid);
       }
     );
   }
@@ -133,13 +147,11 @@ export class MantenimientosComponent implements OnInit {
     })
   }
 
-  public cambiarUserCreate(name: String) {
-    this.mantenimientos.userCreate = name;
-  }
-
   public crearMant(): void {
 
     this.mantenimientos.tipoMantenimiento = this.tipo;
+    this.mantenimientos.idEmpleado = this.loginService.personas.idusuario;
+    this.mantenimientos.userCreate = this.loginService.personas.nombre;
     this.accionesService.createMantenimiento(this.mantenimientos).subscribe(data => {
       this.newid = data["p_idmantenimiento"];
       this.p_estado = data["p_error"];
@@ -192,7 +204,7 @@ export class MantenimientosComponent implements OnInit {
                 });
               });
             }
-            if (e2.checked == true) {
+            if (e3.checked == true) {
               this.accionesService.addDetalle(this.newid, a.idmantacciones).subscribe(data => {
                 console.log(data);
                 this.accionesService.updateDetalle(this.newid, a.idmantacciones, 3).subscribe(data => {
@@ -231,13 +243,16 @@ export class MantenimientosComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, eliminar!'
+      confirmButtonText: 'Si, validar!'
     }).then((result) => {
       if (result.value) {
         //accion.idempleado = (dame el id del usuario)
         if (accion.estado == 1) {
+          accion.idempleado = this.loginService.personas.idusuario;
+          console.log(this.loginService.personas.idusuario + ' acc ' + accion.idempleado);
           this.accionesService.validarJefeOper(accion.idmantenimiento, accion.idempleado).subscribe(response => {
             this.requests = this.requests.filter(req => req !== accion)
+            this.cargarMantenimientos();
           });
           Swal.fire(
             'Validado!',
@@ -245,8 +260,11 @@ export class MantenimientosComponent implements OnInit {
             'success'
           )
         }if (accion.estado == 2) {
+          accion.idempleado = this.loginService.personas.idusuario;
+          console.log(this.loginService.personas.idusuario + ' acc ' + accion.idempleado);
           this.accionesService.validarJefeMant(accion.idmantenimiento, accion.idempleado).subscribe(response => {
             this.requests = this.requests.filter(req => req !== accion)
+            this.cargarMantenimientos();
           });
           Swal.fire(
             'Validado!',
@@ -254,8 +272,11 @@ export class MantenimientosComponent implements OnInit {
             'success'
           )
         }if (accion.estado == 3) {
+          accion.idempleado = this.loginService.personas.idusuario;
+          console.log(this.loginService.personas.idusuario + ' acc ' + accion.idempleado);
           this.accionesService.validarFinalizado(accion.idmantenimiento, accion.idempleado).subscribe(response => {
             this.requests = this.requests.filter(req => req !== accion)
+            this.cargarMantenimientos();
           });
           Swal.fire(
             'Finalizado!',
