@@ -30,7 +30,8 @@ export class VinculoCursoComponent implements OnInit {
 loadData: VinculoCurso[]= [];
 vincursof: VinculoCurso = new VinculoCurso();
 bbc:VCpost = new VCpost();
- 
+ p:number = 1;
+
   constructor(private service:VinculoCursoService , private ruter: Router) { }
 
   ngOnInit() {
@@ -124,9 +125,9 @@ bbc:VCpost = new VCpost();
     )  
   }
   loadPersona(vicurso: VinculoCurso): void {
-    alert(vicurso.idconductor);
+  
     this.a = vicurso.idconductor;
-    alert(vicurso.idcurso);
+   
     this.b = vicurso.idcurso;
     this.service.getId(vicurso.idcurso,vicurso.idconductor).subscribe((data) => {
       this.loadData = data['P_CURSOR'];
@@ -148,8 +149,7 @@ bbc:VCpost = new VCpost();
       if (result.value) {
          this.service.editVCurso(this.b,this.a, vnc).subscribe((data) => {
       this.vinc = data;
-      
-      alert('Registro modificado correctamente...!');
+
       this.ngOnInit();
     })
         Swal.fire(
