@@ -38,25 +38,32 @@
             <th scope="col">Fecha</th>
             <th scope="col" *ngIf="tipo== 1 || tipo == 0">Validaciones</th>
             <th scope="col">Condición</th>
-            <th scope="col" colspan="2">Opcion</th>
+            <th scope="col">Opcion</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let request of requests; let i = index">
-            <td *ngIf="request.estado != 0">{{i+1}}</td>
-            <td *ngIf="request.estado != 0">{{'nropadron: '+request.bus+'  -  placa: '+request.placa}}</td>
-            <td *ngIf="request.estado != 0">{{request.conductor}}</td>
-            <td *ngIf="request.estado != 0">{{request.fechainicio}}</td>
-            <td *ngIf="request.estado != 0 && (request.tipomantenimiento==0||request.tipomantenimiento==1)">
-                <button *ngIf="request.estado != 4 && (request.tipomantenimiento==1||request.tipomantenimiento==0)" (click)="validarMant(request)" type="button" class="btn btn-primary">Validar</button></td>
-            <td *ngIf="request.estado != 0">
+        <tr *ngFor="let request of requests; let i = index" class="filaMant">
+            <td *ngIf="request.estado != 0" data-toggle="modal" data-target="#detalleMant"
+                (click)="cargarMantId(request.idmantenimiento);">{{i+1}}</td>
+            <td *ngIf="request.estado != 0" data-toggle="modal" data-target="#detalleMant"
+                (click)="cargarMantId(request.idmantenimiento);">
+                {{'nropadron: '+request.bus+'  -  placa: '+request.placa}}</td>
+            <td *ngIf="request.estado != 0" data-toggle="modal" data-target="#detalleMant"
+                (click)="cargarMantId(request.idmantenimiento);">{{request.conductor}}</td>
+            <td *ngIf="request.estado != 0" data-toggle="modal" data-target="#detalleMant"
+                (click)="cargarMantId(request.idmantenimiento);">{{request.fechainicio}}</td>
+            <td *ngIf="request.estado != 0 && (request.tipomantenimiento==0||request.tipomantenimiento==1)"
+                style="text-align: center;">
+                <button
+                    *ngIf="request.estado != 4 && (request.tipomantenimiento==1||request.tipomantenimiento==0) else elseBlock"
+                    (click)="validarMant(request)" type="button" class="btn btn-primary">Validar</button></td>
+            <ng-template #elseBlock>
+                <i class="fas fa-check-circle" style="color: greenyellow; width: 40px; height: 40px;"></i>
+            </ng-template>
+
+            <td *ngIf="request.estado != 0" data-toggle="modal" data-target="#detalleMant"
+                (click)="cargarMantId(request.idmantenimiento);">
                 {{request.estado==1?"Creado":request.estado==2?"Pendiente":request.estado==3?"En Proceso":request.estado==4?"Finalizado":request.estado==0?"deshabilitado":"no tiene estado definido"}}
-            </td>
-            <td *ngIf="request.estado != 0">
-                <a style="color: #FFB02F;size: 10px;cursor: pointer;" data-toggle="modal" data-target="#update"
-                    (click)="cargarId(request.idmantenimiento)">
-                    <i class="fas fa-pencil-alt"></i>
-                </a>
             </td>
             <td *ngIf="request.estado != 0">
                 <a style="margin-left: 15px;color: red;cursor: pointer;" (click)="eliminarMant(request)">
@@ -81,16 +88,6 @@
             </div>
             <div class="modal-body">
                 <form #accionesForm="ngForm">
-                    <div class="form-group">
-                        <label for="idEmpleado">Elija empleado</label>
-                        <select class="form-control" [(ngModel)]="mantenimientos.idEmpleado" name="idEmpleado">
-                            <option value="" disabled>Seleccione su opcion</option>
-                            <option *ngFor="let cat of getemps" [value]="cat.IDEMPLEADO"
-                                (click)="cambiarUserCreate(cat.NOMBRE)">
-                                {{cat.NOMBRE}}
-                            </option>
-                        </select>
-                    </div>
                     <div class="form-group">
                         <label for="idVehiculo">Elija Bus</label>
                         <select class="form-control" [(ngModel)]="mantenimientos.idVehiculo" name="idVehiculo">
@@ -132,7 +129,8 @@
                             </h5>
                             <div class="card-body" *ngIf="act.idaccionpadre==null && act.estado==1">
                                 <div *ngFor="let ac of getacts">
-                                    <div class="inputCheckMant"  *ngIf="ac.idaccionpadre==act.idmantacciones && act.tipo != 3 && ac.estado==1">
+                                    <div class="inputCheckMant"
+                                        *ngIf="ac.idaccionpadre==act.idmantacciones && act.tipo != 3 && ac.estado==1">
                                         <input *ngIf="ac.idaccionpadre==act.idmantacciones && ac.estado==1"
                                             id="{{'acc_' + ac.idmantacciones}}" name="{{'acc_' + ac.idmantacciones}}"
                                             type="checkbox" />
@@ -144,17 +142,18 @@
                                             <label for="" class="tit_acc_tec">{{ac.nombre + '      '}}</label>
                                             <br>
                                             <input *ngIf="ac.idaccionpadre==act.idmantacciones && ac.estado==1"
-                                                type="radio" id="{{'option_one_' + ac.idmantacciones}}" name="{{'option_' + ac.idmantacciones}}"
-                                                value="1">
+                                                type="radio" id="{{'option_one_' + ac.idmantacciones}}"
+                                                name="{{'option_' + ac.idmantacciones}}" value="1">
                                             <label *ngIf="ac.idaccionpadre==act.idmantacciones && ac.estado==1"
                                                 for="{{'option_one_' + ac.idmantacciones}}">A</label>
                                             <input *ngIf="ac.idaccionpadre==act.idmantacciones && ac.estado==1"
-                                                type="radio" id="{{'option_two_' + ac.idmantacciones}}" name="{{'option_' + ac.idmantacciones}}"
-                                                value="2">
+                                                type="radio" id="{{'option_two_' + ac.idmantacciones}}"
+                                                name="{{'option_' + ac.idmantacciones}}" value="2">
                                             <label *ngIf="ac.idaccionpadre==act.idmantacciones && ac.estado==1"
                                                 for="{{'option_two_' + ac.idmantacciones}}">B</label>
                                             <input *ngIf="ac.idaccionpadre==act.idmantacciones && ac.estado==1"
-                                                type="radio" id="{{'option_three_' + ac.idmantacciones}}" name="{{'option_' + ac.idmantacciones}}" value="3" checked>
+                                                type="radio" id="{{'option_three_' + ac.idmantacciones}}"
+                                                name="{{'option_' + ac.idmantacciones}}" value="3" checked>
                                             <label *ngIf="ac.idaccionpadre==act.idmantacciones && ac.estado==1"
                                                 for="{{'option_three_' + ac.idmantacciones}}">C</label>
                                         </div>
@@ -200,5 +199,53 @@
         </div>
     </div>
 </div>-->
+
+<div class="modal fade" id="detalleMant" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" *ngFor="let mant of mantid">
+                <div class="container" style="width: 100%;">
+                    <h4 class="d-inline mx-3 my-3">Usuario creador:</h4>
+                    <h4 class="d-inline mx-3 my-3">{{mant.usercreate}}</h4>
+                </div>
+                <div class="container" style="width: 100%;position: relative;">
+                    <h4 class="float-left mx-3 my-3" style="margin-top: 1%;">Estado:</h4>
+                    <div [ngSwitch]="mant.estado" class="mx-3 my-3 float-left">
+                        <div *ngSwitchCase="1">
+                            <p class="btn btn-outline-primary">
+                                Creado
+                            </p>
+                        </div>
+                        <div *ngSwitchCase="2">
+                            <p class="btn btn-outline-danger">
+                                Pendiente
+                            </p>
+                        </div>
+                        <div *ngSwitchCase="3">
+                            <p class="btn btn-outline-warning">
+                                En proceso
+                            </p>
+                        </div>
+                        <div *ngSwitchCase="4">
+                            <p class="btn btn-outline-success">
+                                Finalizado
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
