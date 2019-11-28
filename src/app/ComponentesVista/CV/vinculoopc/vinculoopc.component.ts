@@ -168,7 +168,11 @@ export class VinculoopcComponent implements OnInit {
       );
     }
    }
-
+   selecfoto(event,index){
+    if (event) {
+      
+    }
+   }
    alerto(){
     Swal.fire({
       title: 'Seguro desea Crear?',
@@ -177,13 +181,13 @@ export class VinculoopcComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Si, crear it!'
     }).then((result) => {
       if (result.value) {
         
         Swal.fire(
-          'Vinculo Modificado!',
-          'Your file has been modified.',
+          'Vinculo Creado!',
+          'Accion realizada con exito .',
           'success'
         )
         this.crear();

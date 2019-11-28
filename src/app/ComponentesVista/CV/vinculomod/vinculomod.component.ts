@@ -187,18 +187,18 @@ export class VinculomodComponent implements OnInit {
    alertaa(){
     Swal.fire({
       title: 'Seguro desea modificar?',
-      text: "You won't be able to revert this!",
+      text: "Ingeniero baboso!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Si, modificar !'
     }).then((result) => {
       if (result.value) {
         
         Swal.fire(
           'Vinculo Modificado!',
-          'Your file has been modified.',
+          'Accion realizada con exito.',
           'success'
         )
       }
@@ -220,9 +220,12 @@ export class VinculomodComponent implements OnInit {
     this.cont++*/
    }
 
-   selecfoto(event){
+   selecfoto(event,i){
+    
       this.foto = event.target.files[0];
       console.log(this.foto)
-
+      if (event) {
+        event[i].checked = !event[i].checked;
+      }
    }
 }
