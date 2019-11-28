@@ -1,7 +1,7 @@
 export class VinculoCurso{
     idcurso:number;
-     idconductor:number;
-     estado: number;
+    idconductor:number;
+    estado: number;
     fechaemision: Date;
     fechacaducidad: Date;
     resultado: string;
@@ -9,7 +9,7 @@ export class VinculoCurso{
 export class VCpost{
     idcurso:number;
     nombrecurso: string;
-    nombre: string;
+    nombreconductor: string;
     idconductor: number;
     estado: number;
     fechaemision: Date;

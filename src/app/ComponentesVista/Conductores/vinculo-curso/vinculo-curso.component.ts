@@ -14,6 +14,8 @@ export class VinculoCursoComponent implements OnInit {
   con:con = new con()
   cur:cur = new cur()
   
+  selectcur:VCpost[];
+  selectcon:VCpost[];
 
   /// Variables //////////////77
   feachae:String
@@ -22,52 +24,65 @@ export class VinculoCursoComponent implements OnInit {
   vinc: VinculoCurso = new VinculoCurso()
   /// Objetos ///////0 ////////
   vincurso : VCpost[];
+   a:number;
+   b:number;
   lisConduc: Conductores[];
-
-  /// Arreglos /////////////7
+loadData: VinculoCurso[]= [];
+vincursof: VinculoCurso = new VinculoCurso();
+bbc:VCpost = new VCpost();
+ 
   constructor(private service:VinculoCursoService , private ruter: Router) { }
 
   ngOnInit() {
     this.listar();
     this.listar1();
+    this.selcur();
+    this.selcon();
     
   }
   listar1(){
     this.service.getVCursos().subscribe( (data)=>{
-      console.log(data)
+      
     this.cur=data["p_cursor2"];
-    console.log(this.cur)
+
     })
   }
   
   listar(){
     this.service.getVCursos().subscribe( (data)=>{
-      console.log(data)
+
       this.vincurso=data["p_cursor"];
-      console.log(this.vincurso + "hi")
+ 
     }
     );
     
+    
+  }
+  selcur(){
+    this.service.getSelCur().subscribe((data)=>{
+      this.selectcur=data["p_cursor"];
+    })
+  }
+  selcon(){
+    this.service.getSelCon().subscribe((data)=>{
+      this.selectcon=data["p_cursor"];
+    })
   }
   getConductor() {
     
     this.service.getNombreConductor().subscribe(
       (data) => {
         this.con = data['p_conductor'];
-        console.log(this.con)
+   
       }
     );
   }
-  crear(){
-    /*console.log(this.vincurso)
-    var fecemi = this.vincurso.fechaemision.split("-")
-    var fecadu = this.vincurso.fechacaducidad.split("-")
-    this.vincurso.fechaemision=fecemi[2]+"-"+fecemi[1]+"-"+fecemi[0]
-    this.vincurso.fechacaducidad=fecadu[2]+"-"+fecadu[1]+"-"+fecadu[0]
-    */
+  crearvinculo(){
 
+  
+ 
     this.service.createVCurso(this.vinc).subscribe(data =>{
-        console.log(data)
+        
       this.listar();
       Swal.fire(
       'Creado!',
@@ -79,62 +94,90 @@ export class VinculoCursoComponent implements OnInit {
     
   }
   
-  upt(x:number,y:number ){
-    /*this.vincurso.idcursos=x;
-    this.vincurso.idconductor=y;
-    console.log(this.vincurso)
-    this.service.uptVCursos(this.vincurso).subscribe(data => {
-  
-      this.listar()
-      Swal.fire(
-        'Eliminado!',
-        'El Vinculo ha sido Eliminado',
-        'success'
-      )
-      
-    }
-    );
+  upt(vinculo:VinculoCurso ){
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Esta accion no se podra revertir!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar!'
+    }).then((result) => {
+      if (result.value) {
+        var x = vinculo.idcurso;
+        var y = vinculo.idconductor;  
     
+        this.service.deleteVCursos(vinculo).subscribe(data => {
+          this.vincurso = this.vincurso.filter(req=>req!==this.vinc)
+          this.listar()
+        });
+        Swal.fire(
+          'Eliminado!',
+          'El vinculo ha sido eliminado',
+          'success'
+        )
+      }
    
-    */
+    }
+
+    )  
   }
-  /*
-  read(x:number,y:number){
-    localStorage.setItem("curso",x.toString())
-    localStorage.setItem("conductor",y.toString())
-    var fecemi;
-    var fecadu;
-    let a=  vincurso.fechaemision;
-    this.service.readVcurso(x,y).subscribe(data =>{
-      this.vincurso=data["P_CURSOR"][0];
-      fecemi = a.split("-")      
-      fecadu = this.vincurso.fechacaducidad.split("-")
-      this.vincurso.fechaemision=fecemi[2]+"
-      -"+fecemi[1]+"-"+fecemi[0]
-      this.vincurso.fechacaducidad=fecadu[2]+"-"+fecadu[1]+"-"+fecadu[0]
-      console.log(this.vincurso)
+  loadPersona(vicurso: VinculoCurso): void {
+    alert(vicurso.idconductor);
+    this.a = vicurso.idconductor;
+    alert(vicurso.idcurso);
+    this.b = vicurso.idcurso;
+    this.service.getId(vicurso.idcurso,vicurso.idconductor).subscribe((data) => {
+      this.loadData = data['P_CURSOR'];
+   
     })
-  }*/
-  edit(vincucur:VCpost){
-    console.log();
-    //cursos.fechainicio = Date.parse(this.feachai);
-    vincucur.idcurso=this.id;
-    let cruso = Number(localStorage.getItem("curso"));
-    let cronductor = Number(localStorage.getItem("conductor"));
-    console.log(vincucur)
-    
-    this.service.editVCurso(vincucur,cruso,cronductor).subscribe(data => {
-
-    this.listar();
-    });
-         Swal.fire(
-            'Editado!',
-            'El Curso ha sido Editado',
-            'success'
-          )
-  
   }
 
+  Actualizar(vnc: VinculoCurso) {
+
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Esta accion no se podra revertir!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar!'
+    }).then((result) => {
+      if (result.value) {
+         this.service.editVCurso(this.b,this.a, vnc).subscribe((data) => {
+      this.vinc = data;
+      
+      alert('Registro modificado correctamente...!');
+      this.ngOnInit();
+    })
+        Swal.fire(
+          'Eliminado!',
+          'El vinculo ha sido eliminado',
+          'success'
+        )
+      }
+   
+    }
+
+    ) 
+  }
+  Limpiar(){
+    this.ngOnInit();
+    (<HTMLInputElement>document.getElementById("buscar1")).value = "";
+    (<HTMLInputElement>document.getElementById("caja_estado")).value = "Seleccione Estado";
+
+  }
+  getname(c:VCpost) {
+    var x = this.bbc.nombrecurso;
+    this.service.getName(x).subscribe(
+      (data) => {
+        this.vincurso = data['P_CURSOR'];
+        
+      }
+    );
+  }
 
 
 }

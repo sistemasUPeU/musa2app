@@ -41,6 +41,7 @@ import { PropiComponent } from './ComponentesVista/Reportes/propi/propi.componen
 import { VincComponent } from './ComponentesVista/Reportes/vinc/vinc.component';
 import { MantenimientosComponent } from './ComponentesVista/Mantenimiento/mantenimientos/mantenimientos.component';
 import { SoatComponent } from './ComponentesVista/Conductores/soat/soat.component';
+
 //import { NgxPopper } from 'angular-popper';
 import { VehiculosComponent } from 'src/app/ComponentesVista/CV/vehiculos/vehiculos.component';
 import { ContrasenaComponent } from './ComponentesVista/Seguridad/contrasena/contrasena.component';
@@ -50,6 +51,7 @@ import { AnularventaComponent } from './ComponentesVista/Ventas/anularventa/anul
 import { RegistrarcajaComponent } from './ComponentesVista/Ventas/registrarcaja/registrarcaja.component';
 import { VinculoproComponent } from './ComponentesVista/CV/vinculopro/vinculopro.component';
 import { VinculoCursoComponent } from './ComponentesVista/Conductores/vinculo-curso/vinculo-curso.component'
+import {NgxPaginationModule} from 'ngx-pagination'
 
 
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -117,7 +119,8 @@ const routes: Routes = [
     //FontAwesomeModule,
     FormsModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
