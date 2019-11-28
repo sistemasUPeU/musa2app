@@ -35,13 +35,13 @@ export class OpcionesService {
     return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/getOPC/`+c, {headers: this.agregarAutorizacion()});
   }
   listaropciones2(): Observable<Opciones[]>{
-     return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/getOpciones/`, {headers: this.agregarAutorizacion()});
+     return this.http.get<Opciones[]>(`${ environment.apiUrl }/opciones/`, {headers: this.agregarAutorizacion()});
    }
   crearopciones(opciones:Opciones){
     return this.http.post<Opciones>(`${ environment.apiUrl }/opciones/add`,opciones, {headers: this.agregarAutorizacion()});
   }
   deleteopciones(opc:Opciones){
-    return this.http.put<Opciones>(`${ environment.apiUrl }/opciones/Opc/`,opc ,{headers: this.agregarAutorizacion()});
+    return this.http.put<Opciones>(`${ environment.apiUrl }/opciones/Opc/`+opc ,{headers: this.agregarAutorizacion()});
 
   }
   editar(opciones:Opciones){

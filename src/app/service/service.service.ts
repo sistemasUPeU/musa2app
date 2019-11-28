@@ -39,12 +39,12 @@ export class ServiceService {
   
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json'});
   constructor(private http: HttpClient, private loginService:LoginService) { }
-  Url = 'http://localhost:8081/roles/'
-  Url2 = 'http://localhost:8081/usuarios/'
-  Url3 = 'http://localhost:8081/ru'
-  Url4 = 'http://localhost:8081/usop/'
-  Url5 = 'http://localhost:8081/cg/'
-  Url6 = 'http://localhost:8081/reporte/'
+  Url = `${ environment.apiUrl }/roles/`
+  Url2 =`${ environment.apiUrl }/usuarios/`
+  Url3 =`${ environment.apiUrl }/ru/`
+  Url4 =`${ environment.apiUrl }/usop/`
+  Url5 =`${ environment.apiUrl }/cg/`
+  Url6 =`${ environment.apiUrl }/reporte/`
   roles:RolesF;
   private agregarAutorizacion1(){
     let token = this.loginService.token;
