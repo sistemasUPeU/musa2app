@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./propietarios.component.css']
 })
 export class PropietariosComponent implements OnInit {
+  p:number = 1;
   idpropietario:number;
   persona:Personas = new Personas();
   personas:Personas[] = []; 
