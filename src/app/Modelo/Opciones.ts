@@ -1,5 +1,4 @@
 export class Opciones{
-	  idopciones: number;
 	  IDOPCION: number;
 	  NOMBRE: string;
 	  DESCRIPCION: string;

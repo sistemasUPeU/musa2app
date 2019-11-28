@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Vinculos, Vinculo, Vinupd } from 'src/app/Modelo/Vinculos';
 import { ServiceService } from 'src/app/service/service.service';
 import * as moment from 'moment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vinculopro',
@@ -61,7 +62,7 @@ valor(tipo2:number,id:number){
   console.log(tipo2);
   console.log(id);
   localStorage.setItem("idvinculo",id.toString());
-  localStorage.setItem("tipo",tipo2.toString());
+  localStorage.setItem("tipo",'2');
   this.router.navigate(['/home/vinculomod']);
 }
 
@@ -76,15 +77,56 @@ Modo(){
  /// Metodo para modificar el estado de vinculo 
 
  eliminar(idvinculo: number, estadito: number){
-   alert(estadito + " " + idvinculo)
+
    this.vincu.estado = estadito;
    this.vincu.idvinculo= idvinculo;
    this.service.uptEstadovin(this.vincu).subscribe(data => {
      console.log(this.vincu)
-     alert(data["P_MSGERROR"])
-     alert("lo lograste")
      this.listar()
    })
+ }
+
+ alerta(idvinculo: number, estadito: number){
+  if(estadito == 0){
+    Swal.fire({
+      title: 'Seguro desea Renovar Vinculo?',
+      text: "Ingeniero baboso!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, renovar !'
+    }).then((result) => {
+      if (result.value) {
+        this.eliminar(idvinculo, estadito)
+        Swal.fire(
+          'Vinculo Renovado!',
+          'Accion realizada con exito.',
+          'success'
+        )
+      }
+    })
+  }else{
+    Swal.fire({
+      title: 'Seguro desea Anular Vinculo?',
+      text: "Ingeniero baboso!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, anular !'
+    }).then((result) => {
+      if (result.value) {
+        this.eliminar(idvinculo, estadito)
+        Swal.fire(
+          'Vinculo anulado!',
+          'Accion realizada con exito.',
+          'success'
+        )
+      }
+      
+    })
+  }
  }
  
 }

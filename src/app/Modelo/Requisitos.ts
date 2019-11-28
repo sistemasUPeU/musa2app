@@ -2,6 +2,7 @@ export class Requisitos{
     IDREQUISITO: number;
     NOMBRE: string;
     TIPOREQUISITO: number;
+    ESTADO: number;
 }
 export class RequisitoVinculo {
     IDVINCULO: number;

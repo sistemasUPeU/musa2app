@@ -7,6 +7,7 @@ import { Propietarios } from 'src/app/Modelo/Propietarios';
 import { Vinculo, VincuRequi, Contador } from 'src/app/Modelo/Vinculos';
 import { Requisitos } from 'src/app/Modelo/Requisitos';
 import { empleado } from 'src/app/Modelo/empleados';
+import Swal from 'sweetalert2';
 
 
 
@@ -53,7 +54,6 @@ export class VinculoopcComponent implements OnInit {
     this.cargar = false;
     this.tipo = Number(localStorage.getItem("tipo"));
     this.Tipo(this.tipo)
-    alert(this.tipo)
     this.getConductor();
     this.getPropietario();
     this.getVehiculo();
@@ -62,7 +62,6 @@ export class VinculoopcComponent implements OnInit {
     this.service.getcontvin().subscribe(
       (data) => {
         this.cont = data[0].CONTADOR; 
-        this.cont++
       }
       );
   }
@@ -156,12 +155,47 @@ export class VinculoopcComponent implements OnInit {
    crear(){
     var x = 1;
     if(this.tipo = x){
-    this.service.CreateVinRequi(+this.tipo,this.vinrequi).subscribe(data =>{
+    this.service.CreateVinRequi(+this.tipo,this.cont).subscribe(data =>{
       this.router.navigate(['/home/vinculo']);
      // this.router.navigate(['/home/vinculo']);
       }
     );
+    }else{
+      this.service.CreateVinRequi(+this.tipo,this.cont).subscribe(data =>{
+        this.router.navigate(['/home/vinculopropietario']);
+       // this.router.navigate(['/home/vinculo']);
+        }
+      );
     }
+   }
+   selecfoto(event,index){
+    if (event) {
+      
+    }
+   }
+   alerto(){
+    Swal.fire({
+      title: 'Seguro desea Crear?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, crear it!'
+    }).then((result) => {
+      if (result.value) {
+        
+        Swal.fire(
+          'Vinculo Creado!',
+          'Accion realizada con exito .',
+          'success'
+        )
+        this.crear();
+    }else{
+      this.regresar();
+    }
+      
+    })
    }
    siguiente(){
      this.loading=true
@@ -186,7 +220,7 @@ export class VinculoopcComponent implements OnInit {
    elimininar(id: number){
      console.log("delete")
      this.service.DeleteVinculo(+id).subscribe(data => {
-        alert("se borro")
+        
      })
    }
    sumador(){

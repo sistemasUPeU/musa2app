@@ -207,11 +207,11 @@
         </button>
       </div>
       <div class="form-row" id="modal-body"  >
-          <div class="form-group col-md-5" style="margin-left: 20px;">
+          <div class="form-group col-md-5" style="margin-right: 10px;">
               <label for="">Dni Pesona: </label>
               <input id="user" type="text" class="form-control" [(ngModel)]="cond.idpersona" disabled>
             </div>
-        <div class="form-group col-md-5" style="margin-left: 20px;">
+        <div class="form-group col-md-5" style="margin-right: 10px;">
           <label for="">Seleccione Tipo: </label>
           <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="cond.tipooperador" id="caja_rol">
             <option value=1>Conductor</option>
@@ -219,11 +219,11 @@
             <option value=2>Conductor cobrador</option>
           </select>
         </div>
-        <div class="form-group col-md-5" style="margin-left: 20px;">
+        <div class="form-group col-md-5" style="margin-right: 10px;">
           <label for="">Codigo: </label>
           <input id="user" type="text" class="form-control" [(ngModel)]="cond.codigo">
         </div>
-        <div class="form-group col-md-5" style="margin-left: 20px;">
+        <div class="form-group col-md-5" style="margin-right: 10px;">
           <label for="">Seleccione Estado: </label>
           <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="cond.estado" id="caja_rol">
             <option value=1>Inactivo</option>
@@ -232,12 +232,12 @@
           </select>
         </div>
         
-        <div class="form-group col-md-5" style="margin-left: 20px;">
+        <div class="form-group col-md-5" style="margin-right: 10px;">
           <label for="">Nro Licencia:</label>
           <input id="user" type="text" class="form-control" [(ngModel)]="cond.nrolicencia">
 
         </div>
-        <div class="form-group col-md-5" style="margin-left: 20px;">
+        <div class="form-group col-md-5" style="margin-right: 10px;">
           <label for="">Estado del Curso Vial: </label>
           <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="cond.cursovial" id="caja_rol">
             <option value=1>Aprobo</option>
@@ -245,25 +245,25 @@
           </select>
 
         </div>
-        <div class="form-group col-md-5" style="margin-left: 20px;">
+        <div class="form-group col-md-5" style="margin-right: 10px;">
           <label for="">Fecha Inicial de la Licencia: </label>
           <input id="user" type="date" class="form-control" [(ngModel)]="cond.linc_fechainicio">
         </div>
 
-        <div class="form-group col-md-5" style="margin-left: 20px;">
+        <div class="form-group col-md-5" style="margin-right: 10px;">
           <label for=""> Fecha Final de la Licencia: </label>
           <input id="user" type="date" class="form-control" [(ngModel)]="cond.linc_fechafin">
         </div>
-        <div class="form-group col-md-5" style="margin-left:20px;">
+        <div class="form-group col-md-5" style="margin-right: 10px;">
           <label for="">Ingrese clase: </label>
           <input id="user" type="text" class="form-control" [(ngModel)]="cond.clase">
         </div>
-        <div class="form-group col-md-5" style="margin-left: 20px;">
+        <div class="form-group col-md-5" style="margin-right: 10px;">
           <label for="">Ingrese Categoria: </label>
           <input id="user" type="text" class="form-control" [(ngModel)]="cond.categoria">
         </div>
       </div>
-      <div class="modal-footer" style="margin-left: 20px;">
+      <div class="modal-footer" style="margin-right: 10px;">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="editar(cond)">Modificar</button>
       </div>
