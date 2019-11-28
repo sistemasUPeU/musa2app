@@ -17,6 +17,8 @@ export class AccionesComponent implements OnInit {
   getcat: any;
   tipo:number;
 
+  page:number=1;
+
   constructor(private accionesService:MantenimientoService, private router:Router, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
@@ -35,6 +37,7 @@ export class AccionesComponent implements OnInit {
           }
         )}
     })
+    
   }
 
   actualizar(accion:MantAcciones):void{
