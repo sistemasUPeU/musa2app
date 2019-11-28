@@ -36,8 +36,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let request of requests; let i = index; let i = index">
-        <td *ngIf="request.estado == 1">{{i+1}}</td>
+      <tr *ngFor="let request of requests | paginate: {itemsPerPage:6, currentPage: page}; let f=index">
+        <td>{{f+1}}</td>
         <td *ngIf="request.estado == 1">{{request.nombre}}</td>
         <td *ngIf="request.estado == 1">{{request.descripcion}}</td>
         <td *ngIf="request.estado == 1">{{request.orden}}</td>
@@ -54,6 +54,8 @@
       </tr>
     </tbody>
   </table>
+
+  <pagination-controls (pageChange)="page=$event" previousLabel="Anterior" nextLabel="Siguiente" style="margin: auto;"> </pagination-controls>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
