@@ -24,18 +24,22 @@
     </div> 
     <!-- Buscador Estado -->
     <div id="estado">
-        <select class="custom-select" id="inputGroupSelect01" id="caja_estado" [(ngModel)]="usuario_opciones.estado">
+        <select class="custom-select" id="inputGroupSelect01" id="caja_estado" [(ngModel)]="usuario_opciones.estado" (click)="getUsOpE()">
                 <option selected>Seleccione Estado</option>
                 <option value="1">Activo</option>
                 <option value="0">Inactivo</option>
         </select>
-        <button id="listar" type="button" class="btn btn-info"  (click)="getUsOpE()" ><i class="fas fa-check"></i></button>    
     </div>
     <!-- Boton Limpiar -->
     <button type="button" class="btn btn-success" id="limpiar"  (click)="limpiar()">Limpíar</button>
 
     <br><br>
     <!-- Tabla -->
+    <div style="text-align: center; ">
+      <pagination-controls (pageChange)="ah=$event" previousLabel="Anterior" nextLabel="Siguiente" style="margin: auto;"> </pagination-controls>
+
+    </div>
+
     <table class="table" style="text-align: center;">
             <thead class="thead-dark">
               <tr>
@@ -47,8 +51,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let usop of listarusop" >
-                <td scope="row">1</td>
+              <tr *ngFor="let usop of listarusop  | paginate: {itemsPerPage:6, currentPage: ah}; let f=index" >
+                <td scope="row">{{f+1}}</td>
                 <td>{{usop.login}}</td>
                 <td>{{usop.nombre}}</td>
                 <td>{{usop.estado}}</td>
@@ -57,7 +61,7 @@
                 </tr>
             </tbody>
           </table>
-
+          
 </div>
        <!-- Modal Modificar Usuario -->
 <div class="modal fade" id="ModificarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

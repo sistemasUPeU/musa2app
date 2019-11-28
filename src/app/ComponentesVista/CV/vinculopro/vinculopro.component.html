@@ -1,67 +1,67 @@
 <div id="caja1">
-    <br>
-  <h1>VINCULO PROPIETARIOS</h1>
-  <!-- Boton registrar rol -->
-  <button id="register" value='1' data-toggle="modal" data-target="#RegisterRol" (click)="Modo()" >
-    <i class="fas fa-user-plus"></i>
-    <p style="margin-top: -15px; margin-left: -20px;">Registrar Vinculo </p>
-  </button>
   <br>
-  <br>
-  <!-- div parte inferior -->
-  <div id="caja2">
-    <!-- div parte superior -->
-    <div id="caja3">
-        <!-- Buscador -->
-        <p id="p">Buscar por: </p>
-        <div class="input-group" id="caja_search">
-            <span class="input-group-prepend">
-            </span>
-            <input class="form-control bg-transparent form-control is-valid" val='1' type="search" placeholder=" Ingrese Nombre" id="buscar1" />
-            <span class="input-group-append">
-                <div class="input-group-text bg-transparent " id="buscar2">
-                <i class="fa fa-search"></i>
-                </div>
-            </span>
-        </div>
-        <!-- Selecionar por Tipo -->
-        <div id="rol">
-          <select class="custom-select" id="tipovi" id="caja_rol" [(ngModel)]="tipo" (click)="listar()">
-                  <option selected>Seleccione Tipo</option>
-                  <option value="2">Propietarios</option>
+<h1>VINCULO PROPIETARIOS</h1>
+<!-- Boton registrar rol -->
+<button id="register" value='1' data-toggle="modal" data-target="#RegisterRol" (click)="Modo()" >
+  <i class="fas fa-user-plus"></i>
+  <p style="margin-top: -15px; margin-left: -20px;">Registrar Vinculo </p>
+</button>
+<br>
+<br>
+<!-- div parte inferior -->
+<div id="caja2">
+  <!-- div parte superior -->
+  <div id="caja3">
+      <!-- Buscador -->
+      <p id="p">Buscar por: </p>
+      <div class="input-group" id="caja_search">
+          <span class="input-group-prepend">
+          </span>
+          <input class="form-control bg-transparent form-control is-valid" val='1' type="search" placeholder=" Ingrese Nombre" id="buscar1" />
+          <span class="input-group-append">
+              <div class="input-group-text bg-transparent " id="buscar2">
+              <i class="fa fa-search"></i>
+              </div>
+          </span>
+      </div>
+      <!-- Selecionar por Tipo -->
+      <div id="rol">
+        <select class="custom-select" id="tipovi" id="caja_rol" [(ngModel)]="tipo" (click)="listar()">
+                <option selected>Seleccione Tipo</option>
+                <option value="2">Propietarios</option>
+        </select>
+    </div>
+      <!-- Buscador Estado -->
+      <div id="estado">
+          <select class="custom-select" id="inputGroupSelect01"[(ngModel)]="estado" (click)="listar()" id="caja_estado">
+                  <option selected>Seleccione Estado</option>
+                  <option selected value="1">Activo</option>
+                  <option selected value="0">Inactivo</option>
           </select>
       </div>
-        <!-- Buscador Estado -->
-        <div id="estado">
-            <select class="custom-select" id="inputGroupSelect01"[(ngModel)]="estado" (click)="listar()" id="caja_estado">
-                    <option selected>Seleccione Estado</option>
-                    <option selected value="1">Activo</option>
-                    <option selected value="0">Inactivo</option>
-            </select>
-        </div>
-        <!-- Boton Limpiar -->
-        <button type="button" class="btn btn-success" id="limpiar">Limpíar</button>
-    </div>
-    <br>
-    <!-- Tabla -->
-    <table class="table" style="text-align: center; width: 900px; margin: 0 auto;">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col" style="width: 250px;">Nombres</th>
-                <th scope="col">Fecha Inicio</th>
-                <th scope="col">Fecha Fin</th>
-                <th scope="col" colspan="2" >Opciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let vin of listavinculos; let i = index">
-                <td scope="row">{{ i + 1}}</td>
-                <td>{{vin.NOMBRE}}{{vin.APELLIDO}}</td>
-                <td>{{vin.FECHAINICIO}}</td>
-                <td >{{vin.FECHAFIN}}</td>
-                <td ><i id="modificar" (click)="valor(vin.TIPOVINCULO,vin.IDVINCULO)" class="fas fa-edit" style="color: blue; margin-left: -60px;" ></i>  <i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"  (click)="eliminar(vin.IDVINCULO, vin.ESTADO)"></i></td>
-              </tr>
-            </tbody>
-          </table>
+      <!-- Boton Limpiar -->
+      <button type="button" class="btn btn-success" id="limpiar">Limpíar</button>
   </div>
+  <br>
+  <!-- Tabla -->
+  <table class="table" style="text-align: center; width: 900px; margin: 0 auto;">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col" style="width: 250px;">Nombres</th>
+              <th scope="col">Fecha Inicio</th>
+              <th scope="col">Fecha Fin</th>
+              <th scope="col" colspan="2" >Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let vin of listavinculos; let i = index">
+              <td scope="row">{{ i + 1}}</td>
+              <td>{{vin.NOMBRE}}{{vin.APELLIDO}}</td>
+              <td>{{vin.FECHAINICIO}}</td>
+              <td >{{vin.FECHAFIN}}</td>
+              <td ><i id="modificar" (click)="valor(vin.TIPOVINCULO,vin.IDVINCULO)" class="fas fa-edit" style="color: blue; margin-left: -60px;" ></i>  <i class="fas fa-trash-alt" style="color: red; margin-left: 20px;"  (click)="alerta(vin.IDVINCULO, vin.ESTADO)"></i></td>
+            </tr>
+          </tbody>
+        </table>
+</div>

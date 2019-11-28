@@ -57,13 +57,13 @@
             <td>{{person.APELLIDO}}</td>
             <td>{{person.TIPODOC == 1? 'DNI' : 'Carnet de Ext'}}</td>
             <td>{{person.NRODOC }}</td>
-            <td>{{person.SEXO}}</td>
+            <td>{{person.SEXO == 1? 'F' : 'M'}}</td>
             <td>{{person.FECHANAC | date: 'dd/MM/yyyy'}}</td>
             <td>{{person.DIRECCION}}</td>
-            <td>{{person.ESTADO == 1? 'Activo' : 'NoActivo'}}</td>
+            <td>{{person.ESTADO == 1? 'Activo' : 'No Activo'}}</td>
             <td>{{person.TELEFONO}}</td>
             <button class="btn btn-sm btn-info" ><i class="fas fa-edit"
-                style=" margin-left: -0px;" data-toggle="modal" data-target="#ModificarRol"></i></button>
+                style=" margin-left: -0px;" data-toggle="modal" data-target="#ModificarRol"  (click)="editar(person)"></i></button>
             <button class="btn btn-sm btn-danger" (click)="Eliminar(person.IDPERSONA);"><i class="fas fa-trash-alt"
                 style=" margin-left: +2px;"></i></button>
           </tr>
@@ -76,65 +76,77 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">REGISTRAR PERSONA</h5>
+            <h5 class="modal-title" id="exampleModalLabel" style="right: 3000px;">REGISTRAR PERSONA</h5>
             <hr>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+
           <div class="form-row">
-            <form #f="ngForm" (ngSubmit)="buscar(f)">
+            <form >
               <div class="row col-md-12">
-                <div class="form-group col-md-5">
-                  <label for="inputZip" style="text-align: center;text-align: right;">Nombre</label>
-                  <input type="text" class="form-control" name="nombre" ngModel required #nombre1="ngModel">
+                <div class="form-group col-md-6">
+                  <label for="inputZip" style="height: auto; right: 50px;">Nombre</label>
+                  <input type="text" class="form-control" placeholder=" Ingrese Nombre" maxlength="50" name="nombre" [(ngModel)]="per.nombre">
                 </div>
-                <div class="form-group col-md-5">
+                <div class="form-group col-md-6">
                   <label for="inputZip" style="text-align: center;text-align: right;">Apellido</label>
-                  <input type="text" class="form-control" name="apellido" ngModel required #apellido1="ngModel"
+                  <input type="text" class="form-control" placeholder=" Ingrese Apellido" maxlength="50" name="apellido" [(ngModel)]="per.apellido"
                     id="inputUbigeo">
                 </div>
-                <div class="form-group col-md-5">
-                  <label for="inputZip" style="text-align: center;text-align: right;">TipoDoc</label>
-                  <input type="text" class="form-control" name="tipodoc" ngModel required #tipodoc1="ngModel"
-                    id="inputUbigeo">
+                <div class="form-group col-md-6">
+                  <label for="">Tipo Doc: </label>
+                  <select class="custom-select" name="tipodoc" [(ngModel)]="per.tipodoc"
+                  id="inputUbigeo">
+                    <option value=0>Carnet de Extranjeria</option>
+                    <option value=1>Dni</option>
+                  </select>
                 </div>
-                <div class="form-group col-md-5">
+                <div class="form-group col-md-6">
                   <label for="inputZip" style="text-align: center;text-align: right;">NroDoc</label>
-                  <input type="text" class="form-control" name="nrodoc" ngModel required #nrodoc1="ngModel"
+                  <input type="text" class="form-control" placeholder=" Ingrese NroDocumen" maxlength="8" name="nrodoc" [(ngModel)]="per.nrodoc"
                     id="inputUbigeo">
                 </div>
-                <div class="form-group col-md-5">
-                  <label for="inputZip" style="width: auto; ">Sexo</label>
-                  <input type="text" class="form-control" name="sexo" ngModel required #sexo1="ngModel">
-                </div>
-                <div class="form-group col-md-5">
-                  <label for="inputZip">FechaNac</label>
-                  <input type="text" class="form-control" name="fechanac" ngModel required #fechanac1="ngModel">
-                </div>
-                <div class="form-group col-md-5">
-                  <label for="inputZip">Direccion</label>
-                  <input type="text" class="form-control" name="direccion" ngModel required #direccion1="ngModel">
-                </div>
-                <div class="form-group col-md-5">
-                  <label for="inputZip">Estado</label>
-                  <input type="text" class="form-control" name="estado" ngModel required #estado1="ngModel">
-                </div>
-                <div class="form-group col-md-5">
-                    <label for="inputZip">Telefono</label>
-                    <input type="text" class="form-control" name="telefono" ngModel required #telefono1="ngModel">
+                <div class="form-group col-md-6">
+                    <label for="">Sexo: </label>
+                    <select class="custom-select" name="sexo" [(ngModel)]="per.sexo">
+                      <option value=0>M</option>
+                      <option value=1>F</option>
+                    </select>
                   </div>
-                  <div class="form-group col-md-5">
-                      <label for="inputZip">IdUbigeo</label>
-                      <input type="text" class="form-control" name="idubigeo" ngModel required #idubigeo1="ngModel">
-                    </div>
+                <div class="form-group col-md-6">
+                  <label for="inputZip">FechaNac</label>
+                  <input type="text" class="form-control" placeholder=" Ingrese dd-mm-yy"  name="fechanac" [(ngModel)]="per.fechanac">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputZip">Direccion</label>
+                  <input type="text" class="form-control" placeholder=" Ingrese Direccion" maxlength="50" name="direccion" [(ngModel)]="per.direccion">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="">Estado: </label>
+                  <select class="custom-select"  name="estado" [(ngModel)]="per.estado">
+
+                    <option value=0>Inactivo</option>
+                    <option value=1>Activo</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputZip">Telefono</label>
+                    <input type="text" class="form-control" placeholder=" Ingrese Telefono" maxlength="10" name="telefono" [(ngModel)]="per.telefono">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="">CodDist: </label>
+                    <input type="text" class="form-control" placeholder=" Ingrese Telefono" maxlength="10" name="telefono" [(ngModel)]="per.idubigeo">
+                  </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-danger">REGISTRAR UBIGEO</button>
+                <button type="button" class="btn btn-danger" (click)="save()">Registrar Persona</button>
               </div>
             </form>
           </div>
+          
         </div>
       </div>
     </div>
@@ -156,54 +168,74 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-
         <div class="form-row">
-          <div class="form-group col-md-5">
-            <label for="inputZip" style="text-align: center;text-align: right;">Nombre</label>
-            <input type="text" class="form-control" [(ngModel)]="per.nombre">
-          </div>
-          <div class="form-group col-md-5">
-            <label for="inputZip" style="text-align: center;text-align: right;">Apellido</label>
-            <input type="text" class="form-control" id="inputDepto">
-          </div>
-          <div class="form-group col-md-5">
-            <label for="inputZip" style="text-align: center;text-align: right;">TipoDoc</label>
-            <input type="text" class="form-control" id="inputDepartamento">
-          </div>
-          <div class="form-group col-md-5">
-            <label for="inputZip" style="text-align: center;text-align: right;">NroDoc</label>
-            <input type="text" class="form-control" id="inputprov">
-          </div>
-          <div class="form-group col-md-5">
-            <label for="inputZip" style="text-align: center;text-align: right;">Sexo</label>
-            <input type="text" class="form-control" id="inputZip">
-          </div>
-          <div class="form-group col-md-5">
-            <label for="inputZip" style="text-align: center;text-align: right;">FechaNac</label>
-            <input type="text" class="form-control" id="inputZip">
-          </div>
-          <div class="form-group col-md-5">
-            <label for="inputZip" style="text-align: center;text-align: right;">Distrito</label>
-            <input type="text" class="form-control" id="inputZip">
-          </div>
-          <div class="form-group col-md-5">
-            <label for="inputZip" style="text-align: center;text-align: right;">Estado</label>
-            <input type="text" class="form-control" id="inputZip">
-          </div>
-          <div class="form-group col-md-5">
-            <label for="inputZip" style="text-align: center;text-align: right;">Telefono</label>
-            <input type="text" class="form-control" id="inputZip">
-          </div>
-          <div class="form-group col-md-5">
-            <label for="inputZip" style="text-align: center;text-align: right;">IdUbigeo</label>
-            <input type="text" class="form-control" id="inputZip">
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="edit(per)">Guardar</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <form #f="ngForm" (ngSubmit)="buscar(f)">
+              <div class="row col-md-12">
+                <div class="form-group col-md-6">
+                  <label for="inputZip" style="text-align: center;text-align: right;">Nombre</label>
+                  <input type="text" class="form-control" [(ngModel)]="personaEditar.NOMBRE" name="NOMBRE">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputZip" style="text-align: center;text-align: right;">Apellido</label>
+                  <input type="text" class="form-control" [(ngModel)]="personaEditar.APELLIDO" name="APELLIDO"
+                    >
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="">Tipo Doc: </label>
+                  <select class="custom-select" [(ngModel)]="personaEditar.TIPODOC" name="TIPODOC"
+                  >
+                    <option value=0>Carnet de Extranjeria</option>
+                    <option value=1>Dni</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputZip" style="text-align: center;text-align: right;">NroDoc</label>
+                  <input type="text" class="form-control" [(ngModel)]="personaEditar.NRODOC" name="NRODOC"
+                  >
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="">Sexo: </label>
+                    <select class="custom-select" [(ngModel)]="personaEditar.SEXO" name="SEXO"
+                    >
+                      <option value=0>M</option>
+                      <option value=1>F</option>
+                    </select>
+                  </div>
+                  
+                <div class="form-group col-md-6">
+                  <label for="inputZip">FechaNac</label>
+                  <input type="text" class="form-control" [(ngModel)]="personaEditar.FECHANAC" name="FECHANAC"
+                  >
+                </div>
 
+                <div class="form-group col-md-6">
+                  <label for="inputZip">Direccion</label>
+                  <input type="text" class="form-control" [(ngModel)]="personaEditar.DIRECCION" name="DIRECCION"
+                  >
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="">Estado: </label>
+                  <select class="custom-select" [(ngModel)]="personaEditar.ESTADO" name="ESTADO">
+
+                    <option value=0>Inactivo</option>
+                    <option value=1>Activo</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputZip">Telefono</label>
+                    <input type="text" class="form-control" [(ngModel)]="personaEditar.TELEFONO" name="TELEFONO">
+                  </div>
+                  <div class="form-group col-md-6">
+                      <label for="inputZip">CodDist</label>
+                      <input type="text" class="form-control" >
+                    </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" (click)="editar(personaEditar);">Guardar</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>

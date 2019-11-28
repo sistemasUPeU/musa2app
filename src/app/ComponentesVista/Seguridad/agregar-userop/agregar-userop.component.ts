@@ -3,6 +3,7 @@ import { ServiceService } from 'src/app/service/service.service';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/Modelo/Usuario';
 import { Usuarios_Opciones } from 'src/app/Modelo/Usuarios_Opciones';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-agregar-userop',
@@ -20,12 +21,13 @@ export class AgregarUseropComponent implements OnInit {
   listarop3: Usuarios_Opciones[];
   usuario: Usuario = new Usuario();
   x:Number;
+  ah:number=1;
   constructor(private service:ServiceService, private router:Router) { }
 
   ngOnInit() {
     this.service.getUse().subscribe((data) => {
       this.listaruse = data['P_CURSOR_USUARIO'];
-      console.log(this.listaruse);
+      
     })
     this.getOpc1();
     this.usuario_opciones.idopcion=0;
@@ -50,7 +52,7 @@ export class AgregarUseropComponent implements OnInit {
     alert(x);
     this.service.getUserN(x).subscribe((data)=>{
       this.listaruse = data['P_CURSOR_USUARIO'];
-      console.log(this.listaruse);
+     
     })
   }
 
@@ -58,7 +60,7 @@ export class AgregarUseropComponent implements OnInit {
     this.service.getOpc1().subscribe(
       (data) => {
         this.listarop1 = data['p_opsu'];
-        console.log(this.listarop1)
+       
       }
     );
   }
@@ -67,7 +69,7 @@ export class AgregarUseropComponent implements OnInit {
     this.service.getOpc2(hola).subscribe(
       (data) => {
         this.listarop2 = data['p_opsu'];
-        console.log(this.listarop2)
+    
       }
     );
   }
@@ -78,16 +80,21 @@ export class AgregarUseropComponent implements OnInit {
     this.service.getOpc3(hola).subscribe(
       (data) => {
         this.listarop3 = data['p_opsu'];
-        console.log(this.listarop3)
+       
       }
     );
   }
   here(){
     this.usuario_opciones.user_create = "Christian";
-    console.log(this.usuario_opciones);
+    
         this.service.createOpc(this.usuario_opciones).subscribe(data=>{
+          Swal.fire(
+            'REGISTRADO!',
+            'Se ha asignado una Opcion al Usuario',
+            'success'
+          )
      this.ngOnInit();
-     console.log(this.usuario_opciones)
+     
      this.router.navigate(["home/userop"]);
    })
   }

@@ -20,6 +20,13 @@
   
   <br>
   </div>
+  <div style="text-align: center; ">
+    <pagination-controls (pageChange)="ah=$event" previousLabel="Anterior" nextLabel="Siguiente" style="margin: auto;"> </pagination-controls>
+
+  </div>
+
+
+
   <table class="table" style="text-align: center;">
     <thead class="thead-dark">
       <tr>
@@ -29,8 +36,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of listaruserper" >
-        <td scope="row">{{user.idpersona}}</td>
+      <tr *ngFor="let user of listaruserper 
+      | paginate: {itemsPerPage:6, currentPage: ah}; let f=index" >
+        <td scope="row">{{f+1}}</td>
         <td>{{user.nombre}} {{user.apellido}}</td>
         <td ><i class="fas fa-user-plus" style="color: green; margin-left: 20px;" (click)="ObtID(user)"></i></td> </tr>
     </tbody>

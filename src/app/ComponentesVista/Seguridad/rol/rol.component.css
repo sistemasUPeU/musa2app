@@ -16,7 +16,13 @@
     border: solid gray 1px;
 }
 #caja1{
-    margin-left: -50px;
+    margin-left: 0px;
+}
+#caja_rol{
+    margin-left: 128px;
+    margin-top:-35px;
+    width: 250px;
+    border: solid gray 1px;
 }
 #caja_estado{
     margin-left: 20px;
@@ -28,7 +34,7 @@
     margin-left: 340px;
 }
 #limpiar{
-    margin-top: -102px;
+    margin-top: -62px;
     margin-left: 660px;
     width: 150px;
     border-radius: 50px;

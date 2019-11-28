@@ -46,23 +46,44 @@ export class ServiceService {
   Url5 = 'http://localhost:8081/cg/'
   Url6 = 'http://localhost:8081/reporte/'
   roles:RolesF;
-
-  private agregarAutorizacion(){
+  private agregarAutorizacion1(){
     let token = this.loginService.token;
     if(token!=null){
       console.log("ESTE ES EL TOKEN "+token);
       return this.httpHeaders.append('Authorization','Bearer' + token);
     }
-    console.log("NO LLEGA EL TOKEN");
+    
     return this.httpHeaders;
+  }
+  getAllUbigeo(): Observable<Ubigeo[]> {
+    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
+  }
+
+  deleteUbige(id: number){
+    return this.http.delete<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ id}`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
   }
 
   searchUbigeo(codigo: number) {
-    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ codigo }`);
+    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/ubi/${ codigo }`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
   }
-
   postUbigeo(ubigeo: Ubigeo): Observable<number> {
-    return this.http.post<number>(`${ environment.apiUrl }/ubigeos/add`, ubigeo);
+    return this.http.post<number>(`${ environment.apiUrl }/ubigeos/add`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    )
   }
   getAllRoles(): Observable<Roles[]> {
     return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
@@ -79,6 +100,15 @@ export class ServiceService {
       
       return throwError(e);
     }));
+  }
+  private agregarAutorizacion(){
+    let token = this.loginService.token;
+    if(token!=null){
+      console.log("ESTE ES EL TOKEN "+token);
+      return this.httpHeaders.append('Authorization','Bearer' + token);
+    }
+    console.log("NO LLEGA EL TOKEN");
+    return this.httpHeaders;
   }
   getRolesN(e): Observable<Roles[]>{
     return this.http.get<Roles[]>(`${ environment.apiUrl }/roles/nombre/`+e, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
@@ -98,13 +128,7 @@ export class ServiceService {
       return throwError(e);
     }));   
   }
-  getAllUbigeo(): Observable<Ubigeo[]> {
-    return this.http.get<Ubigeo[]>(`${ environment.apiUrl }/ubigeos/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
-      
-      return throwError(e);
-    }));
 
-  }
   ////////////////////EMPLEADOSSS
   //getEmple() : Observable<empleado[]> {
    // return this.http.get<empleado[]>(`${ environment.apiUrl }/empleado/lis`);
@@ -114,7 +138,7 @@ export class ServiceService {
   ///// Vinculossss -------------- ///
   
   getVinculo(tipovinculo: number, estado:number) : Observable<Vinculos[]> {
-    return this.http.get<Vinculos[]>(`${ environment.apiUrl }/vinculos/lis/`+tipovinculo+"/"+estado , {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.get<Vinculos[]>(`${ environment.apiUrl }/vinculos/lis/`+tipovinculo+"/"+estado ,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     })
@@ -122,7 +146,7 @@ export class ServiceService {
   }
 
   getNombreConductor(): Observable<Conductores[]> {
-    return this.http.get<Conductores[]>(`${ environment.apiUrl }/vinculos/lisc/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.get<Conductores[]>(`${ environment.apiUrl }/vinculos/lisc/`,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     })
@@ -130,7 +154,7 @@ export class ServiceService {
   }
 
   getNombrePropietario(): Observable<Propietarios[]> {
-    return this.http.get<Propietarios[]>(`${ environment.apiUrl }/vinculos/lisp/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.get<Propietarios[]>(`${ environment.apiUrl }/vinculos/lisp/`,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     })
@@ -138,7 +162,7 @@ export class ServiceService {
   }
 
   getVinculoid(id:number): Observable<Vinculos> {
-    return this.http.get<Vinculos>(`${ environment.apiUrl }/vinculos/`+id, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.get<Vinculos>(`${ environment.apiUrl }/vinculos/`+id ,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     })
@@ -146,7 +170,7 @@ export class ServiceService {
   }
 
   getNombreVeh(): Observable<Vehiculos[]> {
-    return this.http.get<Vehiculos[]>(`${ environment.apiUrl }/vinculos/lisv/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.get<Vehiculos[]>(`${ environment.apiUrl }/vinculos/lisv/`,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     })
@@ -154,47 +178,80 @@ export class ServiceService {
   }
 
   getRequisitos(tipovinculo: number): Observable<Requisitos[]> {
-    return this.http.get<Requisitos[]>(`${ environment.apiUrl }/vinculos/lis/`+tipovinculo, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.get<Requisitos[]>(`${ environment.apiUrl }/vinculos/lis/`+tipovinculo ,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     })
     );
   }
   getrequisitos_vinculo(idvinculo: number): Observable<Requisitos[]> {
-    return this.http.get<Requisitos[]>(`${ environment.apiUrl }/vinrequi/`+idvinculo, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.get<Requisitos[]>(`${ environment.apiUrl }/vinrequi/`+idvinculo ,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     })
     );
   }
-  uptrequisitos(idvinculo:number,idrequisito:number){
-    var x = new VincuRequis(idvinculo,idrequisito);
+  uptrequisitos(idvinculo:number,idrequisito:number, archivo: File){
+    var x = new VincuRequis(idvinculo,idrequisito,archivo);
+    let formData = new FormData();
+    console.log(x);
+    formData.append("archivo", archivo);
+    formData.append("idr", idrequisito.toString());
+    formData.append("idv", idvinculo.toString());
     console.log(x)
-    return this.http.put<VincuRequis>(`${ environment.apiUrl }/vinrequi/upt/`+ idrequisito, x);
+    return this.http.post<VincuRequis>(`${ environment.apiUrl }/vinrequi/upload`,formData ,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
-  CreateVinRequi(tipo:number,vincurequi: VincuRequi) {
-    return this.http.post<VincuRequi[]>(`${ environment.apiUrl }/vinrequi/add/` + tipo, vincurequi);
+  CreateVinRequi(tipo:number,id: number) {
+    return this.http.post<VincuRequi[]>(`${ environment.apiUrl }/vinrequi/add/` + tipo + '/'+ id,VincuRequis ,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   createvinculo(vinculo: Vinculo){
-    return this.http.post<Vinculo>(`${ environment.apiUrl }/vinculos/add`, vinculo);
+    return this.http.post<Vinculo>(`${ environment.apiUrl }/vinculos/add`, vinculo ,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   getcontvin(){
-    return this.http.get<Contador[]>(`${ environment.apiUrl }/vinculos/conta/`);
+    return this.http.get<Contador[]>(`${ environment.apiUrl }/vinculos/conta/`,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   uptVinculo(vinculo: Vinculo){
     console.log(vinculo)
-    return this.http.put<Vinculo>(`${ environment.apiUrl }/vinculos/upd` , vinculo);
+    return this.http.put<Vinculo>(`${ environment.apiUrl }/vinculos/upd` , vinculo ,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   uptEstadovin(vincu: Vinupd) {
-    return this.http.put<Vinupd>(`${ environment.apiUrl }/vinculos/stado/` , vincu);
+    return this.http.put<Vinupd>(`${ environment.apiUrl }/vinculos/stado/` , vincu ,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   DeleteVinculo(idvinculo: number){
-    return this.http.delete<Vinculo[]>(`${ environment.apiUrl }/vinrequi/`+ idvinculo);
+    return this.http.delete<Vinculo[]>(`${ environment.apiUrl }/vinrequi/`+ idvinculo ,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
   }
 
   //******VENTASSS */
@@ -212,14 +269,14 @@ export class ServiceService {
 
   //******PROPIETARIOS */
   getPropietarios(): Observable<Propietario[]> {
-    return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/`,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     })
     );
   }
   deletePropietarios(id:number){
-     return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`+id, Propietario, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+     return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/modif/`+id, Propietario, {headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     }));
@@ -227,26 +284,26 @@ export class ServiceService {
   crearPropietarios(propietarioc:Propietario){
     console.log(`(asdasdasdasdasdasd)`)
     console.table(propietarioc)
-     return this.http.post<Propietario>( `${ environment.apiUrl }/propietarios/add`, propietarioc,{headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+     return this.http.post<Propietario>( `${ environment.apiUrl }/propietarios/add`, propietarioc,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     }));
   }
   getPropietarioId(id:number){
-     return this.http.get<Propietario[]>( `${ environment.apiUrl }/propietarios/`+ id, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+     return this.http.get<Propietario[]>( `${ environment.apiUrl }/propietarios/`+ id, {headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     }));
   }
 
   updatePropietarios(propietario:Propietario){
-    return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/`, propietario, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+    return this.http.put<Propietario>(`${ environment.apiUrl }/propietarios/`, propietario, {headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     }));
   }
   buscarnombre(nombre:String){
-     return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/nombre/`+ nombre, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+     return this.http.get<Propietario[]>(`${ environment.apiUrl }/propietarios/nombre/`+ nombre, {headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     }));
@@ -473,7 +530,7 @@ getConfiP(e): Observable<Configuracion_Grupos[]>{
 }
 
 createConfi(x){
-  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add', {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+  return this.http.post<Configuracion_Grupos[]>(this.Url5+'add',x, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       
     return throwError(e);
   }));   

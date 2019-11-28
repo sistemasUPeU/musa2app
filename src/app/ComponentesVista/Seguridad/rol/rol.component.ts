@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Roles } from 'src/app/Modelo/Roles';
 import { ServiceService } from 'src/app/service/service.service';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-rol',
   templateUrl: './rol.component.html',
@@ -18,6 +18,7 @@ export class RolComponent implements OnInit {
   rolf: Roles=new Roles();
   p_cur_rol: Roles =new Roles();
   sv=[];
+  ah:number=1;
   constructor(private service:ServiceService, private router:Router) { }
 
   ngOnInit() {
@@ -41,10 +42,15 @@ export class RolComponent implements OnInit {
   }
   GuardarRol(){
     let c=this.roles1.nombre;
-    alert(c);
-    console.log(c)
+    //alert(c);
+    //console.log(c)
         this.service.createRoles(c).subscribe(data=>{
-     alert(">>>> REGISTRO GUARDADO <<<<");
+          Swal.fire({
+            title: "Registro Guardado!",
+            text: "Se Registro el Nuevo Rol!",
+            icon: "success",
+            button: "OK",
+          });
      this.getAllRoles();
    })
   }
@@ -53,29 +59,27 @@ export class RolComponent implements OnInit {
     var sv=this.roles1.nombre;
     let verificar = 0;
     this.listaroles.forEach(function(ef){
-      console.log(ef.nombre);
       while (ef.nombre==sv) {
-        alert("ya existe");
+        Swal.fire({
+          title: "Rol Repetido!",
+          text: "Ingrese otro rol con un nombre distinto",
+          icon: "warning",
+          button: "OK",
+        });
         verificar=1;
         this.router.navigate(["home/usuario"])
       }
     })
-    alert(verificar);
+
       this.GuardarRol();
     
-    //this.Save();
-    //let arr=Cliente;
-    //if (this.cliente.c_dni=="asd") {
-      
-   // }else{
-   //   alert("HAS FRACASADO EFE")
-   // }
+
   }
 
 
   getRolesN(roles:Roles) {
     let c=this.roles1.nom;
-    alert(c);
+    //alert(c);
     this.service.getRolesN(c).subscribe(
       (data) => {
         this.listaroles = data['p_cur_rol'];
@@ -85,80 +89,62 @@ export class RolComponent implements OnInit {
   }
   getRolesE(roles:Roles) {
     var hola=(<HTMLSelectElement>document.getElementById('caja_estado')).value;
-    alert(hola);
+
     this.service.getRolesE(hola).subscribe(
       (data) => {
         this.listaroles = data['p_cur_rol'];
-        console.log(this.listaroles)
+  
       }
     );
   }
  EliminarRol(roles:Roles){
-  let c=roles.idrol;
-   alert(c);
-  this.service.deleteRoles(roles).subscribe(data=>{
-    alert(">>>> REGISTRO ELIMINADO <<<<");
-    this.listaroles=this.listaroles.filter(r=>r!==roles);
-    this.getAllRoles();
+ 
+    Swal.fire({
+      title: 'Estas seguro?',
+      text: "Esta accion no se podra revertir!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar!'
+    }).then((result) => {
+      if (result.value) {
+        let c=roles.idrol;
 
-  })  
+        this.service.deleteRoles(roles).subscribe(data=>{
+          this.listaroles=this.listaroles.filter(r=>r!==roles);
+          this.getAllRoles();
+        });
+        Swal.fire(
+          'Eliminado!',
+          'La accion ha sido eliminada',
+          'success'
+        )
+      }
+    })
+
  }
 
-//EditarRoles(roles:Roles):void{  
-  //alert(roles.NOMBRE);
-  //this.service.getRolesIdE(roles.IDROL).subscribe(data=>{
-   // var d=roles.IDROL ;
-    //alert(d);
-  //})
-//}
-//ActualizarR(roles:Roles){
-//this.service.updateRoles(roles).subscribe(data=>{
- //   alert("hola");  
-  //   this.roles1=data;
-   //  alert(data);
-   // alert("modificado");
- //  })
-//}
 
-
-  //EditarR(c:number){
-//this.service.getRolesIdE(c).subscribe((data)=>{
-    //  this.role=data;
-    //  console.log(data);
-    //})
-  //}
    ActualizarR(roles:Roles){
-     alert(roles.idrol);
-    alert(this.roles1.nombre);
+  
     roles.nombre=this.roles1.nombre;
-    alert(this.roles1.estado);
+   
     roles.estado=this.roles1.estado;
-    alert(roles);
+  
     var id=37;
      this.service.updateRoles(id,roles).subscribe(data=>{
        this.role=data;
-       alert(data);
+   
      }) 
   }
   
-//////////////
-// ActualizarR(roles:Roles){
- // alert(this.roles1.NOMBRE);
- // alert(this.roles1.ESTADO);
-// var id=37;
- //  this.service.updateRoles(id,roles).subscribe(data=>{
-  //   this.role=data;
-  //   alert(data);
-  //  var l =id;
-  // })
-//}
-//////////////////////////
-  
+
   EditarR(id) {
     this.service.getRolesIdE(id).subscribe((res: Roles) => {
-      alert(id);
+ 
       this.role = res;
-      console.log(res);
+    
     }); 
 
   }
@@ -168,7 +154,6 @@ export class RolComponent implements OnInit {
   EditarRoles(roles:Roles):number{
     alert(roles.idrol);
     localStorage.setItem("IDROL",roles.idrol.toString());
-    alert("vale");
     this.EditarR(roles.idrol);
     return roles.idrol;
   }
@@ -179,22 +164,42 @@ export class RolComponent implements OnInit {
       this.router.navigate(["home/prueba-editar"]);
     }
     loadPersona(roles: Roles): void {
-      alert(roles.idrol);
+     // alert(roles.idrol);
   
       this.service.getPersonaId(roles.idrol).subscribe((data) => {
         this.loadPersonaData = data['p_cur_rol'];
       })
     }
     Actualizar(p_cur_rol: Roles) {
-      alert(p_cur_rol.nombre);
-      alert(p_cur_rol.estado);
-      alert(p_cur_rol.idrol)
-      this.service.updatePersona(p_cur_rol).subscribe((data) => {
-        this.rolf = data;
-        console.log(data);
-        alert('Registro modificado correctamente...!');
-        this.ngOnInit();
-      })
+      //alert(p_cur_rol.nombre);
+      ///}alert(p_cur_rol.estado);
+     // alert(p_cur_rol.idrol)
+     Swal.fire({
+      title: 'Estas seguro?',
+      text: "Esta accion no se podra revertir!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, modificar!'
+    }).then((result) => {
+      if (result.value) {
+      
+
+        this.service.updatePersona(p_cur_rol).subscribe((data) => {
+          this.rolf = data;
+          //console.log(data);
+         // alert('Registro modificado correctamente...!');
+          this.ngOnInit();
+        })
+        Swal.fire(
+          'Modificar!',
+          'La accion ha sido modificada',
+          'success'
+        )
+      }
+    })
     }
 
+    
 }
