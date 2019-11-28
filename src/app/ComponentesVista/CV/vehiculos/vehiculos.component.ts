@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./vehiculos.component.css']
 })
 export class VehiculosComponent implements OnInit {
+  p:number;
   idvehiculo:number;
   vehiculo:Vehiculosc = new Vehiculosc();
   vehiculos:Vehiculosc[]= [];

@@ -26,7 +26,8 @@ export class MantenimientosComponent implements OnInit {
   getacts: any;
   getactshijos: any;
   newid: number;
-  mantid:any;
+  detallemantid:any;
+  accionmantid:any;
 
 
 
@@ -65,8 +66,10 @@ export class MantenimientosComponent implements OnInit {
   cargarMantId(id:number){
     this.accionesService.getMantById(id).subscribe(
       (data) => {
-        this.mantid = data['p_cursor'];
-        console.log(this.mantid);
+        this.detallemantid = data['P_CURSOR_DETALLE'];
+        this.accionmantid = data['P_CURSOR_ACCIONES'];
+        console.log(this.detallemantid);
+        console.log(this.accionmantid);
       }
     );
   }
@@ -240,7 +243,7 @@ export class MantenimientosComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, eliminar!'
+      confirmButtonText: 'Si, validar!'
     }).then((result) => {
       if (result.value) {
         //accion.idempleado = (dame el id del usuario)

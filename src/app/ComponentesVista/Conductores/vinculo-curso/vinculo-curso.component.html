@@ -31,6 +31,9 @@
   </div>
   <br>
   <!-- Tabla -->
+  <div style="text-align: center;">
+    <pagination-controls (pageChange)="p=$event" previousLabel="Anterior" nextLabel="Siguiente" > </pagination-controls>
+  </div>
   <table class="table" style="text-align: center; width: 1030px; margin: 0 auto;">
     <thead class="thead-dark">
       <tr>
@@ -45,7 +48,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let curvin of vincurso; let i = index">
+      <tr *ngFor="let curvin of vincurso| paginate: {itemsPerPage:6, currentPage: p}; let i = index">
         <td scope="col">{{i+1}}</td>
         <td scope="col" style="width: 100px;">{{curvin.nombrecurso}}</td>
         <td scope="col" style="width: 100px;"> {{curvin.nombre}}</td>
