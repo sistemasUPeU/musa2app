@@ -26,9 +26,9 @@
     <div id="rol">
       <select class="custom-select" [(ngModel)]="s.estado" (click)="Estado()" id="inputGroupSelect01" id="caja_rol">
 
-       
+        <option value=1>Vigente</option>
         <option value=0>No Vigente</option>
-        <option value=2>Por Recoger</option>
+       
       </select>
     </div>
     <!-- Boton Limpiar -->
@@ -40,16 +40,16 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col" style="width: 250px;">NRO.DOCUMENTO</th>
+          <th scope="col" >NRO.DOCUMENTO</th>
           <th scope="col">NRO.POLIZA</th>
 
-          <th scope="col">VIGENCIA HASTA</th>
+          <th scope="col">FECHA DE CADUCIDAD DE VIGENCIA</th>
 
-          <th scope="col">CERTIFICADO HASTA</th>
+          <th scope="col">FECHA FINAL DE CERTIFICADO</th>
 
           <th scope="col">ASEGURADORA</th>
-          <th scope="col">VEHICULO</th>
-          <th scope="col">ESTADO</th>
+          <th scope="col">NRO PADRON VEHICULO</th>
+          <th scope="col">MONTOPRIMA</th>
           <th scope="col" colspan="2" style="width: 400px;">Opciones</th>
         </tr>
       </thead>
@@ -65,7 +65,7 @@
 
           <td>{{soat.aseguradora}}</td>
           <td>{{soat.idvehiculo}}</td>
-          <td>{{soat.estado ==1? 'Vigente' : (soat.estado ==2?  'Por entregar' :  'No vigente') }}</td>
+          <td>{{soat.montoprima }}</td>
           <td><i class="fas fa-trash-alt" (click)="Eliminar(soat)" style="color: red; margin-left: 20px;"></i></td>
           <td><i class="fas fa-edit" (click)="Actualizar(soat)" style="color: blue; margin-left: -60px;"
               data-toggle="modal" data-target="#ModificarUsuario"></i></td>
@@ -148,14 +148,14 @@
           </div>
 
           <div class="form-group col-md-5" style="margin-left: 10px;">
-            <label for="">Fecha inicial : </label>
+            <label for="">Fecha Inicial de Certificado : </label>
             <input id="user" type="date" class="form-control" name="certificadodesde"
               [(ngModel)]="  soat.certificadodesde">
 
 
           </div>
           <div class="form-group col-md-5" style="margin-left: 10px;">
-            <label for="">Fecha final: </label>
+            <label for="">Fecha final de Certificado: </label>
             <input id="user" type="date" class="form-control" name="certificadohasta"
               [(ngModel)]=" soat.certificadohasta">
 
@@ -176,15 +176,8 @@
             <label for="">Padron del Vehiculo: </label>
             <input id="user1" type="text" class="form-control" name="idvehiculo" [(ngModel)]="soat.idvehiculo">
           </div>
-          <div class="form-group col-md-5" style="margin-left: 10px;">
-            <label for="">Seleccione Estado: </label>
-            <select class="custom-select" id="inputGroupSelect01" id="caja_rol" [(ngModel)]="soat.estado" name="estado"
-            >
-
-              <option value=1>Vigente</option>
-              <option value=0>No vigente</option>
-              <option value=2>Por entregar</option>
-            </select> </div>
+          
+         
         </div>
       </div>
 
@@ -226,11 +219,11 @@
           </div>
           
           <div class="form-group col-md-5" style="margin-left: 20px;">
-              <label for="">Fecha inicial:</label>
+              <label for="">Fecha inicial de Certificado:</label>
               <input id="user" type="date" class="form-control" name="vigenciahasta" [(ngModel)]=" so.certificadodesde">
           </div>
           <div class="form-group col-md-5" style="margin-left: 20px;">
-              <label for=""> Fecha final: </label>
+              <label for=""> Fecha final del Certificado: </label>
               <input id="user" type="date" class="form-control" name="certificadohasta" [(ngModel)]=" so.certificadohasta">
           </div>
           <div class="form-group col-md-5" style="margin-left: 20px;">
@@ -246,15 +239,7 @@
             <label for="">Padron del Vehiculo: </label>
                 <input id="user" type="text" class="form-control" name="idvehicu" [(ngModel)]="so.idvehiculo" disabled>
           </div>
-          <div class="form-group col-md-5" style="margin-left: 20px;">
-              <label for="">Seleccione Estado: </label>
-              <select class="custom-select" id="inputGroupSelect01" id="caja_rol" [(ngModel)]="so.estado" name="estado" >
-      
-                <option value=1>Vigente</option>
-                <option value=0>No vigente</option>
-                <option value=2>Por entregar</option>
-              </select>
-          </div>
+          
         </div>
         <div class="modal-footer" style="margin-left: 20px;">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>

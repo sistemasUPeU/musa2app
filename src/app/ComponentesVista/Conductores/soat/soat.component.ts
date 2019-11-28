@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Soat } from 'src/app/Modelo/Soat';
 import { SoatService } from 'src/app/service/soat.service';
 import { Vehiculos, Vehiculosc } from 'src/app/Modelo/Vehiculos';
+import Swal from 'sweetalert2' 
 @Component({
   selector: 'app-soat',
   templateUrl: './soat.component.html',
@@ -29,24 +30,74 @@ export class SoatComponent implements OnInit {
   CREARSOAT(){
     this.soatservice.crearsoat(this.soat).subscribe(
       (data) =>{ 
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registrado Correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.ngOnInit(); }
 
     );
   }
   Eliminar(soat:Soat){
-    this.soatservice.eliminarsoat(soat.idsoat).subscribe((data)=>{
-      alert(soat.idsoat)
-      this.ngOnInit();
-
-    });
+    Swal.fire({
+      title: 'Esta seguro?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Elminar!'
+    }).then((result) => {
+      if (result.value) {
+        this.soatservice.eliminarsoat(soat.idsoat).subscribe((data)=>{
+          Swal.fire(
+    
+            'Eliminado  con exito!',
+            
+          )
+          
+          this.ngOnInit();
+    
+        });
+        }else{
+        this.ngOnInit();
+      }
+    })
+    
 
   }
   Editar(soat:Soat){
-    console.log(soat)
-    this.soatservice.modificarsoat(soat).subscribe((data)=>{
+    Swal.fire({
+      title: 'Esta seguro?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Modificar!'
+    }).then((result) => {
+      if (result.value) {
+        console.log(soat)
+        this.soatservice.modificarsoat(soat).subscribe((data)=>{
+          Swal.fire(
+
+            'Modificado  con exito!',
+            
+          )
+          this.ngOnInit();
+    
+        });
+    
+       
+      }else{
+        this.ngOnInit();
+      }
+    })
+  
       
-      this.ngOnInit();
-    });
+     
+   
   }
   Actualizar(soat:Soat){
     this.so=soat;
@@ -91,7 +142,7 @@ export class SoatComponent implements OnInit {
   }
   buscarp(){
     this.soatservice.buscarpadron(this.vehicu.nropadron).subscribe((data)=>{
-      this.vehiculos=data["P_CURSOR"];
+      this.vehiculos=data["P_CURSOR_NROPADRON"];
       console.log(data);
       (<HTMLInputElement>document.getElementById("bus")).value = "";
     })

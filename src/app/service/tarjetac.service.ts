@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Tarjetac } from '../Modelo/Tarjetac';
 import { LoginService } from 'src/app/service/login.service';
 import { catchError } from 'rxjs/operators';
+import { Vehiculos } from '../Modelo/Vehiculos';
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +30,18 @@ export class TarjetacService {
       return throwError(e);
     }));
   }
+  buscarpadron(nro :number): Observable<Vehiculos[]>{
+    return this.http.get<Vehiculos[]>(`${ environment.apiUrl }/vehiculos/nropadron/`+ nro, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }))
+  }
+  getVehiculos(): Observable<Vehiculos[]>{
+    return this.http.get<Vehiculos[]>(` ${environment.apiUrl}/vehiculos/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    }));
+}
   creartarjeta(tarjetac:Tarjetac){
     return this.http.post<Tarjetac>(`${ environment.apiUrl }/tarjetac/add`,tarjetac, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
       

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConductorService } from 'src/app/service/conductor.service';
 import { Conductor } from 'src/app/Modelo/Conductor';
 import { Personas } from 'src/app/Modelo/Personas';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-conductor',
@@ -30,6 +31,13 @@ export class ConductorComponent implements OnInit {
   guardar(conductor: Conductor) {
     this.conductorService.crearConductor(conductor).subscribe(
       (data) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registrado Correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.ngOnInit();
       }
     );
@@ -39,11 +47,30 @@ export class ConductorComponent implements OnInit {
   
   }
   eliminar(conductor: Conductor) {
-    this.conductorService.deleteconductor(conductor).subscribe((data) => {
-      console.log(conductor.idconductor);
-      this.ngOnInit();
+    Swal.fire({
+      title: 'Esta seguro?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Elminar!'
+    }).then((result) => {
+      if (result.value) {
+        this.conductorService.deleteconductor(conductor).subscribe((data) => {
+          console.log(conductor.idconductor);
+          this.ngOnInit();
+          Swal.fire(
 
-    });
+            'Eliminado  con exito!',
+            
+          )
+          this.ngOnInit();
+        });
+        }else{
+        this.ngOnInit();
+      }
+    })
+   
 
   }
   actualizar(conductor: Conductor) {
@@ -52,12 +79,32 @@ export class ConductorComponent implements OnInit {
 
   }
   editar(cond:Conductor){
-    this.conductorService.editar(cond).subscribe((data)=>{
-      console.log(cond.idconductor)
-      this.ngOnInit();
+    Swal.fire({
+      title: 'Esta seguro?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Modificar!'
+    }).then((result) => {
+      if (result.value) {
+        this.conductorService.editar(cond).subscribe((data)=>{
+          console.log(cond.idconductor)
+          Swal.fire(
 
-    });
-
+            'Modificado  con exito!',
+            
+          )
+          this.ngOnInit();
+    
+        });
+    
+       
+      }else{
+        this.ngOnInit();
+      }
+    })
+   
   }
   buscar(){
     this.conductorService.buscar(this.c.codigo).subscribe((data)=>{
