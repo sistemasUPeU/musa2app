@@ -23,7 +23,7 @@ export class OpcionesComponent implements OnInit {
   
   ngOnInit() {
     
-    this.opcionesService.listaopciones().subscribe(
+    this.opcionesService.listaropciones2().subscribe(
       (data) => {
         this.opciones1=data['P_CUR_OPCION'];
     
