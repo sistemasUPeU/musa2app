@@ -137,11 +137,12 @@
                         <div class="card text-center" *ngFor="let act of
                             getacts">
                             <h5 class="card-header text-white bg-dark" *ngIf="act.idaccionpadre==null &&
-                                act.estado==1" (click)="habilitar=(habilitar == true)? false : true;"> {{act.nombre}}
+                                act.estado==1" >
+                                <a role="button" data-toggle="collapse" href="#{{'collapse_' + act.idmantacciones}}">{{act.nombre}}</a>
                             </h5>
-                            <div class="card-body" *ngIf="act.idaccionpadre==null &&
+                            <div class="collapse"  id="{{'collapse_' + act.idmantacciones}}">
+                                <div class="card-body" *ngIf="act.idaccionpadre==null &&
                                 act.estado==1">
-                                <div *ngIf="habilitar == true">
                                     <div *ngFor="let ac of getacts">
                                         <div class="inputCheckMant" *ngIf="ac.idaccionpadre==act.idmantacciones
                                         && act.tipo != 3 && ac.estado==1">
