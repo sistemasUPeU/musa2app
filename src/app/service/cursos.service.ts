@@ -17,7 +17,7 @@ export class CursosService {
   private agregarAutorizacion(){
     let token = this.loginService.token;
     if(token!=null){
-      console.log("ESTE ES EL TOKEN "+token);
+      //console.log("ESTE ES EL TOKEN "+token);
       return this.httpHeaders.append('Authorization','Bearer' + token);
     }
     console.log("NO LLEGA EL TOKEN");

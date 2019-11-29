@@ -16,7 +16,7 @@ import { Vehiculosc , Veh_categoria, Veh_modelo, Veh_marca} from 'src/app/Modelo
     private agregarAutorizacion(){
       let token = this.loginService.token;
       if(token!=null){
-        console.log("ESTE ES EL TOKEN "+token);
+        //console.log("ESTE ES EL TOKEN "+token);
         return this.httpHeaders.append('Authorization','Bearer' + token);
       }
       

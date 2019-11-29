@@ -44,7 +44,7 @@ import { Personas } from '../Modelo/Personas';
     params.set('grant_type','password');
     params.set('username',usuario.login);
     params.set('password',usuario.password);
-    console.log(params.toString());
+    //console.log(params.toString());
     return this.http.post<any>(urlEndpoint, params.toString(), {headers: httpHeaders});
     }
     guardarUsuario(accesToken:String):void{
@@ -86,7 +86,7 @@ import { Personas } from '../Modelo/Personas';
         this._usuario = null;
         sessionStorage.clear();
        // sessionStorage.removeItem('token');
-       console.log(sessionStorage);
+       //console.log(sessionStorage);
       }
     }
  

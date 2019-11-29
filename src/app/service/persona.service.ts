@@ -16,12 +16,12 @@ import { map, catchError, tap} from 'rxjs/operators';
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   
     constructor(private http: HttpClient, private loginService:LoginService) {
-      console.log('servicio de persona funcionando');
+      //console.log('servicio de persona funcionando');
      }
      private agregarAutorizacion(){
       let token = this.loginService.token;
       if(token!=null){
-        console.log("ESTE ES EL TOKEN "+token);
+        //console.log("ESTE ES EL TOKEN "+token);
         return this.httpHeaders.append('Authorization','Bearer' + token);
       }
       console.log("NO LLEGA EL TOKEN");
