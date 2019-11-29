@@ -107,7 +107,7 @@ aria-hidden="true" data-backdrop="false">
                     </div>
                     <div class="demo">
                         <input type="checkbox" id="{{ requi.NOMBRE }}" name="{{ requi.NOMBRE }}" >
-                        <label for="{{ requi.NOMBRE }}"><span></span>{{ requi.ESTADO }}</label>
+                        <label for="{{ requi.NOMBRE }}"><span></span>{{ requi.ESTADO ==0? 'Pendiente' : (requi.ESTADO==1? 'Entregado': 'Entregado' )}}</label>
                         <button (click)="modifi_requis(requi.IDREQUISITO)">Enviar</button>
                     </div>
                     

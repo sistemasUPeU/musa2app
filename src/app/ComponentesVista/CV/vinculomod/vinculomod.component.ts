@@ -206,8 +206,9 @@ export class VinculomodComponent implements OnInit {
     })
    }
    modifi_requis(idrequisito:number){
-     this.service.uptrequisitos(this.id,idrequisito,this.foto).subscribe( (data) =>{
+     this.service.acturequisitos(this.id,idrequisito).subscribe( (data) =>{
       alert("se actualizo")
+      this.getRequisito(this.id)
     })
      /*let requi:VincuRequis
      requi.idvinculo=idvinculo
@@ -220,12 +221,14 @@ export class VinculomodComponent implements OnInit {
     this.cont++*/
    }
 
-   selecfoto(event,i){
+   selecfoto(event){
     
-      this.foto = event.target.files[0];
+      //this.foto = event.target.files[0];
       console.log(this.foto)
+      alert("Presione Enviar Paraguardar los cambios")
       if (event) {
-        event[i].checked = !event[i].checked;
+        
+        //event[i].checked = !event[i].checked;
       }
    }
 }

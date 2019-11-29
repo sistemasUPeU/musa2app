@@ -29,7 +29,7 @@ export class MantenimientosComponent implements OnInit {
   detallemantid:any;
   accionmantid:any;
 
-
+  habilitar: boolean = false;
 
   p_estado: any;
   p_msg: any;
