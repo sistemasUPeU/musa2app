@@ -191,7 +191,7 @@ export class ServiceService {
     })
     );
   }
-  uptrequisitos(idvinculo:number,idrequisito:number, archivo: File){
+  /*uptrequisitos(idvinculo:number,idrequisito:number, archivo: File){
     var x = new VincuRequis(idvinculo,idrequisito,archivo);
     let formData = new FormData();
     console.log(x);
@@ -200,6 +200,17 @@ export class ServiceService {
     formData.append("idv", idvinculo.toString());
     console.log(x)
     return this.http.post<VincuRequis>(`${ environment.apiUrl }/vinrequi/upload`,formData ,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
+      
+      return throwError(e);
+    })
+    );
+  }*/
+  acturequisitos(idvinculo:number,idrequisito:number){
+    var x = new VincuRequis(idvinculo,idrequisito,"opcion no disponible");
+    let formData = new FormData();
+    console.log(x);
+    console.log(x)
+    return this.http.put<VincuRequis>(`${ environment.apiUrl }/vinrequi/actua/`+x.idvinculo+"/"+x.idrequisito, x,{headers: this.agregarAutorizacion1()}).pipe(catchError(e =>{
       
       return throwError(e);
     })

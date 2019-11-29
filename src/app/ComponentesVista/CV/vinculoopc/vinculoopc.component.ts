@@ -33,6 +33,7 @@ export class VinculoopcComponent implements OnInit {
    loading:boolean;
   vin:Vinculo = new Vinculo();
   vinrequi:VincuRequi = new VincuRequi();
+  vinre:VincuRequi = new VincuRequi();
   ///// Variables
 
   mostrarpropietario: boolean;
@@ -91,7 +92,11 @@ export class VinculoopcComponent implements OnInit {
   }
 
    ///// Listado de Propietarios 
-
+   modifi_requis(idrequisito:number){
+    this.service.acturequisitos(this.cont,idrequisito).subscribe( (data) =>{
+     alert("se actualizo")
+   })
+  }
   getPropietario() {
     this.service.getNombrePropietario().subscribe(
       (data) => {
@@ -168,9 +173,9 @@ export class VinculoopcComponent implements OnInit {
       );
     }
    }
-   selecfoto(event,index){
+   selecfoto(event,id:number){
     if (event) {
-      
+      this.service.acturequisitos(this.cont,id)
     }
    }
    alerto(){

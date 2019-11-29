@@ -206,8 +206,9 @@ export class VinculomodComponent implements OnInit {
     })
    }
    modifi_requis(idrequisito:number){
-     this.service.uptrequisitos(this.id,idrequisito,this.foto).subscribe( (data) =>{
+     this.service.acturequisitos(this.id,idrequisito).subscribe( (data) =>{
       alert("se actualizo")
+      this.getRequisito(this.id)
     })
      /*let requi:VincuRequis
      requi.idvinculo=idvinculo
