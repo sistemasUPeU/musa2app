@@ -125,7 +125,7 @@
                                 </form>
                             </div>
                             <div class="demo">
-                                <input type="checkbox" id="{{ requi.NOMBRE }}" (change)="selecfoto($event,requi.IDREQUISITO)"  name="{{ requi.NOMBRE }}" >
+                                <input type="checkbox" id="{{ requi.NOMBRE }}" (change)="selecfoto($event)"  name="{{ requi.NOMBRE }}" >
                                 <label for="{{ requi.NOMBRE }}"><span></span>{{ requi.ESTADO ==0? 'Pendiente' : (requi.ESTADO==1? 'Entregado': 'Entregado' )}}</label>
                                 <button (click)="modifi_requis(requi.IDREQUISITO)">Enviar</button>
                             </div>
