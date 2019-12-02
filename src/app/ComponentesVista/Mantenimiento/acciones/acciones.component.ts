@@ -83,6 +83,7 @@ export class AccionesComponent implements OnInit {
     this.accionesService.createAcciones(this.mantAcciones).subscribe(data => {
       this.router.navigate([`home/acciones/`+this.tipo]);
       this.cargarAcciones();
+      this.cargarCat();
     });
     Swal.fire({
       position: 'top-end',
