@@ -64,10 +64,7 @@ export class ConductorService {
     }));
   }
   getAllPersona(): Observable<Persona[]> {
-    return this.http.get<Persona[]>(`${ environment.apiUrl }/personas/`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{
-      
-      return throwError(e);
-    }));
+    return this.http.get<Persona[]>(`${ environment.apiUrl }/conductores/Pers`, {headers: this.agregarAutorizacion()});
   }
   searchPersona(nrodoc: number){
     return this.http.get<Persona[]>(`${ environment.apiUrl }/personas/per/${ nrodoc }`, {headers: this.agregarAutorizacion()}).pipe(catchError(e =>{

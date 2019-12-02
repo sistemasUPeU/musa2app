@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConductorService } from 'src/app/service/conductor.service';
 import { Conductor } from 'src/app/Modelo/Conductor';
-import { Personas } from 'src/app/Modelo/Personas';
+import {Per} from 'src/app/Modelo/Per'
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,8 +15,8 @@ export class ConductorComponent implements OnInit {
   cond: Conductor = new Conductor();
   c:Conductor=new Conductor();
 
-  personas:Personas [] =[];
-  p:Personas=new Personas();
+  personas:Per [] =[];
+  p:Per=new Per();
 
 
 
@@ -29,22 +29,14 @@ export class ConductorComponent implements OnInit {
     
   }
   guardar(conductor: Conductor) {
+    console.log(conductor)
     this.conductorService.crearConductor(conductor).subscribe(
       (data) => {
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Registrado Correctamente',
-          showConfirmButton: false,
-          timer: 1500
-        })
+       
         this.ngOnInit();
       }
     );
-    (<HTMLInputElement>document.getElementById("user1")).value ="";
-    (<HTMLInputElement>document.getElementById("user1")).disabled=false;
-    (<HTMLInputElement>document.getElementById("user")).value ="";
-  
+   
   }
   eliminar(conductor: Conductor) {
     Swal.fire({
@@ -123,7 +115,8 @@ export class ConductorComponent implements OnInit {
   }
   getpersonas(){
     this.conductorService.getAllPersona().subscribe((data)=>{
-           this.personas=data["P_CURSOR"]
+           this.personas=data["p_persona"]
+           console.log(this.personas)
     })
   }
   Add(nro:number){
