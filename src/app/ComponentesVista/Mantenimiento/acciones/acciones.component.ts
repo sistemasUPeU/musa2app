@@ -21,6 +21,8 @@ export class AccionesComponent implements OnInit {
 
   constructor(private accionesService:MantenimientoService, private router:Router, private activatedRoute:ActivatedRoute) { }
 
+  filterAccion= '';
+
   ngOnInit() {
     this.cargarAcciones();
     this.cargarCat();

@@ -57,6 +57,7 @@ import { RegistrarcajaComponent } from './ComponentesVista/Ventas/registrarcaja/
 import { VinculoCursoComponent } from './ComponentesVista/Conductores/vinculo-curso/vinculo-curso.component';
 import { VinculoproComponent } from './ComponentesVista/CV/vinculopro/vinculopro.component';
 import { NgxPaginationModule} from 'ngx-pagination';
+import { FilterPipe } from './ComponentesVista/Mantenimiento/pipe/filter.pipe';
 const routes: Routes = [
   {path: '/login', component:LoginComponent}
 ];
@@ -109,6 +110,7 @@ const routes: Routes = [
     RegistrarcajaComponent,
     VinculoproComponent,
     VinculoCursoComponent,
+    FilterPipe,
     
   ],
   imports: [
@@ -119,8 +121,7 @@ const routes: Routes = [
     //FontAwesomeModule,
     FormsModule,
     RouterModule,
-    HttpClientModule,
-    NgxPaginationModule
+    HttpClientModule
   ],
   providers: [
     DatePipe

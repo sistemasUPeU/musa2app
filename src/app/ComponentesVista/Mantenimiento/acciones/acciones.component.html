@@ -3,7 +3,10 @@
     <h3 class="py-5 float-left">
       Acciones de mantenimiento preventivas
     </h3>
-    <button class="btn btn-primary float-right" style="margin: 5% 2%;"
+    <div class="form-group">
+      <input type="text" class="form-control float-left" style="width: 60%;margin-bottom: 4%;" name="filterAccion" placeholder="Buscar..." [(ngModel)]="filterAccion">
+    </div>
+    <button class="btn btn-primary float-right" style="margin:0;"
       type="button" data-toggle="modal" data-target="#exampleModal">Crear accion
       preventiva</button>
   </div>
@@ -11,7 +14,10 @@
     <h3 class="py-5 float-left">
       Acciones de mantenimiento correctivas
     </h3>
-    <button class="btn btn-primary float-right" style="margin: 5% 2%;"
+    <div class="form-group">
+      <input type="text" class="form-control float-left" style="width: 60%;margin-bottom: 4%;" placeholder="Buscar...">
+    </div>
+    <button class="btn btn-primary float-right" style="margin:0;"
       type="button" data-toggle="modal" data-target="#exampleModal">Crear accion
       correctiva</button>
   </div>
@@ -19,7 +25,10 @@
     <h3 class="py-5 float-left">
       Acciones de revision diaria
     </h3>
-    <button class="btn btn-primary float-right" style="margin: 5% 2%;"
+    <div class="form-group">
+      <input type="text" class="form-control float-left" style="width: 60%;margin-bottom: 4%;" placeholder="Buscar...">
+    </div>
+    <button class="btn btn-primary float-right" style="margin:0;"
       type="button" data-toggle="modal" data-target="#exampleModal">Crear accion
       de revision diaria</button>
   </div>
@@ -27,7 +36,10 @@
     <h3 class="py-5 float-left">
       Acciones de revision tecnica
     </h3>
-    <button class="btn btn-primary float-right" style="margin: 5% 2%;"
+    <div class="form-group">
+      <input type="text" class="form-control float-left" style="width: 60%;margin-bottom: 4%;" placeholder="Buscar...">
+    </div>
+    <button class="btn btn-primary float-right" style="margin:0;"
       type="button" data-toggle="modal" data-target="#exampleModal">Crear accion
       de revision tecnica</button>
   </div>
@@ -46,7 +58,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let request of requests | paginate: {itemsPerPage:5,
-      currentPage: page}; let f=index">
+      currentPage: page} | filter:filterAccion; let f=index">
       <td>{{f+1}}</td>
       <td *ngIf="request.estado == 1">{{request.nombre}}</td>
       <td *ngIf="request.idaccionpadre == null">Categoria</td>
